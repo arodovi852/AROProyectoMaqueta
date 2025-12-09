@@ -45,8 +45,8 @@ html {
   // Previene ajuste de tamaño de fuente en móviles al rotar
   -webkit-text-size-adjust: 100%;
   
-  // Tamaño base de fuente (1rem = 16px)
-  font-size: 16px;
+  // Tamaño base de fuente (1rem por defecto en navegadores)
+  font-size: 100%; // Respeta el tamaño configurado por el usuario
 }
 
 // ==========================================================================
@@ -181,7 +181,7 @@ textarea {
   appearance: none;
   
   // Previene zoom en inputs en iOS
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 // Botones
@@ -266,8 +266,8 @@ table {
 
 // Mejora la accesibilidad con focus visible
 :focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  outline: 0.125rem solid currentColor;
+  outline-offset: 0.125rem;
 }
 
 // Deshabilita la selección de texto en elementos interactivos
@@ -305,7 +305,7 @@ section {
 // Horizontal rule
 hr {
   border: none;
-  border-top: 1px solid;
+  border-top: 0.0625rem solid;
   color: inherit;
   height: 0;
   overflow: visible;

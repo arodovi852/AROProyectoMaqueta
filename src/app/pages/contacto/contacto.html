@@ -1,0 +1,112 @@
+<div class="contacto">
+  <div class="contacto__container">
+    <div class="contacto__content">
+      <header class="contacto__header">
+        <h1 class="contacto__title">Contáctanos</h1>
+        <p class="contacto__description">
+          Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.
+        </p>
+      </header>
+
+      <div class="contacto__grid">
+        <!-- Información de contacto -->
+        <aside class="contacto__info">
+          <div class="contacto__info-card">
+            <div class="contacto__info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="contacto__info-content">
+              <h3 class="contacto__info-title">Email</h3>
+              <p class="contacto__info-text">contacto@broadcast.com</p>
+            </div>
+          </div>
+
+          <div class="contacto__info-card">
+            <div class="contacto__info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="contacto__info-content">
+              <h3 class="contacto__info-title">Teléfono</h3>
+              <p class="contacto__info-text">+34 900 123 456</p>
+            </div>
+          </div>
+
+          <div class="contacto__info-card">
+            <div class="contacto__info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contacto__info-content">
+              <h3 class="contacto__info-title">Oficina</h3>
+              <p class="contacto__info-text">Madrid, España</p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Formulario -->
+        <form class="contacto__form" (ngSubmit)="onSubmit()">
+          <div class="contacto__form-group">
+            <label class="contacto__label" for="nombre">Nombre</label>
+            <input 
+              class="contacto__input" 
+              type="text" 
+              id="nombre" 
+              name="nombre"
+              placeholder="Tu nombre"
+              required
+            >
+          </div>
+
+          <div class="contacto__form-group">
+            <label class="contacto__label" for="email">Email</label>
+            <input 
+              class="contacto__input" 
+              type="email" 
+              id="email" 
+              name="email"
+              placeholder="tu@email.com"
+              required
+            >
+          </div>
+
+          <div class="contacto__form-group">
+            <label class="contacto__label" for="asunto">Asunto</label>
+            <input 
+              class="contacto__input" 
+              type="text" 
+              id="asunto" 
+              name="asunto"
+              placeholder="¿En qué podemos ayudarte?"
+              required
+            >
+          </div>
+
+          <div class="contacto__form-group">
+            <label class="contacto__label" for="mensaje">Mensaje</label>
+            <textarea 
+              class="contacto__textarea" 
+              id="mensaje" 
+              name="mensaje"
+              rows="5"
+              placeholder="Escribe tu mensaje aquí..."
+              required
+            ></textarea>
+          </div>
+
+          <button class="contacto__submit" type="submit">
+            Enviar mensaje
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+              <path d="M19 1L9 11m10-10L13 19l-4-8-8-4 18-6z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

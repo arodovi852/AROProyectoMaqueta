@@ -71,14 +71,16 @@
 --font-fallback: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
 //Escala tipográfica 
---font-size-xs: 0.25rem;  
---font-size-xs: 0.5rem;   
---font-size-sm: 0.75rem;     
---font-size-base: 1rem;    
---font-size-md: 1.5rem;   
---font-size-xl: 2rem;  
---font-size-2xl: 3rem;  
---font-size-4xl: 4rem; 
+--font-size-xs: 0.75rem;   // 12px
+--font-size-sm: 0.875rem;  // 14px
+--font-size-base: 1rem;    // 16px
+--font-size-lg: 1.125rem;  // 18px
+--font-size-xl: 1.25rem;   // 20px
+--font-size-2xl: 1.5rem;   // 24px
+--font-size-3xl: 1.875rem; // 30px
+--font-size-4xl: 2.25rem;  // 36px
+--font-size-5xl: 3rem;     // 48px
+--font-size-6xl: 3.75rem;  // 60px 
 
 //Pesos de fuente
 --font-weight-light: 300;
@@ -148,6 +150,14 @@
 --shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.4), 0 4px 6px -2px rgba(162, 100, 191, 0.2);
 --shadow-secondary: 0 10px 15px -3px rgba(191, 191, 100, 0.4), 0 4px 6px -2px rgba(191, 191, 100, 0.2);
 
+// Color blanco
+--color-white: #FFFFFF;
+
+// Container max width
+--container-max-width: 1280px;
+
+// Header height
+--header-height: 5rem;
 
 
 //Bordes

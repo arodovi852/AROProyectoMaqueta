@@ -1,1 +1,33 @@
-<p>card works!</p>
+<div [class]="cardClasses">
+  <!-- Imagen (opcional) -->
+  @if (imageSrc) {
+    <div class="card__image-wrapper">
+      <img 
+        [src]="imageSrc" 
+        [alt]="imageAlt" 
+        class="card__image"
+        loading="lazy"
+      >
+    </div>
+  }
+
+  <!-- Contenido principal -->
+  <div class="card__body">
+    <!-- Título (opcional) -->
+    @if (title) {
+      <h3 class="card__title">{{ title }}</h3>
+    }
+
+    <!-- Contenido proyectado -->
+    <div class="card__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Footer (opcional) -->
+  @if (hasFooter) {
+    <div class="card__footer">
+      <ng-content select="[card-footer]"></ng-content>
+    </div>
+  }
+</div>

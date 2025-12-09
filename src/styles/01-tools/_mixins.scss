@@ -105,10 +105,10 @@
 }
 
 // Grid con número de columnas responsive
-@mixin grid-auto($min-width: 250px, $gap: $spacing-4) {
+@mixin grid-auto($min-width: 15.625rem) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
-  gap: $gap;
+  gap: var(--spacing-4);
 }
 
 // ==========================================================================
@@ -126,8 +126,10 @@
 //   }
 // }
 
-@mixin transition($properties..., $duration: $duration-base, $timing: $ease-in-out) {
+@mixin transition($properties...) {
   $transitions: ();
+  $duration: var(--duration-base);
+  $timing: var(--ease-in-out);
   
   @each $property in $properties {
     $transitions: append($transitions, $property $duration $timing, comma);
@@ -138,12 +140,28 @@
 
 // Transición rápida
 @mixin transition-fast($properties...) {
-  @include transition($properties..., $duration-fast);
+  $transitions: ();
+  $duration: var(--duration-fast);
+  $timing: var(--ease-in-out);
+  
+  @each $property in $properties {
+    $transitions: append($transitions, $property $duration $timing, comma);
+  }
+  
+  transition: $transitions;
 }
 
 // Transición lenta
 @mixin transition-slow($properties...) {
-  @include transition($properties..., $duration-slow);
+  $transitions: ();
+  $duration: var(--duration-slow);
+  $timing: var(--ease-in-out);
+  
+  @each $property in $properties {
+    $transitions: append($transitions, $property $duration $timing, comma);
+  }
+  
+  transition: $transitions;
 }
 
 // ==========================================================================
@@ -240,14 +258,16 @@
 //   @include focus-visible($color-primary);
 // }
 
-@mixin focus-visible($color: $color-primary-light) {
+@mixin focus-visible {
+  $color: var(--color-primary-light);
+  
   &:focus {
     outline: none;
   }
   
   &:focus-visible {
-    outline: 2px solid $color;
-    outline-offset: 2px;
+    outline: 0.125rem solid $color;
+    outline-offset: 0.125rem;
   }
 }
 
@@ -261,12 +281,12 @@
 //   @include container;
 // }
 
-@mixin container($max-width: $max-width-xl, $padding: $spacing-4) {
-  max-width: $max-width;
+@mixin container {
+  max-width: var(--max-width-xl);
   margin-left: auto;
   margin-right: auto;
-  padding-left: $padding;
-  padding-right: $padding;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
   width: 100%;
 }
 
@@ -304,12 +324,12 @@
 //   @include hover-lift;
 // }
 
-@mixin hover-lift($distance: -4px, $shadow: $shadow-lg) {
+@mixin hover-lift {
   @include transition(transform, box-shadow);
   
   &:hover {
-    transform: translateY($distance);
-    box-shadow: $shadow;
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-lg);
   }
 }
 

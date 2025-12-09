@@ -1,0 +1,315 @@
+// ==========================================================================
+// SECCIÓN: HERO
+// ==========================================================================
+// Sección principal de la página con CTA
+// Bloque BEM: .hero
+// ==========================================================================
+
+@import '../../../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE BASE: .hero
+// ==========================================================================
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height, 5rem));
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-16) 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-neutral-50) 0%,
+    var(--color-primary-lightest) 100%
+  );
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 50%, var(--color-primary-light) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, var(--color-secondary-light) 0%, transparent 50%);
+    opacity: 0.1;
+    z-index: 0;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__container
+// ==========================================================================
+
+.hero__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+
+  @include responsive(md) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__content
+// ==========================================================================
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__title
+// ==========================================================================
+
+.hero__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-neutral-900);
+  margin: 0;
+
+  @include responsive(md) {
+    font-size: var(--font-size-5xl);
+  }
+
+  @include responsive(lg) {
+    font-size: var(--font-size-6xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__title-highlight
+// ==========================================================================
+
+.hero__title-highlight {
+  color: var(--color-primary);
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.2em;
+    left: 0;
+    width: 100%;
+    height: 0.3em;
+    background-color: var(--color-primary-lightest);
+    z-index: -1;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__description
+// ==========================================================================
+
+.hero__description {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-neutral-700);
+  margin: 0;
+  max-width: 35rem;
+
+  @include responsive(md) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__actions
+// ==========================================================================
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__button
+// ==========================================================================
+
+.hero__button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  @include transition(background-color, transform, box-shadow);
+
+  &:hover {
+    transform: translateY(-0.125rem);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ==========================================================================
+// MODIFICADOR: .hero__button--primary
+// ==========================================================================
+
+.hero__button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0.25rem 0.5rem rgba(162, 100, 191, 0.2);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0.5rem 1rem rgba(162, 100, 191, 0.3);
+  }
+}
+
+// ==========================================================================
+// MODIFICADOR: .hero__button--secondary
+// ==========================================================================
+
+.hero__button--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 0.125rem solid var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-lightest);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__button-icon
+// ==========================================================================
+
+.hero__button-icon {
+  @include transition(transform);
+
+  .hero__button:hover & {
+    transform: translateX(0.25rem);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__stats
+// ==========================================================================
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-8);
+  border-top: 0.0625rem solid var(--color-neutral-300);
+
+  @include responsive(md) {
+    gap: var(--spacing-8);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__stat
+// ==========================================================================
+
+.hero__stat {
+  text-align: center;
+
+  @include responsive(md) {
+    text-align: left;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__stat-number
+// ==========================================================================
+
+.hero__stat-number {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+
+  @include responsive(md) {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__stat-label
+// ==========================================================================
+
+.hero__stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  margin-top: var(--spacing-1);
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__visual
+// ==========================================================================
+
+.hero__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: -1;
+
+  @include responsive(md) {
+    order: 0;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__image-wrapper
+// ==========================================================================
+
+.hero__image-wrapper {
+  width: 100%;
+  max-width: 30rem;
+  aspect-ratio: 1;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+// ==========================================================================
+// ELEMENTO: .hero__image
+// ==========================================================================
+
+.hero__image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.1));
+}
+
+// ==========================================================================
+// ANIMACIONES
+// ==========================================================================
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}

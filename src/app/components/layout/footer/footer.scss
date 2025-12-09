@@ -1,0 +1,337 @@
+// ==========================================================================
+// COMPONENTE: FOOTER
+// ==========================================================================
+// Footer principal de la aplicación con múltiples secciones
+// Bloque BEM: .footer
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .footer
+// ==========================================================================
+
+.footer {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-100);
+  padding: var(--spacing-12) 0 var(--spacing-6);
+  margin-top: auto;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__container
+// ==========================================================================
+
+.footer__container {
+  @include container;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__main
+// ==========================================================================
+
+.footer__main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+
+  @include responsive('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive('md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include responsive('lg') {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: var(--spacing-12);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__column
+// ==========================================================================
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+
+  // Modificador: columna de marca
+  &--brand {
+    @include responsive('md') {
+      grid-column: span 2;
+    }
+
+    @include responsive('lg') {
+      grid-column: span 1;
+    }
+  }
+
+  // Modificador: columna de newsletter
+  &--newsletter {
+    @include responsive('sm') {
+      grid-column: span 2;
+    }
+
+    @include responsive('md') {
+      grid-column: span 1;
+    }
+
+    @include responsive('lg') {
+      grid-column: span 1;
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__brand
+// ==========================================================================
+
+.footer__brand {
+  @include flex-center(row, var(--spacing-2));
+  justify-content: flex-start;
+  color: var(--color-white);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+}
+
+.footer__brand-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.footer__brand-text {
+  font-family: var(--font-family-heading);
+  letter-spacing: 0.05em;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__description
+// ==========================================================================
+
+.footer__description {
+  color: var(--color-gray-400);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__social
+// ==========================================================================
+
+.footer__social {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-2);
+}
+
+.footer__social-link {
+  @include flex-center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-400);
+  @include transition(background-color, color, transform);
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-0.125rem);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__title
+// ==========================================================================
+
+.footer__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-3) 0;
+  font-family: var(--font-family-heading);
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__list
+// ==========================================================================
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.footer__list-item {
+  // Sin estilos específicos
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__link
+// ==========================================================================
+
+.footer__link {
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  @include transition(color);
+  display: inline-block;
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__newsletter
+// ==========================================================================
+
+.footer__newsletter-text {
+  color: var(--color-gray-400);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer__newsletter-form {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-3);
+}
+
+.footer__newsletter-input {
+  flex: 1;
+  padding: var(--spacing-3);
+  border: 0.0625rem solid var(--color-gray-700);
+  border-radius: var(--radius-md);
+  background-color: var(--color-gray-800);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  @include transition(border-color, background-color);
+
+  &::placeholder {
+    color: var(--color-gray-500);
+  }
+
+  &:hover {
+    border-color: var(--color-gray-600);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: var(--color-gray-900);
+  }
+}
+
+.footer__newsletter-btn {
+  @include button-reset;
+  @include flex-center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  @include transition(background-color, transform);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateX(0.125rem);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:active {
+    transform: translateX(0);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__divider
+// ==========================================================================
+
+.footer__divider {
+  height: 0.0625rem;
+  background-color: var(--color-gray-800);
+  margin: var(--spacing-8) 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__bottom
+// ==========================================================================
+
+.footer__bottom {
+  @include flex-between(center);
+  flex-direction: column;
+  gap: var(--spacing-4);
+
+  @include responsive('md') {
+    flex-direction: row;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__copyright
+// ==========================================================================
+
+.footer__copyright {
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .footer__legal
+// ==========================================================================
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+
+  @include responsive('md') {
+    justify-content: flex-end;
+  }
+}
+
+.footer__legal-link {
+  color: var(--color-gray-500);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:not(:last-child)::after {
+    content: '|';
+    margin-left: var(--spacing-4);
+    color: var(--color-gray-700);
+  }
+}

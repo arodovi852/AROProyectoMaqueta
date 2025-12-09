@@ -1,0 +1,204 @@
+// ==========================================================================
+// SECCIÓN: CTA (CALL TO ACTION)
+// ==========================================================================
+// Sección de llamada a la acción
+// Bloque BEM: .cta
+// ==========================================================================
+
+@import '../../../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE BASE: .cta
+// ==========================================================================
+
+.cta {
+  padding: var(--spacing-20) 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 40rem;
+    height: 40rem;
+    background-color: var(--color-primary-light);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -20%;
+    width: 40rem;
+    height: 40rem;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__container
+// ==========================================================================
+
+.cta__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__content
+// ==========================================================================
+
+.cta__content {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__title
+// ==========================================================================
+
+.cta__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: 1.2;
+
+  @include responsive(md) {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__description
+// ==========================================================================
+
+.cta__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary-lightest);
+  margin: 0 0 var(--spacing-8) 0;
+  line-height: 1.6;
+
+  @include responsive(md) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__actions
+// ==========================================================================
+
+.cta__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+
+  @include responsive(sm) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__button
+// ==========================================================================
+
+.cta__button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  min-width: 12rem;
+  @include transition(background-color, transform, box-shadow);
+
+  &:hover {
+    transform: translateY(-0.125rem);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include responsive(sm) {
+    min-width: 14rem;
+  }
+}
+
+// ==========================================================================
+// MODIFICADOR: .cta__button--primary
+// ==========================================================================
+
+.cta__button--primary {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: var(--color-neutral-50);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ==========================================================================
+// MODIFICADOR: .cta__button--secondary
+// ==========================================================================
+
+.cta__button--secondary {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 0.125rem solid var(--color-white);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__note
+// ==========================================================================
+
+.cta__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-lightest);
+  margin: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .cta__note-icon
+// ==========================================================================
+
+.cta__note-icon {
+  flex-shrink: 0;
+  opacity: 0.8;
+}

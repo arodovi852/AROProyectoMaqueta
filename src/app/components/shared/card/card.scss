@@ -1,0 +1,154 @@
+// ==========================================================================
+// COMPONENTE: CARD
+// ==========================================================================
+// Tarjeta reutilizable con variantes
+// Bloque BEM: .card
+// ==========================================================================
+
+@import '../../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE BASE: .card
+// ==========================================================================
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  @include transition(box-shadow, transform);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .card__image-wrapper
+// ==========================================================================
+
+.card__image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include transition(transform);
+
+  .card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .card__body
+// ==========================================================================
+
+.card__body {
+  padding: var(--spacing-6);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+// ==========================================================================
+// ELEMENTO: .card__title
+// ==========================================================================
+
+.card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-family: var(--font-family-heading);
+}
+
+// ==========================================================================
+// ELEMENTO: .card__content
+// ==========================================================================
+
+.card__content {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  flex: 1;
+}
+
+// ==========================================================================
+// ELEMENTO: .card__footer
+// ==========================================================================
+
+.card__footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 0.0625rem solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+// ==========================================================================
+// MODIFICADOR: VARIANTES
+// ==========================================================================
+
+// Variante Horizontal
+.card--horizontal {
+  @include responsive('md') {
+    flex-direction: row;
+
+    .card__image-wrapper {
+      width: 40%;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Variante Elevated (más sombra)
+.card--elevated {
+  box-shadow: var(--shadow-lg);
+
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-0.25rem);
+  }
+}
+
+// Variante Bordered (sin sombra, con borde)
+.card--bordered {
+  box-shadow: none;
+  border: 0.0625rem solid var(--color-gray-300);
+
+  &:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: none;
+  }
+}
+
+// Variante Compact (menos padding)
+.card--compact {
+  .card__body {
+    padding: var(--spacing-4);
+  }
+
+  .card__footer {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}
+
+// Variante Interactive (clickeable)
+.card--interactive {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-0.25rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
