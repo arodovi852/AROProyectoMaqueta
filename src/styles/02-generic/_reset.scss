@@ -1,0 +1,358 @@
+// ==========================================================================
+// RESET CSS
+// ==========================================================================
+// Reset moderno y completo que normaliza diferencias entre navegadores
+// y establece valores base sensatos para todos los elementos HTML.
+// ==========================================================================
+
+// ==========================================================================
+// BOX SIZING
+// ==========================================================================
+// Usar border-box hace que padding y border se incluyan en el ancho/alto total
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// ==========================================================================
+// RESET DE MÁRGENES Y PADDINGS
+// ==========================================================================
+// Elimina márgenes y paddings por defecto de todos los elementos
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// ==========================================================================
+// DOCUMENTO ROOT
+// ==========================================================================
+// Configuración base del HTML
+
+html {
+  // Permite que altura mínima sea 100% del viewport
+  height: 100%;
+  
+  // Mejora el renderizado de fuentes
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  // Asegura que el scroll sea suave cuando se hace clic en anclas
+  scroll-behavior: smooth;
+  
+  // Previene ajuste de tamaño de fuente en móviles al rotar
+  -webkit-text-size-adjust: 100%;
+  
+  // Tamaño base de fuente (1rem = 16px)
+  font-size: 16px;
+}
+
+// ==========================================================================
+// BODY
+// ==========================================================================
+
+body {
+  // Permite que el body ocupe todo el espacio disponible
+  min-height: 100%;
+  
+  // Mejora la renderización del texto
+  text-rendering: optimizeSpeed;
+  
+  // Line height por defecto
+  line-height: 1.5;
+  
+  // Previene overflow horizontal
+  overflow-x: hidden;
+}
+
+// ==========================================================================
+// ELEMENTOS DE TEXTO
+// ==========================================================================
+
+// Encabezados
+h1, h2, h3, h4, h5, h6 {
+  // Hace que los títulos hereden el peso de la fuente
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Párrafos y elementos de texto
+p, span, strong, em, small {
+  // Previene overflow de palabras largas
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+// Enlaces
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+// Énfasis
+strong, b {
+  font-weight: bolder;
+}
+
+// Código y preformateado
+code, kbd, samp, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 1em;
+}
+
+// Texto pequeño
+small {
+  font-size: 0.875em;
+}
+
+// Sub y superíndices
+sub,
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+// ==========================================================================
+// LISTAS
+// ==========================================================================
+
+ul, ol {
+  list-style: none;
+}
+
+// ==========================================================================
+// MEDIA
+// ==========================================================================
+
+// Imágenes y videos responsivos
+img, 
+picture, 
+video, 
+canvas, 
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Imágenes sin arrastrar
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+// SVG como inline
+svg {
+  vertical-align: middle;
+}
+
+// ==========================================================================
+// FORMULARIOS
+// ==========================================================================
+
+// Inputs, selects y textareas
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// Inputs y textareas
+input,
+textarea {
+  // Elimina estilos nativos en iOS
+  -webkit-appearance: none;
+  appearance: none;
+  
+  // Previene zoom en inputs en iOS
+  font-size: 16px;
+}
+
+// Botones
+button {
+  // Elimina estilos por defecto
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  // Hace que el botón se ajuste al contenido
+  padding: 0;
+  
+  // Hereda la fuente
+  font: inherit;
+}
+
+// Cursor pointer para elementos interactivos
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+a,
+label,
+select {
+  cursor: pointer;
+}
+
+// Deshabilita el redimensionamiento de textareas (se puede sobrescribir)
+textarea {
+  resize: vertical;
+}
+
+// Placeholder
+::placeholder {
+  opacity: 0.5;
+}
+
+// Elimina spinner de inputs numéricos
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+// Elimina el icono de clear en inputs de búsqueda
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// Fieldset
+fieldset {
+  border: none;
+}
+
+// ==========================================================================
+// TABLAS
+// ==========================================================================
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTOS INTERACTIVOS
+// ==========================================================================
+
+// Elimina outline por defecto (se debe agregar con :focus-visible)
+:focus {
+  outline: none;
+}
+
+// Mejora la accesibilidad con focus visible
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+// Deshabilita la selección de texto en elementos interactivos
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+// ==========================================================================
+// ELEMENTOS SEMÁNTICOS HTML5
+// ==========================================================================
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+// ==========================================================================
+// OTROS
+// ==========================================================================
+
+// Horizontal rule
+hr {
+  border: none;
+  border-top: 1px solid;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+// Citas
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+// Elementos ocultos
+[hidden] {
+  display: none !important;
+}
+
+// Elementos disabled
+[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+// Previene que el contenido se desborde
+iframe {
+  border: 0;
+}
+
+// ==========================================================================
+// ACCESIBILIDAD
+// ==========================================================================
+
+// Respeta las preferencias de movimiento reducido del usuario
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
