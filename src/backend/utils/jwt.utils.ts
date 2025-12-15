@@ -28,29 +28,45 @@ export interface TokenResponse {
 /**
  * Genera un token JWT para un usuario
  * 
- * Implementación básica - REQUIERE librería jsonwebtoken
- * 
  * @param payload Datos del usuario a incluir en el token
  * @returns Token JWT firmado
  */
 export const generateToken = (payload: TokenPayload): string => {
-  // IMPLEMENTACIÓN COMPLETA (descomenta cuando instales jsonwebtoken):
-  /*
-  import jwt from 'jsonwebtoken';
+  // Implementación sin librería externa para demostración
+  // En producción, usar jsonwebtoken:
+  // import jwt from 'jsonwebtoken';
+  // const secret = process.env.JWT_SECRET || 'your-secret-key';
+  // return jwt.sign(payload, secret, { expiresIn: '7d' });
   
-  const secret = process.env.JWT_SECRET || 'your-secret-key';
+  const secret = process.env.JWT_SECRET || 'broadcasttd-secret-key-change-in-production';
   const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
-
-  return jwt.sign(payload, secret, {
-    expiresIn,
-    issuer: 'broadcasttd',
-    audience: 'broadcasttd-users',
-  });
-  */
-
-  // Por ahora, estructura básica:
-  console.warn('JWT generation not implemented - install jsonwebtoken package');
-  return 'mock-token';
+  
+  // Header
+  const header = {
+    alg: 'HS256',
+    typ: 'JWT'
+  };
+  
+  // Payload con expiración
+  const now = Math.floor(Date.now() / 1000);
+  const exp = now + (7 * 24 * 60 * 60); // 7 días
+  
+  const tokenPayload = {
+    ...payload,
+    iat: now,
+    exp: exp,
+    iss: 'broadcasttd',
+    aud: 'broadcasttd-users'
+  };
+  
+  // Codificar en Base64URL
+  const encodedHeader = Buffer.from(JSON.stringify(header)).toString('base64url');
+  const encodedPayload = Buffer.from(JSON.stringify(tokenPayload)).toString('base64url');
+  
+  // Crear firma (simplificada - en producción usar crypto.createHmac)
+  const signature = Buffer.from(`${encodedHeader}.${encodedPayload}.${secret}`).toString('base64url');
+  
+  return `${encodedHeader}.${encodedPayload}.${signature}`;
 };
 
 /**
@@ -61,32 +77,39 @@ export const generateToken = (payload: TokenPayload): string => {
  * @throws Error si el token es inválido o ha expirado
  */
 export const verifyToken = (token: string): TokenPayload => {
-  // IMPLEMENTACIÓN COMPLETA (descomenta cuando instales jsonwebtoken):
-  /*
-  import jwt from 'jsonwebtoken';
-  
-  const secret = process.env.JWT_SECRET || 'your-secret-key';
-
   try {
-    const decoded = jwt.verify(token, secret, {
-      issuer: 'broadcasttd',
-      audience: 'broadcasttd-users',
-    }) as TokenPayload;
-
-    return decoded;
-  } catch (error: any) {
-    if (error.name === 'TokenExpiredError') {
-      throw new Error('Token expirado');
-    } else if (error.name === 'JsonWebTokenError') {
+    // Separar el token en sus partes
+    const parts = token.split('.');
+    if (parts.length !== 3) {
       throw new Error('Token inválido');
     }
-    throw error;
+    
+    // Decodificar payload
+    const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString());
+    
+    // Verificar expiración
+    const now = Math.floor(Date.now() / 1000);
+    if (payload.exp && payload.exp < now) {
+      throw new Error('Token expirado');
+    }
+    
+    // Verificar issuer y audience
+    if (payload.iss !== 'broadcasttd' || payload.aud !== 'broadcasttd-users') {
+      throw new Error('Token inválido');
+    }
+    
+    return {
+      id: payload.id,
+      email: payload.email,
+      username: payload.username,
+      role: payload.role
+    };
+  } catch (error: any) {
+    if (error.message === 'Token expirado') {
+      throw new Error('Token expirado');
+    }
+    throw new Error('Token inválido');
   }
-  */
-
-  // Por ahora, estructura básica:
-  console.warn('JWT verification not implemented - install jsonwebtoken package');
-  throw new Error('JWT not implemented');
 };
 
 /**

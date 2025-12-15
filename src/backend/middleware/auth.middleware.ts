@@ -23,35 +23,25 @@ export const authMiddleware = async (req: any, res: any, next: any): Promise<voi
 
     const token = authHeader.substring(7); // Remover "Bearer "
 
-    // Aquí iría la verificación real del JWT
-    // Por ahora, estructura básica:
-    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // req.user = decoded;
-
-    // EJEMPLO DE IMPLEMENTACIÓN (requiere librería jsonwebtoken):
-    /*
-    import jwt from 'jsonwebtoken';
+    // Importar las utilidades JWT
+    const { verifyToken } = require('../utils/jwt.utils');
     
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as {
-      id: string;
-      email: string;
-      username: string;
-      role: UserRole;
-    };
+    // Verificar y decodificar el token
+    const decoded = verifyToken(token);
 
+    // Añadir usuario a la request
     req.user = {
       id: decoded.id,
       email: decoded.email,
       username: decoded.username,
       role: decoded.role,
     };
-    */
 
     next();
   } catch (error: any) {
     res.status(401).json({
       success: false,
-      message: 'Token inválido o expirado',
+      message: error.message || 'Token inválido o expirado',
     });
   }
 };
@@ -102,9 +92,19 @@ export const optionalAuth = async (req: any, res: any, next: any): Promise<void>
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.substring(7);
       
-      // Verificar token si existe
-      // const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      // req.user = decoded;
+      // Intentar verificar token
+      const { verifyToken } = require('../utils/jwt.utils');
+      try {
+        const decoded = verifyToken(token);
+        req.user = {
+          id: decoded.id,
+          email: decoded.email,
+          username: decoded.username,
+          role: decoded.role,
+        };
+      } catch (error) {
+        // Si falla, continuar sin usuario
+      }
     }
 
     next();

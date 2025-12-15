@@ -1,0 +1,585 @@
+openapi: 3.0.3
+info:
+  title: BROADCASTTD API
+  description: |
+    API REST para BROADCASTTD - Plataforma de seguimiento de series de televisión similar a Letterboxd.
+    
+    ## Características principales
+    - Gestión completa de series de televisión
+    - Sistema de valoraciones y reviews
+    - Watchlist personalizada
+    - Listas personalizadas de series
+    - Sistema de autenticación JWT
+    - Control de acceso basado en roles (USER, ADMIN)
+    
+    ## Lógica de negocio implementada
+    - **No valorar sin ver**: Los usuarios no pueden valorar una serie sin haberla marcado como vista
+    - **Un review por serie**: Cada usuario solo puede escribir un review por serie
+    - **Review requiere vista**: No se puede escribir un review sin haber visto la serie
+    - **No duplicados en watchlist**: Una serie solo puede aparecer una vez en la watchlist
+    - **Protección de datos**: No se pueden eliminar series que tienen valoraciones
+    
+  version: 1.0.0
+  contact:
+    name: BROADCASTTD API Support
+    email: support@broadcasttd.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor de desarrollo local
+  - url: https://api.broadcasttd.com/api
+    description: Servidor de producción
+
+tags:
+  - name: Auth
+    description: Autenticación y registro de usuarios
+  - name: Users
+    description: Gestión de usuarios
+  - name: Series
+    description: Gestión de series de televisión
+  - name: UserSeries
+    description: Series vistas y valoradas por usuarios
+  - name: Reviews
+    description: Reseñas de series
+  - name: Watchlist
+    description: Lista de series pendientes de ver
+  - name: Lists
+    description: Listas personalizadas de series
+  - name: Genres
+    description: Géneros de series
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Token JWT obtenido al hacer login
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: "Error description"
+      required:
+        - success
+        - message
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        total:
+          type: integer
+          example: 150
+        totalPages:
+          type: integer
+          example: 8
+        hasNextPage:
+          type: boolean
+          example: true
+        hasPrevPage:
+          type: boolean
+          example: false
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+        displayName:
+          type: string
+        role:
+          type: string
+          enum: [USER, ADMIN]
+        bio:
+          type: string
+        avatar:
+          type: string
+          format: uri
+        createdAt:
+          type: string
+          format: date-time
+        stats:
+          type: object
+          properties:
+            seriesWatched:
+              type: integer
+            averageRating:
+              type: number
+            reviewsCount:
+              type: integer
+            listsCount:
+              type: integer
+
+    Series:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        originalTitle:
+          type: string
+        overview:
+          type: string
+        rating:
+          type: number
+          minimum: 0
+          maximum: 10
+        ratingsCount:
+          type: integer
+        numberOfSeasons:
+          type: integer
+        numberOfEpisodes:
+          type: integer
+        status:
+          type: string
+          enum: [RETURNING, ENDED, CANCELLED, IN_PRODUCTION]
+        firstAirDate:
+          type: string
+          format: date
+        posterPath:
+          type: string
+        backdropPath:
+          type: string
+        genres:
+          type: array
+          items:
+            $ref: '#/components/schemas/Genre'
+
+    Genre:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+        seriesId:
+          type: string
+        content:
+          type: string
+        rating:
+          type: number
+          minimum: 0
+          maximum: 10
+        hasSpoilers:
+          type: boolean
+        likesCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+
+paths:
+  /users/register:
+    post:
+      tags:
+        - Auth
+      summary: Registro de nuevo usuario
+      description: Crea una nueva cuenta de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - username
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: usuario@example.com
+                username:
+                  type: string
+                  minLength: 3
+                  example: usuario123
+                password:
+                  type: string
+                  minLength: 8
+                  example: password123
+                displayName:
+                  type: string
+                  example: Usuario de Prueba
+      responses:
+        '201':
+          description: Usuario registrado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Usuario registrado exitosamente
+                  data:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                emailExists:
+                  value:
+                    success: false
+                    message: El email ya está registrado
+                usernameExists:
+                  value:
+                    success: false
+                    message: El username ya está en uso
+                passwordTooShort:
+                  value:
+                    success: false
+                    message: La contraseña debe tener al menos 8 caracteres
+
+  /users/login:
+    post:
+      tags:
+        - Auth
+      summary: Login de usuario
+      description: Autentica al usuario y retorna un token JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: usuario@example.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        '200':
+          description: Login exitoso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Login exitoso
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'
+                      token:
+                        type: string
+                        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        '401':
+          description: Credenciales inválidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /series:
+    get:
+      tags:
+        - Series
+      summary: Lista todas las series
+      description: Obtiene una lista paginada de series con filtros opcionales
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: title
+          in: query
+          description: Filtrar por título
+          schema:
+            type: string
+        - name: minRating
+          in: query
+          schema:
+            type: number
+        - name: maxRating
+          in: query
+          schema:
+            type: number
+        - name: releaseYear
+          in: query
+          schema:
+            type: integer
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [title, rating, createdAt]
+            default: title
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: asc
+      responses:
+        '200':
+          description: Lista de series
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Series'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+
+    post:
+      tags:
+        - Series
+      summary: Crea una nueva serie (ADMIN)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - originalTitle
+                - firstAirDate
+                - numberOfSeasons
+                - numberOfEpisodes
+              properties:
+                title:
+                  type: string
+                originalTitle:
+                  type: string
+                overview:
+                  type: string
+                firstAirDate:
+                  type: string
+                  format: date
+                numberOfSeasons:
+                  type: integer
+                numberOfEpisodes:
+                  type: integer
+                status:
+                  type: string
+                  enum: [RETURNING, ENDED, CANCELLED, IN_PRODUCTION]
+                tmdbId:
+                  type: integer
+                imdbId:
+                  type: string
+      responses:
+        '201':
+          description: Serie creada exitosamente
+        '401':
+          description: No autenticado
+        '403':
+          description: No tiene permisos (requiere rol ADMIN)
+
+  /user-series/watch:
+    post:
+      tags:
+        - UserSeries
+      summary: Marca una serie como vista
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - seriesId
+                - watchedDate
+              properties:
+                seriesId:
+                  type: string
+                  format: uuid
+                watchedDate:
+                  type: string
+                  format: date
+                isWatched:
+                  type: boolean
+                  default: true
+      responses:
+        '201':
+          description: Serie marcada como vista
+        '401':
+          description: No autenticado
+
+  /user-series/rate:
+    post:
+      tags:
+        - UserSeries
+      summary: Valora una serie (REQUIERE haberla visto)
+      description: |
+        **LÓGICA DE NEGOCIO CRÍTICA**: No se puede valorar una serie sin haberla marcado como vista primero.
+        Similar al ejemplo de la biblioteca: no puedes pedir más libros sin devolver los anteriores.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - seriesId
+                - rating
+              properties:
+                seriesId:
+                  type: string
+                  format: uuid
+                rating:
+                  type: number
+                  minimum: 0
+                  maximum: 10
+                  example: 9.5
+      responses:
+        '200':
+          description: Valoración guardada exitosamente
+        '400':
+          description: Error - No has visto la serie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: No puedes valorar una serie que no has visto
+        '401':
+          description: No autenticado
+
+  /reviews:
+    post:
+      tags:
+        - Reviews
+      summary: Crea un review (REQUIERE haber visto la serie)
+      description: |
+        Solo se puede crear un review por usuario por serie.
+        El usuario debe haber marcado la serie como vista previamente.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - seriesId
+                - content
+              properties:
+                seriesId:
+                  type: string
+                content:
+                  type: string
+                rating:
+                  type: number
+                  minimum: 0
+                  maximum: 10
+                hasSpoilers:
+                  type: boolean
+                  default: false
+      responses:
+        '201':
+          description: Review creado exitosamente
+        '400':
+          description: Error - Ya existe review o no ha visto la serie
+
+  /watchlist:
+    get:
+      tags:
+        - Watchlist
+      summary: Obtiene la watchlist del usuario
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Watchlist del usuario
+    post:
+      tags:
+        - Watchlist
+      summary: Añade serie a watchlist (NO permite duplicados)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - seriesId
+              properties:
+                seriesId:
+                  type: string
+      responses:
+        '201':
+          description: Serie añadida a watchlist
+        '400':
+          description: Error - Serie ya está en watchlist

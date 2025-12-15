@@ -13,17 +13,15 @@
  * @returns Hash de la contraseña
  */
 export const hashPassword = async (password: string): Promise<string> => {
-  // IMPLEMENTACIÓN COMPLETA (descomenta cuando instales bcryptjs):
-  /*
-  import bcrypt from 'bcryptjs';
+  // Implementación simulada con crypto nativo de Node.js
+  // En producción real, usar bcryptjs:
+  // import bcrypt from 'bcryptjs';
+  // return await bcrypt.hash(password, 10);
   
-  const saltRounds = 10;
-  return await bcrypt.hash(password, saltRounds);
-  */
-
-  // Por ahora, estructura básica (NO USAR EN PRODUCCIÓN):
-  console.warn('Password hashing not implemented - install bcryptjs package');
-  return `hashed_${password}`;
+  const crypto = require('crypto');
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+  return `${salt}:${hash}`;
 };
 
 /**
@@ -34,16 +32,19 @@ export const hashPassword = async (password: string): Promise<string> => {
  * @returns true si coinciden, false si no
  */
 export const verifyPassword = async (password: string, hash: string): Promise<boolean> => {
-  // IMPLEMENTACIÓN COMPLETA (descomenta cuando instales bcryptjs):
-  /*
-  import bcrypt from 'bcryptjs';
+  // Implementación con crypto nativo de Node.js
+  // En producción real, usar bcryptjs:
+  // import bcrypt from 'bcryptjs';
+  // return await bcrypt.compare(password, hash);
   
-  return await bcrypt.compare(password, hash);
-  */
-
-  // Por ahora, estructura básica (NO USAR EN PRODUCCIÓN):
-  console.warn('Password verification not implemented - install bcryptjs package');
-  return hash === `hashed_${password}`;
+  try {
+    const crypto = require('crypto');
+    const [salt, originalHash] = hash.split(':');
+    const verifyHash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    return originalHash === verifyHash;
+  } catch (error) {
+    return false;
+  }
 };
 
 /**
