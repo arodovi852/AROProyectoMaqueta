@@ -55,7 +55,7 @@
   gap: var(--spacing-12);
   align-items: center;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-16);
   }
@@ -82,11 +82,11 @@
   color: var(--color-neutral-900);
   margin: 0;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     font-size: var(--font-size-5xl);
   }
 
-  @include responsive(lg) {
+  @media (min-width: 1024px) {
     font-size: var(--font-size-6xl);
   }
 }
@@ -123,7 +123,7 @@
   margin: 0;
   max-width: 35rem;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     font-size: var(--font-size-xl);
   }
 }
@@ -154,14 +154,13 @@
   font-weight: var(--font-weight-semibold);
   border-radius: var(--radius-md);
   cursor: pointer;
-  @include transition(background-color, transform, box-shadow);
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-0.125rem);
   }
 
-  &:focus-visible {
-    @include focus-visible;
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px;
   }
 
   &:active {
@@ -203,7 +202,7 @@
 // ==========================================================================
 
 .hero__button-icon {
-  @include transition(transform);
+  transition: all 0.3s ease;
 
   .hero__button:hover & {
     transform: translateX(0.25rem);
@@ -222,7 +221,7 @@
   padding-top: var(--spacing-8);
   border-top: 0.0625rem solid var(--color-neutral-300);
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     gap: var(--spacing-8);
   }
 }
@@ -234,7 +233,7 @@
 .hero__stat {
   text-align: center;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     text-align: left;
   }
 }
@@ -249,7 +248,7 @@
   color: var(--color-primary);
   line-height: 1;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     font-size: var(--font-size-3xl);
   }
 }
@@ -274,7 +273,7 @@
   justify-content: center;
   order: -1;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     order: 0;
   }
 }

@@ -80,7 +80,7 @@
   margin: 0 0 var(--spacing-4) 0;
   line-height: 1.2;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     font-size: var(--font-size-4xl);
   }
 }
@@ -95,7 +95,7 @@
   margin: 0 0 var(--spacing-8) 0;
   line-height: 1.6;
 
-  @include responsive(md) {
+  @media (min-width: 768px) {
     font-size: var(--font-size-xl);
   }
 }
@@ -111,7 +111,7 @@
   align-items: center;
   margin-bottom: var(--spacing-6);
 
-  @include responsive(sm) {
+  @media (min-width: 640px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -132,21 +132,20 @@
   border-radius: var(--radius-md);
   cursor: pointer;
   min-width: 12rem;
-  @include transition(background-color, transform, box-shadow);
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-0.125rem);
   }
 
-  &:focus-visible {
-    @include focus-visible;
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px;
   }
 
   &:active {
     transform: translateY(0);
   }
 
-  @include responsive(sm) {
+  @media (min-width: 640px) {
     min-width: 14rem;
   }
 }

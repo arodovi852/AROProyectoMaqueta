@@ -97,7 +97,7 @@
 
 // Variante Horizontal
 .card--horizontal {
-  @include responsive('md') {
+  @media (min-width: 768px) {
     flex-direction: row;
 
     .card__image-wrapper {

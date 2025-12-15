@@ -73,15 +73,14 @@
   height: 1.5rem;
   border-radius: var(--radius-sm);
   opacity: 0.6;
-  @include transition(opacity, background-color);
+  transition: all 0.3s ease;
 
   &:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.05);
   }
 
-  &:focus-visible {
-    @include focus-visible;
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px;
   }
 }
 
