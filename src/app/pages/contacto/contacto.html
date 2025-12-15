@@ -49,63 +49,10 @@
           </div>
         </aside>
 
-        <!-- Formulario -->
-        <form class="contacto__form" (ngSubmit)="onSubmit()">
-          <div class="contacto__form-group">
-            <label class="contacto__label" for="nombre">Nombre</label>
-            <input 
-              class="contacto__input" 
-              type="text" 
-              id="nombre" 
-              name="nombre"
-              placeholder="Tu nombre"
-              required
-            >
-          </div>
-
-          <div class="contacto__form-group">
-            <label class="contacto__label" for="email">Email</label>
-            <input 
-              class="contacto__input" 
-              type="email" 
-              id="email" 
-              name="email"
-              placeholder="tu@email.com"
-              required
-            >
-          </div>
-
-          <div class="contacto__form-group">
-            <label class="contacto__label" for="asunto">Asunto</label>
-            <input 
-              class="contacto__input" 
-              type="text" 
-              id="asunto" 
-              name="asunto"
-              placeholder="¿En qué podemos ayudarte?"
-              required
-            >
-          </div>
-
-          <div class="contacto__form-group">
-            <label class="contacto__label" for="mensaje">Mensaje</label>
-            <textarea 
-              class="contacto__textarea" 
-              id="mensaje" 
-              name="mensaje"
-              rows="5"
-              placeholder="Escribe tu mensaje aquí..."
-              required
-            ></textarea>
-          </div>
-
-          <button class="contacto__submit" type="submit">
-            Enviar mensaje
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-              <path d="M19 1L9 11m10-10L13 19l-4-8-8-4 18-6z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </form>
+        <!-- Formulario de contacto -->
+        <div class="contacto__form-wrapper">
+          <app-contact-form></app-contact-form>
+        </div>
       </div>
     </div>
   </div>

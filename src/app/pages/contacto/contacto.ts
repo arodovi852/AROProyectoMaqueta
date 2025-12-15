@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
+import { NombreForm } from '../../components/shared/nombre-form/nombre-form';
 
+/**
+ * Página de Contacto
+ * 
+ * Página que muestra información de contacto y el formulario de contacto completo.
+ */
 @Component({
   selector: 'app-contacto',
-  imports: [],
+  imports: [NombreForm],
   templateUrl: './contacto.html',
   styleUrl: './contacto.scss',
 })
 export class Contacto {
-  onSubmit(): void {
-    console.log('Formulario enviado');
-    alert('¡Gracias por contactarnos! Te responderemos pronto.');
-  }
+  // La lógica del formulario está en el componente NombreForm (app-contact-form)
 }

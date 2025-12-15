@@ -1,1 +1,73 @@
-<p>form-select works!</p>
+<div class="form-select" [class.form-select--error]="showError" [class.form-select--disabled]="disabled">
+  <!-- Label del select -->
+  <label 
+    *ngIf="label" 
+    [for]="selectId" 
+    class="form-select__label"
+  >
+    {{ label }}
+    <span *ngIf="required" class="form-select__required" aria-label="campo requerido">*</span>
+  </label>
+
+  <!-- Select wrapper para el icono -->
+  <div class="form-select__wrapper">
+    <!-- Select field -->
+    <select
+      [id]="selectId"
+      [name]="name"
+      [required]="required"
+      [disabled]="disabled"
+      [attr.aria-invalid]="showError ? 'true' : null"
+      [attr.aria-describedby]="ariaDescribedBy"
+      [value]="value"
+      (change)="onChange($event)"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      class="form-select__field"
+    >
+      <!-- Opción placeholder -->
+      <option value="" disabled [selected]="!value">{{ placeholder }}</option>
+      
+      <!-- Opciones dinámicas -->
+      <option 
+        *ngFor="let option of options" 
+        [value]="option.value"
+        [selected]="option.value === value"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+
+    <!-- Icono de chevron -->
+    <svg 
+      class="form-select__icon" 
+      width="20" 
+      height="20" 
+      viewBox="0 0 20 20" 
+      fill="none" 
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M5 7.5l5 5 5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Texto de ayuda -->
+  <p 
+    *ngIf="helpText && !showError" 
+    [id]="helpTextId" 
+    class="form-select__help"
+  >
+    {{ helpText }}
+  </p>
+
+  <!-- Mensaje de error -->
+  <p 
+    *ngIf="showError && errorMessage" 
+    [id]="errorId" 
+    class="form-select__error" 
+    role="alert"
+  >
+    {{ errorMessage }}
+  </p>
+</div>

@@ -1,1 +1,185 @@
-<p>nombre-form works!</p>
+<div class="contact-form">
+  <div class="contact-form__header">
+    <h2 class="contact-form__title">Contacta con Nosotros</h2>
+    <p class="contact-form__description">
+      Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+    </p>
+  </div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form__form">
+    <!-- Sección: Información Personal -->
+    <fieldset class="contact-form__fieldset">
+      <legend class="contact-form__legend">Información Personal</legend>
+
+      <div class="contact-form__row">
+        <!-- Nombre -->
+        <div class="contact-form__field">
+          <app-form-input
+            inputId="contact-name"
+            name="name"
+            label="Nombre completo"
+            placeholder="Ej: Juan Pérez"
+            [required]="true"
+            [showError]="isFieldInvalid('name')"
+            [errorMessage]="getErrorMessage('name')"
+            formControlName="name"
+          ></app-form-input>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-form__field">
+          <app-form-input
+            inputId="contact-email"
+            name="email"
+            type="email"
+            label="Correo electrónico"
+            placeholder="tu@email.com"
+            [required]="true"
+            [showError]="isFieldInvalid('email')"
+            [errorMessage]="getErrorMessage('email')"
+            formControlName="email"
+          ></app-form-input>
+        </div>
+      </div>
+
+      <div class="contact-form__row">
+        <!-- Teléfono -->
+        <div class="contact-form__field">
+          <app-form-input
+            inputId="contact-phone"
+            name="phone"
+            type="tel"
+            label="Teléfono"
+            placeholder="+34 600 000 000"
+            helpText="Opcional: incluye el código de país"
+            formControlName="phone"
+          ></app-form-input>
+        </div>
+
+        <!-- Empresa -->
+        <div class="contact-form__field">
+          <app-form-input
+            inputId="contact-company"
+            name="company"
+            label="Empresa"
+            placeholder="Nombre de tu empresa"
+            helpText="Opcional"
+            formControlName="company"
+          ></app-form-input>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Sección: Motivo del Contacto -->
+    <fieldset class="contact-form__fieldset">
+      <legend class="contact-form__legend">Motivo del Contacto</legend>
+
+      <!-- Asunto -->
+      <div class="contact-form__field">
+        <app-form-select
+          selectId="contact-subject"
+          name="subject"
+          label="Asunto"
+          placeholder="Selecciona un asunto"
+          [required]="true"
+          [options]="subjectOptions"
+          [showError]="isFieldInvalid('subject')"
+          [errorMessage]="getErrorMessage('subject')"
+          formControlName="subject"
+        ></app-form-select>
+      </div>
+
+      <!-- Mensaje -->
+      <div class="contact-form__field">
+        <app-form-textarea
+          textareaId="contact-message"
+          name="message"
+          label="Mensaje"
+          placeholder="Escribe tu mensaje aquí..."
+          [required]="true"
+          [rows]="6"
+          [maxLength]="1000"
+          [showCharacterCount]="true"
+          helpText="Por favor, proporciona todos los detalles relevantes"
+          [showError]="isFieldInvalid('message')"
+          [errorMessage]="getErrorMessage('message')"
+          formControlName="message"
+        ></app-form-textarea>
+      </div>
+    </fieldset>
+
+    <!-- Sección: Consentimientos -->
+    <fieldset class="contact-form__fieldset">
+      <legend class="contact-form__legend">Consentimientos</legend>
+
+      <!-- Política de Privacidad -->
+      <div class="contact-form__field">
+        <app-form-checkbox
+          checkboxId="contact-privacy"
+          name="privacy"
+          [label]="'Acepto la política de privacidad'"
+          [required]="true"
+          [showError]="isFieldInvalid('privacy')"
+          errorMessage="Debes aceptar la política de privacidad para continuar"
+          formControlName="privacy"
+        ></app-form-checkbox>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="contact-form__field">
+        <app-form-checkbox
+          checkboxId="contact-newsletter"
+          name="newsletter"
+          [label]="'Deseo recibir noticias y actualizaciones por email'"
+          helpText="Puedes darte de baja en cualquier momento"
+          formControlName="newsletter"
+        ></app-form-checkbox>
+      </div>
+    </fieldset>
+
+    <!-- Mensaje de éxito -->
+    <div *ngIf="submitted && contactForm.valid" class="contact-form__success" role="alert">
+      <svg class="contact-form__success-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h3 class="contact-form__success-title">¡Mensaje enviado con éxito!</h3>
+        <p class="contact-form__success-message">Gracias por contactarnos. Te responderemos pronto.</p>
+      </div>
+    </div>
+
+    <!-- Mensaje de error general -->
+    <div *ngIf="submitted && contactForm.invalid" class="contact-form__error-banner" role="alert">
+      <svg class="contact-form__error-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+      </svg>
+      Por favor, corrige los errores antes de enviar el formulario.
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="contact-form__actions">
+      <button 
+        type="button" 
+        (click)="onReset()" 
+        class="contact-form__button contact-form__button--secondary"
+        [disabled]="isSubmitting"
+      >
+        Limpiar
+      </button>
+      <button 
+        type="submit" 
+        class="contact-form__button contact-form__button--primary"
+        [disabled]="isSubmitting"
+      >
+        <span *ngIf="!isSubmitting">Enviar Mensaje</span>
+        <span *ngIf="isSubmitting" class="contact-form__loading">
+          <svg class="contact-form__spinner" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" opacity="0.25"/>
+            <path d="M10 2a8 8 0 018 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Enviando...
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,1 +1,60 @@
-<p>form-textarea works!</p>
+<div class="form-textarea" [class.form-textarea--error]="showError" [class.form-textarea--disabled]="disabled">
+  <!-- Label del textarea -->
+  <div class="form-textarea__label-wrapper">
+    <label 
+      *ngIf="label" 
+      [for]="textareaId" 
+      class="form-textarea__label"
+    >
+      {{ label }}
+      <span *ngIf="required" class="form-textarea__required" aria-label="campo requerido">*</span>
+    </label>
+
+    <!-- Contador de caracteres -->
+    <span 
+      *ngIf="showCharacterCount" 
+      class="form-textarea__counter"
+      [class.form-textarea__counter--warning]="isNearLimit"
+      [class.form-textarea__counter--error]="isOverLimit"
+    >
+      {{ currentLength }}<span *ngIf="maxLength"> / {{ maxLength }}</span>
+    </span>
+  </div>
+
+  <!-- Textarea field -->
+  <textarea
+    [id]="textareaId"
+    [name]="name"
+    [placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+    [rows]="rows"
+    [attr.maxlength]="maxLength"
+    [attr.aria-invalid]="showError ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    class="form-textarea__field"
+  ></textarea>
+
+  <!-- Texto de ayuda -->
+  <p 
+    *ngIf="helpText && !showError" 
+    [id]="helpTextId" 
+    class="form-textarea__help"
+  >
+    {{ helpText }}
+  </p>
+
+  <!-- Mensaje de error -->
+  <p 
+    *ngIf="showError && errorMessage" 
+    [id]="errorId" 
+    class="form-textarea__error" 
+    role="alert"
+  >
+    {{ errorMessage }}
+  </p>
+</div>
