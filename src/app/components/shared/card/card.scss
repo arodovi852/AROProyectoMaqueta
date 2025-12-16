@@ -172,6 +172,7 @@
   height: 24rem;
   background-color: transparent;
   box-shadow: none;
+  @include transition(transform);
   
   .card__image-wrapper {
     position: relative;
@@ -180,6 +181,7 @@
     border-radius: 1.5rem;
     border: 4px solid #3d2a45;
     overflow: hidden;
+    @include transition(border-color);
   }
   
   .card__image {
@@ -192,9 +194,14 @@
   
   &:hover {
     box-shadow: none;
+    transform: scale(1.05) rotate(2deg);
+    
+    .card__image-wrapper {
+      border-color: #ffffff;
+    }
     
     .card__image {
-      transform: scale(1.1) rotate(2deg);
+      transform: scale(1.1);
     }
   }
   
