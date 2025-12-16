@@ -5,6 +5,21 @@
       <span class="header__logo-text">BROADCASTTD</span>
     </a>
 
+    <!-- Botón hamburguesa (solo mobile) -->
+    <button
+      #toggleBtn
+      type="button"
+      class="header__toggle"
+      [class.header__toggle--active]="isMenuOpen"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Menú"
+    >
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
     <!-- Botones y búsqueda -->
     <div class="header__actions">
       <!-- Botón Log In -->
@@ -44,6 +59,28 @@
           </svg>
         </button>
       </div>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div 
+      class="header__mobile-menu"
+      [class.header__mobile-menu--open]="isMenuOpen"
+    >
+      <button 
+        type="button" 
+        class="header__mobile-btn header__mobile-btn--login" 
+        aria-label="Iniciar sesión"
+      >
+        Log In
+      </button>
+
+      <button 
+        type="button" 
+        class="header__mobile-btn header__mobile-btn--lists" 
+        aria-label="Listas"
+      >
+        Lists
+      </button>
     </div>
   </div>
 </header>

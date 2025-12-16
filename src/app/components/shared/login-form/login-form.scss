@@ -1,0 +1,147 @@
+// ==========================================================================
+// COMPONENTE: LOGIN FORM
+// ==========================================================================
+// Formulario de inicio de sesión con estructura semántica
+// Bloque BEM: .login-form
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .login-form
+// ==========================================================================
+
+.login-form {
+  background: linear-gradient(135deg, #3d2a45 0%, #2c1a35 100%);
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.5rem;
+  padding: var(--spacing-6);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  max-width: 28rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__header
+// ==========================================================================
+
+.login-form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.login-form__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__form
+// ==========================================================================
+
+.login-form__form {
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__fieldset
+// ==========================================================================
+
+.login-form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.login-form__legend {
+  // Ocultamos visualmente pero lo mantenemos para accesibilidad
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__field
+// ==========================================================================
+
+.login-form__field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__submit
+// ==========================================================================
+
+.login-form__submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-2);
+}
+
+// ==========================================================================
+// ELEMENTO: .login-form__footer
+// ==========================================================================
+
+.login-form__footer {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-base);
+  margin: var(--spacing-4) 0 0;
+}
+
+.login-form__link {
+  background: none;
+  border: none;
+  color: #e893cf;
+  font-weight: var(--font-weight-semibold);
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  @include transition(color);
+
+  &:hover {
+    color: #f0a4da;
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid #e893cf;
+    outline-offset: 0.125rem;
+    border-radius: 0.125rem;
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .login-form {
+    padding: var(--spacing-4);
+  }
+
+  .login-form__title {
+    font-size: var(--font-size-xl);
+  }
+}

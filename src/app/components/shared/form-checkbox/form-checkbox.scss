@@ -62,8 +62,8 @@
 
   // Estado: checked
   &:checked ~ .form-checkbox__custom {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+    background-color: #f4d03f;
+    border-color: #3d2a45;
 
     .form-checkbox__icon {
       opacity: 1;
@@ -93,11 +93,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 0.125rem solid var(--color-neutral-600);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-neutral-800);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 0.375rem;
+  background-color: #e893cf;
   flex-shrink: 0;
   @include transition(background-color, border-color);
 

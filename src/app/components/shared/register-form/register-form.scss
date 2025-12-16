@@ -1,0 +1,117 @@
+// ==========================================================================
+// COMPONENTE: REGISTER FORM
+// ==========================================================================
+// Formulario de registro con estructura semántica
+// Bloque BEM: .register-form
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .register-form
+// ==========================================================================
+
+.register-form {
+  background: linear-gradient(135deg, #3d2a45 0%, #2c1a35 100%);
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.5rem;
+  padding: var(--spacing-6);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  max-width: 28rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTO: .register-form__header
+// ==========================================================================
+
+.register-form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.register-form__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+// ==========================================================================
+// ELEMENTO: .register-form__form
+// ==========================================================================
+
+.register-form__form {
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTO: .register-form__fieldset
+// ==========================================================================
+
+.register-form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.register-form__legend {
+  // Ocultamos visualmente pero lo mantenemos para accesibilidad
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .register-form__field
+// ==========================================================================
+
+.register-form__field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// ==========================================================================
+// ELEMENTO: .register-form__submit
+// ==========================================================================
+
+.register-form__submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-2);
+}
+
+// ==========================================================================
+// RESPONSIVE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .register-form {
+    padding: var(--spacing-4);
+  }
+
+  .register-form__title {
+    font-size: var(--font-size-xl);
+  }
+}

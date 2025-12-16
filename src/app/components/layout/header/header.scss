@@ -166,3 +166,168 @@
   width: 1.25rem;
   height: 1.25rem;
 }
+
+// ==========================================================================
+// ELEMENTO: .header__toggle (Botón hamburguesa)
+// ==========================================================================
+
+.header__toggle {
+  @include button-reset;
+  display: none; // Oculto por defecto en desktop
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+.header__toggle-bar {
+  width: 100%;
+  height: 0.1875rem;
+  background-color: var(--color-white);
+  border-radius: 0.125rem;
+  @include transition(transform, opacity, background-color);
+  transform-origin: center;
+}
+
+// Estado activo del botón hamburguesa
+.header__toggle--active {
+  .header__toggle-bar {
+    &:nth-child(1) {
+      transform: translateY(0.5rem) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: translateY(-0.5rem) rotate(-45deg);
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-menu (Menú móvil desplegable)
+// ==========================================================================
+
+.header__mobile-menu {
+  display: none; // Oculto en desktop
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-btn (Botones en menú móvil)
+// ==========================================================================
+
+.header__mobile-btn {
+  @include button-reset;
+  width: 100%;
+  padding: var(--spacing-4);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  @include transition(background-color, transform);
+  cursor: pointer;
+  margin-bottom: var(--spacing-3);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Modificador: botón Log In
+  &--login {
+    background-color: #f4d03f;
+    color: #1a0b21;
+
+    &:hover {
+      background-color: #f5d859;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Modificador: botón Lists
+  &--lists {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 0.125rem solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE: MOBILE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .header__toggle {
+    display: flex; // Mostrar en mobile
+  }
+
+  .header__actions {
+    display: none; // Ocultar botones del desktop en mobile
+  }
+
+  .header__mobile-menu {
+    display: block;
+    position: fixed;
+    top: 4.5rem; // Altura del header
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    @include transition(max-height);
+    padding: 0 var(--spacing-4);
+  }
+
+  .header__mobile-menu--open {
+    max-height: 15rem; // Suficiente para los 2 botones
+    padding: var(--spacing-4);
+  }
+
+  .header__container {
+    padding: 0 var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE: TABLET
+// ==========================================================================
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header__search {
+    width: 12rem;
+  }
+
+  .header__actions {
+    gap: var(--spacing-3);
+  }
+
+  .header__nav-list {
+    gap: var(--spacing-4);
+  }
+}

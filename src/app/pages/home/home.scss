@@ -114,43 +114,10 @@
 .forms-demo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: var(--spacing-6);
+  gap: var(--spacing-8);
   margin-top: var(--spacing-6);
-}
-
-.form-card {
-  background: linear-gradient(135deg, #3d2a45 0%, #2c1a35 100%);
-  border: 0.1875rem solid #3d2a45;
-  border-radius: 1.5rem;
-  padding: var(--spacing-6);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-6);
-  }
-
-  &__title {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: #ffffff;
-    margin: 0;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
-  }
-
-  &__footer-text {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: var(--font-size-base);
-    margin: var(--spacing-2) 0 0;
-  }
+  justify-items: center;
+  align-items: start;
 }
 
 // ==========================================================================
@@ -168,9 +135,5 @@
 
   .forms-demo {
     grid-template-columns: 1fr;
-  }
-
-  .form-card {
-    padding: var(--spacing-4);
   }
 }

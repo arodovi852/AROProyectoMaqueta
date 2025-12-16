@@ -79,15 +79,6 @@
           />
         </div>
       </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Form Radio Group</h3>
-        <div class="component-demo">
-          <app-form-radio-group
-            label="Selecciona una opción"
-          />
-        </div>
-      </div>
     </section>
 
     <!-- Categoría: Botones -->
@@ -99,7 +90,6 @@
         <div class="component-demo component-demo--horizontal">
           <app-button text="Log In" variant="primary" />
           <app-button text="Create account" variant="primary" />
-          <app-button text="Cancelar" variant="secondary" />
         </div>
       </div>
 
@@ -144,55 +134,21 @@
 
     <!-- Ejemplo de formularios completos -->
     <section class="component-section">
-      <h2 class="component-section__title">5. Ejemplos de Formularios Completos</h2>
+      <h2 class="component-section__title">5. Formularios Completos (con estructura semántica)</h2>
       
       <div class="forms-demo">
         <!-- Formulario de Login -->
-        <div class="form-card">
-          <div class="form-card__header">
-            <h3 class="form-card__title">Welcome back!</h3>
-            <app-close-button (closeClick)="onClose()" />
-          </div>
-          <div class="form-card__body">
-            <app-form-input
-              type="text"
-              placeholder="Username / Email"
-            />
-            <app-form-input
-              type="password"
-              placeholder="Password"
-            />
-            <app-button text="Log In" variant="primary" />
-            <p class="form-card__footer-text">New here? Create an account!</p>
-          </div>
-        </div>
+        <app-login-form 
+          (closeForm)="onClose()"
+          (submitForm)="onLoginSubmit($event)"
+          (createAccount)="onCreateAccountRequest()"
+        />
 
         <!-- Formulario de Registro -->
-        <div class="form-card">
-          <div class="form-card__header">
-            <h3 class="form-card__title">Create an account</h3>
-            <app-close-button (closeClick)="onClose()" />
-          </div>
-          <div class="form-card__body">
-            <app-form-input
-              type="text"
-              placeholder="Username"
-            />
-            <app-form-input
-              type="email"
-              placeholder="Email"
-            />
-            <app-form-input
-              type="password"
-              placeholder="Password"
-            />
-            <app-form-input
-              type="password"
-              placeholder="Confirm password"
-            />
-            <app-button text="Create account" variant="primary" />
-          </div>
-        </div>
+        <app-register-form 
+          (closeForm)="onClose()"
+          (submitForm)="onRegisterSubmit($event)"
+        />
       </div>
     </section>
   </div>

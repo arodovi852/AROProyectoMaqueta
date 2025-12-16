@@ -1,0 +1,78 @@
+<div class="register-form">
+  <div class="register-form__header">
+    <h2 class="register-form__title">Create an account</h2>
+    <app-close-button (closeClick)="onClose()" />
+  </div>
+
+  <form 
+    class="register-form__form" 
+    method="post" 
+    (submit)="onSubmit($event)"
+    novalidate
+  >
+    <fieldset class="register-form__fieldset">
+      <legend class="register-form__legend">Información de la cuenta</legend>
+      
+      <div class="register-form__field">
+        <app-form-input
+          inputId="register-username"
+          type="text"
+          name="username"
+          label=""
+          placeholder="Username"
+          [required]="true"
+          helpText="Elige un nombre de usuario único"
+        />
+      </div>
+
+      <div class="register-form__field">
+        <app-form-input
+          inputId="register-email"
+          type="email"
+          name="email"
+          label=""
+          placeholder="Email"
+          [required]="true"
+          helpText="Introduce tu dirección de correo electrónico"
+        />
+      </div>
+    </fieldset>
+
+    <fieldset class="register-form__fieldset">
+      <legend class="register-form__legend">Seguridad</legend>
+      
+      <div class="register-form__field">
+        <app-form-input
+          inputId="register-password"
+          type="password"
+          name="password"
+          label=""
+          placeholder="Password"
+          [required]="true"
+          helpText="Mínimo 8 caracteres"
+        />
+      </div>
+
+      <div class="register-form__field">
+        <app-form-input
+          inputId="register-confirm-password"
+          type="password"
+          name="confirmPassword"
+          label=""
+          placeholder="Confirm password"
+          [required]="true"
+          helpText="Repite tu contraseña"
+        />
+      </div>
+
+      <div class="register-form__submit">
+        <app-button 
+          type="submit" 
+          text="Create account" 
+          variant="primary"
+          [fullWidth]="true"
+        />
+      </div>
+    </fieldset>
+  </form>
+</div>

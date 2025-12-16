@@ -1,16 +1,16 @@
 import { Component, ElementRef, ViewChild, Renderer2, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 /**
  * Componente Header
  * 
- * Header principal de la aplicación con navegación responsive.
- * Implementa un menú hamburguesa para móviles y navegación completa para desktop.
+ * Header principal de la aplicación con menú hamburguesa responsive.
+ * Los botones Log In y Lists están en el menú hamburguesa para mobile.
  * Usa manipulación DOM con ViewChild y Renderer2 según requisitos Cliente Fase 1.
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
@@ -24,7 +24,7 @@ export class Header {
   /**
    * Estado del menú: abierto o cerrado
    */
-  private isMenuOpen = false;
+  isMenuOpen = false;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
