@@ -23,15 +23,15 @@
   }
   
   &__icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     fill: #3d2a45;
     @include transition(fill);
   }
   
   &__text {
     font-family: var(--font-secondary);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #3d2a45;
     @include transition(color);

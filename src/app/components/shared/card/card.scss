@@ -240,8 +240,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: var(--spacing-2);
-    padding: var(--spacing-4) 0;
+    gap: var(--spacing-1);
+    padding: 0;
+    padding-bottom: var(--spacing-3);
     min-height: 10rem;
   }
   
@@ -254,11 +255,45 @@
     gap: var(--spacing-4);
   }
   
+  .card__stars-row {
+    display: flex;
+    gap: var(--spacing-3);
+    justify-content: center;
+    align-items: center;
+  }
+  
   .card__stars {
     display: flex;
     gap: var(--spacing-3);
     justify-content: center;
     align-items: center;
+  }
+  
+  .card__cancel-rating {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    @include transition(background-color);
+    
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: #3d2a45;
+      @include transition(fill);
+    }
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      
+      svg {
+        fill: #ffffff;
+      }
+    }
   }
 }
 

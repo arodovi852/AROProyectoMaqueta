@@ -69,6 +69,8 @@ export class Card {
 
   hoverStarIndex = -1;
   hoverStarFill = 0;
+  clickedStarIndex = -1;
+  clickedStarFill = 0;
 
   /**
    * Genera las clases CSS de la tarjeta
@@ -88,10 +90,50 @@ export class Card {
     this.hoverStarFill = fillValue;
   }
 
+  onStarClick(index: number, fillValue: number): void {
+    this.clickedStarIndex = index;
+    this.clickedStarFill = fillValue;
+  }
+
+  onCancelRating(): void {
+    this.clickedStarIndex = -1;
+    this.clickedStarFill = 0;
+  }
+
+  get showCancelButton(): boolean {
+    return this.clickedStarIndex !== -1;
+  }
+
   getStarHoverFill(index: number): number {
-    if (this.hoverStarIndex === -1) return 0;
-    if (index < this.hoverStarIndex) return 1;
-    if (index === this.hoverStarIndex) return this.hoverStarFill;
+    // Si hay hover activo, el hover tiene prioridad
+    if (this.hoverStarIndex !== -1) {
+      if (index < this.hoverStarIndex) return 1;
+      if (index === this.hoverStarIndex) return this.hoverStarFill;
+      return 0;
+    }
+    
+    // Si no hay hover pero hay click activo, mostrar el click
+    if (this.clickedStarIndex !== -1) {
+      if (index < this.clickedStarIndex) return 1;
+      if (index === this.clickedStarIndex) return this.clickedStarFill;
+      return 0;
+    }
+    
     return 0;
+  }
+  
+  isStarClicked(index: number): boolean {
+    if (this.clickedStarIndex === -1) return false;
+    if (this.hoverStarIndex !== -1) return false; // No mostrar clicked si hay hover
+    if (index < this.clickedStarIndex) return true;
+    if (index === this.clickedStarIndex && this.clickedStarFill > 0) return true;
+    return false;
+  }
+  
+  isStarHovering(index: number): boolean {
+    if (this.hoverStarIndex === -1) return false;
+    if (index < this.hoverStarIndex) return true;
+    if (index === this.hoverStarIndex) return true;
+    return false;
   }
 }
