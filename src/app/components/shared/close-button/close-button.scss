@@ -23,15 +23,18 @@
   background-color: #e893cf;
   color: #3d2a45;
   cursor: pointer;
-  @include transition(background-color, border-color, transform);
+  @include transition(background-color, border-color, transform, color);
 
   &:hover {
-    background-color: #f0a4da;
-    border-color: #4d3555;
+    background-color: #ffffff;
+    border-color: #3d2a45;
+    color: #3d2a45;
     transform: scale(1.05);
   }
 
   &:active {
+    background-color: #ffffff;
+    color: #3d2a45;
     transform: scale(0.95);
   }
 

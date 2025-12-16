@@ -248,7 +248,8 @@
     color: #1a0b21;
 
     &:hover {
-      background-color: #f5d859;
+      background-color: #ffffff;
+      color: #1a0b21;
     }
 
     &:active {
@@ -263,8 +264,9 @@
     border: 0.125rem solid rgba(255, 255, 255, 0.3);
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.5);
+      background-color: #ffffff;
+      color: #1a0b21;
+      border-color: #ffffff;
     }
 
     &:active {

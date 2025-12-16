@@ -85,7 +85,7 @@
   font-weight: var(--font-weight-semibold);
   font-family: var(--font-secondary);
   text-align: center;
-  @include transition(border-color, background-color, box-shadow);
+  @include transition(border-color, background-color, box-shadow, color);
 
   &::placeholder {
     color: #5a4060;
@@ -100,7 +100,8 @@
   &:focus {
     outline: none;
     border-color: #5a4060;
-    background-color: #f0a4da;
+    background-color: #ffffff;
+    color: #3d2a45;
     box-shadow: 0 0 0 0.25rem rgba(232, 147, 207, 0.3);
   }
 

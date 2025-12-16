@@ -103,7 +103,7 @@
   text-align: center;
   cursor: pointer;
   appearance: none; // Quitar el estilo nativo del navegador
-  @include transition(border-color, background-color, box-shadow);
+  @include transition(border-color, background-color, box-shadow, color);
 
   // Estilos para las opciones
   option {
@@ -124,7 +124,8 @@
   &:focus {
     outline: none;
     border-color: var(--color-primary);
-    background-color: var(--color-neutral-900);
+    background-color: #ffffff;
+    color: #3d2a45;
     box-shadow: 0 0 0 0.1875rem rgba(162, 100, 191, 0.1);
   }
 
