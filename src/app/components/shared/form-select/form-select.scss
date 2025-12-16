@@ -118,7 +118,9 @@
   }
 
   &:hover:not(:disabled) {
-    border-color: var(--color-neutral-600);
+    border-color: #3d2a45;
+    background-color: #ffffff;
+    color: #3d2a45;
   }
 
   &:focus {

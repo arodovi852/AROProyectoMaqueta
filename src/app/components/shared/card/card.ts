@@ -29,9 +29,19 @@ export class Card {
   @Input() title?: string;
 
   /**
+   * Texto del logo que aparece en la imagen
+   */
+  @Input() logoText?: string;
+
+  /**
+   * Título que aparece en hover
+   */
+  @Input() hoverTitle?: string;
+
+  /**
    * Variante de estilo de la tarjeta
    */
-  @Input() variant: 'default' | 'horizontal' | 'elevated' | 'bordered' | 'compact' | 'interactive' = 'default';
+  @Input() variant: 'default' | 'horizontal' | 'elevated' | 'bordered' | 'compact' | 'interactive' | 'media' = 'default';
 
   /**
    * Si la tarjeta tiene footer

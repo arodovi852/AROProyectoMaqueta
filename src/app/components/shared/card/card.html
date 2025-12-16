@@ -8,6 +8,19 @@
         class="card__image"
         loading="lazy"
       >
+      
+      <!-- Logo text sobre la imagen -->
+      @if (logoText) {
+        <div class="card__logo-text">{{ logoText }}</div>
+      }
+      
+      <!-- Overlay oscuro en hover -->
+      <div class="card__overlay"></div>
+      
+      <!-- Título que aparece en hover -->
+      @if (hoverTitle) {
+        <div class="card__hover-title">{{ hoverTitle }}</div>
+      }
     </div>
   }
 
