@@ -42,6 +42,7 @@
   font-size: 1.5rem;
   font-style: italic;
   letter-spacing: 0.02em;
+  font-family: var(--font-primary);
   @include transition(opacity);
 
   &:hover {
@@ -54,7 +55,7 @@
 }
 
 .header__logo-text {
-  font-family: var(--font-family-heading);
+  font-family: var(--font-primary);
 }
 
 // ==========================================================================
@@ -125,21 +126,22 @@
 .header__search-input {
   width: 100%;
   padding: var(--spacing-2) var(--spacing-10) var(--spacing-2) var(--spacing-3);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: #e893cf;
+  border: 0.1875rem solid #3d2a45;
   border-radius: var(--radius-md);
-  color: var(--color-white);
+  color: #3d2a45;
   font-size: var(--font-size-sm);
-  @include transition(background-color, border-color);
+  @include transition(background-color, border-color, color);
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(61, 42, 69, 0.6);
   }
 
   &:focus {
     outline: none;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
+    background-color: #ffffff;
+    color: #3d2a45;
+    border-color: #3d2a45;
   }
 }
 
@@ -150,11 +152,11 @@
   width: 2rem;
   height: 2rem;
   @include flex-center;
-  color: rgba(255, 255, 255, 0.7);
+  color: #3d2a45;
   @include transition(color);
 
   &:hover {
-    color: var(--color-white);
+    color: #1a0b21;
   }
 
   &:focus-visible {

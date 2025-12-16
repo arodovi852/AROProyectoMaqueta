@@ -86,10 +86,30 @@
       <h2 class="component-section__title">2. Botones</h2>
       
       <div class="component-group">
-        <h3 class="component-group__title">Button</h3>
+        <h3 class="component-group__title">Button - Variantes</h3>
         <div class="component-demo component-demo--horizontal">
-          <app-button text="Log In" variant="primary" />
-          <app-button text="Create account" variant="primary" />
+          <app-button text="Primary" variant="primary" />
+          <app-button text="Secondary" variant="secondary" />
+          <app-button text="Ghost" variant="ghost" />
+          <app-button text="Danger" variant="danger" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Button - Tamaños</h3>
+        <div class="component-demo component-demo--horizontal">
+          <app-button text="Small (sm)" variant="primary" size="sm" />
+          <app-button text="Medium (md)" variant="primary" size="md" />
+          <app-button text="Large (lg)" variant="primary" size="lg" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Button - Estados</h3>
+        <div class="component-demo component-demo--horizontal">
+          <app-button text="Normal" variant="primary" />
+          <app-button text="Hover (pasa el mouse)" variant="primary" />
+          <app-button text="Disabled" variant="primary" [disabled]="true" />
         </div>
       </div>
 
@@ -119,15 +139,29 @@
       
       <div class="component-group">
         <h3 class="component-group__title">Alert</h3>
-        <div class="component-demo">
-          <app-alert />
+        <div class="component-demo component-demo--column">
+          <app-alert type="info" title="Information" [dismissible]="false">
+            This is an informational alert message.
+          </app-alert>
+          
+          <app-alert type="success" title="Success!" [dismissible]="false">
+            Your changes have been saved successfully.
+          </app-alert>
+          
+          <app-alert type="warning" title="Warning" [dismissible]="false">
+            Please review your input before proceeding.
+          </app-alert>
+          
+          <app-alert type="error" title="Error" [dismissible]="false">
+            An error occurred while processing your request.
+          </app-alert>
         </div>
       </div>
 
       <div class="component-group">
         <h3 class="component-group__title">Notification</h3>
         <div class="component-demo">
-          <app-notification />
+          
         </div>
       </div>
     </section>

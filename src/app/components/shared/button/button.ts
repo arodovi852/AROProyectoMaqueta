@@ -22,12 +22,12 @@ export class Button {
   /**
    * Variante de color del botón
    */
-  @Input() variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
 
   /**
    * Tamaño del botón
    */
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
   /**
    * Si el botón debe ocupar todo el ancho
@@ -64,7 +64,7 @@ export class Button {
     classes.push(`btn--${this.variant}`);
 
     // Tamaño
-    if (this.size !== 'medium') {
+    if (this.size !== 'md') {
       classes.push(`btn--${this.size}`);
     }
 

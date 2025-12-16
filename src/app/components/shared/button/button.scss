@@ -77,74 +77,88 @@
 
 // Variante Secondary
 .btn--secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-white);
+  background: linear-gradient(180deg, #BFBF64 0%, #9e9e52 100%);
+  color: #3d2a45;
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1rem;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
 
   &:hover:not(:disabled) {
-    background-color: var(--color-secondary-dark);
+    background: #ffffff;
+    color: #3d2a45;
     transform: translateY(-0.125rem);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.4);
   }
 
   &:active:not(:disabled) {
+    background: #ffffff;
+    color: #3d2a45;
     transform: translateY(0);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus-visible {
+    outline: 0.1875rem solid var(--color-secondary);
+    outline-offset: 0.25rem;
   }
 }
 
-// Variante Outline
-.btn--outline {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-
-  &:hover:not(:disabled) {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-}
-
-// Variante Ghost
+// Variante Ghost (sin fondo, solo texto y borde opcional)
 .btn--ghost {
   background-color: transparent;
-  color: var(--color-text-primary);
+  color: #ffffff;
+  border: 0.125rem solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
 
   &:hover:not(:disabled) {
-    background-color: var(--color-gray-100);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-0.125rem);
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 0.1875rem solid rgba(255, 255, 255, 0.5);
+    outline-offset: 0.25rem;
   }
 }
 
-// Variante Danger
+// Variante Danger (rojo, para acciones destructivas)
 .btn--danger {
-  background-color: var(--color-danger);
-  color: var(--color-white);
+  background: linear-gradient(180deg, #F44336 0%, #D32F2F 100%);
+  color: #ffffff;
+  border: 0.1875rem solid #8B0000;
+  border-radius: 1rem;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
 
   &:hover:not(:disabled) {
-    background-color: var(--color-danger-dark);
+    background: linear-gradient(180deg, #E53935 0%, #C62828 100%);
     transform: translateY(-0.125rem);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.4);
   }
 
   &:active:not(:disabled) {
+    background: linear-gradient(180deg, #D32F2F 0%, #B71C1C 100%);
     transform: translateY(0);
-    box-shadow: var(--shadow-sm);
-  }
-}
-
-// Variante Success
-.btn--success {
-  background-color: var(--color-success);
-  color: var(--color-white);
-
-  &:hover:not(:disabled) {
-    background-color: var(--color-success-dark);
-    transform: translateY(-0.125rem);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
   }
 
-  &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: var(--shadow-sm);
+  &:focus-visible {
+    outline: 0.1875rem solid var(--color-error);
+    outline-offset: 0.25rem;
   }
 }
 
@@ -152,14 +166,18 @@
 // MODIFICADOR: TAMAÑOS
 // ==========================================================================
 
-.btn--small {
+// Pequeño (sm)
+.btn--sm {
   padding: var(--spacing-2) var(--spacing-4);
   font-size: var(--font-size-sm);
+  border-radius: 0.75rem;
 }
 
-.btn--large {
-  padding: var(--spacing-4) var(--spacing-8);
-  font-size: var(--font-size-lg);
+// Grande (lg)
+.btn--lg {
+  padding: var(--spacing-5) var(--spacing-10);
+  font-size: var(--font-size-xl);
+  border-radius: 1.25rem;
 }
 
 // ==========================================================================
@@ -179,13 +197,13 @@
   width: 2.75rem;
   height: 2.75rem;
 
-  &.btn--small {
+  &.btn--sm {
     width: 2rem;
     height: 2rem;
     padding: var(--spacing-2);
   }
 
-  &.btn--large {
+  &.btn--lg {
     width: 3.5rem;
     height: 3.5rem;
     padding: var(--spacing-4);

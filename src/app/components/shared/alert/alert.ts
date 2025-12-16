@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 /**
  * Componente Alert
@@ -11,18 +10,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   selector: 'app-alert',
   imports: [],
   templateUrl: './alert.html',
-  styleUrl: './alert.scss',
-  animations: [
-    trigger('slideIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-0.5rem)' }),
-        animate('200ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-      ]),
-      transition(':leave', [
-        animate('150ms ease-in', style({ opacity: 0, transform: 'translateY(-0.5rem)' }))
-      ])
-    ])
-  ]
+  styleUrl: './alert.scss'
 })
 export class Alert {
   /**
@@ -41,6 +29,11 @@ export class Alert {
   @Input() dismissible = true;
 
   /**
+   * Si la alerta está visible
+   */
+  @Input() visible = true;
+
+  /**
    * Evento cuando se cierra la alerta
    */
   @Output() closed = new EventEmitter<void>();
@@ -56,6 +49,7 @@ export class Alert {
    * Maneja el cierre de la alerta
    */
   onClose(): void {
+    this.visible = false;
     this.closed.emit();
   }
 }

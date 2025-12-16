@@ -29,6 +29,7 @@
     font-weight: var(--font-weight-bold);
     color: #ffffff;
     margin-bottom: var(--spacing-4);
+    font-family: var(--font-primary);
   }
 
   &__description {
@@ -36,6 +37,7 @@
     color: rgba(255, 255, 255, 0.8);
     max-width: 40rem;
     margin: 0 auto;
+    font-family: var(--font-secondary);
   }
 }
 
@@ -57,6 +59,7 @@
     margin-bottom: var(--spacing-6);
     padding-bottom: var(--spacing-3);
     border-bottom: 0.125rem solid rgba(232, 147, 207, 0.3);
+    font-family: var(--font-primary);
   }
 }
 
@@ -76,6 +79,7 @@
     font-weight: var(--font-weight-semibold);
     color: #ffffff;
     margin-bottom: var(--spacing-4);
+    font-family: var(--font-secondary);
   }
 }
 
@@ -95,6 +99,13 @@
     gap: var(--spacing-4);
     flex-wrap: wrap;
     align-items: center;
+  }
+
+  // Modificador: column
+  &--column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
   }
 }
 
