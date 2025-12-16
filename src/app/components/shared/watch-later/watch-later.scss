@@ -1,0 +1,39 @@
+@import '../../../../styles/01-tools/mixins';
+
+.watch-later {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  cursor: pointer;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 0.75rem;
+  @include transition(background-color);
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    .watch-later__icon {
+      fill: #ffffff;
+    }
+    
+    .watch-later__text {
+      color: #ffffff;
+    }
+  }
+  
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    fill: #3d2a45;
+    @include transition(fill);
+  }
+  
+  &__text {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #3d2a45;
+    @include transition(color);
+  }
+}

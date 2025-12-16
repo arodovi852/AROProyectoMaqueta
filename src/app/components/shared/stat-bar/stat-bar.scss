@@ -1,0 +1,31 @@
+@import '../../../../styles/01-tools/mixins';
+
+.stat-bar {
+  width: 1.5rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  
+  &:hover {
+    .stat-bar__fill {
+      background-color: #ffffff;
+    }
+  }
+  
+  &__fill {
+    background-color: #e893cf;
+    width: 100%;
+    border-radius: 0.5rem;
+    @include transition(background-color);
+  }
+  
+  &__empty {
+    flex: 1;
+    background-color: transparent;
+  }
+}
