@@ -70,46 +70,11 @@
 // ==========================================================================
 // ELEMENTO: .header__btn (Botones)
 // ==========================================================================
+// Nota: Los botones del header ahora usan el componente app-button
+// No se necesitan estilos adicionales aquí
 
 .header__btn {
-  @include button-reset;
-  padding: var(--spacing-2) var(--spacing-4);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-md);
-  @include transition(background-color, transform);
-  cursor: pointer;
-
-  // Modificador: botón Log In
-  &--login {
-    background-color: #f4d03f;
-    color: #1a0b21;
-
-    &:hover {
-      background-color: #f5d859;
-      transform: translateY(-1px);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  // Modificador: botón Lists
-  &--lists {
-    background-color: transparent;
-    color: var(--color-white);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  &:focus-visible {
-    @include focus-visible;
-  }
+  // Los estilos son manejados por el componente app-button
 }
 
 // ==========================================================================
