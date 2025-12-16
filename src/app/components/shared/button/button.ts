@@ -45,6 +45,11 @@ export class Button {
   @Input() disabled = false;
 
   /**
+   * Texto del botón (opcional, también puede usar ng-content)
+   */
+  @Input() text?: string;
+
+  /**
    * Evento de click
    */
   @Output() onClick = new EventEmitter<Event>();

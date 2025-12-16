@@ -1,5 +1,176 @@
 // ==========================================================================
-// PÁGINA: HOME
+// PÁGINA: HOME - SHOWCASE DE COMPONENTES
 // ==========================================================================
-// Página principal que compone las secciones Hero, Features y CTA
+// Página de demostración de todos los componentes del sistema
 // ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.component-showcase {
+  min-height: 100vh;
+  padding: var(--spacing-8) var(--spacing-4);
+
+  &__container {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: #ffffff;
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+}
+
+// ==========================================================================
+// SECCIONES DE COMPONENTES
+// ==========================================================================
+
+.component-section {
+  margin-bottom: var(--spacing-12);
+  padding: var(--spacing-6);
+  background: rgba(61, 42, 69, 0.3);
+  border-radius: var(--radius-lg);
+  border: 0.0625rem solid rgba(232, 147, 207, 0.2);
+
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: #e893cf;
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-3);
+    border-bottom: 0.125rem solid rgba(232, 147, 207, 0.3);
+  }
+}
+
+// ==========================================================================
+// GRUPOS DE COMPONENTES
+// ==========================================================================
+
+.component-group {
+  margin-bottom: var(--spacing-8);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: #ffffff;
+    margin-bottom: var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// ÁREA DE DEMOSTRACIÓN
+// ==========================================================================
+
+.component-demo {
+  padding: var(--spacing-6);
+  background: rgba(26, 11, 33, 0.4);
+  border-radius: var(--radius-md);
+  border: 0.0625rem solid rgba(232, 147, 207, 0.1);
+
+  // Modificador: horizontal
+  &--horizontal {
+    display: flex;
+    gap: var(--spacing-4);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.demo-row {
+  margin-bottom: var(--spacing-4);
+  max-width: 28rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ==========================================================================
+// EJEMPLOS DE FORMULARIOS COMPLETOS
+// ==========================================================================
+
+.forms-demo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.form-card {
+  background: linear-gradient(135deg, #3d2a45 0%, #2c1a35 100%);
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.5rem;
+  padding: var(--spacing-6);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: #ffffff;
+    margin: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  &__footer-text {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-base);
+    margin: var(--spacing-2) 0 0;
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .component-showcase {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+
+  .component-section {
+    padding: var(--spacing-4);
+  }
+
+  .forms-demo {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: var(--spacing-4);
+  }
+}

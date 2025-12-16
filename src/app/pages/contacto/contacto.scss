@@ -1,4 +1,4 @@
-@import '../../../../../styles/01-tools/mixins';
+@import '../../../styles/01-tools/mixins';
 
 .contacto {
   padding: var(--spacing-16) 0;
@@ -97,6 +97,7 @@
 .contacto__form-wrapper {
   // El componente contact-form tiene sus propios estilos
   // Solo necesitamos asegurar que se vea bien en el grid
+  display: block;
 }
 
 .contacto__form {

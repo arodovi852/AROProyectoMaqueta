@@ -1,4 +1,199 @@
-<!-- Página principal -->
-<app-hero></app-hero>
-<app-features></app-features>
-<app-cta></app-cta>
+<!-- Página de Demostración de Componentes -->
+<div class="component-showcase">
+  <div class="component-showcase__container">
+    <header class="component-showcase__header">
+      <h1 class="component-showcase__title">Sistema de Componentes</h1>
+      <p class="component-showcase__description">
+        Demostración de todos los componentes disponibles en el proyecto
+      </p>
+    </header>
+
+    <!-- Categoría: Formularios -->
+    <section class="component-section">
+      <h2 class="component-section__title">1. Componentes de Formulario</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Form Input</h3>
+        <div class="component-demo">
+          <div class="demo-row">
+            <app-form-input
+              label="Username / Email"
+              type="text"
+              placeholder="Username / Email"
+              [required]="true"
+            />
+          </div>
+          <div class="demo-row">
+            <app-form-input
+              label="Email"
+              type="email"
+              placeholder="Email"
+              [required]="true"
+            />
+          </div>
+          <div class="demo-row">
+            <app-form-input
+              label="Password"
+              type="password"
+              placeholder="Password"
+              [required]="true"
+            />
+          </div>
+          <div class="demo-row">
+            <app-form-input
+              label="Confirm password"
+              type="password"
+              placeholder="Confirm password"
+              [required]="true"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Form Textarea</h3>
+        <div class="component-demo">
+          <app-form-textarea
+            label="Mensaje"
+            placeholder="Escribe tu mensaje aquí..."
+            [required]="true"
+          />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Form Select</h3>
+        <div class="component-demo">
+          <app-form-select
+            label="País"
+            [required]="true"
+          />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Form Checkbox</h3>
+        <div class="component-demo">
+          <app-form-checkbox
+            label="Acepto los términos y condiciones"
+          />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Form Radio Group</h3>
+        <div class="component-demo">
+          <app-form-radio-group
+            label="Selecciona una opción"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoría: Botones -->
+    <section class="component-section">
+      <h2 class="component-section__title">2. Botones</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Button</h3>
+        <div class="component-demo component-demo--horizontal">
+          <app-button text="Log In" variant="primary" />
+          <app-button text="Create account" variant="primary" />
+          <app-button text="Cancelar" variant="secondary" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Close Button</h3>
+        <div class="component-demo component-demo--horizontal">
+          <app-close-button (closeClick)="onClose()" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoría: Tarjetas y Contenedores -->
+    <section class="component-section">
+      <h2 class="component-section__title">3. Tarjetas y Contenedores</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Card</h3>
+        <div class="component-demo">
+          <app-card />
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoría: Notificaciones y Alertas -->
+    <section class="component-section">
+      <h2 class="component-section__title">4. Notificaciones y Alertas</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Alert</h3>
+        <div class="component-demo">
+          <app-alert />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Notification</h3>
+        <div class="component-demo">
+          <app-notification />
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplo de formularios completos -->
+    <section class="component-section">
+      <h2 class="component-section__title">5. Ejemplos de Formularios Completos</h2>
+      
+      <div class="forms-demo">
+        <!-- Formulario de Login -->
+        <div class="form-card">
+          <div class="form-card__header">
+            <h3 class="form-card__title">Welcome back!</h3>
+            <app-close-button (closeClick)="onClose()" />
+          </div>
+          <div class="form-card__body">
+            <app-form-input
+              type="text"
+              placeholder="Username / Email"
+            />
+            <app-form-input
+              type="password"
+              placeholder="Password"
+            />
+            <app-button text="Log In" variant="primary" />
+            <p class="form-card__footer-text">New here? Create an account!</p>
+          </div>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div class="form-card">
+          <div class="form-card__header">
+            <h3 class="form-card__title">Create an account</h3>
+            <app-close-button (closeClick)="onClose()" />
+          </div>
+          <div class="form-card__body">
+            <app-form-input
+              type="text"
+              placeholder="Username"
+            />
+            <app-form-input
+              type="email"
+              placeholder="Email"
+            />
+            <app-form-input
+              type="password"
+              placeholder="Password"
+            />
+            <app-form-input
+              type="password"
+              placeholder="Confirm password"
+            />
+            <app-button text="Create account" variant="primary" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -5,6 +5,10 @@
   (click)="onClick.emit($event)"
 >
   <span class="btn__content">
-    <ng-content></ng-content>
+    @if (text) {
+      {{ text }}
+    } @else {
+      <ng-content></ng-content>
+    }
   </span>
 </button>

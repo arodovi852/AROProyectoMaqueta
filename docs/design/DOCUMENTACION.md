@@ -1286,3 +1286,247 @@ Con la implementación de esta fase, hemos establecido:
 
 Esta base sólida nos permite construir componentes consistentes, mantener el código fácilmente, y escalar el proyecto sin problemas de especificidad o conflictos de estilos.
 
+---
+
+# FASE 5: Sistema de Componentes de Formulario
+
+Esta fase implementa componentes de formulario reutilizables con HTML semántico, accesibilidad completa y estilos personalizados basados en el diseño proporcionado.
+
+## 5.1 Componente Form Input
+
+### Características Implementadas
+
+✅ **HTML Semántico Completo**
+- Label siempre asociado al input mediante atributos `for` e `id`
+- Atributos ARIA para accesibilidad (`aria-invalid`, `aria-describedby`)
+- Soporte para múltiples tipos de input (text, email, password, tel, url, number)
+- Indicador visual de campo requerido (asterisco)
+- Mensajes de error y texto de ayuda opcionales
+
+✅ **Integración con Angular Forms**
+- Implementa `ControlValueAccessor` para integración completa con Angular Forms
+- Compatible con Reactive Forms y Template-driven Forms
+- Validación y manejo de estados (touched, dirty, valid)
+
+✅ **Estilos Personalizados**
+- Inputs con fondo rosa (#e893cf) y bordes oscuros (#3d2a45)
+- Bordes redondeados (border-radius: 1.25rem)
+- Texto centrado con placeholder en color oscuro
+- Estados hover y focus con transiciones suaves
+- Diseño responsive y adaptable
+
+### Ubicación
+```
+src/app/components/shared/form-input/
+  ├── form-input.ts         # Componente con ControlValueAccessor
+  ├── form-input.html       # Template con HTML semántico
+  └── form-input.scss       # Estilos personalizados
+```
+
+### Ejemplo de Uso
+
+```html
+<!-- Input básico -->
+<app-form-input
+  label="Username / Email"
+  type="text"
+  placeholder="Username / Email"
+  [required]="true"
+/>
+
+<!-- Input con validación -->
+<app-form-input
+  label="Email"
+  type="email"
+  placeholder="tu@email.com"
+  [required]="true"
+  [showError]="emailInvalid"
+  errorMessage="Por favor ingresa un email válido"
+  helpText="Usaremos este email para contactarte"
+/>
+
+<!-- Input de password -->
+<app-form-input
+  label="Password"
+  type="password"
+  placeholder="••••••••"
+  [required]="true"
+/>
+```
+
+### Propiedades
+
+| Propiedad | Tipo | Default | Descripción |
+|-----------|------|---------|-------------|
+| `inputId` | string | auto-generado | ID único para el input |
+| `type` | string | 'text' | Tipo de input HTML |
+| `name` | string | '' | Nombre del input para formularios |
+| `label` | string | '' | Texto del label |
+| `placeholder` | string | '' | Placeholder del input |
+| `required` | boolean | false | Si el campo es requerido |
+| `disabled` | boolean | false | Si el input está deshabilitado |
+| `helpText` | string | '' | Texto de ayuda |
+| `errorMessage` | string | '' | Mensaje de error |
+| `showError` | boolean | false | Mostrar estado de error |
+
+### Eventos
+
+| Evento | Tipo | Descripción |
+|--------|------|-------------|
+| `valueChange` | string | Se emite cuando el valor cambia |
+| `blurEvent` | void | Se emite cuando el input pierde el foco |
+| `focusEvent` | void | Se emite cuando el input obtiene el foco |
+
+## 5.2 Componente Close Button
+
+### Características Implementadas
+
+✅ **Botón Circular con Icono X**
+- Diseño circular con SVG centrado
+- Fondo rosa (#e893cf) con borde oscuro (#3d2a45)
+- Tamaño de 3.5rem × 3.5rem
+- Icono X con trazo grueso (stroke-width: 3)
+
+✅ **Estados Interactivos**
+- Estado hover con transformación scale(1.05)
+- Estado active con scale(0.95)
+- Focus visible con outline y box-shadow
+- Transiciones suaves en todos los estados
+
+✅ **Accesibilidad**
+- Atributo `aria-label="Cerrar"` para lectores de pantalla
+- Focus visible para navegación por teclado
+- Cursor pointer para indicar interactividad
+
+### Ubicación
+```
+src/app/components/shared/close-button/
+  ├── close-button.ts       # Componente con evento closeClick
+  ├── close-button.html     # Template con SVG
+  └── close-button.scss     # Estilos del botón circular
+```
+
+### Ejemplo de Uso
+
+```html
+<!-- Botón de cierre básico -->
+<app-close-button (closeClick)="onClose()" />
+
+<!-- En un modal o dialog -->
+<div class="modal-header">
+  <h2>Título del Modal</h2>
+  <app-close-button (closeClick)="closeModal()" />
+</div>
+```
+
+### Propiedades
+
+| Evento | Tipo | Descripción |
+|--------|------|-------------|
+| `closeClick` | void | Se emite cuando se hace clic en el botón |
+
+## 5.3 Actualización del Componente Button
+
+### Mejoras Implementadas
+
+✅ **Variante Primary con Estilo Amarillo**
+- Gradiente amarillo (#f4d03f → #e8be2d)
+- Texto oscuro (#3d2a45) para alto contraste
+- Bordes oscuros redondeados (border-radius: 1rem)
+- Sombra profunda para efecto elevado
+- Font weight bold para mayor presencia
+
+✅ **Propiedad Text Añadida**
+- Nuevo input `text` para pasar texto directamente
+- Compatible con `ng-content` para contenido complejo
+- Simplifica el uso del componente
+
+### Ejemplo de Uso
+
+```html
+<!-- Con propiedad text -->
+<app-button text="Log In" variant="primary" />
+<app-button text="Create account" variant="primary" />
+
+<!-- Con ng-content para contenido complejo -->
+<app-button variant="secondary">
+  <svg>...</svg>
+  Cancelar
+</app-button>
+```
+
+## 5.4 Página de Demostración (Home)
+
+### Contenido Implementado
+
+La página principal ahora sirve como **showcase completo del sistema de componentes**, organizado por categorías:
+
+#### 1. Componentes de Formulario
+- Form Input (text, email, password)
+- Form Textarea
+- Form Select
+- Form Checkbox
+- Form Radio Group
+
+#### 2. Botones
+- Button (variantes primary y secondary)
+- Close Button (circular con X)
+
+#### 3. Tarjetas y Contenedores
+- Card component
+
+#### 4. Notificaciones y Alertas
+- Alert component
+- Notification component
+
+#### 5. Ejemplos de Formularios Completos
+- **Formulario de Login**: "Welcome back!" con username/email y password
+- **Formulario de Registro**: "Create an account" con username, email, password y confirm password
+
+### Estilos de la Página
+
+✅ **Sistema de Grid Responsivo**
+- Layout adaptable con CSS Grid
+- Breakpoints para móvil, tablet y desktop
+- Espaciado consistente entre secciones
+
+✅ **Tarjetas de Demostración**
+- Fondo semi-transparente con gradiente
+- Bordes con color de acento
+- Padding y espaciado interno consistente
+
+✅ **Formularios de Ejemplo**
+- Tarjetas elevadas con sombras
+- Gradiente de fondo (#3d2a45 → #2c1a35)
+- Header con título y botón de cierre
+- Espaciado vertical entre inputs
+
+### Ubicación
+```
+src/app/pages/home/
+  ├── home.ts           # Componente con imports de todos los componentes
+  ├── home.html         # Template con showcase completo
+  └── home.scss         # Estilos de la página de demostración
+```
+
+## 5.5 Resumen de la Implementación
+
+Con la implementación de esta fase, ahora tenemos:
+
+✅ **Componente form-input completamente funcional** con HTML semántico y accesibilidad
+✅ **Componente close-button circular** con estilos personalizados
+✅ **Button actualizado** con variante amarilla y propiedad text
+✅ **Página de demostración completa** mostrando todos los componentes por categoría
+✅ **Formularios de ejemplo** (Login y Registro) con el diseño de las imágenes
+✅ **Sistema de estilos consistente** con colores rosa (#e893cf) y amarillo (#f4d03f)
+✅ **HTML semántico en todos los componentes** con labels asociados y ARIA
+✅ **Accesibilidad completa** con navegación por teclado y lectores de pantalla
+
+### Próximos Pasos Sugeridos
+
+- Implementar validación en tiempo real en los formularios
+- Añadir animaciones de entrada/salida en modales
+- Crear variants adicionales para los inputs (outline, filled)
+- Implementar sistema de temas claro/oscuro
+- Añadir más componentes de formulario (file upload, date picker, etc.)
+

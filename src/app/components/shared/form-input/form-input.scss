@@ -5,7 +5,7 @@
 // Bloque BEM: .form-input
 // ==========================================================================
 
-@import '../../../../../styles/01-tools/mixins';
+@import '../../../../styles/01-tools/mixins';
 
 // ==========================================================================
 // BLOQUE: .form-input
@@ -53,10 +53,11 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-1);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
   font-family: var(--font-secondary);
+  margin-bottom: var(--spacing-1);
 }
 
 // ==========================================================================
@@ -75,28 +76,32 @@
 
 .form-input__field {
   width: 100%;
-  padding: var(--spacing-3);
-  border: 0.0625rem solid var(--color-neutral-700);
-  border-radius: var(--radius-md);
-  background-color: var(--color-neutral-800);
-  color: var(--color-text-primary);
-  font-size: var(--font-size-base);
+  padding: var(--spacing-4) var(--spacing-5);
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.25rem;
+  background-color: #e893cf;
+  color: #3d2a45;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
   font-family: var(--font-secondary);
+  text-align: center;
   @include transition(border-color, background-color, box-shadow);
 
   &::placeholder {
-    color: var(--color-neutral-500);
+    color: #5a4060;
+    font-weight: var(--font-weight-medium);
   }
 
   &:hover:not(:disabled) {
-    border-color: var(--color-neutral-600);
+    border-color: #4d3555;
+    background-color: #f0a4da;
   }
 
   &:focus {
     outline: none;
-    border-color: var(--color-primary);
-    background-color: var(--color-neutral-900);
-    box-shadow: 0 0 0 0.1875rem rgba(162, 100, 191, 0.1);
+    border-color: #5a4060;
+    background-color: #f0a4da;
+    box-shadow: 0 0 0 0.25rem rgba(232, 147, 207, 0.3);
   }
 
   &:disabled {
