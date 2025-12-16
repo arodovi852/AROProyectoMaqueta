@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, Renderer2, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '../../../components/shared/button/button';
+import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
 
 /**
  * Componente Header
@@ -11,7 +12,7 @@ import { Button } from '../../../components/shared/button/button';
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, Button],
+  imports: [RouterLink, Button, ThemeToggle],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
