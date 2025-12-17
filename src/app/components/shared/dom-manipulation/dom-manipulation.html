@@ -1,0 +1,50 @@
+<div class="dom-demo">
+  <div class="dom-demo__header">
+    <h3 class="dom-demo__title">Demostración de Manipulación del DOM</h3>
+    <p class="dom-demo__description">
+      ViewChild, ElementRef y Renderer2 en acción
+    </p>
+  </div>
+
+  <div class="dom-demo__section">
+    <h4>Modificar Estilos y Propiedades</h4>
+    <div #contentDiv class="dom-demo__content">
+      Contenido inicial del DOM
+    </div>
+    
+    <div class="dom-demo__controls">
+      <app-button variant="primary" size="sm" (onClick)="changeStyles()">
+        Cambiar Estilos
+      </app-button>
+      <app-button variant="secondary" size="sm" (onClick)="changeContent()">
+        Cambiar Contenido
+      </app-button>
+      <app-button variant="ghost" size="sm" (onClick)="resetElement()">
+        Resetear
+      </app-button>
+      <app-button variant="primary" size="sm" (onClick)="addCssClass()">
+        Agregar Clase
+      </app-button>
+      <app-button variant="secondary" size="sm" (onClick)="removeCssClass()">
+        Remover Clase
+      </app-button>
+    </div>
+  </div>
+
+  <div class="dom-demo__section">
+    <h4>Crear y Eliminar Elementos</h4>
+    <div #dynamicContainer class="dom-demo__container"></div>
+    
+    <div class="dom-demo__controls">
+      <app-button variant="primary" size="sm" (onClick)="createElement()">
+        Crear Elemento
+      </app-button>
+      <app-button variant="danger" size="sm" (onClick)="removeElement()">
+        Eliminar Último
+      </app-button>
+      <app-button variant="ghost" size="sm" (onClick)="clearAll()">
+        Limpiar Todo
+      </app-button>
+    </div>
+  </div>
+</div>

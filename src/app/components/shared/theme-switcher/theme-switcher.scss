@@ -1,0 +1,261 @@
+.theme-switcher-demo {
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+  transition: all 0.3s ease;
+
+  &__header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-secondary);
+  }
+
+  &__info {
+    margin-top: var(--spacing-6);
+    padding: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+
+    h4 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-3);
+      font-family: var(--font-primary);
+    }
+
+    ul {
+      padding-left: var(--spacing-5);
+      margin: 0;
+
+      li {
+        margin: var(--spacing-2) 0;
+        color: var(--color-text-secondary);
+        font-family: var(--font-secondary);
+      }
+    }
+
+    code {
+      padding: 2px 6px;
+      background: var(--color-neutral-100);
+      border-radius: var(--radius-xs);
+      font-family: monospace;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+    }
+  }
+}
+
+.theme-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+
+  &__item {
+    padding: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-secondary);
+  }
+
+  &__value {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+  }
+}
+
+.theme-controls {
+  margin-bottom: var(--spacing-6);
+  padding: var(--spacing-5);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+
+  h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-primary);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-5);
+    flex-wrap: wrap;
+  }
+}
+
+.theme-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: var(--spacing-4) var(--spacing-5);
+  border: 2px solid var(--color-neutral-200);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+  }
+
+  &__icon {
+    font-size: 32px;
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    font-family: var(--font-secondary);
+  }
+
+  &--active {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    box-shadow: 0 0 0 3px rgba(162, 100, 191, 0.1);
+
+    .theme-btn__label {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.theme-toggle {
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-6);
+  border: 2px solid var(--color-primary-dark);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-primary);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(162, 100, 191, 0.4);
+  }
+
+  &__icon {
+    font-size: 24px;
+  }
+}
+
+.theme-preview {
+  margin-bottom: var(--spacing-6);
+  padding: var(--spacing-5);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+
+  h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-primary);
+  }
+
+  &__content {
+    padding: var(--spacing-4);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-neutral-300);
+  }
+}
+
+.preview-card {
+  padding: var(--spacing-5);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  h5 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-3);
+    font-family: var(--font-primary);
+  }
+
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-secondary);
+  }
+}
+
+.preview-colors {
+  display: flex;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.color-box {
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-50);
+  font-family: var(--font-secondary);
+
+  &--primary {
+    background: var(--color-primary);
+  }
+
+  &--secondary {
+    background: var(--color-secondary);
+  }
+
+  &--accent {
+    background: var(--color-success);
+  }
+}
+
+// Using project's existing theme system with data-theme attribute

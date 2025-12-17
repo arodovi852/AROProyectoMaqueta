@@ -1,0 +1,162 @@
+<div class="tabs-demo">
+  <div class="tabs-demo__header">
+    <h3 class="tabs-demo__title">Tabs Interactivos</h3>
+    <p class="tabs-demo__description">
+      Sistema de pestañas con navegación
+    </p>
+  </div>
+
+  <div class="tabs">
+    <!-- Tab Headers -->
+    <div class="tabs__header">
+      <button 
+        class="tabs__button"
+        [class.tabs__button--active]="isActive('detalles')"
+        (click)="selectTab('detalles')"
+      >
+        Detalles
+      </button>
+      <button 
+        class="tabs__button"
+        [class.tabs__button--active]="isActive('especificaciones')"
+        (click)="selectTab('especificaciones')"
+      >
+        Especificaciones
+      </button>
+      <button 
+        class="tabs__button"
+        [class.tabs__button--active]="isActive('comentarios')"
+        (click)="selectTab('comentarios')"
+      >
+        Comentarios
+      </button>
+      <button 
+        class="tabs__button"
+        [class.tabs__button--active]="isActive('historial')"
+        (click)="selectTab('historial')"
+      >
+        Historial
+      </button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tabs__content">
+      <!-- Detalles Tab -->
+      <div class="tabs__panel" *ngIf="isActive('detalles')">
+        <h4>Detalles del Producto</h4>
+        <p>
+          Este panel muestra información detallada sobre el producto seleccionado.
+          Los tabs son componentes interactivos que permiten organizar contenido
+          de manera eficiente.
+        </p>
+        <ul>
+          <li>✅ Navegación intuitiva</li>
+          <li>✅ Contenido organizado</li>
+          <li>✅ Animaciones suaves</li>
+          <li>✅ Responsive design</li>
+        </ul>
+      </div>
+
+      <!-- Especificaciones Tab -->
+      <div class="tabs__panel" *ngIf="isActive('especificaciones')">
+        <h4>Especificaciones Técnicas</h4>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">Peso:</span>
+            <span class="spec-value">2.5 kg</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Dimensiones:</span>
+            <span class="spec-value">30x20x15 cm</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Material:</span>
+            <span class="spec-value">Aluminio</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Color:</span>
+            <span class="spec-value">Gris espacial</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Garantía:</span>
+            <span class="spec-value">2 años</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Origen:</span>
+            <span class="spec-value">España</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comentarios Tab -->
+      <div class="tabs__panel" *ngIf="isActive('comentarios')">
+        <h4>Comentarios de Usuarios</h4>
+        <div class="comment">
+          <div class="comment__header">
+            <strong>Juan Pérez</strong>
+            <span class="comment__rating">⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="comment__text">
+            Excelente producto, superó mis expectativas. La calidad es excepcional.
+          </p>
+          <span class="comment__date">Hace 2 días</span>
+        </div>
+        <div class="comment">
+          <div class="comment__header">
+            <strong>María García</strong>
+            <span class="comment__rating">⭐⭐⭐⭐</span>
+          </div>
+          <p class="comment__text">
+            Muy bueno, aunque el envío tardó un poco más de lo esperado.
+          </p>
+          <span class="comment__date">Hace 1 semana</span>
+        </div>
+        <div class="comment">
+          <div class="comment__header">
+            <strong>Carlos López</strong>
+            <span class="comment__rating">⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="comment__text">
+            Totalmente recomendable. Relación calidad-precio inmejorable.
+          </p>
+          <span class="comment__date">Hace 2 semanas</span>
+        </div>
+      </div>
+
+      <!-- Historial Tab -->
+      <div class="tabs__panel" *ngIf="isActive('historial')">
+        <h4>Historial de Cambios</h4>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <strong>Actualización de precio</strong>
+              <p>El precio se actualizó de 99€ a 89€</p>
+              <span class="timeline-date">15 Dic 2024</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <strong>Nueva versión disponible</strong>
+              <p>Se lanzó la versión 2.0 con mejoras</p>
+              <span class="timeline-date">10 Dic 2024</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <strong>Restock</strong>
+              <p>Producto de nuevo en stock</p>
+              <span class="timeline-date">1 Dic 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs__info">
+      <p>Tab activo: <strong>{{ activeTab }}</strong></p>
+    </div>
+  </div>
+</div>

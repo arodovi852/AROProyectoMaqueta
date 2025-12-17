@@ -1,0 +1,95 @@
+<div class="theme-switcher-demo">
+  <div class="theme-switcher-demo__header">
+    <h3 class="theme-switcher-demo__title">Theme Switcher</h3>
+    <p class="theme-switcher-demo__description">
+      Cambio de tema con detección de prefers-color-scheme y localStorage
+    </p>
+  </div>
+
+  <!-- Estado Actual -->
+  <div class="theme-info">
+    <div class="theme-info__item">
+      <span class="theme-info__label">Tema Actual:</span>
+      <span class="theme-info__value">
+        {{ currentTheme === 'light' ? 'Claro' : 'Oscuro' }}
+      </span>
+    </div>
+    <div class="theme-info__item">
+      <span class="theme-info__label">Preferencia del Sistema:</span>
+      <span class="theme-info__value">
+        {{ systemPreference === 'light' ? 'Claro' : 'Oscuro' }}
+      </span>
+    </div>
+    <div class="theme-info__item">
+      <span class="theme-info__label">Modo Automático:</span>
+      <span class="theme-info__value">
+        {{ isAutoMode ? 'Activado' : 'Desactivado' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <div class="theme-controls">
+    <h4>Controles de Tema</h4>
+    
+    <div class="theme-controls__buttons">
+      <app-button
+        [variant]="currentTheme === 'light' && !isAutoMode ? 'primary' : 'ghost'"
+        (onClick)="setTheme('light')"
+      >
+        Claro
+      </app-button>
+
+      <app-button
+        [variant]="currentTheme === 'dark' && !isAutoMode ? 'primary' : 'ghost'"
+        (onClick)="setTheme('dark')"
+      >
+        Oscuro
+      </app-button>
+
+      <app-button
+        [variant]="isAutoMode ? 'secondary' : 'ghost'"
+        (onClick)="setAutoMode()"
+      >
+        Automático
+      </app-button>
+    </div>
+
+    <app-button
+      [variant]="'primary'"
+      [fullWidth]="true"
+      (onClick)="toggleTheme()"
+    >
+      Cambiar a {{ currentTheme === 'light' ? 'Oscuro' : 'Claro' }}
+    </app-button>
+  </div>
+
+  <!-- Vista previa del tema -->
+  <div class="theme-preview">
+    <h4>Vista Previa del Tema</h4>
+    <div class="theme-preview__content">
+      <div class="preview-card">
+        <h5>Tarjeta de Ejemplo</h5>
+        <p>Este es un ejemplo de cómo se ve el contenido con el tema actual.</p>
+        <div class="preview-colors">
+          <div class="color-box color-box--primary">Primary</div>
+          <div class="color-box color-box--secondary">Secondary</div>
+          <div class="color-box color-box--accent">Accent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Información -->
+  <div class="theme-switcher-demo__info">
+    <h4>Características:</h4>
+    <ul>
+      <li>Detección de <code>prefers-color-scheme</code></li>
+      <li>Persistencia en <code>localStorage</code></li>
+      <li>Toggle manual entre temas</li>
+      <li>Modo automático según sistema</li>
+      <li>Aplicación al cargar la página</li>
+      <li>Reacción a cambios del sistema en tiempo real</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="modal-demo">
+  <div class="modal-demo__header">
+    <h3 class="modal-demo__title">Modal Interactivo</h3>
+    <p class="modal-demo__description">
+      Modal con cierre por ESC, click fuera y botón
+    </p>
+  </div>
+
+  <div class="modal-demo__controls">
+    <app-button variant="primary" (onClick)="openModal()">
+      Abrir Modal
+    </app-button>
+    <app-button variant="primary" (onClick)="openSuccessModal()">
+      Modal Éxito
+    </app-button>
+    <app-button variant="secondary" (onClick)="openWarningModal()">
+      Modal Advertencia
+    </app-button>
+    <app-button variant="danger" (onClick)="openErrorModal()">
+      Modal Error
+    </app-button>
+    <app-button variant="secondary" (onClick)="openInfoModal()">
+      Modal Info
+    </app-button>
+  </div>
+
+  <div class="modal-demo__info">
+    <p><strong>Formas de cerrar el modal:</strong></p>
+    <ul>
+      <li>Presionar tecla <code>ESC</code></li>
+      <li>Click fuera del modal (en el overlay oscuro)</li>
+      <li>Click en el botón de cerrar</li>
+    </ul>
+  </div>
+
+  <!-- Modal Component -->
+  <div 
+    class="modal"
+    [class.modal--open]="isOpen"
+  >
+    <!-- Overlay -->
+    <div 
+      class="modal__overlay"
+      (click)="onOverlayClick($event)"
+    ></div>
+
+    <!-- Modal Content -->
+    <div 
+      class="modal__content"
+      (click)="onModalClick($event)"
+    >
+      <!-- Header -->
+      <div class="modal__header">
+        <h2 class="modal__title">{{ modalTitle }}</h2>
+        <button 
+          class="modal__close"
+          (click)="closeModal()"
+          aria-label="Cerrar modal"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal__body">
+        <p>{{ modalContent }}</p>
+        
+        <div class="modal__demo-content">
+          <h4>Contenido del Modal</h4>
+          <p>Este es un modal completamente funcional que demuestra:</p>
+          <ul>
+            <li>Manejo de eventos de teclado (ESC)</li>
+            <li>Propagación de eventos (click)</li>
+            <li>HostListener para eventos globales</li>
+            <li>Animaciones CSS</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal__footer">
+        <app-button variant="ghost" (onClick)="closeModal()">
+          Cancelar
+        </app-button>
+        <app-button variant="primary" (onClick)="closeModal()">
+          Aceptar
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

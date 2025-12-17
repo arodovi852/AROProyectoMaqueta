@@ -505,7 +505,57 @@ src/app/
 - [x] Tabla de compatibilidad de navegadores
 - [x] Documentación técnica completa
 
-## 👨‍💻 Autor
+## � Componentes de la Fase 1
+
+### Nuevos Componentes Implementados
+
+1. **ThemeSwitcher** (`theme-switcher/`)
+   - Detección de prefers-color-scheme
+   - Persistencia en localStorage
+   - Modo automático y manual
+   - Variables CSS para temas
+
+2. **DomManipulation** (`dom-manipulation/`)
+   - ViewChild y ElementRef
+   - Renderer2 para estilos y propiedades
+   - Creación/eliminación dinámica de elementos
+   - Manejo de clases CSS
+
+3. **EventDemo** (`event-demo/`)
+   - Event binding completo
+   - Eventos de teclado, mouse y focus
+   - preventDefault y stopPropagation
+   - Log de eventos en tiempo real
+
+4. **HamburgerMenu** (`hamburger-menu/`)
+   - Toggle con animación
+   - Cierre al click fuera
+   - HostListener para documento
+   - Overlay oscuro
+
+5. **InteractiveModal** (`interactive-modal/`)
+   - Cierre con ESC
+   - Click en overlay
+   - Múltiples variantes
+   - Animaciones de entrada/salida
+
+6. **InteractiveTabs** (`interactive-tabs/`)
+   - Sistema de pestañas
+   - Navegación por click
+   - Contenido dinámico
+   - Indicador visual activo
+
+7. **InteractiveTooltip** (`interactive-tooltip/`)
+   - Mouseenter/mouseleave
+   - Múltiples posiciones
+   - Diferentes estilos
+   - Animaciones suaves
+
+### Integración
+
+Todos los componentes están disponibles en la página principal (`/`) en la sección destacada "FASE 1: Manipulación del DOM y Eventos".
+
+## �👨‍💻 Autor
 
 Alberto Rodríguez - ARO Proyecto Maqueta
 

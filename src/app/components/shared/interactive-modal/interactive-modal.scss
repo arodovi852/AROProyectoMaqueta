@@ -1,0 +1,230 @@
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-demo {
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+
+  &__header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-secondary);
+  }
+
+  &__controls {
+    display: flex;
+    gap: var(--spacing-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-5);
+  }
+
+  &__info {
+    padding: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+
+    p {
+      margin: var(--spacing-2) 0;
+      color: var(--color-text-primary);
+      font-family: var(--font-secondary);
+
+      strong {
+        font-weight: var(--font-weight-semibold);
+      }
+    }
+
+    ul {
+      margin: var(--spacing-3) 0;
+      padding-left: var(--spacing-6);
+
+      li {
+        margin: 6px 0;
+        color: var(--color-text-secondary);
+        font-family: var(--font-secondary);
+      }
+    }
+
+    code {
+      padding: 2px 6px;
+      background: var(--color-neutral-100);
+      border-radius: var(--radius-xs);
+      font-family: monospace;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__overlay {
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal__content {
+      animation: modalSlideIn 0.3s ease;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+
+  &__content {
+    position: relative;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--color-neutral-200);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-5) var(--spacing-6);
+    border-bottom: 1px solid var(--color-neutral-200);
+    background: var(--color-bg-secondary);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    font-family: var(--font-primary);
+  }
+
+  &__close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--color-neutral-100);
+    color: var(--color-text-secondary);
+    font-size: 20px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--color-neutral-200);
+      color: var(--color-text-primary);
+      transform: rotate(90deg);
+    }
+  }
+
+  &__body {
+    padding: var(--spacing-6);
+    overflow-y: auto;
+    flex: 1;
+
+    p {
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-4);
+      font-family: var(--font-secondary);
+    }
+  }
+
+  &__demo-content {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f7fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul {
+      padding-left: 20px;
+
+      li {
+        margin: 6px 0;
+        color: #4a5568;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-6);
+    border-top: 1px solid var(--color-neutral-200);
+    background: var(--color-bg-secondary);
+  }
+}
+
+// Note: Using project Button component instead of custom .btn styles

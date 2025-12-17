@@ -10,6 +10,15 @@ import { FormTextarea } from '../../components/shared/form-textarea/form-textare
 import { LoginForm } from '../../components/shared/login-form/login-form';
 import { RegisterForm } from '../../components/shared/register-form/register-form';
 
+// Componentes Fase 1
+import { ThemeSwitcher } from '../../components/shared/theme-switcher/theme-switcher';
+import { DomManipulation } from '../../components/shared/dom-manipulation/dom-manipulation';
+import { EventDemo } from '../../components/shared/event-demo/event-demo';
+import { HamburgerMenu } from '../../components/shared/hamburger-menu/hamburger-menu';
+import { InteractiveModal } from '../../components/shared/interactive-modal/interactive-modal';
+import { InteractiveTabs } from '../../components/shared/interactive-tabs/interactive-tabs';
+import { InteractiveTooltip } from '../../components/shared/interactive-tooltip/interactive-tooltip';
+
 /**
  * Página Home
  * 
@@ -27,7 +36,15 @@ import { RegisterForm } from '../../components/shared/register-form/register-for
     FormSelect,
     FormTextarea,
     LoginForm,
-    RegisterForm
+    RegisterForm,
+    // Fase 1
+    ThemeSwitcher,
+    DomManipulation,
+    EventDemo,
+    HamburgerMenu,
+    InteractiveModal,
+    InteractiveTabs,
+    InteractiveTooltip
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

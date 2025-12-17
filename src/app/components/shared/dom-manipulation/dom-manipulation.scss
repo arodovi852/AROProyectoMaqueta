@@ -1,0 +1,89 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dom-demo {
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+
+  &__header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-secondary);
+  }
+
+  &__section {
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+
+    h4 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-4);
+      font-family: var(--font-primary);
+    }
+  }
+
+  &__content {
+    padding: var(--spacing-5);
+    background: var(--color-neutral-100);
+    border-radius: var(--radius-xs);
+    margin-bottom: var(--spacing-4);
+    border: 2px dashed var(--color-neutral-300);
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-family: var(--font-secondary);
+
+    &.highlighted {
+      background: var(--color-warning-light);
+      border-color: var(--color-warning);
+      box-shadow: 0 0 0 3px rgba(191, 191, 100, 0.3);
+    }
+  }
+
+  &__container {
+    min-height: 100px;
+    padding: var(--spacing-3);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xs);
+    border: 2px dashed var(--color-neutral-300);
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__controls {
+    display: flex;
+    gap: var(--spacing-2);
+    flex-wrap: wrap;
+  }
+}
+
+// Note: Using project Button component instead of custom .btn styles
