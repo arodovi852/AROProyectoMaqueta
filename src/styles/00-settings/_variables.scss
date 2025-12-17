@@ -51,15 +51,15 @@
 --color-info-light: #64B5F6;
 --color-info-dark: #1976D2;
 
-//Colores de texto principal
---color-text-primary: var(--color-neutral-50);
---color-text-secondary: var(--color-neutral-300);
+//Colores de texto principal (Light mode - por defecto)
+--color-text-primary: #1C1B18;
+--color-text-secondary: #514F48;
 --color-text-disabled: var(--color-neutral-500);
 
-//Colores de fondo
---color-bg-primary: var(--color-primary-dark);
---color-bg-secondary: var(--color-neutral-900);
---color-bg-tertiary: var(--color-neutral-800);
+//Colores de fondo (Light mode - por defecto)
+--color-bg-primary: #FFFFFF;
+--color-bg-secondary: #F8F7F2;
+--color-bg-tertiary: var(--color-neutral-100);
 
 
 
@@ -237,6 +237,22 @@
 --opacity-80: 0.8;
 --opacity-90: 0.9;
 --opacity-100: 1;
+}
+
+// ==========================================================================
+// DARK MODE - SOBREESCRITURA DE VARIABLES
+// ==========================================================================
+
+.dark-mode {
+  //Colores de texto para dark mode
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E8E6DB;
+  --color-text-disabled: var(--color-neutral-500);
+
+  //Colores de fondo para dark mode
+  --color-bg-primary: var(--color-primary-dark);
+  --color-bg-secondary: var(--color-neutral-900);
+  --color-bg-tertiary: var(--color-neutral-800);
 }
 
 // ==========================================================================

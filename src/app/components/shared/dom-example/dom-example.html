@@ -1,0 +1,92 @@
+<div class="dom-example">
+  <h3 class="dom-example__title">Ejemplos de Manipulación del DOM</h3>
+  
+  <!-- Sección 1: Modificar estilos y propiedades -->
+  <section class="dom-example__section">
+    <h4>1. Modificar Estilos y Propiedades</h4>
+    <div #miDiv class="demo-div">Contenido inicial</div>
+    
+    <div class="dom-example__buttons">
+      <button 
+        type="button" 
+        class="dom-example__btn"
+        (click)="cambiarEstilo()"
+      >
+        Cambiar Estilo
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn"
+        (click)="cambiarPropiedad()"
+      >
+        Cambiar Texto
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn"
+        (click)="agregarClase()"
+      >
+        Agregar Clase
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn"
+        (click)="quitarClase()"
+      >
+        Quitar Clase
+      </button>
+    </div>
+  </section>
+
+  <!-- Sección 2: Crear y eliminar elementos -->
+  <section class="dom-example__section">
+    <h4>2. Crear y Eliminar Elementos</h4>
+    <p class="dom-example__description">
+      Elementos creados: <strong>{{ elementCount }}</strong>
+    </p>
+    
+    <div class="dom-example__buttons">
+      <button 
+        type="button" 
+        class="dom-example__btn dom-example__btn--primary"
+        (click)="crearElemento()"
+      >
+        ➕ Crear Elemento
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn dom-example__btn--danger"
+        (click)="eliminarPrimerElemento()"
+        [disabled]="elementCount === 0"
+      >
+        Eliminar Primero
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn dom-example__btn--danger"
+        (click)="eliminarUltimoElemento()"
+        [disabled]="elementCount === 0"
+      >
+        Eliminar Último
+      </button>
+      <button 
+        type="button" 
+        class="dom-example__btn dom-example__btn--danger"
+        (click)="eliminarTodos()"
+        [disabled]="elementCount === 0"
+      >
+        Eliminar Todos
+      </button>
+    </div>
+
+    <!-- Contenedor de elementos dinámicos -->
+    <div 
+      #contenedor 
+      class="dom-example__container"
+      role="list"
+      aria-label="Lista de elementos creados dinámicamente"
+    >
+      <!-- Los elementos se crearán aquí dinámicamente -->
+    </div>
+  </section>
+</div>

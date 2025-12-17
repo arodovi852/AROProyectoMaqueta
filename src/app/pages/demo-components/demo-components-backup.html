@@ -1,0 +1,562 @@
+﻿<div class="demo">
+  <div class="demo__container">
+    <h1 class="demo__title">ðŸŽ¯ Componentes Interactivos - Demo Completa</h1>
+    <p class="demo__subtitle">
+      DemostraciÃ³n completa de los componentes implementados segÃºn Cliente Fase 1
+    </p>
+
+    <!-- Panel de estado de eventos -->
+    <div class="demo__event-monitor">
+      <h3>ðŸ“Š Monitor de Eventos en Tiempo Real</h3>
+      <p><strong>Ãšltimo evento:</strong> <span class="event-type">{{ lastEventType }}</span></p>
+      <p><strong>Clicks totales:</strong> <span class="click-count">{{ clickCount }}</span></p>
+      <button 
+        type="button" 
+        class="demo__btn demo__btn--small" 
+        (click)="resetDemo()"
+      >
+        ðŸ”„ Reset
+      </button>
+    </div>
+
+    <!-- Modal Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">1ï¸âƒ£ Modal Component</h2>
+      <p class="demo__section-description">
+        Modales con cierre por ESC, click fuera del contenido y botÃ³n de cerrar.
+        Implementa <code>@HostListener</code>, <code>@ViewChild</code> y <code>Renderer2</code>.
+      </p>
+      
+      <div class="demo__buttons">
+        <app-button 
+          text="ðŸ“„ Modal BÃ¡sico"
+          variant="primary"
+          size="md"
+          (click)="openModal()"
+        />
+        <app-button 
+          text="ðŸ“‹ Modal con Formulario"
+          variant="secondary"
+          size="md"
+          (click)="openSecondModal()"
+        />
+        <app-button 
+          text="âš ï¸ Modal de ConfirmaciÃ³n"
+          variant="danger"
+          size="md"
+          (click)="openConfirmModal()"
+        />
+      </div>
+
+      <div class="demo__info">
+        <h4>âœ¨ CaracterÃ­sticas implementadas:</h4>
+        <ul>
+          <li><strong>Cierre con ESC:</strong> Presiona Escape para cerrar</li>
+          <li><strong>Click fuera:</strong> Click en el fondo oscuro cierra el modal</li>
+          <li><strong>BotÃ³n de cerrar:</strong> X en la esquina superior derecha</li>
+          <li><strong>Scroll bloqueado:</strong> El body no hace scroll con modal abierto</li>
+          <li><strong>Focus trap:</strong> El foco permanece dentro del modal</li>
+          <li><strong>Animaciones:</strong> Transiciones suaves de entrada/salida</li>
+        </ul>
+      </div>
+
+      <!-- Modal 1: BÃ¡sico -->
+      <app-modal
+        [isOpen]="isModalOpen"
+        title="Modal de Ejemplo"
+        (close)="closeModal()"
+      >
+        <h3>Cliente Fase 1 - Tarea 3</h3>
+        <p>Este es un modal funcional con las siguientes caracterÃ­sticas:</p>
+        <ul>
+          <li>âœ… Cierre con tecla ESC (<code>@HostListener('document:keydown.escape')</code>)</li>
+          <li>âœ… Cierre al hacer click fuera del contenido</li>
+          <li>âœ… BotÃ³n de cerrar en el header</li>
+          <li>âœ… Bloquea el scroll del body cuando estÃ¡ abierto</li>
+          <li>âœ… Animaciones de entrada y salida</li>
+          <li>âœ… Accesibilidad con <code>role="dialog"</code> y <code>aria-modal="true"</code></li>
+        </ul>
+
+        <p><strong>ImplementaciÃ³n tÃ©cnica:</strong></p>
+        <ul>
+          <li><code>@ViewChild('modalContainer')</code> para referencia al contenedor</li>
+          <li><code>Renderer2.setStyle()</code> para bloquear scroll del body</li>
+          <li><code>event.preventDefault()</code> y <code>event.stopPropagation()</code></li>
+        </ul>
+
+        <div modal-footer>
+          <app-button 
+            text="Cancelar"
+            variant="ghost"
+            size="md"
+            (click)="closeModal()"
+          />
+          <app-button 
+            text="Confirmar"
+            variant="primary"
+            size="md"
+            (click)="confirmModal()"
+          />
+        </div>
+      </app-modal>
+
+      <!-- Modal 2: Con formulario -->
+      <app-modal
+        [isOpen]="isSecondModalOpen"
+        title="Formulario de Contacto"
+        (close)="closeSecondModal()"
+      >
+        <p>Este modal demuestra cÃ³mo integrar formularios y eventos de <code>focus</code> y <code>blur</code>:</p>
+        
+        <div class="demo__form">
+          <div class="demo__form-group">
+            <label for="name">Nombre:</label>
+            <input 
+              type="text" 
+              id="name" 
+              class="demo__input"
+              placeholder="Tu nombre"
+              (focus)="onFocusEvent('Input nombre enfocado')"
+              (blur)="onFocusEvent('Input nombre desenfocado')"
+              (keyup)="onKeyEvent($event, 'KeyUp en nombre')"
+            />
+          </div>
+          
+          <div class="demo__form-group">
+            <label for="email">Email:</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="demo__input"
+              placeholder="tu@email.com"
+              (focus)="onFocusEvent('Input email enfocado')"
+              (blur)="onFocusEvent('Input email desenfocado')"
+              (keyup)="onKeyEvent($event, 'KeyUp en email')"
+            />
+          </div>
+          
+          <div class="demo__form-group">
+            <label for="message">Mensaje:</label>
+            <textarea 
+              id="message" 
+              class="demo__textarea"
+              placeholder="Tu mensaje"
+              rows="4"
+              (focus)="onFocusEvent('Textarea enfocado')"
+              (blur)="onFocusEvent('Textarea desenfocado')"
+              (keyup)="onKeyEvent($event, 'KeyUp en mensaje')"
+            ></textarea>
+          </div>
+        </div>
+
+        <p class="demo__hint">
+          ðŸ’¡ <strong>Observa el monitor de eventos</strong> mientras interactÃºas con el formulario
+        </p>
+
+        <div modal-footer>
+          <app-button 
+            text="Cancelar"
+            variant="ghost"
+            size="md"
+            (click)="closeSecondModal()"
+          />
+          <app-button 
+            text="Enviar"
+            variant="primary"
+            size="md"
+            (click)="closeSecondModal()"
+          />
+        </div>
+      </app-modal>
+
+      <!-- Modal 3: ConfirmaciÃ³n -->
+      <app-modal
+        [isOpen]="isConfirmModalOpen"
+        title="âš ï¸ Confirmar AcciÃ³n"
+        (close)="closeConfirmModal()"
+      >
+        <p class="demo__warning">
+          Esta es una acciÃ³n peligrosa que no se puede deshacer.
+          Â¿EstÃ¡s seguro de que deseas continuar?
+        </p>
+
+        <div modal-footer>
+          <app-button 
+            text="No, cancelar"
+            variant="ghost"
+            size="md"
+            (click)="closeConfirmModal()"
+          />
+          <app-button 
+            text="SÃ­, continuar"
+            variant="danger"
+            size="md"
+            (click)="confirmDangerousAction()"
+          />
+        </div>
+      </app-modal>
+    </section>
+
+    <!-- Tabs Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">2ï¸âƒ£ Tabs Component (PestaÃ±as)</h2>
+      <p class="demo__section-description">
+        Sistema de pestaÃ±as con navegaciÃ³n por click y teclado.
+        Implementa event binding <code>(click)</code> y <code>(keydown)</code>.
+      </p>
+
+      <div class="demo__info">
+        <h4>âŒ¨ï¸ NavegaciÃ³n con teclado:</h4>
+        <ul>
+          <li><strong>Flechas â† â†’:</strong> Navegar entre pestaÃ±as</li>
+          <li><strong>Home:</strong> Ir a la primera pestaÃ±a</li>
+          <li><strong>End:</strong> Ir a la Ãºltima pestaÃ±a</li>
+          <li><strong>Tab:</strong> Moverse entre pestaÃ±as y contenido</li>
+        </ul>
+      </div>
+
+      <h3 class="demo__subsection-title">Ejemplo 1: PestaÃ±as de Producto</h3>
+      <app-tabs
+        [tabs]="productTabs"
+        activeTabId="detalles"
+        (tabChange)="onTabChange($event)"
+      />
+
+      <h3 class="demo__subsection-title">Ejemplo 2: PestaÃ±as de DocumentaciÃ³n</h3>
+      <app-tabs
+        [tabs]="docTabs"
+        activeTabId="viewchild"
+        (tabChange)="onTabChange($event)"
+      />
+
+      <div class="demo__info">
+        <h4>ðŸ”§ ImplementaciÃ³n tÃ©cnica:</h4>
+        <ul>
+          <li><code>[class.tabs__button--active]="isActive(tab.id)"</code> para clases condicionales</li>
+          <li><code>onKeyDown(event: KeyboardEvent)</code> maneja navegaciÃ³n por teclado</li>
+          <li><code>event.preventDefault()</code> previene scroll al presionar flechas</li>
+          <li>Atributos ARIA: <code>role="tablist"</code>, <code>aria-selected</code>, <code>aria-controls</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tooltips Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">3ï¸âƒ£ Tooltip Component</h2>
+      <p class="demo__section-description">
+        Tooltips con posicionamiento automÃ¡tico.
+        Implementa eventos <code>mouseenter</code>, <code>mouseleave</code>, <code>focus</code> y <code>blur</code>.
+      </p>
+
+      <div class="demo__info">
+        <h4>ðŸ–±ï¸ Eventos implementados:</h4>
+        <ul>
+          <li><strong>mouseenter:</strong> Muestra tooltip al pasar el mouse</li>
+          <li><strong>mouseleave:</strong> Oculta tooltip al salir el mouse</li>
+          <li><strong>focus:</strong> Muestra tooltip al enfocar (accesibilidad)</li>
+          <li><strong>blur:</strong> Oculta tooltip al desenfocar</li>
+        </ul>
+      </div>
+
+      <h3 class="demo__subsection-title">Posiciones del Tooltip:</h3>
+      <div class="demo__tooltips">
+        <app-tooltip text="Este tooltip aparece arriba del elemento" position="top">
+          <span class="demo__tooltip-trigger">â¬†ï¸ Top</span>
+        </app-tooltip>
+
+        <app-tooltip text="Este tooltip aparece abajo del elemento" position="bottom">
+          <span class="demo__tooltip-trigger">â¬‡ï¸ Bottom</span>
+        </app-tooltip>
+
+        <app-tooltip text="Este tooltip aparece a la izquierda" position="left">
+          <span class="demo__tooltip-trigger">â¬…ï¸ Left</span>
+        </app-tooltip>
+
+        <app-tooltip text="Este tooltip aparece a la derecha" position="right">
+          <span class="demo__tooltip-trigger">âž¡ï¸ Right</span>
+        </app-tooltip>
+      </div>
+
+      <h3 class="demo__subsection-title">Tooltips con InformaciÃ³n Ãštil:</h3>
+      <div class="demo__tooltips">
+        <app-tooltip text="Cliente Fase 1: @ViewChild se usa para acceder a elementos del DOM" position="top">
+          <span class="demo__tooltip-trigger">ðŸ“– ViewChild</span>
+        </app-tooltip>
+
+        <app-tooltip text="Renderer2 es la forma segura de manipular el DOM en Angular" position="top">
+          <span class="demo__tooltip-trigger">ðŸ”§ Renderer2</span>
+        </app-tooltip>
+
+        <app-tooltip text="@HostListener detecta eventos globales como keydown.escape" position="top">
+          <span class="demo__tooltip-trigger">ðŸŽ§ HostListener</span>
+        </app-tooltip>
+
+        <app-tooltip text="getBoundingClientRect() obtiene posiciÃ³n y dimensiones de elementos" position="top">
+          <span class="demo__tooltip-trigger">ðŸ“ Posicionamiento</span>
+        </app-tooltip>
+      </div>
+
+      <div class="demo__info">
+        <h4>ðŸ’¡ ImplementaciÃ³n tÃ©cnica:</h4>
+        <ul>
+          <li><code>@ViewChild('tooltipElement')</code> para referencia al tooltip</li>
+          <li><code>Renderer2.setStyle()</code> para posicionamiento dinÃ¡mico</li>
+          <li><code>getBoundingClientRect()</code> para calcular posiciones</li>
+          <li>Delays configurables con <code>setTimeout()</code> y limpieza en <code>ngOnDestroy()</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Menu Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">4ï¸âƒ£ MenÃº Hamburguesa (Header)</h2>
+      <p class="demo__section-description">
+        El menÃº hamburguesa estÃ¡ implementado en el header de la pÃ¡gina.
+        Mira arriba en la esquina superior izquierda (en mobile) o derecha.
+      </p>
+      
+      <div class="demo__info">
+        <h4>âœ¨ CaracterÃ­sticas implementadas:</h4>
+        <ul>
+          <li><strong>Toggle al hacer click:</strong> BotÃ³n hamburguesa abre/cierra el menÃº</li>
+          <li><strong>Cierre con ESC:</strong> <code>@HostListener('document:keydown.escape')</code></li>
+          <li><strong>Cierre al hacer click fuera:</strong> <code>@HostListener('document:click', ['$event'])</code></li>
+          <li><strong>Cierre automÃ¡tico en desktop:</strong> <code>@HostListener('window:resize')</code></li>
+          <li><strong>Atributos ARIA:</strong> <code>aria-expanded</code>, <code>aria-label</code> dinÃ¡micos</li>
+          <li><strong>Animaciones CSS:</strong> Transiciones suaves del menÃº</li>
+        </ul>
+      </div>
+
+      <div class="demo__info">
+        <h4>ðŸ”§ ImplementaciÃ³n tÃ©cnica:</h4>
+        <ul>
+          <li><code>@ViewChild('toggleBtn', {{ '{' }} read: ElementRef {{ '}' }})</code> referencia al botÃ³n</li>
+          <li><code>Renderer2.setAttribute()</code> para actualizar atributos ARIA</li>
+          <li><code>ElementRef.nativeElement.contains(target)</code> para detectar clicks fuera</li>
+          <li>Estado <code>isMenuOpen</code> controla la visibilidad</li>
+        </ul>
+      </div>
+
+      <div class="demo__demo-box">
+        <p>ðŸ‘† <strong>Prueba el menÃº hamburguesa en el header</strong></p>
+        <p>En desktop, reduce el ancho de la ventana para ver el menÃº mobile.</p>
+      </div>
+    </section>
+
+    <!-- Theme Switcher Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">5ï¸âƒ£ Theme Switcher</h2>
+      <p class="demo__section-description">
+        El botÃ³n de cambio de tema estÃ¡ en el header (junto al menÃº).
+        Implementa detecciÃ³n de <code>prefers-color-scheme</code> y persistencia en <code>localStorage</code>.
+      </p>
+      
+      <div class="demo__info">
+        <h4>ðŸŒ“ CaracterÃ­sticas implementadas:</h4>
+        <ul>
+          <li><strong>Detectar prefers-color-scheme:</strong> <code>window.matchMedia('(prefers-color-scheme: dark)')</code></li>
+          <li><strong>Toggle claro/oscuro:</strong> Cambio instantÃ¡neo con click</li>
+          <li><strong>Persistencia:</strong> <code>localStorage.setItem('theme', 'dark' | 'light')</code></li>
+          <li><strong>AplicaciÃ³n al cargar:</strong> Lee preferencia guardada o detecta sistema</li>
+          <li><strong>Animaciones suaves:</strong> Transiciones CSS en todos los componentes</li>
+        </ul>
+      </div>
+
+      <div class="demo__info">
+        <h4>ðŸ”„ Orden de prioridad:</h4>
+        <ol>
+          <li><strong>localStorage</strong> - Si existe preferencia guardada, se usa</li>
+          <li><strong>prefers-color-scheme</strong> - Si no hay preferencia, detecta del sistema</li>
+          <li><strong>Default</strong> - Dark mode por defecto</li>
+        </ol>
+      </div>
+
+      <div class="demo__info">
+        <h4>ðŸ”§ ImplementaciÃ³n tÃ©cnica:</h4>
+        <ul>
+          <li><code>ngOnInit()</code> inicializa el tema al cargar</li>
+          <li><code>document.documentElement.classList</code> aplica clases globales</li>
+          <li><code>:host-context(.dark-mode)</code> en SCSS para estilos condicionales</li>
+          <li>Variables CSS para colores dinÃ¡micos</li>
+        </ul>
+      </div>
+
+      <div class="demo__demo-box">
+        <p>ðŸ‘† <strong>Prueba el theme switcher en el header</strong></p>
+        <p>Observa cÃ³mo todos los componentes cambian de tema instantÃ¡neamente.</p>
+      </div>
+    </section>
+
+    <!-- ManipulaciÃ³n del DOM Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">6ï¸âƒ£ ManipulaciÃ³n del DOM (Renderer2)</h2>
+      <p class="demo__section-description">
+        Ejemplos prÃ¡cticos de manipulaciÃ³n del DOM con <code>ViewChild</code>, <code>ElementRef</code> y <code>Renderer2</code>.
+        Cliente Fase 1 - Tarea 1: Crear y eliminar elementos del DOM programÃ¡ticamente.
+      </p>
+      
+      <app-dom-example></app-dom-example>
+    </section>
+
+    <!-- Eventos Demo -->
+    <section class="demo__section">
+      <h2 class="demo__section-title">7ï¸âƒ£ Sistema de Eventos</h2>
+      <p class="demo__section-description">
+        DemostraciÃ³n de diferentes tipos de eventos implementados segÃºn Cliente Fase 1 - Tarea 2.
+      </p>
+
+      <div class="demo__event-demos">
+        <!-- Click events -->
+        <div class="demo__event-box">
+          <h3>ðŸ–±ï¸ Eventos de Click</h3>
+          <div class="demo__buttons">
+            <button 
+              type="button" 
+              class="demo__btn"
+              (click)="incrementCounter()"
+            >
+              Click Simple
+            </button>
+            <button 
+              type="button" 
+              class="demo__btn"
+              (dblclick)="onMouseEvent('Doble click')"
+            >
+              Doble Click
+            </button>
+          </div>
+          <p class="demo__event-info">
+            <code>(click)="handler()"</code> y <code>(dblclick)="handler()"</code>
+          </p>
+        </div>
+
+        <!-- Mouse events -->
+        <div class="demo__event-box">
+          <h3>ðŸŽ¯ Eventos de Mouse</h3>
+          <div 
+            class="demo__hover-area"
+            (mouseenter)="onMouseEvent('Mouse enter')"
+            (mouseleave)="onMouseEvent('Mouse leave')"
+          >
+            Pasa el mouse por aquÃ­
+          </div>
+          <p class="demo__event-info">
+            <code>(mouseenter)="handler()"</code> y <code>(mouseleave)="handler()"</code>
+          </p>
+        </div>
+
+        <!-- Keyboard events -->
+        <div class="demo__event-box">
+          <h3>âŒ¨ï¸ Eventos de Teclado</h3>
+          <input 
+            type="text" 
+            class="demo__input"
+            placeholder="Escribe algo..."
+            (keydown)="onKeyEvent($event, 'KeyDown')"
+            (keyup)="onKeyEvent($event, 'KeyUp')"
+          />
+          <p class="demo__event-info">
+            <code>(keydown)="handler($event)"</code> y <code>(keyup)="handler($event)"</code>
+          </p>
+        </div>
+
+        <!-- Focus events -->
+        <div class="demo__event-box">
+          <h3>ðŸŽ¯ Eventos de Focus</h3>
+          <input 
+            type="text" 
+            class="demo__input"
+            placeholder="Click aquÃ­ para focus..."
+            (focus)="onFocusEvent('Focus')"
+            (blur)="onFocusEvent('Blur')"
+          />
+          <p class="demo__event-info">
+            <code>(focus)="handler()"</code> y <code>(blur)="handler()"</code>
+          </p>
+        </div>
+      </div>
+
+      <div class="demo__info">
+        <h4>âœ… Eventos implementados en la aplicaciÃ³n:</h4>
+        <ul>
+          <li><strong>(click)</strong> - Botones, modales, tabs</li>
+          <li><strong>(keydown)</strong> - NavegaciÃ³n por teclado en tabs</li>
+          <li><strong>(keydown.escape)</strong> - Cierre de modales y menÃº</li>
+          <li><strong>(keyup.enter)</strong> - Formularios (modificador especÃ­fico)</li>
+          <li><strong>(mouseenter) / (mouseleave)</strong> - Tooltips</li>
+          <li><strong>(focus) / (blur)</strong> - Tooltips y formularios</li>
+          <li><strong>@HostListener('document:click')</strong> - Click fuera del menÃº</li>
+          <li><strong>@HostListener('window:resize')</strong> - Responsive behavior</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Resumen Final -->
+    <section class="demo__section demo__section--summary">
+      <h2 class="demo__section-title">âœ… Resumen de ImplementaciÃ³n</h2>
+      
+      <div class="demo__checklist">
+        <h3>Cliente Fase 1 - Tareas Completadas:</h3>
+        
+        <div class="demo__checklist-item">
+          <span class="demo__check">âœ…</span>
+          <div>
+            <strong>Tarea 1: ManipulaciÃ³n del DOM</strong>
+            <p>ViewChild, ElementRef y Renderer2 implementados en Modal, Tooltip, DomExample y Header</p>
+          </div>
+        </div>
+
+        <div class="demo__checklist-item">
+          <span class="demo__check">âœ…</span>
+          <div>
+            <strong>Tarea 2: Sistema de Eventos</strong>
+            <p>Event binding, eventos de teclado/mouse/focus, preventDefault y stopPropagation</p>
+          </div>
+        </div>
+
+        <div class="demo__checklist-item">
+          <span class="demo__check">âœ…</span>
+          <div>
+            <strong>Tarea 3: Componentes Interactivos</strong>
+            <p>Modal (3 variantes), Tabs (2 ejemplos), Tooltip (8 ejemplos), MenÃº hamburguesa</p>
+          </div>
+        </div>
+
+        <div class="demo__checklist-item">
+          <span class="demo__check">âœ…</span>
+          <div>
+            <strong>Tarea 4: Theme Switcher</strong>
+            <p>prefers-color-scheme, toggle, localStorage y aplicaciÃ³n al cargar</p>
+          </div>
+        </div>
+
+        <div class="demo__checklist-item">
+          <span class="demo__check">âœ…</span>
+          <div>
+            <strong>Tarea 5: DocumentaciÃ³n</strong>
+            <p>README completo, documentaciÃ³n tÃ©cnica, diagramas y tabla de compatibilidad</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo__stats">
+        <div class="demo__stat">
+          <span class="demo__stat-number">5</span>
+          <span class="demo__stat-label">Componentes Nuevos</span>
+        </div>
+        <div class="demo__stat">
+          <span class="demo__stat-number">10+</span>
+          <span class="demo__stat-label">Tipos de Eventos</span>
+        </div>
+        <div class="demo__stat">
+          <span class="demo__stat-number">15+</span>
+          <span class="demo__stat-label">Ejemplos Interactivos</span>
+        </div>
+        <div class="demo__stat">
+          <span class="demo__stat-number">100%</span>
+          <span class="demo__stat-label">Requisitos Cumplidos</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

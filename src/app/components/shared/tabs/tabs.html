@@ -1,0 +1,39 @@
+<div class="tabs">
+  <!-- Tab buttons -->
+  <div class="tabs__list" role="tablist">
+    <button
+      *ngFor="let tab of tabs; let i = index"
+      type="button"
+      class="tabs__button"
+      [class.tabs__button--active]="isActive(tab.id)"
+      [attr.data-tab-id]="tab.id"
+      [attr.aria-selected]="isActive(tab.id)"
+      [attr.aria-controls]="'tab-panel-' + tab.id"
+      [attr.tabindex]="isActive(tab.id) ? 0 : -1"
+      role="tab"
+      (click)="selectTab(tab.id, $event)"
+      (keydown)="onKeyDown($event, i)"
+    >
+      {{ tab.label }}
+    </button>
+  </div>
+
+  <!-- Tab panels -->
+  <div class="tabs__panels">
+    <div
+      *ngFor="let tab of tabs"
+      class="tabs__panel"
+      [class.tabs__panel--active]="isActive(tab.id)"
+      [attr.id]="'tab-panel-' + tab.id"
+      [attr.aria-labelledby]="'tab-' + tab.id"
+      [hidden]="!isActive(tab.id)"
+      role="tabpanel"
+    >
+      <!-- Contenido de texto si se proporciona -->
+      <p *ngIf="tab.content">{{ tab.content }}</p>
+      
+      <!-- Slot para contenido personalizado -->
+      <ng-content [select]="'[tab-content-' + tab.id + ']'"></ng-content>
+    </div>
+  </div>
+</div>

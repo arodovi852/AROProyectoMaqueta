@@ -87,4 +87,21 @@ export class Header {
       this.toggleMenu();
     }
   }
+
+  /**
+   * Cerrar menú al hacer click fuera
+   * Cliente Fase 1: @HostListener para clicks en el documento
+   */
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.isMenuOpen) return;
+
+    const target = event.target as HTMLElement;
+    const headerElement = this.elementRef.nativeElement;
+    
+    // Verificar si el click fue fuera del header
+    if (!headerElement.contains(target)) {
+      this.toggleMenu();
+    }
+  }
 }
