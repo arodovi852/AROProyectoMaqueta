@@ -1,0 +1,87 @@
+<div class="about-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="hero-title">Sistema de Rutas y Navegación</h1>
+    <p class="hero-subtitle">Fase 4: Implementación completa de Angular Router con todas sus características avanzadas</p>
+    <div class="hero-actions">
+      <app-button [routerLink]="['/productos']" variant="primary" size="lg">
+        Ver Productos
+      </app-button>
+      <app-button [routerLink]="['/home']" variant="secondary" size="lg">
+        Volver al Inicio
+      </app-button>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section">
+    <h2 class="section-title">Características Implementadas</h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon">{{ feature.icon }}</div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-section">
+    <h2 class="section-title">Tecnologías Utilizadas</h2>
+    <div class="tech-tags">
+      <span class="tech-tag">Angular 19</span>
+      <span class="tech-tag">TypeScript 5.7</span>
+      <span class="tech-tag">Angular Router</span>
+      <span class="tech-tag">RxJS</span>
+      <span class="tech-tag">Standalone Components</span>
+      <span class="tech-tag">Route Guards</span>
+      <span class="tech-tag">Resolvers</span>
+      <span class="tech-tag">Lazy Loading</span>
+      <span class="tech-tag">Breadcrumbs</span>
+      <span class="tech-tag">SCSS</span>
+    </div>
+  </section>
+
+  <!-- Info Cards -->
+  <section class="info-section">
+    <div class="info-cards">
+      <div class="info-card">
+        <h3>🎨 Diseño Consistente</h3>
+        <p>Todos los componentes siguen la misma guía de estilo con colores naranjas/amarillos para la Fase 4, diferenciándose del resto de fases.</p>
+      </div>
+      
+      <div class="info-card">
+        <h3>🔐 Seguridad</h3>
+        <p>Sistema de autenticación simulado con guards que protegen las rutas privadas y redirigen automáticamente al login.</p>
+      </div>
+      
+      <div class="info-card">
+        <h3>⚡ Rendimiento</h3>
+        <p>Lazy loading con precarga inteligente reduce el bundle inicial y mejora los tiempos de carga.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>¿Listo para Explorar?</h2>
+    <p>Navega por el catálogo de productos y descubre todas las funcionalidades implementadas</p>
+    <app-button [routerLink]="['/productos']" variant="primary" size="lg">
+      Ir al Catálogo →
+    </app-button>
+  </section>
+</div>

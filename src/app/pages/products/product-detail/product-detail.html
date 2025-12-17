@@ -1,0 +1,100 @@
+<div class="product-detail-page">
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Cargando producto...</p>
+    </div>
+  }
+
+  @if (!loading && product) {
+    <div class="back-button">
+      <app-button (click)="goBack()" variant="secondary" size="sm">
+        ← Volver al catálogo
+      </app-button>
+    </div>
+
+    <div class="product-detail-container">
+      <!-- Imagen del producto -->
+      <div class="product-image-section">
+        <div class="main-image">
+          <img [src]="product.imageUrl" [alt]="product.name">
+          <span class="stock-badge" [class.low-stock]="product.stock < 20">
+            {{ product.stock }} disponibles
+          </span>
+        </div>
+      </div>
+
+      <!-- Información del producto -->
+      <div class="product-info-section">
+        <div class="category-tag">{{ product.category }}</div>
+        <h1 class="product-title">{{ product.name }}</h1>
+        <p class="product-description">{{ product.description }}</p>
+
+        <div class="price-section">
+          <span class="price">{{ product.price | number:'1.2-2' }}€</span>
+          @if (product.stock > 0) {
+            <span class="availability available">✓ En stock</span>
+          } @else {
+            <span class="availability unavailable">✗ Agotado</span>
+          }
+        </div>
+
+        <!-- Selector de cantidad -->
+        @if (product.stock > 0) {
+          <div class="quantity-selector">
+            <label>Cantidad:</label>
+            <div class="quantity-controls">
+              <button 
+                class="qty-btn"
+                (click)="decrementQuantity()"
+                [disabled]="quantity <= 1">
+                -
+              </button>
+              <span class="quantity-value">{{ quantity }}</span>
+              <button 
+                class="qty-btn"
+                (click)="incrementQuantity()"
+                [disabled]="quantity >= product.stock">
+                +
+              </button>
+            </div>
+          </div>
+
+          <div class="actions">
+            <app-button 
+              (click)="addToCart()"
+              variant="primary"
+              size="lg">
+              Añadir al Carrito
+            </app-button>
+          </div>
+        }
+
+        <!-- Información adicional -->
+        <div class="product-specs">
+          <h3>Especificaciones</h3>
+          <ul>
+            <li><strong>ID:</strong> {{ product.id }}</li>
+            <li><strong>Categoría:</strong> {{ product.category }}</li>
+            <li><strong>Precio unitario:</strong> {{ product.price | number:'1.2-2' }}€</li>
+            <li><strong>Stock disponible:</strong> {{ product.stock }} unidades</li>
+          </ul>
+        </div>
+
+        <!-- Acciones de gestión -->
+        <div class="admin-actions">
+          <app-button 
+            [routerLink]="['/productos', product.id, 'editar']"
+            variant="secondary">
+            ✏️ Editar Producto
+          </app-button>
+          <app-button 
+            (click)="deleteProduct()"
+            variant="danger">
+            🗑️ Eliminar Producto
+          </app-button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

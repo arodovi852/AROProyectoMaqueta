@@ -1,0 +1,69 @@
+<div class="user-orders-page">
+  <div class="orders-header">
+    <h1>Mis Pedidos</h1>
+    <p>Gestiona y consulta tus pedidos</p>
+  </div>
+
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Cargando pedidos...</p>
+    </div>
+  }
+
+  @if (!loading && orders.length > 0) {
+    <div class="orders-list">
+      @for (order of orders; track order.id) {
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-info">
+              <h3 class="order-id">Pedido #{{ order.id }}</h3>
+              <span class="order-date">{{ formatDate(order.date) }}</span>
+            </div>
+            <span class="order-status" [class]="getStatusClass(order.status)">
+              {{ getStatusLabel(order.status) }}
+            </span>
+          </div>
+
+          <div class="order-items">
+            <h4>Artículos ({{ order.items.length }})</h4>
+            <ul class="items-list">
+              @for (item of order.items; track item.productId) {
+                <li class="item">
+                  <span class="item-name">{{ item.productName }}</span>
+                  <span class="item-quantity">x{{ item.quantity }}</span>
+                  <span class="item-price">{{ item.price | number:'1.2-2' }}€</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="order-footer">
+            <div class="order-total">
+              <span class="total-label">Total:</span>
+              <span class="total-amount">{{ order.total | number:'1.2-2' }}€</span>
+            </div>
+            
+            @if (order.status === 'pending') {
+              <app-button 
+                (click)="cancelOrder(order)"
+                variant="danger"
+                size="sm">
+                Cancelar Pedido
+              </app-button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (!loading && orders.length === 0) {
+    <div class="empty-state">
+      <p>No tienes pedidos todavía</p>
+      <a [routerLink]="['/productos']" class="btn btn-primary">
+        Explorar Productos
+      </a>
+    </div>
+  }
+</div>

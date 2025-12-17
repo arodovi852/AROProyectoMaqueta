@@ -1,0 +1,153 @@
+<div class="product-form-page">
+  <div class="form-header">
+    <h1>{{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}</h1>
+    <p class="subtitle">{{ isEditMode ? 'Actualiza la información del producto' : 'Añade un nuevo producto al catálogo' }}</p>
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+    <!-- Nombre del producto -->
+    <div class="form-group">
+      <label for="name">Nombre del Producto *</label>
+      <input 
+        id="name"
+        type="text" 
+        formControlName="name"
+        placeholder="Ej: Laptop Gaming Pro"
+        [class.error]="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      
+      @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+        <div class="error-message">
+          @if (productForm.get('name')?.errors?.['required']) {
+            <span>El nombre es obligatorio</span>
+          }
+          @if (productForm.get('name')?.errors?.['minlength']) {
+            <span>Mínimo 3 caracteres</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Descripción -->
+    <div class="form-group">
+      <label for="description">Descripción *</label>
+      <textarea 
+        id="description"
+        formControlName="description"
+        rows="4"
+        placeholder="Describe el producto..."
+        [class.error]="productForm.get('description')?.invalid && productForm.get('description')?.touched"></textarea>
+      
+      @if (productForm.get('description')?.invalid && productForm.get('description')?.touched) {
+        <div class="error-message">
+          @if (productForm.get('description')?.errors?.['required']) {
+            <span>La descripción es obligatoria</span>
+          }
+          @if (productForm.get('description')?.errors?.['minlength']) {
+            <span>Mínimo 10 caracteres</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Precio y Stock -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="price">Precio (€) *</label>
+        <input 
+          id="price"
+          type="number" 
+          formControlName="price"
+          step="0.01"
+          min="0"
+          placeholder="0.00"
+          [class.error]="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+        
+        @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+          <div class="error-message">
+            @if (productForm.get('price')?.errors?.['required']) {
+              <span>El precio es obligatorio</span>
+            }
+            @if (productForm.get('price')?.errors?.['min']) {
+              <span>El precio debe ser mayor que 0</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="stock">Stock *</label>
+        <input 
+          id="stock"
+          type="number" 
+          formControlName="stock"
+          min="0"
+          placeholder="0"
+          [class.error]="productForm.get('stock')?.invalid && productForm.get('stock')?.touched">
+        
+        @if (productForm.get('stock')?.invalid && productForm.get('stock')?.touched) {
+          <div class="error-message">
+            @if (productForm.get('stock')?.errors?.['required']) {
+              <span>El stock es obligatorio</span>
+            }
+            @if (productForm.get('stock')?.errors?.['min']) {
+              <span>El stock no puede ser negativo</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Categoría -->
+    <div class="form-group">
+      <label for="category">Categoría *</label>
+      <select 
+        id="category"
+        formControlName="category"
+        [class.error]="productForm.get('category')?.invalid && productForm.get('category')?.touched">
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <!-- URL de Imagen -->
+    <div class="form-group">
+      <label for="imageUrl">URL de Imagen *</label>
+      <input 
+        id="imageUrl"
+        type="url" 
+        formControlName="imageUrl"
+        placeholder="https://ejemplo.com/imagen.jpg"
+        [class.error]="productForm.get('imageUrl')?.invalid && productForm.get('imageUrl')?.touched">
+      
+      @if (productForm.get('imageUrl')?.invalid && productForm.get('imageUrl')?.touched) {
+        <div class="error-message">
+          <span>La URL de imagen es obligatoria</span>
+        </div>
+      }
+
+      <!-- Preview de imagen -->
+      @if (productForm.get('imageUrl')?.value) {
+        <div class="image-preview">
+          <img [src]="productForm.get('imageUrl')?.value" alt="Preview" 
+               onerror="this.src='https://via.placeholder.com/300x200/667eea/ffffff?text=Error'">
+        </div>
+      }
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="form-actions">
+      <app-button 
+        type="submit"
+        variant="primary"
+        [disabled]="productForm.invalid || submitting">
+        {{ isEditMode ? 'Actualizar Producto' : 'Crear Producto' }}
+      </app-button>
+      
+      <app-button 
+        type="button"
+        variant="secondary"
+        (click)="onCancel()">
+        Cancelar
+      </app-button>
+    </div>
+  </form>
+</div>

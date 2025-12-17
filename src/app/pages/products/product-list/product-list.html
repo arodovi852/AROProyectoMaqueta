@@ -1,0 +1,79 @@
+<div class="product-list-page">
+  <div class="page-header">
+    <h1>Catálogo de Productos</h1>
+    <p class="subtitle">Explora nuestra selección de productos tecnológicos</p>
+    <app-button 
+      [routerLink]="['/productos/nuevo']"
+      variant="primary"
+      size="md">
+      + Añadir Producto
+    </app-button>
+  </div>
+
+  <!-- Filtros por categoría -->
+  <div class="category-filters">
+    <button 
+      *ngFor="let cat of categories"
+      class="category-btn"
+      [class.active]="selectedCategory === cat"
+      (click)="onCategoryChange(cat)">
+      {{ cat }}
+    </button>
+  </div>
+
+  <!-- Estado de carga -->
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Cargando productos...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (errorMessage) {
+    <div class="error-state">
+      <p>{{ errorMessage }}</p>
+      <app-button (click)="loadProducts()" variant="secondary">
+        Reintentar
+      </app-button>
+    </div>
+  }
+
+  <!-- Grid de productos -->
+  @if (!loading && !errorMessage) {
+    <div class="products-grid">
+      @for (product of filteredProducts; track product.id) {
+        <div class="product-card">
+          <div class="product-image">
+            <img [src]="product.imageUrl" [alt]="product.name">
+            <span class="stock-badge" [class.low-stock]="product.stock < 20">
+              {{ product.stock }} en stock
+            </span>
+          </div>
+          
+          <div class="product-content">
+            <span class="product-category">{{ product.category }}</span>
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+            
+            <div class="product-footer">
+              <span class="product-price">{{ product.price | number:'1.2-2' }}€</span>
+              <app-button 
+                [routerLink]="['/productos', product.id]"
+                variant="primary"
+                size="sm">
+                Ver Detalle
+              </app-button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (filteredProducts.length === 0) {
+      <div class="empty-state">
+        <p>No hay productos en esta categoría</p>
+      </div>
+    }
+  }
+</div>

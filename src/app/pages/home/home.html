@@ -338,6 +338,122 @@
       </div>
     </section>
 
+    <!-- ========== FASE 4: ROUTING Y NAVEGACIÓN ========== -->
+    <section class="component-section phase-4">
+      <h2 class="component-section__title">FASE 4: Routing, Navegación y Guards</h2>
+      <p class="component-section__description">
+        Sistema completo de routing con Angular Router, lazy loading, guards (CanActivate, CanDeactivate), 
+        resolvers para precarga de datos, y breadcrumbs dinámicos
+      </p>
+
+      <!-- Navigation Cards -->
+      <div class="phase4-navigation">
+        <!-- Productos Card -->
+        <a [routerLink]="['/productos']" class="phase4-card">
+          <div class="phase4-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <div class="phase4-card__content">
+            <h3 class="phase4-card__title">Catálogo de Productos</h3>
+            <p class="phase4-card__description">
+              Explora el catálogo con filtros por categoría, carga lazy, y resolvers para precarga de datos
+            </p>
+            <ul class="phase4-card__features">
+              <li>✓ Lazy loading de componentes</li>
+              <li>✓ Resolvers para datos del producto</li>
+              <li>✓ Guards de autenticación en edición</li>
+            </ul>
+          </div>
+          <div class="phase4-card__cta">
+            Ver Productos →
+          </div>
+        </a>
+
+        <!-- Usuario Card -->
+        <a [routerLink]="['/usuario/perfil']" class="phase4-card">
+          <div class="phase4-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <div class="phase4-card__content">
+            <h3 class="phase4-card__title">Área de Usuario</h3>
+            <p class="phase4-card__description">
+              Perfil y pedidos protegidos con guards, rutas anidadas y navegación contextual
+            </p>
+            <ul class="phase4-card__features">
+              <li>✓ AuthGuard para protección de rutas</li>
+              <li>✓ PendingChangesGuard en edición de perfil</li>
+              <li>✓ Rutas anidadas con layout compartido</li>
+            </ul>
+          </div>
+          <div class="phase4-card__cta">
+            Ver Perfil →
+          </div>
+        </a>
+
+        <!-- About Card -->
+        <a [routerLink]="['/about']" class="phase4-card">
+          <div class="phase4-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="phase4-card__content">
+            <h3 class="phase4-card__title">Acerca de Fase 4</h3>
+            <p class="phase4-card__description">
+              Conoce todas las características implementadas en el sistema de routing
+            </p>
+            <ul class="phase4-card__features">
+              <li>✓ Detalles técnicos de implementación</li>
+              <li>✓ Estadísticas del sistema de routing</li>
+              <li>✓ Stack tecnológico utilizado</li>
+            </ul>
+          </div>
+          <div class="phase4-card__cta">
+            Leer Más →
+          </div>
+        </a>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="phase4-features">
+        <div class="phase4-feature">
+          <div class="phase4-feature__icon">🚀</div>
+          <h4 class="phase4-feature__title">Lazy Loading</h4>
+          <p class="phase4-feature__text">
+            Carga bajo demanda de rutas con PreloadAllModules en segundo plano
+          </p>
+        </div>
+        
+        <div class="phase4-feature">
+          <div class="phase4-feature__icon">🔐</div>
+          <h4 class="phase4-feature__title">Route Guards</h4>
+          <p class="phase4-feature__text">
+            AuthGuard para rutas protegidas y PendingChangesGuard para prevenir pérdida de datos
+          </p>
+        </div>
+        
+        <div class="phase4-feature">
+          <div class="phase4-feature__icon">📦</div>
+          <h4 class="phase4-feature__title">Resolvers</h4>
+          <p class="phase4-feature__text">
+            Precarga de datos antes de activar rutas para mejor UX
+          </p>
+        </div>
+        
+        <div class="phase4-feature">
+          <div class="phase4-feature__icon">🧭</div>
+          <h4 class="phase4-feature__title">Breadcrumbs</h4>
+          <p class="phase4-feature__text">
+            Navegación contextual dinámica con metadatos de ruta
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Ejemplo de formularios completos -->
     <section class="component-section">
       <h2 class="component-section__title">6. Formularios Completos (con estructura semántica)</h2>

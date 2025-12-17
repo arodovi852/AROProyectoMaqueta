@@ -1,0 +1,24 @@
+<div class="user-layout">
+  <div class="user-sidebar">
+    <div class="sidebar-header">
+      <h2>Área de Usuario</h2>
+      <p>Gestiona tu cuenta y pedidos</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      @for (item of navItems; track item.route) {
+        <a 
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="nav-link">
+          <span class="nav-icon">{{ item.icon }}</span>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+  </div>
+
+  <div class="user-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

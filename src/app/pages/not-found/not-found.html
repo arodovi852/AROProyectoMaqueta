@@ -1,0 +1,39 @@
+<div class="not-found-page">
+  <div class="not-found-content">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Página No Encontrada</h1>
+    <p class="error-description">
+      La página que estás buscando no existe o ha sido movida.
+    </p>
+
+    <div class="suggestions-section">
+      <h2>¿A dónde quieres ir?</h2>
+      <div class="suggestions-grid">
+        @for (suggestion of suggestions; track suggestion.route) {
+          <app-button
+            [routerLink]="suggestion.route"
+            variant="secondary"
+            size="lg"
+            class="suggestion-btn">
+            {{ suggestion.icon }} {{ suggestion.label }}
+          </app-button>
+        }
+      </div>
+    </div>
+
+    <div class="back-action">
+      <app-button
+        [routerLink]="['/home']"
+        variant="primary"
+        size="lg">
+        ← Volver al Inicio
+      </app-button>
+    </div>
+  </div>
+
+  <div class="decoration">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+  </div>
+</div>
