@@ -156,9 +156,12 @@
 
   // Modificador: siblings (para componentes hermanos lado a lado)
   &--siblings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 

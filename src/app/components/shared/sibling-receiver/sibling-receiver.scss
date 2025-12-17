@@ -1,42 +1,45 @@
 .sibling-receiver {
-  padding: var(--spacing-xl);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.05) 100%);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  background: rgba(var(--color-neutral-800), 0.5);
   border-radius: var(--radius-lg);
-  border: 2px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
-  transition: all 0.3s ease;
+  border: 2px solid var(--color-secondary);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  margin: var(--spacing-6) auto;
+  max-width: 800px;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
-    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-secondary-light);
   }
 
   &__title {
-    margin: 0 0 var(--spacing-sm) 0;
-    color: #10b981;
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--color-secondary-light);
     font-size: var(--font-size-xl);
     font-weight: 700;
-    text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
     font-family: var(--font-primary);
+    text-align: center;
   }
 
   &__description {
-    margin: 0 0 var(--spacing-lg) 0;
-    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 var(--spacing-xl) 0;
+    color: var(--color-text-primary);
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     font-family: var(--font-secondary);
+    text-align: center;
   }
 
   &__empty {
     padding: var(--spacing-xl);
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-secondary);
     font-style: italic;
     text-align: center;
-    background: rgba(16, 185, 129, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: var(--radius-md);
-    border: 1px dashed rgba(16, 185, 129, 0.3);
+    border: 1px dashed var(--color-secondary);
   }
 
   &__messages {
@@ -45,10 +48,11 @@
 
   &__messages-title {
     margin: 0 0 var(--spacing-md) 0;
-    color: #4ade80;
+    color: var(--color-secondary-light);
     font-size: var(--font-size-lg);
     font-weight: 600;
     font-family: var(--font-secondary);
+    text-align: center;
   }
 
   &__list {
@@ -62,19 +66,19 @@
 
   &__message {
     padding: var(--spacing-md) var(--spacing-lg);
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-md);
-    border-left: 3px solid #10b981;
-    color: rgba(255, 255, 255, 0.95);
+    border-left: 3px solid var(--color-secondary);
+    color: var(--color-text-primary);
     font-size: var(--font-size-base);
     animation: slideInMessage 0.4s ease-out;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
-    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
 
     &:hover {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.15) 100%);
+      background: rgba(255, 255, 255, 0.08);
       transform: translateX(4px);
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+      box-shadow: var(--shadow-md);
     }
   }
 }
