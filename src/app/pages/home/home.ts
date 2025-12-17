@@ -19,6 +19,11 @@ import { InteractiveModal } from '../../components/shared/interactive-modal/inte
 import { InteractiveTabs } from '../../components/shared/interactive-tabs/interactive-tabs';
 import { InteractiveTooltip } from '../../components/shared/interactive-tooltip/interactive-tooltip';
 
+// Componentes Fase 2
+import { SiblingSender } from '../../components/shared/sibling-sender/sibling-sender';
+import { SiblingReceiver } from '../../components/shared/sibling-receiver/sibling-receiver';
+import { LoadingDemo } from '../../components/shared/loading-demo/loading-demo';
+
 /**
  * Página Home
  * 
@@ -44,7 +49,11 @@ import { InteractiveTooltip } from '../../components/shared/interactive-tooltip/
     HamburgerMenu,
     InteractiveModal,
     InteractiveTabs,
-    InteractiveTooltip
+    InteractiveTooltip,
+    // Fase 2
+    SiblingSender,
+    SiblingReceiver,
+    LoadingDemo
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

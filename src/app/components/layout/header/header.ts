@@ -1,7 +1,12 @@
-import { Component, ElementRef, ViewChild, Renderer2, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer2, HostListener, signal, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Button } from '../../../components/shared/button/button';
 import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
+import { AuthModal } from '../../shared/auth-modal/auth-modal';
+import { AuthService, AuthUser } from '../../../services/auth.service';
+import { ToastService } from '../../../services/toast.service';
+import { Subscription } from 'rxjs';
 
 /**
  * Componente Header
@@ -12,11 +17,11 @@ import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggl
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, Button, ThemeToggle],
+  imports: [CommonModule, RouterLink, Button, ThemeToggle, AuthModal],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnInit, OnDestroy {
   /**
    * Referencia al botón toggle del menú móvil
    * Cliente Fase 1: Uso de @ViewChild para manipulación DOM
@@ -28,7 +33,36 @@ export class Header {
    */
   isMenuOpen = false;
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+  /**
+   * Estado del modal de autenticación
+   */
+  showAuthModal = signal(false);
+
+  /**
+   * Usuario actual autenticado
+   */
+  currentUser = signal<AuthUser | null>(null);
+
+  private subscription: Subscription | null = null;
+
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private authService: AuthService,
+    private toastService: ToastService
+  ) {}
+
+  ngOnInit(): void {
+    this.subscription = this.authService.currentUser$.subscribe(
+      user => this.currentUser.set(user)
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   /**
    * Toggle del menú móvil
@@ -103,5 +137,29 @@ export class Header {
     if (!headerElement.contains(target)) {
       this.toggleMenu();
     }
+  }
+
+  /**
+   * Abrir modal de autenticación
+   */
+  openAuthModal(): void {
+    this.showAuthModal.set(true);
+    this.closeMenu();
+  }
+
+  /**
+   * Cerrar modal de autenticación
+   */
+  closeAuthModal(): void {
+    this.showAuthModal.set(false);
+  }
+
+  /**
+   * Cerrar sesión
+   */
+  logout(): void {
+    this.authService.logout();
+    this.toastService.info('Sesión cerrada');
+    this.closeMenu();
   }
 }

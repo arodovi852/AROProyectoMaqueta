@@ -1,0 +1,13 @@
+<div class="sibling-sender">
+  <h3 class="sibling-sender__title">Componente Emisor</h3>
+  <p class="sibling-sender__description">
+    Envía mensajes al componente receptor usando CommunicationService
+  </p>
+  <app-button 
+    variant="primary" 
+    size="md" 
+    (onClick)="sendMessage()">
+    Enviar mensaje
+  </app-button>
+  <p class="sibling-sender__counter">Mensajes enviados: {{ messageCount }}</p>
+</div>

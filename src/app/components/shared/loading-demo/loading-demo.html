@@ -1,0 +1,68 @@
+<div class="loading-demo">
+  <h3 class="loading-demo__title">Gestión de Loading States y Toasts</h3>
+  <p class="loading-demo__description">
+    Demuestra el uso de LoadingService, ToastService y UserService con operaciones asíncronas
+  </p>
+
+  <div class="loading-demo__section">
+    <h4 class="loading-demo__section-title">Estado de Carga Global y Local</h4>
+    <div class="loading-demo__buttons">
+      <app-button 
+        variant="primary" 
+        size="md"
+        [disabled]="isLoadingUsers()"
+        (onClick)="loadUsers()">
+        {{ isLoadingUsers() ? 'Cargando usuarios...' : 'Cargar usuarios' }}
+      </app-button>
+
+      <app-button 
+        variant="secondary" 
+        size="md"
+        [disabled]="isSaving() || !selectedUser()"
+        (onClick)="saveUser()">
+        {{ isSaving() ? 'Guardando...' : 'Guardar usuario' }}
+      </app-button>
+    </div>
+  </div>
+
+  @if (users().length > 0) {
+    <div class="loading-demo__section">
+      <h4 class="loading-demo__section-title">Usuarios Activos ({{ users().length }})</h4>
+      <div class="loading-demo__users">
+        @for (user of users(); track user.id) {
+          <div 
+            class="loading-demo__user"
+            [class.loading-demo__user--selected]="selectedUser()?.id === user.id"
+            (click)="selectUser(user)">
+            <div class="loading-demo__user-info">
+              <span class="loading-demo__user-name">{{ user.name }}</span>
+              <span class="loading-demo__user-email">{{ user.email }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <div class="loading-demo__section">
+    <h4 class="loading-demo__section-title">Tipos de Notificaciones</h4>
+    <p class="loading-demo__section-description">
+      Las notificaciones de success e info se muestran automáticamente al cargar/seleccionar usuarios
+    </p>
+    <div class="loading-demo__buttons">
+      <app-button 
+        variant="danger" 
+        size="md"
+        (onClick)="triggerError()">
+        Mostrar error
+      </app-button>
+
+      <app-button 
+        variant="ghost" 
+        size="md"
+        (onClick)="triggerWarning()">
+        Mostrar advertencia
+      </app-button>
+    </div>
+  </div>
+</div>

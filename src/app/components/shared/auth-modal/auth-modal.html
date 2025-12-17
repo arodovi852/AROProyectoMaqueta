@@ -1,0 +1,30 @@
+<div class="auth-modal-overlay" (click)="onOverlayClick($event)">
+  <div class="auth-modal">
+    <div class="auth-modal__content">
+      @if (showLogin()) {
+        <div class="auth-modal__section">
+          <app-login-form 
+            (submitForm)="onLoginSubmit($event)"
+            (createAccount)="onCreateAccountRequest()"
+            (closeForm)="onClose()">
+          </app-login-form>
+        </div>
+      } @else {
+        <div class="auth-modal__section">
+          <app-register-form 
+            (submitForm)="onRegisterSubmit($event)"
+            (closeForm)="onClose()">
+          </app-register-form>
+          <div class="auth-modal__switch">
+            <p>¿Ya tienes una cuenta?</p>
+            <button 
+              class="auth-modal__switch-btn" 
+              (click)="switchToLogin()">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

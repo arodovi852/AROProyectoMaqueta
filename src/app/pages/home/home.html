@@ -72,6 +72,37 @@
       </div>
     </section>
 
+    <!-- ========== FASE 2: COMUNICACIÓN Y SERVICIOS ========== -->
+    <section class="component-section phase-2">
+      <h2 class="component-section__title">FASE 2: Componentes Interactivos y Comunicación</h2>
+      <p class="component-section__description">
+        Implementación de servicios de comunicación, notificaciones y gestión de estados de carga
+      </p>
+
+      <!-- Comunicación entre Componentes -->
+      <div class="component-group">
+        <h3 class="component-group__title">Comunicación entre Componentes Hermanos</h3>
+        <p class="component-section__description">
+          Demuestra el uso de CommunicationService con RxJS BehaviorSubject
+        </p>
+        <div class="component-demo component-demo--siblings">
+          <app-sibling-sender />
+          <app-sibling-receiver />
+        </div>
+      </div>
+
+      <!-- Loading States y Toasts -->
+      <div class="component-group">
+        <h3 class="component-group__title">Sistema de Loading States y Notificaciones</h3>
+        <p class="component-section__description">
+          Demuestra LoadingService (spinner global), ToastService (notificaciones) y UserService (separación de responsabilidades)
+        </p>
+        <div class="component-demo">
+          <app-loading-demo />
+        </div>
+      </div>
+    </section>
+
     <!-- ========== COMPONENTES EXISTENTES ========== -->
 
     <!-- Categoría: Formularios -->
