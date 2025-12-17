@@ -297,6 +297,47 @@
       </div>
     </section>
 
+    <!-- ========== FASE 3: FORMULARIOS REACTIVOS AVANZADOS ========== -->
+    <section class="component-section phase-3">
+      <h2 class="component-section__title">FASE 3: Formularios Reactivos Avanzados</h2>
+      <p class="component-section__description">
+        Implementación de ReactiveFormsModule con validadores personalizados (síncronos, asíncronos y cross-field) y FormArray para contenido dinámico
+      </p>
+
+      <!-- Formulario de Contacto con Validadores Personalizados -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Contacto con Validadores Personalizados</h3>
+        <p class="component-section__description">
+          Validadores: NIF, Teléfono, Código Postal, y validación cross-field (al menos email o teléfono)
+        </p>
+        <div class="component-demo">
+          <app-contact-form-reactive />
+        </div>
+      </div>
+
+      <!-- Formulario de Factura con FormArray -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Factura con FormArray</h3>
+        <p class="component-section__description">
+          Demuestra FormArray para gestionar listas dinámicas: teléfonos, direcciones y artículos. Validación cross-field de total mínimo.
+        </p>
+        <div class="component-demo">
+          <app-invoice-form />
+        </div>
+      </div>
+
+      <!-- Formulario de Perfil con Validación Asíncrona -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Perfil con Validación Asíncrona</h3>
+        <p class="component-section__description">
+          Validadores asíncronos para verificar disponibilidad de email y username en tiempo real, con indicadores visuales de estado
+        </p>
+        <div class="component-demo">
+          <app-profile-form />
+        </div>
+      </div>
+    </section>
+
     <!-- Ejemplo de formularios completos -->
     <section class="component-section">
       <h2 class="component-section__title">6. Formularios Completos (con estructura semántica)</h2>

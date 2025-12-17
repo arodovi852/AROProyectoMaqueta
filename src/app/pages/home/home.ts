@@ -24,6 +24,11 @@ import { SiblingSender } from '../../components/shared/sibling-sender/sibling-se
 import { SiblingReceiver } from '../../components/shared/sibling-receiver/sibling-receiver';
 import { LoadingDemo } from '../../components/shared/loading-demo/loading-demo';
 
+// Componentes Fase 3
+import { ContactFormReactive } from '../../components/shared/contact-form-reactive/contact-form-reactive';
+import { InvoiceForm } from '../../components/shared/invoice-form/invoice-form';
+import { ProfileForm } from '../../components/shared/profile-form/profile-form';
+
 /**
  * Página Home
  * 
@@ -53,7 +58,11 @@ import { LoadingDemo } from '../../components/shared/loading-demo/loading-demo';
     // Fase 2
     SiblingSender,
     SiblingReceiver,
-    LoadingDemo
+    LoadingDemo,
+    // Fase 3
+    ContactFormReactive,
+    InvoiceForm,
+    ProfileForm
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
