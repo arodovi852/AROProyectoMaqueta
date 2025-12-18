@@ -71,6 +71,15 @@ export class Home {
   // Control de visibilidad de la notificación
   showNotification = false;
 
+  // Opciones para el select en la guía de estilos
+  selectOptions = [
+    { value: 'es', label: 'España' },
+    { value: 'fr', label: 'Francia' },
+    { value: 'it', label: 'Italia' },
+    { value: 'de', label: 'Alemania' },
+    { value: 'uk', label: 'Reino Unido' }
+  ];
+
   // Manejador para el botón de cierre
   onClose(): void {
     console.log('Botón de cierre clicado');

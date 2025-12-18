@@ -1,0 +1,342 @@
+/* ==========================================================================
+   PÁGINA: GUÍA DE ESTILOS
+   ==========================================================================
+   Página que muestra todos los componentes reutilizables del sistema
+   ========================================================================== */
+
+/* Botón flotante para volver */
+.style-guide__back-button {
+  position: fixed;
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+  z-index: var(--z-index-sticky);
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--color-secondary);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  border: var(--border-medium) solid var(--color-secondary-dark);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition-colors);
+}
+
+.style-guide__back-button:hover {
+  background: var(--color-secondary-light);
+  transform: translateX(-0.25rem);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Container principal */
+.style-guide {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, rgba(28, 27, 24, 0.95) 100%);
+  padding: var(--spacing-8) var(--spacing-6);
+  padding-top: var(--spacing-20);
+}
+
+/* Header */
+.style-guide__header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  padding-bottom: var(--spacing-8);
+  border-bottom: var(--border-thick) solid var(--color-primary);
+}
+
+.style-guide__title {
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-primary);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-4) 0;
+  text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.style-guide__description {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-secondary);
+  color: var(--color-white);
+  opacity: var(--opacity-80);
+  margin: 0;
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Navegación interna */
+.style-guide__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-bottom: var(--spacing-12);
+  padding: var(--spacing-6);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  border: var(--border-medium) solid var(--color-secondary);
+}
+
+.style-guide__nav-link {
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  transition: var(--transition-colors);
+  border: var(--border-medium) solid transparent;
+}
+
+.style-guide__nav-link:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-lightest);
+  transform: translateY(-0.125rem);
+  box-shadow: var(--shadow-md);
+}
+
+/* Content */
+.style-guide__content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Secciones */
+.style-guide__section {
+  margin-bottom: var(--spacing-20);
+  padding: var(--spacing-8);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-2xl);
+  border: var(--border-medium) solid var(--color-primary);
+}
+
+.style-guide__section-title {
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-primary);
+  color: var(--color-secondary-light);
+  margin: 0 0 var(--spacing-8) 0;
+  padding-bottom: var(--spacing-4);
+  border-bottom: var(--border-medium) solid var(--color-secondary);
+}
+
+/* Componentes individuales */
+.style-guide__component {
+  margin-bottom: var(--spacing-12);
+  padding: var(--spacing-6);
+  background: rgba(232, 147, 207, 0.05);
+  border-radius: var(--radius-xl);
+  border: var(--border-thin) solid var(--color-primary-light);
+}
+
+.style-guide__component:last-child {
+  margin-bottom: 0;
+}
+
+.style-guide__component-title {
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-secondary);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-6) 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.style-guide__component-note {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-300);
+  font-style: italic;
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+/* Demo areas */
+.style-guide__component-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background: rgba(61, 42, 69, 0.3);
+  border-radius: var(--radius-lg);
+  border: var(--border-thin) solid var(--color-primary-dark);
+}
+
+.style-guide__component-demo--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.style-guide__component-demo--column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.style-guide__component-demo--form {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* Rating Card Component */
+.rating-card {
+  background: rgba(61, 42, 69, 0.8);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  max-width: 22rem;
+  border: var(--border-medium) solid var(--color-primary);
+}
+
+.rating-card__chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  height: 8rem;
+  margin-bottom: var(--spacing-6);
+}
+
+.rating-card__bar {
+  flex: 1;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: var(--transition-colors);
+  min-height: 2rem;
+}
+
+.rating-card__bar:hover {
+  background: var(--color-primary-lightest);
+}
+
+.rating-card__content {
+  background: var(--color-primary-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+}
+
+.rating-card__stars {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.rating-card__star {
+  font-size: var(--font-size-2xl);
+  color: rgba(61, 42, 69, 0.4);
+}
+
+.rating-card__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: transparent;
+  border: none;
+  color: var(--color-primary-dark);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.rating-card__button:hover {
+  color: var(--color-primary);
+}
+
+.rating-card__icon {
+  font-size: var(--font-size-xl);
+}
+
+/* Modal overlay para formularios */
+.style-guide__modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal);
+  padding: var(--spacing-4);
+  animation: fadeIn var(--duration-base) var(--ease-in-out);
+}
+
+.style-guide__modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp var(--duration-base) var(--ease-out);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .style-guide {
+    padding: var(--spacing-4) var(--spacing-2);
+  }
+
+  .style-guide__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .style-guide__description {
+    font-size: var(--font-size-base);
+  }
+
+  .style-guide__nav {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .style-guide__nav-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .style-guide__section {
+    padding: var(--spacing-4);
+  }
+
+  .style-guide__section-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .style-guide__component {
+    padding: var(--spacing-4);
+  }
+
+  .style-guide__component-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .style-guide__component-demo--row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

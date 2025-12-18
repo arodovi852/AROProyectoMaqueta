@@ -1,5 +1,14 @@
 <!-- Página de Demostración de Componentes -->
 <div class="component-showcase">
+  <!-- Botones de navegación -->
+  <nav class="home-nav">
+    <a href="#fases">
+      <app-button text="Fases de Cliente" variant="primary" size="lg" />
+    </a>
+    <a href="#guia-estilos">
+      <app-button text="Guía de Estilos" variant="secondary" size="lg" />
+    </a>
+  </nav>
   <div class="component-showcase__container">
     <header class="component-showcase__header">
       <h1 class="component-showcase__title">Sistema de Componentes</h1>
@@ -7,6 +16,9 @@
         Demostración de todos los componentes disponibles en el proyecto
       </p>
     </header>
+
+    <!-- Sección de Fases de Cliente -->
+    <div id="fases" class="fases-section">
 
     <!-- ========== FASE 1: MANIPULACIÓN DEL DOM Y EVENTOS ========== -->
     <section class="component-section phase-1">
@@ -337,8 +349,226 @@
         </div>
       </div>
     </section>
+    </div>
+    <!-- Fin de Fases de Cliente -->
 
-    <!-- Ejemplo de formularios completos -->
+    <!-- ========== GUÍA DE ESTILOS ========== -->
+    <div id="guia-estilos" class="style-guide-section">
+      <header class="style-guide-section__header">
+        <h1 class="style-guide-section__title">Guía de Estilos</h1>
+        <p class="style-guide-section__description">
+          Catálogo completo de componentes reutilizables del sistema de diseño
+        </p>
+      </header>
+
+    <!-- SECCIÓN 1: COMPONENTES DE FORMULARIO -->
+    <section class="component-section">
+      <h2 class="component-section__title">1. Componentes de Formulario</h2>
+      
+      <!-- Form Input -->
+      <div class="component-group">
+        <h3 class="component-group__title">Form Input</h3>
+        <div class="component-demo component-demo--form">
+          <app-form-input
+            id="guide-username"
+            label="Username / Email"
+            type="text"
+            placeholder="Username / Email"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-email"
+            label="Email"
+            type="email"
+            placeholder="Email"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-password"
+            label="Password"
+            type="password"
+            placeholder="Password"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-confirm-password"
+            label="Confirm password"
+            type="password"
+            placeholder="Confirm password"
+            [required]="true"
+          />
+        </div>
+      </div>
+
+      <!-- Form Textarea -->
+      <div class="component-group">
+        <h3 class="component-group__title">Form Textarea</h3>
+        <div class="component-demo component-demo--form">
+          <app-form-textarea
+            id="guide-textarea"
+            label="Mensaje"
+            placeholder="Escribe tu mensaje aquí..."
+            [rows]="4"
+            [required]="true"
+          />
+        </div>
+      </div>
+
+      <!-- Form Select -->
+      <div class="component-group">
+        <h3 class="component-group__title">Form Select</h3>
+        <div class="component-demo component-demo--form">
+          <app-form-select
+            id="guide-select"
+            label="País"
+            [options]="selectOptions"
+            placeholder="Selecciona una opción"
+            [required]="true"
+          />
+        </div>
+      </div>
+
+      <!-- Form Checkbox -->
+      <div class="component-group">
+        <h3 class="component-group__title">Form Checkbox</h3>
+        <div class="component-demo component-demo--form">
+          <app-form-checkbox
+            checkboxId="guide-checkbox"
+            label="Acepto los términos y condiciones"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: BOTONES -->
+    <section class="component-section">
+      <h2 class="component-section__title">2. Botones</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Button - Variantes</h3>
+        <div class="component-demo component-demo--row">
+          <app-button text="Primary" variant="primary" />
+          <app-button text="Secondary" variant="secondary" />
+          <app-button text="Ghost" variant="ghost" />
+          <app-button text="Danger" variant="danger" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Button - Tamaños</h3>
+        <div class="component-demo component-demo--row">
+          <app-button text="Small (sm)" size="sm" />
+          <app-button text="Medium (md)" size="md" />
+          <app-button text="Large (lg)" size="lg" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Button - Estados</h3>
+        <div class="component-demo component-demo--row">
+          <app-button text="Normal" variant="primary" />
+          <div class="button-hover-example">
+            <app-button text="Hover (pasa el mouse)" variant="primary" />
+          </div>
+          <app-button text="Disabled" variant="primary" [disabled]="true" />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Close Button</h3>
+        <div class="component-demo component-demo--row">
+          <app-close-button />
+          <app-close-button size="lg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: TARJETAS Y CONTENEDORES -->
+    <section class="component-section">
+      <h2 class="component-section__title">3. Tarjetas y Contenedores</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Card - Media (Series/Películas)</h3>
+        <div class="component-demo">
+          <app-card
+            variant="media"
+            imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
+            hoverTitle="TWIN PEAKS"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: NOTIFICACIONES Y ALERTAS -->
+    <section class="component-section">
+      <h2 class="component-section__title">4. Notificaciones y Alertas</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Alert</h3>
+        <div class="component-demo component-demo--column">
+          <app-alert
+            type="info"
+            message="This is a informational alert message."
+            [dismissible]="false"
+          />
+          
+          <app-alert
+            type="success"
+            message="Your changes have been saved successfully."
+            [dismissible]="false"
+          />
+          
+          <app-alert
+            type="warning"
+            message="Please review your input before proceeding."
+            [dismissible]="false"
+          />
+          
+          <app-alert
+            type="error"
+            message="An error occurred while processing your request."
+            [dismissible]="false"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: CARDS -->
+    <section class="component-section">
+      <h2 class="component-section__title">5. Cards</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">Card - Media Variant</h3>
+        <div class="component-demo">
+          <app-card
+            variant="media"
+            imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
+            hoverTitle="TWIN PEAKS"
+          />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">Card - Rating Variant</h3>
+        <p class="component-section__description">
+          Card con gráfico de valoraciones, sistema de estrellas y botón de acción
+        </p>
+        <div class="component-demo">
+          <app-card
+            variant="rating"
+            title="Series rating"
+            [statBars]="[40, 50, 70, 100, 90, 75, 60, 85, 55, 45]"
+            [totalStars]="5"
+            [filledStars]="3"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: FORMULARIOS COMPLETOS -->
     <section class="component-section">
       <h2 class="component-section__title">6. Formularios Completos (con estructura semántica)</h2>
       

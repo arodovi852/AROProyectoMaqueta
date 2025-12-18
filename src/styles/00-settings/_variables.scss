@@ -52,14 +52,14 @@
 --color-info-dark: #1976D2;
 
 //Colores de texto principal (Light mode - por defecto)
---color-text-primary: #1C1B18;
---color-text-secondary: #514F48;
+--color-text-primary: var(--color-primary-dark);
+--color-text-secondary: var(--color-primary);
 --color-text-disabled: var(--color-neutral-500);
 
 //Colores de fondo (Light mode - por defecto)
---color-bg-primary: #FFFFFF;
---color-bg-secondary: #F8F7F2;
---color-bg-tertiary: var(--color-neutral-100);
+--color-bg-primary: var(--color-secondary-lightest);
+--color-bg-secondary: var(--color-secondary-light);
+--color-bg-tertiary: var(--color-neutral-50);
 
 
 
