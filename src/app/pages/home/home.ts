@@ -10,6 +10,25 @@ import { FormTextarea } from '../../components/shared/form-textarea/form-textare
 import { LoginForm } from '../../components/shared/login-form/login-form';
 import { RegisterForm } from '../../components/shared/register-form/register-form';
 
+// Componentes Fase 1
+import { ThemeSwitcher } from '../../components/shared/theme-switcher/theme-switcher';
+import { DomManipulation } from '../../components/shared/dom-manipulation/dom-manipulation';
+import { EventDemo } from '../../components/shared/event-demo/event-demo';
+import { HamburgerMenu } from '../../components/shared/hamburger-menu/hamburger-menu';
+import { InteractiveModal } from '../../components/shared/interactive-modal/interactive-modal';
+import { InteractiveTabs } from '../../components/shared/interactive-tabs/interactive-tabs';
+import { InteractiveTooltip } from '../../components/shared/interactive-tooltip/interactive-tooltip';
+
+// Componentes Fase 2
+import { SiblingSender } from '../../components/shared/sibling-sender/sibling-sender';
+import { SiblingReceiver } from '../../components/shared/sibling-receiver/sibling-receiver';
+import { LoadingDemo } from '../../components/shared/loading-demo/loading-demo';
+
+// Componentes Fase 3
+import { ContactFormReactive } from '../../components/shared/contact-form-reactive/contact-form-reactive';
+import { InvoiceForm } from '../../components/shared/invoice-form/invoice-form';
+import { ProfileForm } from '../../components/shared/profile-form/profile-form';
+
 /**
  * Página Home
  * 
@@ -27,7 +46,23 @@ import { RegisterForm } from '../../components/shared/register-form/register-for
     FormSelect,
     FormTextarea,
     LoginForm,
-    RegisterForm
+    RegisterForm,
+    // Fase 1
+    ThemeSwitcher,
+    DomManipulation,
+    EventDemo,
+    HamburgerMenu,
+    InteractiveModal,
+    InteractiveTabs,
+    InteractiveTooltip,
+    // Fase 2
+    SiblingSender,
+    SiblingReceiver,
+    LoadingDemo,
+    // Fase 3
+    ContactFormReactive,
+    InvoiceForm,
+    ProfileForm
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -35,6 +70,15 @@ import { RegisterForm } from '../../components/shared/register-form/register-for
 export class Home {
   // Control de visibilidad de la notificación
   showNotification = false;
+
+  // Opciones para el select en la guía de estilos
+  selectOptions = [
+    { value: 'es', label: 'España' },
+    { value: 'fr', label: 'Francia' },
+    { value: 'it', label: 'Italia' },
+    { value: 'de', label: 'Alemania' },
+    { value: 'uk', label: 'Reino Unido' }
+  ];
 
   // Manejador para el botón de cierre
   onClose(): void {

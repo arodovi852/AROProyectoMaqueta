@@ -1,0 +1,28 @@
+<div class="tooltip">
+  <!-- Trigger (contenido envolvente) -->
+  <div 
+    class="tooltip__trigger"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    tabindex="0"
+  >
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Tooltip -->
+  <div
+    #tooltipElement
+    class="tooltip__content"
+    [class.tooltip__content--visible]="showTooltip"
+    [class.tooltip__content--top]="position === 'top'"
+    [class.tooltip__content--bottom]="position === 'bottom'"
+    [class.tooltip__content--left]="position === 'left'"
+    [class.tooltip__content--right]="position === 'right'"
+    role="tooltip"
+    [attr.aria-hidden]="!showTooltip"
+  >
+    {{ text }}
+  </div>
+</div>

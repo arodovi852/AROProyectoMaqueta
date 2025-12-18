@@ -1,0 +1,105 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-block;
+    cursor: help;
+
+    &:focus {
+      outline: 2px solid var(--primary-color, #3b82f6);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 9999;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--tooltip-bg, #1f2937);
+    color: var(--tooltip-text, #fff);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    // Arrow
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+    }
+
+    // Top position arrow
+    &--top::before {
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: var(--tooltip-bg, #1f2937);
+    }
+
+    // Bottom position arrow
+    &--bottom::before {
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: var(--tooltip-bg, #1f2937);
+    }
+
+    // Left position arrow
+    &--left::before {
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-color: var(--tooltip-bg, #1f2937);
+    }
+
+    // Right position arrow
+    &--right::before {
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right-color: var(--tooltip-bg, #1f2937);
+    }
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Dark mode
+:host-context(.dark-mode) {
+  .tooltip {
+    &__content {
+      background-color: var(--tooltip-bg, #374151);
+      color: var(--tooltip-text, #f9fafb);
+
+      &--top::before {
+        border-top-color: var(--tooltip-bg, #374151);
+      }
+
+      &--bottom::before {
+        border-bottom-color: var(--tooltip-bg, #374151);
+      }
+
+      &--left::before {
+        border-left-color: var(--tooltip-bg, #374151);
+      }
+
+      &--right::before {
+        border-right-color: var(--tooltip-bg, #374151);
+      }
+    }
+  }
+}

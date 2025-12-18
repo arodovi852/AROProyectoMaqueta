@@ -1,5 +1,14 @@
 <!-- Página de Demostración de Componentes -->
 <div class="component-showcase">
+  <!-- Botones de navegación -->
+  <nav class="home-nav">
+    <a href="#fases">
+      <app-button text="Fases de Cliente" variant="primary" size="lg" />
+    </a>
+    <a href="#guia-estilos">
+      <app-button text="Guía de Estilos" variant="secondary" size="lg" />
+    </a>
+  </nav>
   <div class="component-showcase__container">
     <header class="component-showcase__header">
       <h1 class="component-showcase__title">Sistema de Componentes</h1>
@@ -8,86 +17,245 @@
       </p>
     </header>
 
-    <!-- Categoría: Formularios -->
+    <!-- Sección de Fases de Cliente -->
+    <div id="fases" class="fases-section">
+
+    <!-- ========== FASE 1: MANIPULACIÓN DEL DOM Y EVENTOS ========== -->
+    <section class="component-section phase-1">
+      <h2 class="component-section__title">FASE 1: Manipulación del DOM y Eventos</h2>
+      <p class="component-section__description">
+        Implementación de manipulación del DOM, gestión de eventos y componentes interactivos
+      </p>
+
+      <!-- Theme Switcher -->
+      <div class="component-group">
+        <h3 class="component-group__title">Theme Switcher</h3>
+        <div class="component-demo">
+          <app-theme-switcher />
+        </div>
+      </div>
+
+      <!-- Manipulación del DOM -->
+      <div class="component-group">
+        <h3 class="component-group__title">Manipulación del DOM</h3>
+        <div class="component-demo">
+          <app-dom-manipulation />
+        </div>
+      </div>
+
+      <!-- Sistema de Eventos -->
+      <div class="component-group">
+        <h3 class="component-group__title">Sistema de Eventos</h3>
+        <div class="component-demo">
+          <app-event-demo />
+        </div>
+      </div>
+
+      <!-- Menú Hamburguesa -->
+      <div class="component-group">
+        <h3 class="component-group__title">Menú Hamburguesa</h3>
+        <div class="component-demo">
+          <app-hamburger-menu />
+        </div>
+      </div>
+
+      <!-- Modal Interactivo -->
+      <div class="component-group">
+        <h3 class="component-group__title">Modal Interactivo</h3>
+        <div class="component-demo">
+          <app-interactive-modal />
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="component-group">
+        <h3 class="component-group__title">Tabs</h3>
+        <div class="component-demo">
+          <app-interactive-tabs />
+        </div>
+      </div>
+
+      <!-- Tooltips -->
+      <div class="component-group">
+        <h3 class="component-group__title">Tooltips</h3>
+        <div class="component-demo">
+          <app-interactive-tooltip />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FASE 2: COMUNICACIÓN Y SERVICIOS ========== -->
+    <section class="component-section phase-2">
+      <h2 class="component-section__title">FASE 2: Componentes Interactivos y Comunicación</h2>
+      <p class="component-section__description">
+        Implementación de servicios de comunicación, notificaciones y gestión de estados de carga
+      </p>
+
+      <!-- Comunicación entre Componentes -->
+      <div class="component-group">
+        <h3 class="component-group__title">Comunicación entre Componentes Hermanos</h3>
+        <p class="component-section__description">
+          Demuestra el uso de CommunicationService con RxJS BehaviorSubject
+        </p>
+        <div class="component-demo component-demo--siblings">
+          <app-sibling-sender />
+          <app-sibling-receiver />
+        </div>
+      </div>
+
+      <!-- Loading States y Toasts -->
+      <div class="component-group">
+        <h3 class="component-group__title">Sistema de Loading States y Notificaciones</h3>
+        <p class="component-section__description">
+          Demuestra LoadingService (spinner global), ToastService (notificaciones) y UserService (separación de responsabilidades)
+        </p>
+        <div class="component-demo">
+          <app-loading-demo />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FASE 3: FORMULARIOS REACTIVOS AVANZADOS ========== -->
+    <section class="component-section phase-3">
+      <h2 class="component-section__title">FASE 3: Formularios Reactivos Avanzados</h2>
+      <p class="component-section__description">
+        Implementación de ReactiveFormsModule con validadores personalizados (síncronos, asíncronos y cross-field) y FormArray para contenido dinámico
+      </p>
+
+      <!-- Formulario de Contacto con Validadores Personalizados -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Contacto con Validadores Personalizados</h3>
+        <p class="component-section__description">
+          Validadores: NIF, Teléfono, Código Postal, y validación cross-field (al menos email o teléfono)
+        </p>
+        <div class="component-demo">
+          <app-contact-form-reactive />
+        </div>
+      </div>
+
+      <!-- Formulario de Factura con FormArray -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Factura con FormArray</h3>
+        <p class="component-section__description">
+          Demuestra FormArray para gestionar listas dinámicas: teléfonos, direcciones y artículos. Validación cross-field de total mínimo.
+        </p>
+        <div class="component-demo">
+          <app-invoice-form />
+        </div>
+      </div>
+
+      <!-- Formulario de Perfil con Validación Asíncrona -->
+      <div class="component-group">
+        <h3 class="component-group__title">Formulario de Perfil con Validación Asíncrona</h3>
+        <p class="component-section__description">
+          Validadores asíncronos para verificar disponibilidad de email y username en tiempo real, con indicadores visuales de estado
+        </p>
+        <div class="component-demo">
+          <app-profile-form />
+        </div>
+      </div>
+    </section>
+    </div>
+    <!-- Fin de Fases de Cliente -->
+
+    <!-- ========== GUÍA DE ESTILOS ========== -->
+    <div id="guia-estilos" class="style-guide-section">
+      <header class="style-guide-section__header">
+        <h1 class="style-guide-section__title">Guía de Estilos</h1>
+        <p class="style-guide-section__description">
+          Catálogo completo de componentes reutilizables del sistema de diseño
+        </p>
+      </header>
+
+    <!-- SECCIÓN 1: COMPONENTES DE FORMULARIO -->
     <section class="component-section">
       <h2 class="component-section__title">1. Componentes de Formulario</h2>
       
+      <!-- Form Input -->
       <div class="component-group">
         <h3 class="component-group__title">Form Input</h3>
-        <div class="component-demo">
-          <div class="demo-row">
-            <app-form-input
-              label="Username / Email"
-              type="text"
-              placeholder="Username / Email"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Email"
-              type="email"
-              placeholder="Email"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Password"
-              type="password"
-              placeholder="Password"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Confirm password"
-              type="password"
-              placeholder="Confirm password"
-              [required]="true"
-            />
-          </div>
+        <div class="component-demo component-demo--form">
+          <app-form-input
+            id="guide-username"
+            label="Username / Email"
+            type="text"
+            placeholder="Username / Email"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-email"
+            label="Email"
+            type="email"
+            placeholder="Email"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-password"
+            label="Password"
+            type="password"
+            placeholder="Password"
+            [required]="true"
+          />
+          
+          <app-form-input
+            id="guide-confirm-password"
+            label="Confirm password"
+            type="password"
+            placeholder="Confirm password"
+            [required]="true"
+          />
         </div>
       </div>
 
+      <!-- Form Textarea -->
       <div class="component-group">
         <h3 class="component-group__title">Form Textarea</h3>
-        <div class="component-demo">
+        <div class="component-demo component-demo--form">
           <app-form-textarea
+            id="guide-textarea"
             label="Mensaje"
             placeholder="Escribe tu mensaje aquí..."
+            [rows]="4"
             [required]="true"
           />
         </div>
       </div>
 
+      <!-- Form Select -->
       <div class="component-group">
         <h3 class="component-group__title">Form Select</h3>
-        <div class="component-demo">
+        <div class="component-demo component-demo--form">
           <app-form-select
+            id="guide-select"
             label="País"
+            [options]="selectOptions"
+            placeholder="Selecciona una opción"
             [required]="true"
           />
         </div>
       </div>
 
+      <!-- Form Checkbox -->
       <div class="component-group">
         <h3 class="component-group__title">Form Checkbox</h3>
-        <div class="component-demo">
+        <div class="component-demo component-demo--form">
           <app-form-checkbox
+            checkboxId="guide-checkbox"
             label="Acepto los términos y condiciones"
           />
         </div>
       </div>
     </section>
 
-    <!-- Categoría: Botones -->
+    <!-- SECCIÓN 2: BOTONES -->
     <section class="component-section">
       <h2 class="component-section__title">2. Botones</h2>
       
       <div class="component-group">
         <h3 class="component-group__title">Button - Variantes</h3>
-        <div class="component-demo component-demo--horizontal">
+        <div class="component-demo component-demo--row">
           <app-button text="Primary" variant="primary" />
           <app-button text="Secondary" variant="secondary" />
           <app-button text="Ghost" variant="ghost" />
@@ -97,102 +265,111 @@
 
       <div class="component-group">
         <h3 class="component-group__title">Button - Tamaños</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-button text="Small (sm)" variant="primary" size="sm" />
-          <app-button text="Medium (md)" variant="primary" size="md" />
-          <app-button text="Large (lg)" variant="primary" size="lg" />
+        <div class="component-demo component-demo--row">
+          <app-button text="Small (sm)" size="sm" />
+          <app-button text="Medium (md)" size="md" />
+          <app-button text="Large (lg)" size="lg" />
         </div>
       </div>
 
       <div class="component-group">
         <h3 class="component-group__title">Button - Estados</h3>
-        <div class="component-demo component-demo--horizontal">
+        <div class="component-demo component-demo--row">
           <app-button text="Normal" variant="primary" />
-          <app-button text="Hover (pasa el mouse)" variant="primary" />
+          <div class="button-hover-example">
+            <app-button text="Hover (pasa el mouse)" variant="primary" />
+          </div>
           <app-button text="Disabled" variant="primary" [disabled]="true" />
         </div>
       </div>
 
       <div class="component-group">
         <h3 class="component-group__title">Close Button</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-close-button (closeClick)="onClose()" />
+        <div class="component-demo component-demo--row">
+          <app-close-button />
         </div>
       </div>
     </section>
 
-    <!-- Categoría: Tarjetas y Contenedores -->
+    <!-- SECCIÓN 3: TARJETAS Y CONTENEDORES -->
     <section class="component-section">
       <h2 class="component-section__title">3. Tarjetas y Contenedores</h2>
       
       <div class="component-group">
         <h3 class="component-group__title">Card - Media (Series/Películas)</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-card 
+        <div class="component-demo">
+          <app-card
             variant="media"
             imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
-            imageAlt="Twin Peaks"
-            hoverTitle="Twin Peaks"
+            hoverTitle="TWIN PEAKS"
           />
         </div>
       </div>
     </section>
 
-    <!-- Categoría: Notificaciones y Alertas -->
+    <!-- SECCIÓN 4: NOTIFICACIONES Y ALERTAS -->
     <section class="component-section">
       <h2 class="component-section__title">4. Notificaciones y Alertas</h2>
       
       <div class="component-group">
         <h3 class="component-group__title">Alert</h3>
         <div class="component-demo component-demo--column">
-          <app-alert type="info" title="Information" [dismissible]="false">
+          <app-alert
+            type="info"
+            title="Information"
+            [dismissible]="false">
             This is an informational alert message.
           </app-alert>
           
-          <app-alert type="success" title="Success!" [dismissible]="false">
+          <app-alert
+            type="success"
+            title="Success!"
+            [dismissible]="false">
             Your changes have been saved successfully.
           </app-alert>
           
-          <app-alert type="warning" title="Warning" [dismissible]="false">
+          <app-alert
+            type="warning"
+            title="Warning"
+            [dismissible]="false">
             Please review your input before proceeding.
           </app-alert>
           
-          <app-alert type="error" title="Error" [dismissible]="false">
+          <app-alert
+            type="error"
+            title="Error"
+            [dismissible]="false">
             An error occurred while processing your request.
           </app-alert>
         </div>
       </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Notification</h3>
-        <div class="component-demo">
-          
-        </div>
-      </div>
     </section>
 
-    <!-- Cards con variantes -->
+    <!-- SECCIÓN 5: CARDS -->
     <section class="component-section">
       <h2 class="component-section__title">5. Cards</h2>
       
       <div class="component-group">
         <h3 class="component-group__title">Card - Media Variant</h3>
         <div class="component-demo">
-          <app-card 
-            variant="media" 
+          <app-card
+            variant="media"
             imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
-            hoverTitle="Twin Peaks"
+            hoverTitle="TWIN PEAKS"
           />
         </div>
       </div>
 
       <div class="component-group">
         <h3 class="component-group__title">Card - Rating Variant</h3>
+        <p class="component-section__description">
+          Card con gráfico de valoraciones, sistema de estrellas y botón de acción
+        </p>
         <div class="component-demo">
-          <app-card 
-            variant="rating" 
+          <app-card
+            variant="rating"
             title="Series rating"
-            [statBars]="[20, 30, 40, 60, 80, 100, 90, 70, 50, 40]"
+            [statBars]="[40, 50, 70, 100, 90, 75, 60, 85, 55, 45]"
             [totalStars]="5"
             [filledStars]="3"
           />
@@ -200,7 +377,7 @@
       </div>
     </section>
 
-    <!-- Ejemplo de formularios completos -->
+    <!-- SECCIÓN 6: FORMULARIOS COMPLETOS -->
     <section class="component-section">
       <h2 class="component-section__title">6. Formularios Completos (con estructura semántica)</h2>
       

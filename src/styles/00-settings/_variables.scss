@@ -17,7 +17,7 @@
 --color-primary-lightest: #EDD5FF;
 
 //Colores secundarios
---color-secondary: #BFBF64;
+--color-secondary: #ecc332;
 --color-secondary-dark: #59592F;
 --color-secondary-light: #FEFE85;
 --color-secondary-lightest: #FFFFCC;
@@ -51,15 +51,22 @@
 --color-info-light: #64B5F6;
 --color-info-dark: #1976D2;
 
-//Colores de texto principal
---color-text-primary: var(--color-neutral-50);
---color-text-secondary: var(--color-neutral-300);
+//Colores de texto principal (Light mode - por defecto)
+--color-text-primary: var(--color-primary-dark);
+--color-text-secondary: var(--color-primary);
 --color-text-disabled: var(--color-neutral-500);
 
-//Colores de fondo
---color-bg-primary: var(--color-primary-dark);
---color-bg-secondary: var(--color-neutral-900);
---color-bg-tertiary: var(--color-neutral-800);
+//Colores de fondo (Light mode - por defecto)
+--color-bg-primary: var(--color-secondary-lightest);
+--color-bg-secondary: var(--color-secondary-light);
+--color-bg-tertiary: var(--color-neutral-50);
+
+//Cajas de contenido - niveles de anidación (Light mode)
+--color-box-level-1: #FFF9E6;  // Más claro - caja externa
+--color-box-level-2: #FFF4CC;  // Medio claro
+--color-box-level-3: #FFEFB3;  // Medio
+--color-box-level-4: #FFE999;  // Medio oscuro
+--color-box-level-5: #FFE380;  // Más oscuro - caja más interna
 
 
 
@@ -120,7 +127,15 @@
 --spacing-20: 5rem;
 --spacing-24: 6rem;
 --spacing-28: 7rem;
---spacing-32: 8rem; 
+--spacing-32: 8rem;
+
+// Alias de espaciado
+--spacing-xs: 0.5rem;   // 8px
+--spacing-sm: 0.75rem;  // 12px
+--spacing-md: 1rem;     // 16px
+--spacing-lg: 1.5rem;   // 24px
+--spacing-xl: 2rem;     // 32px
+--spacing-2xl: 3rem;    // 48px 
 
 
 //Breakpoints
@@ -237,6 +252,29 @@
 --opacity-80: 0.8;
 --opacity-90: 0.9;
 --opacity-100: 1;
+}
+
+// ==========================================================================
+// DARK MODE - SOBREESCRITURA DE VARIABLES
+// ==========================================================================
+
+.dark-mode {
+  //Colores de texto para dark mode
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E8E6DB;
+  --color-text-disabled: var(--color-neutral-500);
+
+  //Colores de fondo para dark mode
+  --color-bg-primary: var(--color-primary-dark);
+  --color-bg-secondary: var(--color-neutral-900);
+  --color-bg-tertiary: var(--color-neutral-800);
+
+  //Cajas de contenido - niveles de anidación (Dark mode)
+  --color-box-level-1: #2D1A33;  // Más claro - caja externa
+  --color-box-level-2: #251629;  // Medio claro
+  --color-box-level-3: #1E1222;  // Medio
+  --color-box-level-4: #170E1A;  // Medio oscuro
+  --color-box-level-5: #100A13;  // Más oscuro - caja más interna
 }
 
 // ==========================================================================

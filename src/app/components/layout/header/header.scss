@@ -78,6 +78,20 @@
 }
 
 // ==========================================================================
+// ELEMENTO: .header__username (Nombre de usuario)
+// ==========================================================================
+
+.header__username {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+// ==========================================================================
 // ELEMENTO: .header__search (Búsqueda)
 // ==========================================================================
 
@@ -233,6 +247,21 @@
     }
   }
 
+  // Modificador: botón Log Out
+  &--logout {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #ff6b6b;
+
+    &:hover {
+      background-color: rgba(244, 67, 54, 0.3);
+      color: #ff5252;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
   // Modificador: botón Lists
   &--lists {
     background-color: transparent;
@@ -253,6 +282,24 @@
   &:focus-visible {
     @include focus-visible;
   }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-user (Usuario en menú móvil)
+// ==========================================================================
+
+.header__mobile-user {
+  padding: var(--spacing-4);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-3);
+  text-align: center;
+}
+
+.header__mobile-username {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
 }
 
 // ==========================================================================

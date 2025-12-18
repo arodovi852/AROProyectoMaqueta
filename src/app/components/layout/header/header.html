@@ -25,13 +25,25 @@
       <!-- Botón Theme Toggle -->
       <app-theme-toggle class="header__theme-toggle" />
       
-      <!-- Botón Log In -->
-      <app-button 
-        text="Log In"
-        variant="primary"
-        size="md"
-        class="header__btn header__btn--login"
-      />
+      <!-- Botones Log In/User o Log Out -->
+      @if (currentUser()) {
+        <span class="header__username">{{ currentUser()!.username }}</span>
+        <app-button 
+          text="Log Out"
+          variant="secondary"
+          size="md"
+          class="header__btn header__btn--logout"
+          (onClick)="logout()"
+        />
+      } @else {
+        <app-button 
+          text="Log In"
+          variant="primary"
+          size="md"
+          class="header__btn header__btn--login"
+          (onClick)="openAuthModal()"
+        />
+      }
 
       <!-- Botón Lists -->
       <app-button 
@@ -67,13 +79,28 @@
       class="header__mobile-menu"
       [class.header__mobile-menu--open]="isMenuOpen"
     >
-      <button 
-        type="button" 
-        class="header__mobile-btn header__mobile-btn--login" 
-        aria-label="Iniciar sesión"
-      >
-        Log In
-      </button>
+      @if (currentUser()) {
+        <div class="header__mobile-user">
+          <span class="header__mobile-username">{{ currentUser()!.username }}</span>
+        </div>
+        <button 
+          type="button" 
+          class="header__mobile-btn header__mobile-btn--logout" 
+          aria-label="Cerrar sesión"
+          (click)="logout()"
+        >
+          Log Out
+        </button>
+      } @else {
+        <button 
+          type="button" 
+          class="header__mobile-btn header__mobile-btn--login" 
+          aria-label="Iniciar sesión"
+          (click)="openAuthModal()"
+        >
+          Log In
+        </button>
+      }
 
       <button 
         type="button" 
@@ -84,4 +111,9 @@
       </button>
     </div>
   </div>
+
+  <!-- Modal de autenticación -->
+  @if (showAuthModal()) {
+    <app-auth-modal (close)="closeAuthModal()"></app-auth-modal>
+  }
 </header>

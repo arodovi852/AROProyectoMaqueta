@@ -1,886 +1,369 @@
-# FASE 1: Arquitectura CSS y Comunicación Visual
+# Sección 1: Arquitectura CSS y comunicación visual.
 
-Este documento describe la arquitectura CSS completa del proyecto, incluyendo los principios de diseño visual, metodología, organización de archivos y sistema de design tokens.
+## 1.1 Principios de comunicación visual: Explica los 5 principios básicos y cómo los aplicas en tu proyecto:
 
----
+### Jerarquía: Cómo usas tamaños, pesos y espaciado para crear importancia visual
 
-## 1.1 Principios de Comunicación Visual
+Para crear una jerarquía visual, en el proyecto de Figma todos los tamaños siguen una base de 4px, facilitando el trabajo con los elementos, de forma que muchos tienen espaciado de 24, 32, 48 o 64px dependiendo de qué se necesite. Por ejemplo, si se quiere mostrar varios elementos más agrupados, tendrán menos espaciado (32px), mientras que si se quiere separar del resto estos tendrán un espacio mayor (64px).
+
+>
+>Img
 
 
 
-Los principios de comunicación visual son fundamentales para crear interfaces que sean intuitivas, atractivas y funcionales. A continuación se describe cómo se aplica cada principio en este proyecto:
+### Contraste: Cómo usas color, tamaño y peso para diferenciar elementos
+    
+Para poder llamar la atención visualmente, se ha escogido una paleta de colores morada y amarilla, una que alterna entre ambos colores en su modo claro y oscuro, de los cuales solo actualmente el modo oscuro se encuentra implementado en el proyecto de Figma:
 
-### Jerarquía
+- En el modo oscuro, el morado predomina como color principal, yendo desde más claro a más oscuro conforme más contenido en un contenedor un elemento se encuentre, con las letras y los botones siendo de colores más claros para que destaquen frente al resto de elementos. Esta idea no se ve tan reflejado dentro del proyecto de Figma, pero cambios provisionales dentro del proyecto llevado a código muestran una nueva propuesta de esta idea. 
 
-La **jerarquía visual** se refiere al orden de importancia de los elementos en la interfaz, de forma que el usuario se fija en lo más relevante primero.
+>Img
+>Img
+    
+- De esta forma, el modo claro tendría una idea opuesta, donde el fondo sería mucho más oscuro y conforme se va incluyendo dentro de contenedores se va a aclarando. Esto sirve como contraste con la letra morada oscura. Esto es una versión muy provisional del modo claro, y no es la definitiva en lo absoluto.
 
-**Aplicación:**
+>Img
 
-- **Tamaños de fuente:** La escala tipográfica va desde `0.25rem` hasta `4rem`. Los títulos principales (h1) son significativamente más grandes que los títulos secundarios (h2-h6) y el texto de cuerpo.
-  
-- **Pesos de fuente:** Empleamos 5 pesos diferentes (`light: 300`, `regular: 400`, `medium: 500`, `semibold: 600`, `bold: 700`) para crear contraste entre elementos importantes y secundarios.
+### Alineación: Tu estrategia de alineación (izquierda, centro, grid)
+    
+    Para mantener armonía en el proyecto, la mayoría de los elementos fueron centrados o, alternativamente, alineados con una grid, como se puede ver por los ejemplos por pantalla:
 
-- **Espaciado consistente:** El sistema de espaciado basado en múltiplos de 4px asegura que los elementos importantes tengan más espacio respiratorio. Los títulos tienen `margin-bottom: 1rem` mientras que elementos secundarios usan valores menores.
+>
+>Img
+>Img
 
-- **Color para jerarquía:** Los elementos primarios usan `$color-text-primary` (#FFFDEB) para máximo contraste, mientras que texto secundario usa `$color-text-secondary` (#D1CFC4) y deshabilitado `$color-text-disabled` (#8F8C7F).
+    Además, la alineación se basaba en múltiplos de 12 para su espaciado.
 
-**Ejemplo en el código:**
+
+### Proximidad: Cómo agrupas elementos relacionados con espaciado
+    
+    Para mostrar que los elementos están agrupados, se ha utilizado un espaciado específico para diferencias entre cada componente:
+
+>Img
+
+
+### Repetición: Cómo creas coherencia repitiendo patrones visuales
+
+A partir de una paleta de colores definida, una tipografía consistente, unos bordes redondeados y unas animaciones consistentes en todo el programa se logra una estética única de la página.
+
+>Img
+
+## 1.2 Metodología CSS: Explica qué metodología usas (BEM recomendado) y por qué. Muestra ejemplos de tu nomenclatura. Si usas BEM, explica que usarás bloques (.card), elementos (.card__title), y modificadores (.card--featured).
+
+Se ha utilizado la metodología BEM, donde el bloque representa un componente independiente con significado propio, el elemento representa parte del bloque que no tiene significado independiente y el modificador es una variante del bloque o elemento.
+
+Ejemplo en el código:
+
+
+**Componente Button:**
 ```scss
-// Títulos con jerarquía clara
-h1 {
-  font-size: $font-size-5xl; // 4.768rem - Más grande
-  font-weight: $font-weight-bold; // 700 - Más pesado
-  margin-bottom: $spacing-4; // 1rem - Más espacio
+// Bloque base
+.btn {
+  display: inline-flex;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  /* ... */
 }
 
-h2 {
-  font-size: $font-size-4xl; // 3.815rem - Mediano
-  font-weight: $font-weight-bold; // 700
-}
-
-p {
-  font-size: $font-size-base; // 1rem - Base
-  font-weight: $font-weight-regular; // 400
-  color: $color-text-primary;
-}
-
-small {
-  font-size: $font-size-sm; // 0.8rem - Más pequeño
-  color: $color-text-secondary; // Color secundario
-}
-```
-
-### Contraste
-
-El **contraste** ayuda a diferenciar elementos y hace que la interfaz sea más legible y accesible.
-
-**Cómo lo aplicamos:**
-
-- **Contraste de color:** Usamos un esquema de colores con alto contraste. El texto principal (#FFFDEB) sobre fondo oscuro (#38263B) proporciona excelente legibilidad. La paleta incluye colores brillantes para elementos interactivos (#A264BF primario, #BFBF64 secundario).
-
-- **Contraste de tamaño:** Los botones y CTAs son más grandes que el texto normal. Los iconos importantes tienen tamaños destacados.
-
-- **Contraste de forma:** Elementos interactivos tienen bordes redondeados (`border-radius`) mientras que elementos de contenido pueden ser más rectangulares.
-
-- **Contraste de movimiento:** Los elementos interactivos tienen transiciones (`transition: 300ms`) que los diferencian de elementos estáticos.
-
-**Ejemplo en el código:**
-```scss
-// Alto contraste en botones
-button {
-  background-color: $color-primary; // #A264BF
-  color: $color-text-primary; // #FFFDEB
-  padding: $spacing-3 $spacing-6; // Tamaño destacado
-  
-  &:hover {
-    background-color: $color-primary-light; // #D885FE - Contraste visual
-    transform: translateY(-1px); // Contraste de movimiento
-    box-shadow: $shadow-md; // Contraste de elevación
-  }
-}
-
-// Contraste en estados semánticos
-.success {
-  color: $color-success; // #4CAF50 - Verde
-}
-
-.error {
-  color: $color-error; // #F44336 - Rojo
-}
-```
-
-### Alineación
-
-La **alineación** crea orden visual y conecta elementos relacionados.
-
-**Cómo lo aplicamos:**
-
-- **Grid system:** Utilizamos CSS Grid con 12 columnas que asegura alineación perfecta de elementos en layouts complejos.
-
-- **Flexbox:** Para componentes más simples, usamos Flexbox con clases de utilidad (`.justify-center`, `.items-center`, `.justify-between`) que mantienen la alineación consistente.
-
-- **Contenedores:** Todos los contenedores usan `.container` con anchos máximos definidos (`$max-width-xl: 1280px`) y padding lateral simétrico, asegurando alineación central en todas las resoluciones.
-
-- **Alineación de texto:** Por defecto usamos alineación izquierda para lecturabilidad, con excepciones para títulos centrados en secciones hero.
-
-**Ejemplo en el código:**
-```scss
-// Sistema de grid para alineación perfecta
-.grid {
-  display: grid;
-  gap: $spacing-4;
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr)); // Columnas alineadas
-}
-
-// Flexbox para alineación de componentes
-.flex-between {
+// Elemento
+.btn__content {
   display: flex;
-  justify-content: space-between; // Espacio distribuido
-  align-items: center; // Alineación vertical
+  align-items: center;
+  gap: var(--spacing-2);
 }
 
-// Contenedor con alineación central
-.container {
-  max-width: $max-width-xl;
-  margin-left: auto;
-  margin-right: auto; // Centrado horizontal
-  padding-left: $spacing-4;
-  padding-right: $spacing-4; // Padding simétrico
-}
-```
-
-### Proximidad
-
-La **proximidad** agrupa elementos relacionados y separa elementos no relacionados.
-
-**Cómo lo aplicamos:**
-
-- **Sistema de espaciado:** Nuestra escala de espaciado de 0.25rem (4px) a 8rem (128px) permite espaciado preciso. Elementos relacionados tienen gaps menores (`$spacing-2`, `$spacing-3`) mientras que secciones diferentes tienen espaciado mayor (`$spacing-8`, `$spacing-12`).
-
-- **Secciones:** Las clases `.section`, `.section-sm`, `.section-lg` definen espaciado vertical consistente para separar bloques de contenido.
-
-- **Cards y grupos:** Los componentes tipo card agrupan información relacionada con padding interno uniforme y están separados de otros cards con margin.
-
-- **Formularios:** Labels están cerca de sus inputs (`margin-bottom: $spacing-2`) pero los grupos de campos tienen más separación (`margin-bottom: $spacing-4`).
-
-**Ejemplo en el código:**
-```scss
-// Proximidad en formularios
-label {
-  margin-bottom: $spacing-2; // 0.5rem - Cerca del input
+// Modificadores de variante
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
-.form-group {
-  margin-bottom: $spacing-4; // 1rem - Separación entre grupos
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
 }
 
-// Proximidad en listas
-li {
-  margin-bottom: $spacing-2; // 0.5rem - Ítems cercanos
+.btn--ghost {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
 }
 
-ul {
-  margin-bottom: $spacing-4; // 1rem - Lista separada del siguiente elemento
+// Modificadores de tamaño
+.btn--sm {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
 }
 
-// Secciones con espaciado apropiado
-.section {
-  padding: $spacing-12 0; // 3rem vertical - Mucho espacio
-  
-  @include responsive('md') {
-    padding: $spacing-16 0; // 4rem en desktop
-  }
+.btn--lg {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-lg);
+}
+
+// Modificador de estado
+.btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 ```
 
-### Repetición
-
-La **repetición** crea coherencia y fortalece la identidad visual.
-
-**Cómo lo aplicamos:**
-
-- **Paleta de colores limitada:** Usamos consistentemente los mismos colores primarios (#A264BF), secundarios (#BFBF64) y neutrales en toda la aplicación.
-
-- **Tipografía consistente:** Dos fuentes principales (MochiyPopOne para títulos, Do Hyeon para texto) se repiten en todos los componentes.
-
-- **Bordes redondeados:** Todos los elementos interactivos usan el mismo `border-radius` (`$radius-md: 6px`) creando un lenguaje visual coherente.
-
-- **Sombras consistentes:** Usamos el mismo conjunto de sombras (`$shadow-sm`, `$shadow-md`, `$shadow-lg`) para elevar elementos.
-
-- **Transiciones uniformes:** Todas las interacciones usan `transition: 300ms ease-in-out` para coherencia.
-
-- **Espaciado de grid:** Consistentemente usamos `gap: $spacing-4` en grids.
-
-**Ejemplo en el código:**
+**Componente Card:**
 ```scss
-// Repetición en botones
-.btn,
-.button,
-button {
-  border-radius: $radius-md; // Siempre 6px
-  transition: $transition-base; // Siempre 300ms
-  padding: $spacing-3 $spacing-6; // Padding consistente
-  font-weight: $font-weight-medium; // Peso consistente
-}
-
-// Repetición en cards
+// Bloque
 .card {
-  border-radius: $radius-md; // Mismo radio
-  box-shadow: $shadow-base; // Misma sombra
-  padding: $spacing-6; // Mismo padding
-  background-color: rgba($color-neutral-900, 0.3); // Mismo fondo
+  background: var(--color-box-level-1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
 }
 
-// Repetición en formularios
-input,
-textarea,
-select {
-  border-radius: $radius-md; // Mismo radio
-  padding: $spacing-3 $spacing-4; // Mismo padding
-  border: $border-medium solid $color-neutral-700; // Mismo borde
-  transition: $transition-base; // Misma transición
-}
-```
-
----
-
-## 1.2 Metodología CSS
-
-### BEM (Block Element Modifier)
-
-Este proyecto utiliza **BEM (Block Element Modifier)** como metodología de nomenclatura CSS. BEM es un estándar de la industria que hace que el código sea más legible, mantenible y escalable.
-
-**¿Por qué BEM?**
-
-1. **Claridad:** Los nombres de las clases son autodescriptivos y revelan la estructura del componente.
-2. **Modularidad:** Cada bloque es independiente y puede reutilizarse.
-3. **Mantenibilidad:** Es fácil entender qué hace cada clase sin ver el HTML.
-4. **Evita conflictos:** La especificidad es baja y predecible.
-5. **Escalabilidad:** Funciona bien en proyectos grandes con múltiples desarrolladores.
-
-**Estructura BEM:**
-
-```
-.block { }           // Componente independiente
-.block__element { }  // Parte del bloque
-.block--modifier { } // Variación del bloque o elemento
-.block__element--modifier { } // Variación de un elemento
-```
-
-**Ejemplos de nomenclatura en nuestro proyecto:**
-
-```scss
-// BLOQUE: Card
-.card {
-  padding: $spacing-6;
-  border-radius: $radius-md;
-  background-color: $color-bg-secondary;
+// Elementos
+.card__image-wrapper {
+  position: relative;
+  overflow: hidden;
 }
 
-// ELEMENTOS: Partes de la card
-.card__header {
-  margin-bottom: $spacing-4;
-  border-bottom: $border-thin solid $color-neutral-700;
-}
-
-.card__title {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  color: $color-text-primary;
+.card__image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .card__body {
-  padding: $spacing-4 0;
+  padding: var(--spacing-6);
+}
+
+.card__title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-4);
+}
+
+.card__content {
+  color: var(--color-text-primary);
 }
 
 .card__footer {
-  margin-top: $spacing-4;
-  padding-top: $spacing-4;
-  border-top: $border-thin solid $color-neutral-700;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--color-neutral-300);
 }
 
-// MODIFICADORES: Variaciones de la card
+// Modificadores
+.card--rating {
+  display: flex;
+  flex-direction: column;
+}
+
 .card--featured {
-  background: linear-gradient(135deg, $color-primary-dark, $color-primary);
-  box-shadow: $shadow-primary;
-}
-
-.card--compact {
-  padding: $spacing-3;
-}
-
-.card--large {
-  padding: $spacing-8;
-}
-
-// Elemento con modificador
-.card__title--small {
-  font-size: $font-size-md;
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-primary);
 }
 ```
 
-**Más ejemplos:**
-
+**Componente Form-Input:**
 ```scss
-// Botones
-.btn { }                    // Bloque base
-.btn__icon { }              // Icono dentro del botón
-.btn__text { }              // Texto del botón
-.btn--primary { }           // Variación primaria
-.btn--secondary { }         // Variación secundaria
-.btn--large { }             // Variación de tamaño
-.btn--disabled { }          // Estado deshabilitado
+// Bloque
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
 
-// Formulario
-.form { }
-.form__group { }            // Grupo de campo
-.form__label { }            // Label
-.form__input { }            // Input
-.form__error { }            // Mensaje de error
-.form__input--invalid { }   // Input con error
-.form--inline { }           // Formulario en línea
+// Elementos
+.form-input__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
 
-// Navegación
-.nav { }
-.nav__list { }
-.nav__item { }
-.nav__link { }
-.nav__link--active { }      // Link activo
-.nav--vertical { }          // Navegación vertical
+.form-input__required {
+  color: var(--color-error);
+}
+
+.form-input__field {
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 2px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+}
+
+.form-input__help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.form-input__error {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+// Modificadores
+.form-input--error .form-input__field {
+  border-color: var(--color-error);
+}
+
+.form-input--disabled .form-input__field {
+  background-color: var(--color-neutral-200);
+  cursor: not-allowed;
+}
 ```
 
-**Convenciones adicionales:**
 
-- **Sin anidamiento profundo:** Máximo 1 nivel de elementos (`.block__element`, no `.block__element__subelement`).
-- **Nombres descriptivos:** Usar nombres que describan función, no apariencia (`.btn--primary` en vez de `.btn--blue`).
-- **Consistencia:** Siempre dos guiones para modificadores (`--`) y dos guiones bajos para elementos (`__`).
-- **Mixins para estados:** Los estados como `:hover`, `:focus`, `:active` se anidan dentro del bloque/elemento.
+## 1.3 Organización de archivos: Documenta tu estructura ITCSS. Explica por qué cada carpeta está en ese orden (de menor a mayor especificidad). Muestra el árbol de carpetas completo.
 
----
 
-## 1.3 Organización de Archivos
-
-Este proyecto utiliza **ITCSS (Inverted Triangle CSS)**, una metodología de organización de CSS que estructura los estilos desde lo más genérico y de baja especificidad hasta lo más específico y de alta especificidad.
-
-**¿Por qué ITCSS?**
-
-- **Previene problemas de especificidad:** El orden de importación asegura que las reglas más específicas sobrescriban las generales sin necesidad de `!important`.
-- **Facilita el mantenimiento:** Es fácil encontrar dónde debe ir un nuevo estilo.
-- **Mejora el rendimiento:** Los estilos se cargan en orden óptimo.
-- **Escalabilidad:** Funciona igual de bien en proyectos pequeños y grandes.
-
-### Estructura de Carpetas
+### Estructura de carpetas del proyecto
 
 ```
 src/styles/
-├── 00-settings/          # Variables y design tokens
-│   └── _variables.scss   # Todas las variables SCSS
-│
-├── 01-tools/             # Mixins y funciones
-│   └── _mixins.scss      # Mixins reutilizables
-│
-├── 02-generic/           # Resets y normalize
-│   └── _reset.scss       # Reset CSS moderno
-│
-├── 03-elements/          # Estilos base de elementos HTML
-│   └── _base.scss        # Estilos de h1, p, a, etc.
-│
-├── 04-objects/           # Patrones de layout
-│   └── _layout.scss      # Grid, flex, contenedores
-│
-├── 05-components/        # Componentes específicos
-│   ├── _buttons.scss     # Estilos de botones
-│   ├── _header.scss      # Estilos del header
-│   └── _footer.scss      # Estilos del footer
-│
-├── 06-utilities/         # Clases de utilidad
-│   └── _helpers.scss     # Utilities con !important
-│
-└── _main.scss            # Archivo principal (opcional)
+├── _main.scss                      # Archivo principal (importa todo)
+├── 00-settings/
+│   └── _variables.scss            # Design tokens (CSS Custom Properties)
+├── 01-tools/
+│   └── _mixins.scss               # Mixins y funciones SCSS
+├── 02-generic/
+│   └── _reset.scss                # Reset CSS básico
+├── 03-elements/
+│   └── _base.scss                 # Estilos de elementos HTML
+├── 04-objects/
+│   └── _layout.scss               # Patrones de layout reutilizables
+├── 05-components/
+│   ├── _buttons.scss              # Estilos globales de botones
+│   ├── _footer.scss               # Estilos del footer
+│   └── _header.scss               # Estilos del header
+└── 06-utilities/
+    └── _helpers.scss              # Clases de utilidad
 ```
 
-### Descripción de cada capa
-
-#### 00-settings/ - Variables y Design Tokens
-
-**Propósito:** Contiene todas las variables SCSS. No genera CSS por sí mismo.
-
-**Contenido:**
-- Variables de colores
-- Escalas tipográficas
-- Espaciado
-- Breakpoints
-- Sombras
-- Transiciones
-- Z-index
-
-**Especificidad:** Ninguna (no genera CSS)
-
-```scss
-// Ejemplo
-$color-primary: #A264BF;
-$font-size-base: 1rem;
-$spacing-4: 1rem;
-```
-
-#### 01-tools/ - Mixins y Funciones
-
-**Propósito:** Mixins y funciones SCSS reutilizables. No genera CSS por sí mismo.
-
-**Contenido:**
-- Mixins de responsive
-- Mixins de flexbox
-- Mixins de transiciones
-- Funciones de utilidad
-
-**Especificidad:** Ninguna (no genera CSS)
-
-```scss
-// Ejemplo
-@mixin responsive($breakpoint) {
-  @media (min-width: map-get($breakpoints, $breakpoint)) {
-    @content;
-  }
-}
-```
-
-#### 02-generic/ - Reset CSS
-
-**Propósito:** Normaliza diferencias entre navegadores y establece valores base.
-
-**Contenido:**
-- Box-sizing
-- Reset de márgenes y paddings
-- Configuración de fuentes
-- Estilos de formularios base
-
-**Especificidad:** Muy baja (selectores de elemento)
-
-```scss
-// Ejemplo
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-```
-
-#### 03-elements/ - Estilos Base
-
-**Propósito:** Estilos por defecto para elementos HTML sin clases.
-
-**Contenido:**
-- Tipografía de h1-h6, p, a
-- Listas ul, ol, li
-- Formularios input, button
-- Tablas
-- Imágenes
-
-**Especificidad:** Baja (selectores de elemento)
-
-```scss
-// Ejemplo
-h1 {
-  font-size: $font-size-4xl;
-  font-weight: $font-weight-bold;
-}
-
-a {
-  color: $color-primary-light;
-  text-decoration: none;
-}
-```
-
-#### 04-objects/ - Patrones de Layout
-
-**Propósito:** Patrones de layout reutilizables sin estilos visuales (colores, bordes).
-
-**Contenido:**
-- Sistema de grid
-- Flexbox utilities
-- Contenedores
-- Espaciado
+### Explicación de cada Capa
 
-**Especificidad:** Baja-Media (clases simples)
+El orden se ha escogido porque cada carpeta depende de la anterior para funcionar (Settings -> Tools -> Generic -> ...), el principio de especidad creciente. Así, se evitan problemas de cascada.
 
-```scss
-// Ejemplo
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+- **Settings**: Define todas las variables CSS (Design Tokens) y contiene colores, tipografías, espaciados, breakpoints. 
+- **Tools**: Son mixins y funciones SCSS reutilizables con mixins de responsive, flexbox, grid, transiciones
+- **Elements**: Incluye estilos base de elementos HTML sin clases.
+- **Objects**: Son patrones de layout reutilizables sin estética con containers, grids y wrappers.
+- **Components**: Son componentes UI específicos con BEM.
+- **Utilities**: Incluyen clases helper que modifican una sola propiedad
 
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-```
 
-#### 05-components/ - Componentes
 
-**Propósito:** Componentes específicos con estilos visuales completos.
+## 1.4 Sistema de Design Tokens: Documenta todas tus variables. Para cada grupo (colores, tipografía, espaciado, etc.) explica las decisiones:
 
-**Contenido:**
-- Botones
-- Cards
-- Navegación
-- Modales
-- Formularios estilizados
+### Por qué elegiste esos colores
 
-**Especificidad:** Media-Alta (clases con modificadores BEM)
+    Debido a la estética de ocio y de fiesta que emite el morado y cómo se complementa con el amarillo, un color que representa la alegría, se escogieron ambos colores como principales
 
-```scss
-// Ejemplo
-.btn {
-  padding: 0.75rem 1.5rem;
-  background-color: $color-primary;
-  border-radius: $radius-md;
-}
+### Por qué esa escala tipográfica
 
-.btn--large {
-  padding: 1rem 2rem;
-  font-size: $font-size-lg;
-}
-```
+    MochiyPopOne se escogió para transmitir un sentimiento de ocio, ya que es una aplicación web enfocada puramente a ello.
 
-#### 06-utilities/ - Utilidades
+    Por otra parte, Do Hyeon se utilizó para la letra más pequeña para evocar un sentimiento más profesional, ya que se supone que es la tipografía más legible de entre los dos.
 
-**Propósito:** Clases de utilidad de un solo propósito que sobrescriben todo.
+    De esta forma, una está enfocada a los títulos y la otra se encarga de mostrar el texto más legible.
 
-**Contenido:**
-- Clases de texto
-- Clases de display
-- Clases de posicionamiento
-- Clases de visibilidad
+    Además, se escogió una base de 1 rem por estándares web (16px), lo que facilita mucho más la edición y visibilización de elementos.
 
-**Especificidad:** Muy alta (usa `!important`)
 
-```scss
-// Ejemplo
-.text-center {
-  text-align: center !important;
-}
+### Por qué esos breakpoints
 
-.d-none {
-  display: none !important;
-}
-```
+    Se realizó de esta forma para adaptarlos a los siguientes formatos:
 
-### Orden de Importación en styles.scss
+- **640px**: iPhone 13/14 en landscape, móviles grandes
+- **768px**: iPad portrait, tablets estándar
+- **1024px**: iPad landscape, laptops pequeños
+- **1280px**: Laptops estándar (1366px es común)
+- **1536px**: Monitores grandes, 4K
 
-**CRÍTICO:** Este orden debe respetarse estrictamente:
 
-```scss
-// 1. Settings - Variables primero
-@import 'styles/00-settings/variables';
+## 1.5 Mixins y funciones: Documenta cada mixin que creaste, para qué sirve, y muestra un ejemplo de uso.
 
-// 2. Tools - Mixins que usan variables
-@import 'styles/01-tools/mixins';
 
-// 3. Generic - Reset
-@import 'styles/02-generic/reset';
+### 1. Mixin: Responsive
 
-// 4. Elements - Estilos base
-@import 'styles/03-elements/base';
+**Propósito**: Facilitar la escritura de media queries para diferentes breakpoints.
 
-// 5. Objects - Layout
-@import 'styles/04-objects/layout';
-
-// 6. Components - Componentes específicos
-@import 'styles/05-components/buttons';
-@import 'styles/05-components/header';
-@import 'styles/05-components/footer';
-
-// 7. Utilities - Último, máxima prioridad
-@import 'styles/06-utilities/helpers';
-```
-
-**¿Por qué este orden?**
-
-Cada capa aumenta la especificidad. Las variables y mixins no generan CSS. El reset establece la base. Los elementos dan estilos por defecto. Los objetos crean estructura. Los componentes añaden estilos visuales. Las utilidades sobrescriben todo.
-
----
-
-## 1.4 Sistema de Design Tokens
-
-Los **design tokens** son la única fuente de verdad para todos los valores de diseño en el proyecto. Están definidos como variables SCSS en `00-settings/_variables.scss`.
-
-### Selección de Colores
-
-**Decisiones de diseño:**
-
-Elegimos una paleta oscura y vibrante que refleja modernidad y energía:
-
-- **Primarios (#A264BF, #38263B, #D885FE):** El morado representa creatividad y tecnología. Usamos tres tonos para versatilidad: oscuro para fondos, medio para elementos interactivos, claro para hovers.
-
-- **Secundarios (#BFBF64, #59592F, #FEFE85):** El amarillo-verde complementa el morado y aporta calidez. Crea contraste visual sin ser agresivo.
-
-- **Neutrales (escala 50-900):** Una escala de grises cálidos (con tono beige) que va desde casi blanco (#FFFDEB) hasta casi negro (#1C1B18). Proporciona opciones para texto, fondos y bordes manteniendo coherencia.
-
-- **Semánticos:** Seguimos estándares universales: verde para éxito (#4CAF50), rojo para error (#F44336), naranja para advertencia (#FF9800), azul para información (#2196F3). Cada uno tiene variaciones light/dark para flexibilidad.
-
-**Variables definidas:**
-
-```scss
-// Primarios
-$color-primary: #A264BF;
-$color-primary-dark: #38263B;
-$color-primary-light: #D885FE;
-$color-primary-lightest: #EDD5FF;
-
-// Secundarios
-$color-secondary: #BFBF64;
-$color-secondary-dark: #59592F;
-$color-secondary-light: #FEFE85;
-$color-secondary-lightest: #FFFFCC;
-
-// Neutrales (escala completa 50-900)
-$color-neutral-50: #FFFDEB;
-// ... hasta
-$color-neutral-900: #1C1B18;
-
-// Semánticos
-$color-success: #4CAF50;
-$color-error: #F44336;
-$color-warning: #FF9800;
-$color-info: #2196F3;
-```
-
-### Escala Tipográfica
-
-**Decisiones de diseño:**
-
-Usamos una **escala modular con ratio 1.25 (Major Third)** que crea armonía visual. Este ratio es ideal para interfaces web porque proporciona diferenciación clara sin saltos bruscos.
-
-- **Ratio 1.25:** Cada tamaño es 1.25 veces el anterior. Esto crea progresión natural: 16px → 20px → 25px → 31.25px...
-
-- **Base 16px (1rem):** Usamos 16px como tamaño base porque es el estándar del navegador y óptimo para lectura.
-
-- **Rango xs a 5xl:** Desde 10.24px (para texto muy pequeño como disclaimers) hasta 76.29px (para títulos hero).
-
-- **Fuentes elegidas:**
-  - **MochiyPopOne:** Fuente display divertida y característica para títulos y elementos destacados.
-  - **Do Hyeon:** Fuente sans-serif limpia y legible para texto de cuerpo.
-  - **Fallback:** Sistema de fuentes del sistema operativo para carga rápida.
-
-**Variables definidas:**
-
-```scss
-// Familias
-$font-primary: 'MochiyPopOne', sans-serif;
-$font-secondary: 'Do Hyeon', sans-serif;
-$font-fallback: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-
-// Tamaños (ratio 1.25)
-$font-size-xs: 0.64rem;    // 10.24px
-$font-size-sm: 0.8rem;     // 12.8px
-$font-size-base: 1rem;     // 16px
-$font-size-md: 1.25rem;    // 20px
-$font-size-lg: 1.563rem;   // 25px
-$font-size-xl: 1.953rem;   // 31.25px
-$font-size-2xl: 2.441rem;  // 39px
-$font-size-3xl: 3.052rem;  // 48.83px
-$font-size-4xl: 3.815rem;  // 61px
-$font-size-5xl: 4.768rem;  // 76.29px
-
-// Pesos
-$font-weight-light: 300;
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-
-// Line heights
-$line-height-tight: 1.2;    // Títulos
-$line-height-normal: 1.5;   // Párrafos
-$line-height-relaxed: 1.75; // Textos largos
-```
-
-### Sistema de Espaciado
-
-**Decisiones de diseño:**
-
-Usamos **escala basada en 4px (0.25rem)** que es estándar en la industria. Los múltiplos de 4 crean alineación perfecta en píxeles y son cómodos para diseñadores y desarrolladores.
-
-- **Base 4px:** La unidad mínima de espaciado. Todos los espacios son múltiplos de 4.
-- **Rango amplio:** Desde 4px hasta 128px para cubrir desde gaps pequeños hasta secciones grandes.
-- **Nombres semánticos:** `spacing-1`, `spacing-2`, etc. son más claros que píxeles o rems directos.
-
-**Variables definidas:**
-
-```scss
-$spacing-0: 0;
-$spacing-1: 0.25rem;   // 4px
-$spacing-2: 0.5rem;    // 8px
-$spacing-3: 0.75rem;   // 12px
-$spacing-4: 1rem;      // 16px
-$spacing-5: 1.25rem;   // 20px
-$spacing-6: 1.5rem;    // 24px
-// ... hasta
-$spacing-32: 8rem;     // 128px
-```
-
-### Breakpoints
-
-**Decisiones de diseño:**
-
-Definimos breakpoints basados en **dispositivos reales y patrones de uso**:
-
-- **640px (sm):** Móvil grande / Phablets
-- **768px (md):** Tablets en portrait
-- **1024px (lg):** Tablets en landscape / Laptops pequeñas
-- **1280px (xl):** Desktop estándar
-- **1536px (2xl):** Desktop grande / Monitores 4K
-
-Usamos **mobile-first approach**: los estilos base son para móvil y añadimos complejidad en pantallas más grandes.
-
-**Variables definidas:**
-
-```scss
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
-$breakpoint-2xl: 1536px;
-
-// Map para mixins
-$breakpoints: (
-  'sm': $breakpoint-sm,
-  'md': $breakpoint-md,
-  'lg': $breakpoint-lg,
-  'xl': $breakpoint-xl,
-  '2xl': $breakpoint-2xl
-);
-```
-
-### Elevaciones (Sombras)
-
-**Decisiones de diseño:**
-
-Las sombras crean **profundidad y jerarquía**. Usamos sombras sutiles con negro transparente para que funcionen en cualquier fondo.
-
-- **Gradación natural:** Desde `sm` (casi imperceptible) hasta `2xl` (muy prominente).
-- **RGBA con transparencia:** Permite que las sombras se adapten al contexto.
-- **Sombras especiales:** Incluimos sombras con color primario/secundario para efectos especiales.
-
-**Variables definidas:**
-
-```scss
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-
-// Especiales
-$shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.4);
-```
-
-### Bordes y Radios
-
-**Decisiones de diseño:**
-
-Los **border-radius** suavizan la interfaz y crean un look moderno.
-
-- **Radios consistentes:** Desde `sm` (2px, sutil) hasta `3xl` (24px, muy redondeado) y `full` (círculos perfectos).
-- **Grosores de borde:** Tres opciones (thin, medium, thick) cubren la mayoría de casos.
-
-**Variables definidas:**
-
-```scss
-// Grosores
-$border-thin: 1px;
-$border-medium: 2px;
-$border-thick: 4px;
-
-// Radios
-$radius-sm: 0.125rem;   // 2px
-$radius-base: 0.25rem;  // 4px
-$radius-md: 0.375rem;   // 6px
-$radius-lg: 0.5rem;     // 8px
-$radius-xl: 0.75rem;    // 12px
-$radius-2xl: 1rem;      // 16px
-$radius-3xl: 1.5rem;    // 24px
-$radius-full: 9999px;   // Círculos
-```
-
-### Transiciones
-
-**Decisiones de diseño:**
-
-Las **transiciones** hacen que la interfaz se sienta fluida y responsiva.
-
-- **Duraciones estándar:**
-  - **fast (150ms):** Cambios rápidos como hover en botones
-  - **base (300ms):** La mayoría de transiciones
-  - **slow (500ms):** Animaciones complejas como modales
-
-- **Ease-in-out:** Timing function que se siente natural para la mayoría de casos.
-
-**Variables definidas:**
-
-```scss
-// Duraciones
-$duration-fast: 150ms;
-$duration-base: 300ms;
-$duration-slow: 500ms;
-
-// Transiciones predefinidas
-$transition-fast: all 150ms ease-in-out;
-$transition-base: all 300ms ease-in-out;
-$transition-slow: all 500ms ease-in-out;
-
-// Específicas
-$transition-colors: color 300ms ease-in-out, 
-                    background-color 300ms ease-in-out,
-                    border-color 300ms ease-in-out;
-```
-
----
-
-## 1.5 Mixins y Funciones
-
-Los **mixins** son bloques de código SCSS reutilizables que nos ahorran escribir CSS repetitivo y mantienen consistencia.
-
-### Mixin: `responsive`
-
-**Propósito:** Facilita la escritura de media queries para diferentes breakpoints.
-
-**Código:**
+**Código**:
 ```scss
 @mixin responsive($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: map-get($breakpoints, $breakpoint)) {
       @content;
     }
+  } @else {
+    @warn "No existe el breakpoint `#{$breakpoint}`";
   }
 }
 ```
 
-**Uso:**
+**Ejemplo de uso**:
 ```scss
 .elemento {
   font-size: 16px;
+  padding: var(--spacing-4);
   
   @include responsive('md') {
     font-size: 18px;
+    padding: var(--spacing-6);
   }
   
   @include responsive('lg') {
     font-size: 20px;
+    padding: var(--spacing-8);
   }
 }
-```
 
-**Resultado CSS:**
-```css
+// Compila a:
 .elemento {
   font-size: 16px;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {
   .elemento {
     font-size: 18px;
+    padding: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .elemento {
     font-size: 20px;
+    padding: 2rem;
   }
 }
 ```
 
-### Mixin: `flex-center`
+### 2. Mixin: Responsive-Max
 
-**Propósito:** Centra elementos usando flexbox de forma rápida.
+**Propósito**: Media queries con max-width (para casos especiales donde necesitamos estilos solo en móvil).
 
-**Código:**
+**Código**:
+```scss
+@mixin responsive-max($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: calc(#{map-get($breakpoints, $breakpoint)} - 1px)) {
+      @content;
+    }
+  }
+}
+```
+
+**Ejemplo de uso**:
+```scss
+.menu-mobile {
+  display: block;
+  
+  @include responsive-max('md') {
+    // Solo visible en pantallas menores a 768px
+    position: fixed;
+    bottom: 0;
+  }
+}
+```
+
+### 3. Mixin: Flex-Center
+
+**Propósito**: Centrar elementos usando flexbox de forma rápida.
+
+**Código**:
 ```scss
 @mixin flex-center($direction: row, $gap: 0) {
   display: flex;
@@ -894,34 +377,155 @@ Los **mixins** son bloques de código SCSS reutilizables que nos ahorran escribi
 }
 ```
 
-**Uso:**
+**Ejemplo de uso**:
 ```scss
-.hero {
-  @include flex-center(column, $spacing-4);
+// Centrado horizontal y vertical
+.modal-content {
+  @include flex-center;
   min-height: 100vh;
 }
-```
 
-**Resultado CSS:**
-```css
+// Centrado vertical (columna)
+.hero {
+  @include flex-center(column, var(--spacing-6));
+  padding: var(--spacing-12);
+}
+
+// Compila a:
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  min-height: 100vh;
+  gap: 1.5rem;
+  padding: 3rem;
 }
 ```
 
-### Mixin: `transition`
+### 4. Mixin: Flex-Between
 
-**Propósito:** Aplica transiciones suaves a propiedades específicas.
+**Propósito**: Distribuir elementos con espacio entre ellos (común en headers, cards).
 
-**Código:**
+**Código**:
 ```scss
-@mixin transition($properties..., $duration: $duration-base, $timing: $ease-in-out) {
+@mixin flex-between($align: center) {
+  display: flex;
+  justify-content: space-between;
+  align-items: $align;
+}
+```
+
+**Ejemplo de uso**:
+```scss
+.card-header {
+  @include flex-between;
+  padding: var(--spacing-4);
+}
+
+.footer {
+  @include flex-between(flex-start);
+  padding: var(--spacing-8);
+}
+
+// Compila a:
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+}
+```
+
+### 5. Mixin: Grid-Center
+
+**Propósito**: Centrar elementos usando CSS Grid (más simple que flexbox para centrado total).
+
+**Código**:
+```scss
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}
+```
+
+**Ejemplo de uso**:
+```scss
+.loading-spinner {
+  @include grid-center;
+  min-height: 200px;
+}
+
+// Compila a:
+.loading-spinner {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+}
+```
+
+### 6. Mixin: Grid-Auto
+
+**Propósito**: Grid responsive automático con columnas que se ajustan según el espacio disponible.
+
+**Código**:
+```scss
+@mixin grid-auto($min-width: 15.625rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: var(--spacing-4);
+}
+```
+
+**Ejemplo de uso**:
+```scss
+.products-grid {
+  @include grid-auto(250px);
+}
+
+.cards-grid {
+  @include grid-auto(300px);
+  gap: var(--spacing-6); // Sobrescribe el gap por defecto
+}
+
+// Compila a:
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+```
+
+### 7. Mixin: Transition
+
+**Propósito**: Aplicar transiciones suaves a múltiples propiedades.
+
+**Código**:
+```scss
+@mixin transition($properties...) {
   $transitions: ();
+  $duration: var(--duration-base);
+  $timing: var(--ease-in-out);
   
   @each $property in $properties {
     $transitions: append($transitions, $property $duration $timing, comma);
@@ -931,602 +535,1264 @@ Los **mixins** son bloques de código SCSS reutilizables que nos ahorran escribi
 }
 ```
 
-**Uso:**
+**Ejemplo de uso**:
 ```scss
 .button {
   @include transition(background-color, transform, box-shadow);
   
   &:hover {
-    background-color: $color-primary-light;
+    background-color: var(--color-primary-light);
     transform: translateY(-2px);
-    box-shadow: $shadow-lg;
+    box-shadow: var(--shadow-lg);
   }
 }
-```
 
-**Resultado CSS:**
-```css
+// Compila a:
 .button {
-  transition: background-color 300ms ease-in-out, 
-              transform 300ms ease-in-out, 
-              box-shadow 300ms ease-in-out;
-}
-
-.button:hover {
-  background-color: #D885FE;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 ```
 
-### Mixin: `truncate`
+### 8. Mixin: Transition-Fast
 
-**Propósito:** Trunca texto con puntos suspensivos, soporta una o múltiples líneas.
+**Propósito**: Transiciones rápidas para interacciones inmediatas.
 
-**Código:**
+**Código**:
 ```scss
-@mixin truncate($lines: 1) {
-  @if $lines == 1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  } @else {
-    display: -webkit-box;
-    -webkit-line-clamp: $lines;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+@mixin transition-fast($properties...) {
+  $transitions: ();
+  $duration: var(--duration-fast);
+  $timing: var(--ease-in-out);
+  
+  @each $property in $properties {
+    $transitions: append($transitions, $property $duration $timing, comma);
   }
+  
+  transition: $transitions;
 }
 ```
 
-**Uso:**
+**Ejemplo de uso**:
 ```scss
-.card__title {
-  @include truncate(2); // Trunca a 2 líneas
-}
-
-.breadcrumb {
-  @include truncate; // Trunca a 1 línea
-}
-```
-
-### Mixin: `grid-auto`
-
-**Propósito:** Crea un grid responsive con auto-fit.
-
-**Código:**
-```scss
-@mixin grid-auto($min-width: 250px, $gap: $spacing-4) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
-  gap: $gap;
-}
-```
-
-**Uso:**
-```scss
-.products-grid {
-  @include grid-auto(300px, $spacing-6);
-}
-```
-
-**Resultado:** Grid que automáticamente ajusta el número de columnas según el espacio disponible, manteniendo un mínimo de 300px por columna.
-
-### Mixin: `hover-lift`
-
-**Propósito:** Efecto de elevación al hacer hover en cards y botones.
-
-**Código:**
-```scss
-@mixin hover-lift($distance: -4px, $shadow: $shadow-lg) {
-  @include transition(transform, box-shadow);
+.link {
+  @include transition-fast(color, text-decoration);
   
   &:hover {
-    transform: translateY($distance);
-    box-shadow: $shadow;
+    color: var(--color-primary-light);
+    text-decoration: underline;
   }
 }
 ```
 
-**Uso:**
-```scss
-.card {
-  @include hover-lift;
-}
+## 1.6 ViewEncapsulation en Angular: Explica qué estrategia de encapsulación usarás. Angular por defecto usa Emulated (estilos encapsulados por componente). Documenta si mantendrás esto o usarás None (estilos globales). Justifica tu decisión.
+
+Se mantiene **ViewEncapsulation.Emulated** (valor por defecto de Angular) para la mayoría de componentes. Esta estrategia:
+
+1. **Encapsula los estilos** añadiendo atributos únicos a los elementos del componente
+2. **Evita conflictos** entre estilos de diferentes componentes
+3. **Permite usar selectores simples** sin preocuparse por colisiones globales
+
+**Excepción**: Los estilos globales en `src/styles/` usan ViewEncapsulation.None implícitamente al estar en archivos SCSS globales, permitiendo:
+- Design tokens accesibles en toda la aplicación
+- Reset CSS aplicado globalmente
+- Clases de utilidad disponibles en cualquier componente
+
+```typescript
+// Ejemplo: Componente con encapsulación por defecto (Emulated)
+@Component({
+  selector: 'app-button',
+  templateUrl: './button.html',
+  styleUrl: './button.scss',
+  // ViewEncapsulation.Emulated es el valor por defecto
+})
+export class Button { }
 ```
-
-### Función: `rem`
-
-**Propósito:** Convierte píxeles a rem basado en font-size base de 16px.
-
-**Código:**
-```scss
-@function rem($pixels) {
-  @return calc($pixels / 16) * 1rem;
-}
-```
-
-**Uso:**
-```scss
-.element {
-  padding: rem(24);  // Resulta en 1.5rem
-  margin: rem(32);   // Resulta en 2rem
-}
-```
-
-### Otros mixins incluidos
-
-- **`flex-between`:** Flex con `justify-content: space-between`
-- **`aspect-ratio`:** Mantiene relación de aspecto (16:9, 4:3, etc.)
-- **`visually-hidden`:** Oculta visualmente pero accesible para lectores de pantalla
-- **`focus-visible`:** Estilos de focus accesibles
-- **`container`:** Crea contenedor con ancho máximo y padding
-- **`button-reset`:** Resetea estilos por defecto de botones
-- **`gradient`:** Crea gradientes fácilmente
 
 ---
 
-## 1.6 ViewEncapsulation en Angular
+# Sección 2: HTML semántico y estructura
 
-### ¿Qué es ViewEncapsulation?
+## 2.1 Elementos semánticos utilizados
 
-**ViewEncapsulation** es una característica de Angular que controla cómo se aplican los estilos CSS a los componentes. Angular ofrece tres estrategias:
+El proyecto utiliza elementos HTML5 semánticos para mejorar la accesibilidad, el SEO y la mantenibilidad del código. Cada elemento tiene un propósito específico:
 
-1. **Emulated (por defecto):** Emula Shadow DOM añadiendo atributos únicos
-2. **None:** Los estilos son globales
-3. **ShadowDom:** Usa Shadow DOM nativo del navegador
+### `<header>` - Cabecera
 
-### Estrategia elegida: Emulated
+Se usa para la cabecera principal de la aplicación y cabeceras de secciones.
 
-**Para este proyecto, mantenemos `ViewEncapsulation.Emulated` (el valor por defecto de Angular).**
-
-### ¿Por qué Emulated?
-
-**Ventajas:**
-
-1. **Encapsulación de estilos:** Los estilos de un componente no afectan a otros componentes accidentalmente.
-
-2. **Modularidad:** Cada componente puede tener sus propios estilos sin preocuparse por conflictos.
-
-3. **Compatibilidad:** Funciona en todos los navegadores, incluyendo los que no soportan Shadow DOM nativo.
-
-4. **Balance perfecto:** Ofrece encapsulación sin los problemas de rendimiento o accesibilidad del Shadow DOM real.
-
-5. **Facilita testing:** Los estilos están aislados por componente, haciendo testing más predecible.
-
-6. **CSS tradicional:** Permite usar selectores CSS normales dentro del componente.
-
-**Desventajas (mínimas):**
-
-- Añade atributos únicos al HTML (`_ngcontent-xxx`), aumentando ligeramente el tamaño del DOM.
-- Los estilos globales pueden sobrescribir estilos del componente si tienen mayor especificidad.
-
-### ¿Cómo funciona?
-
-Angular añade atributos únicos a los elementos y modifica los selectores CSS:
-
-**Tu código:**
-```typescript
-@Component({
-  selector: 'app-card',
-  template: `
-    <div class="card">
-      <h2 class="card__title">Título</h2>
-    </div>
-  `,
-  styles: [`
-    .card {
-      padding: 1rem;
-      background: #333;
-    }
-    .card__title {
-      color: #fff;
-    }
-  `]
-})
-export class CardComponent {}
-```
-
-**HTML renderizado:**
+**Ejemplo - Header principal (app.html):**
 ```html
-<app-card _nghost-abc-123>
-  <div class="card" _ngcontent-abc-123>
-    <h2 class="card__title" _ngcontent-abc-123>Título</h2>
+<app-header></app-header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<app-footer></app-footer>
+```
+
+**Ejemplo - Componente Header (header.html):**
+```html
+<header class="header">
+  <div class="header__container">
+    <!-- Logo -->
+    <a routerLink="/" class="header__logo" aria-label="Ir a la página principal">
+      <span class="header__logo-text">BROADCASTTD</span>
+    </a>
+
+    <!-- Navegación y acciones -->
+    <div class="header__actions">
+      <app-theme-toggle class="header__theme-toggle" />
+      <app-button text="Log In" variant="primary" size="md" />
+    </div>
   </div>
-</app-card>
+</header>
 ```
 
-**CSS compilado:**
-```css
-.card[_ngcontent-abc-123] {
-  padding: 1rem;
-  background: #333;
-}
-.card__title[_ngcontent-abc-123] {
-  color: #fff;
-}
+### `<nav>` - Navegación
+
+Se utiliza para bloques de navegación, tanto en el header como en el footer.
+
+**Ejemplo - Navegación en Footer (footer.html):**
+```html
+<nav class="footer__nav" aria-label="Footer navigation">
+  <ul class="footer__nav-list">
+    <li class="footer__nav-item">
+      <a href="/about" class="footer__nav-link">About</a>
+    </li>
+    <li class="footer__nav-item">
+      <a href="/contact" class="footer__nav-link">Contact</a>
+    </li>
+    <li class="footer__nav-item">
+      <a href="/terms" class="footer__nav-link">Terms</a>
+    </li>
+  </ul>
+</nav>
 ```
 
-### Arquitectura CSS con Emulated
-
-**Estilos globales (`styles.scss`):**
-- Variables, mixins, reset, estilos base de elementos
-- Sistema de grid y layout
-- Clases de utilidad reutilizables
-- No se encapsulan, afectan a toda la app
-
-**Estilos de componente:**
-- Específicos de cada componente
-- Encapsulados automáticamente
-- Pueden usar variables globales importándolas
-
-**Ejemplo de componente:**
-
-```typescript
-// card.component.ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
-  // encapsulation: ViewEncapsulation.Emulated (por defecto, no hace falta especificarlo)
-})
-export class CardComponent {}
+**Ejemplo - Navegación en Style Guide:**
+```html
+<nav class="style-guide__nav">
+  <a href="#formularios" class="style-guide__nav-link">1. Componentes de Formulario</a>
+  <a href="#botones" class="style-guide__nav-link">2. Botones</a>
+  <a href="#tarjetas" class="style-guide__nav-link">3. Tarjetas y Contenedores</a>
+</nav>
 ```
 
-```scss
-// card.component.scss
-@import '../../../styles/00-settings/variables';
-@import '../../../styles/01-tools/mixins';
+### `<main>` - Contenido principal
 
-.card {
-  padding: $spacing-6;
-  background-color: rgba($color-neutral-900, 0.3);
-  border-radius: $radius-md;
-  box-shadow: $shadow-base;
-  @include transition(transform, box-shadow);
+Contiene el contenido principal de la página. Solo debe haber un `<main>` por página.
+
+**Ejemplo - Layout principal (app.html):**
+```html
+<app-header></app-header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<app-footer></app-footer>
+```
+
+### `<section>` - Secciones temáticas
+
+Agrupa contenido relacionado temáticamente, siempre con un heading.
+
+**Ejemplo - Secciones en Home (home.html):**
+```html
+<!-- Sección de Fase 1 -->
+<section class="component-section phase-1">
+  <h2 class="component-section__title">FASE 1: Manipulación del DOM y Eventos</h2>
+  <p class="component-section__description">
+    Implementación de manipulación del DOM, gestión de eventos y componentes interactivos
+  </p>
+
+  <!-- Grupos de componentes dentro de la sección -->
+  <div class="component-group">
+    <h3 class="component-group__title">Theme Switcher</h3>
+    <div class="component-demo">
+      <app-theme-switcher />
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Fase 2 -->
+<section class="component-section phase-2">
+  <h2 class="component-section__title">FASE 2: Componentes Interactivos y Comunicación</h2>
+  <p class="component-section__description">
+    Implementación de servicios de comunicación, notificaciones y gestión de estados de carga
+  </p>
+</section>
+```
+
+**Ejemplo - Secciones en Style Guide:**
+```html
+<section id="formularios" class="style-guide__section">
+  <h2 class="style-guide__section-title">1. Componentes de Formulario</h2>
   
-  &:hover {
-    @include hover-lift;
+  <div class="style-guide__component">
+    <h3 class="style-guide__component-title">Form Input</h3>
+    <div class="style-guide__component-demo">
+      <app-form-input label="Username" type="text" />
+    </div>
+  </div>
+</section>
+
+<section id="botones" class="style-guide__section">
+  <h2 class="style-guide__section-title">2. Botones</h2>
+  <!-- contenido -->
+</section>
+```
+
+### `<footer>` - Pie de página
+
+Contiene información del pie de página como navegación secundaria, redes sociales y copyright.
+
+**Ejemplo - Footer (footer.html):**
+```html
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Enlaces de navegación -->
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <ul class="footer__nav-list">
+        <li class="footer__nav-item">
+          <a href="/about" class="footer__nav-link">About</a>
+        </li>
+        <!-- más enlaces -->
+      </ul>
+    </nav>
+
+    <!-- Redes sociales -->
+    <div class="footer__social">
+      <a href="https://linkedin.com" class="footer__social-link" 
+         aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg><!-- icono --></svg>
+      </a>
+      <a href="https://twitter.com" class="footer__social-link" 
+         aria-label="Twitter/X" target="_blank" rel="noopener">
+        <svg><!-- icono --></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+```
+
+### Tabla resumen de elementos semánticos
+
+| Elemento | Uso en el proyecto | Ejemplo |
+|----------|-------------------|---------|
+| `<header>` | Cabecera principal de la app | `header.html` |
+| `<nav>` | Navegación principal y secundaria | Header, Footer, Style Guide |
+| `<main>` | Contenedor del contenido principal | `app.html` |
+| `<section>` | Secciones temáticas con heading | Fases en Home, secciones en Style Guide |
+| `<footer>` | Pie de página con enlaces y redes sociales | `footer.html` |
+| `<article>` | (Reservado para contenido independiente) | Cards de contenido |
+
+
+## 2.2 Jerarquía de headings
+
+### Reglas de la jerarquía
+
+1. **Solo un `<h1>` por página**: Representa el título principal de la página
+2. **`<h2>` para secciones principales**: Dividen el contenido en bloques temáticos
+3. **`<h3>` para subsecciones**: Subdividen las secciones principales
+4. **NUNCA saltar niveles**: No pasar de h1 a h3 directamente
+
+### Diagrama de jerarquía del proyecto
+
+```
+📄 Página Home
+├── h1: "Sistema de Componentes"
+│   ├── h2: "FASE 1: Manipulación del DOM y Eventos"
+│   │   ├── h3: "Theme Switcher"
+│   │   ├── h3: "Manipulación del DOM"
+│   │   ├── h3: "Sistema de Eventos"
+│   │   ├── h3: "Menú Hamburguesa"
+│   │   ├── h3: "Modal Interactivo"
+│   │   ├── h3: "Tabs"
+│   │   └── h3: "Tooltips"
+│   │
+│   ├── h2: "FASE 2: Componentes Interactivos y Comunicación"
+│   │   ├── h3: "Comunicación entre Componentes Hermanos"
+│   │   ├── h3: "Sistema de Notificaciones Toast"
+│   │   └── h3: "Indicador de Carga (Spinner)"
+│   │
+│   └── h2: "FASE 3: Formularios"
+│       ├── h3: "Formulario de Contacto"
+│       └── h3: "Formulario de Perfil"
+
+📄 Página Style Guide
+├── h1: "Guía de Estilos"
+│   ├── h2: "1. Componentes de Formulario"
+│   │   ├── h3: "Form Input"
+│   │   ├── h3: "Form Textarea"
+│   │   ├── h3: "Form Select"
+│   │   └── h3: "Form Checkbox"
+│   │
+│   ├── h2: "2. Botones"
+│   │   ├── h3: "Button - Variantes"
+│   │   ├── h3: "Button - Tamaños"
+│   │   ├── h3: "Button - Estados"
+│   │   └── h3: "Close Button"
+│   │
+│   ├── h2: "3. Tarjetas y Contenedores"
+│   │   └── h3: "Card - Media"
+│   │
+│   ├── h2: "4. Notificaciones y Alertas"
+│   │   └── h3: "Alert"
+│   │
+│   └── h2: "5. Cards"
+│       ├── h3: "Card - Media Variant"
+│       └── h3: "Card - Rating Variant"
+```
+
+### Ejemplo de implementación correcta
+
+**Home (home.html):**
+```html
+<div class="component-showcase">
+  <header class="component-showcase__header">
+    <h1 class="component-showcase__title">Sistema de Componentes</h1>
+    <p class="component-showcase__description">
+      Demostración de todos los componentes disponibles en el proyecto
+    </p>
+  </header>
+
+  <!-- FASE 1 -->
+  <section class="component-section phase-1">
+    <h2 class="component-section__title">FASE 1: Manipulación del DOM y Eventos</h2>
+    
+    <div class="component-group">
+      <h3 class="component-group__title">Theme Switcher</h3>
+      <div class="component-demo">
+        <app-theme-switcher />
+      </div>
+    </div>
+
+    <div class="component-group">
+      <h3 class="component-group__title">Modal Interactivo</h3>
+      <div class="component-demo">
+        <app-interactive-modal />
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 2 -->
+  <section class="component-section phase-2">
+    <h2 class="component-section__title">FASE 2: Componentes Interactivos</h2>
+    
+    <div class="component-group">
+      <h3 class="component-group__title">Sistema de Notificaciones Toast</h3>
+      <div class="component-demo">
+        <app-notification />
+      </div>
+    </div>
+  </section>
+</div>
+```
+
+**Style Guide (style-guide.html):**
+```html
+<div class="style-guide">
+  <header class="style-guide__header">
+    <h1 class="style-guide__title">Guía de Estilos</h1>
+  </header>
+
+  <section id="formularios" class="style-guide__section">
+    <h2 class="style-guide__section-title">1. Componentes de Formulario</h2>
+    
+    <div class="style-guide__component">
+      <h3 class="style-guide__component-title">Form Input</h3>
+      <!-- demo -->
+    </div>
+
+    <div class="style-guide__component">
+      <h3 class="style-guide__component-title">Form Textarea</h3>
+      <!-- demo -->
+    </div>
+  </section>
+
+  <section id="botones" class="style-guide__section">
+    <h2 class="style-guide__section-title">2. Botones</h2>
+    
+    <div class="style-guide__component">
+      <h3 class="style-guide__component-title">Button - Variantes</h3>
+      <!-- demo -->
+    </div>
+  </section>
+</div>
+```
+
+
+## 2.3 Estructura de formularios
+
+### Asociación de labels con inputs
+
+Se utiliza la asociación explícita mediante los atributos `for` e `id`, que es la práctica recomendada para accesibilidad:
+
+```html
+<label for="input-id">Texto del label</label>
+<input id="input-id" type="text" />
+```
+
+### Componente Form Input
+
+El componente `app-form-input` implementa todas las mejores prácticas de accesibilidad:
+
+**Código del template (form-input.html):**
+```html
+<div class="form-input" 
+     [class.form-input--error]="showError" 
+     [class.form-input--disabled]="disabled">
+  
+  <!-- Label asociado al input mediante for/id -->
+  <label 
+    *ngIf="label" 
+    [for]="inputId" 
+    class="form-input__label"
+  >
+    {{ label }}
+    <span *ngIf="required" class="form-input__required" aria-label="campo requerido">*</span>
+  </label>
+
+  <!-- Input field con accesibilidad completa -->
+  <input
+    [id]="inputId"
+    [type]="type"
+    [name]="name"
+    [placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+    [attr.aria-invalid]="showError ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    class="form-input__field"
+  />
+
+  <!-- Texto de ayuda (referenciado por aria-describedby) -->
+  <p 
+    *ngIf="helpText && !showError" 
+    [id]="helpTextId" 
+    class="form-input__help"
+  >
+    {{ helpText }}
+  </p>
+
+  <!-- Mensaje de error con role="alert" para lectores de pantalla -->
+  <p 
+    *ngIf="showError && errorMessage" 
+    [id]="errorId" 
+    class="form-input__error" 
+    role="alert"
+  >
+    {{ errorMessage }}
+  </p>
+</div>
+```
+
+**Código del componente TypeScript (form-input.ts):**
+```typescript
+@Component({
+  selector: 'app-form-input',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './form-input.html',
+  styleUrl: './form-input.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FormInput),
+      multi: true
+    }
+  ]
+})
+export class FormInput implements ControlValueAccessor {
+  // ID único generado automáticamente
+  @Input() inputId: string = `form-input-${Math.random().toString(36).substr(2, 9)}`;
+  @Input() type: string = 'text';
+  @Input() name: string = '';
+  @Input() label: string = '';
+  @Input() placeholder: string = '';
+  @Input() required: boolean = false;
+  @Input() disabled: boolean = false;
+  @Input() helpText: string = '';
+  @Input() errorMessage: string = '';
+  @Input() showError: boolean = false;
+
+  // Genera el aria-describedby dinámicamente
+  get ariaDescribedBy(): string | null {
+    const ids: string[] = [];
+    if (this.helpText && !this.showError) ids.push(this.helpTextId);
+    if (this.showError && this.errorMessage) ids.push(this.errorId);
+    return ids.length > 0 ? ids.join(' ') : null;
+  }
+
+  get helpTextId(): string {
+    return `${this.inputId}-help`;
+  }
+
+  get errorId(): string {
+    return `${this.inputId}-error`;
   }
 }
-
-.card__title {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  margin-bottom: $spacing-3;
-  color: $color-text-primary;
-}
-
-.card__body {
-  color: $color-text-secondary;
-  line-height: $line-height-normal;
-}
 ```
 
-### Buenas prácticas con Emulated
-
-1. **Importa variables y mixins:** Cada componente debe importar `_variables.scss` y `_mixins.scss` si los necesita.
-
-2. **Usa BEM:** Aunque los estilos están encapsulados, BEM sigue siendo útil para claridad.
-
-3. **Evita selectores profundos:** No uses `::ng-deep` a menos que sea absolutamente necesario. Es deprecated y rompe la encapsulación.
-
-4. **Estilos globales mínimos:** Solo usa estilos globales para resets, variables y utilidades generales.
-
-5. **`:host` para el elemento raíz:**
-```scss
-:host {
-  display: block;
-  padding: $spacing-4;
-}
-```
-
-6. **`:host-context` para temas:**
-```scss
-:host-context(.theme-dark) {
-  background: black;
-}
-```
-
-### Alternativa: ViewEncapsulation.None
-
-**Solo usaríamos `None` si:**
-- Necesitamos estilos verdaderamente globales desde un componente
-- Estamos migrando una aplicación no-Angular
-- Necesitamos sobrescribir estilos de librerías externas
-
-**Cómo activarlo:**
-```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
-
-@Component({
-  selector: 'app-global-styles',
-  template: `...`,
-  styleUrls: ['./global-styles.component.scss'],
-  encapsulation: ViewEncapsulation.None
-})
-export class GlobalStylesComponent {}
-```
-
-**No lo usamos porque:**
-- Pierde la ventaja de la encapsulación
-- Más propenso a conflictos de estilos
-- Hace el CSS menos mantenible
-- No es necesario con una buena arquitectura ITCSS
-
-### Resumen
-
-**En este proyecto usamos `ViewEncapsulation.Emulated` porque:**
-
-✅ Encapsula estilos por componente automáticamente  
-✅ Compatible con todos los navegadores  
-✅ Permite usar variables y mixins globales  
-✅ Evita conflictos de estilos entre componentes  
-✅ Mantiene el CSS modular y mantenible  
-✅ Se combina perfectamente con ITCSS y BEM  
-
-Esta estrategia nos da lo mejor de ambos mundos: estilos globales reutilizables (variables, reset, grid) y estilos de componente encapsulados que no se filtran a otros componentes.
-
----
-
-## Resumen de la Fase 1
-
-Con la implementación de esta fase, hemos establecido:
-
-✅ **Sistema completo de design tokens** con colores, tipografía, espaciado, sombras y transiciones  
-✅ **12+ mixins reutilizables** que ahorran código y mantienen consistencia  
-✅ **Reset CSS moderno** que normaliza diferencias entre navegadores  
-✅ **Estilos base** para todos los elementos HTML  
-✅ **Sistema de grid y flexbox** con clases de utilidad  
-✅ **Arquitectura ITCSS** perfectamente organizada  
-✅ **Metodología BEM** para nomenclatura clara  
-✅ **ViewEncapsulation estratégica** que balancea globalidad y modularidad  
-
-Esta base sólida nos permite construir componentes consistentes, mantener el código fácilmente, y escalar el proyecto sin problemas de especificidad o conflictos de estilos.
-
----
-
-# FASE 5: Sistema de Componentes de Formulario
-
-Esta fase implementa componentes de formulario reutilizables con HTML semántico, accesibilidad completa y estilos personalizados basados en el diseño proporcionado.
-
-## 5.1 Componente Form Input
-
-### Características Implementadas
-
-✅ **HTML Semántico Completo**
-- Label siempre asociado al input mediante atributos `for` e `id`
-- Atributos ARIA para accesibilidad (`aria-invalid`, `aria-describedby`)
-- Soporte para múltiples tipos de input (text, email, password, tel, url, number)
-- Indicador visual de campo requerido (asterisco)
-- Mensajes de error y texto de ayuda opcionales
-
-✅ **Integración con Angular Forms**
-- Implementa `ControlValueAccessor` para integración completa con Angular Forms
-- Compatible con Reactive Forms y Template-driven Forms
-- Validación y manejo de estados (touched, dirty, valid)
-
-✅ **Estilos Personalizados**
-- Inputs con fondo rosa (#e893cf) y bordes oscuros (#3d2a45)
-- Bordes redondeados (border-radius: 1.25rem)
-- Texto centrado con placeholder en color oscuro
-- Estados hover y focus con transiciones suaves
-- Diseño responsive y adaptable
-
-### Ubicación
-```
-src/app/components/shared/form-input/
-  ├── form-input.ts         # Componente con ControlValueAccessor
-  ├── form-input.html       # Template con HTML semántico
-  └── form-input.scss       # Estilos personalizados
-```
-
-### Ejemplo de Uso
+### Ejemplo de uso del componente
 
 ```html
 <!-- Input básico -->
 <app-form-input
-  label="Username / Email"
+  inputId="username"
+  label="Username"
   type="text"
-  placeholder="Username / Email"
+  placeholder="Introduce tu usuario"
   [required]="true"
 />
 
-<!-- Input con validación -->
+<!-- Input con error -->
 <app-form-input
+  inputId="email"
+  label="Email"
+  type="email"
+  placeholder="ejemplo@correo.com"
+  [required]="true"
+  [showError]="true"
+  errorMessage="El email no es válido"
+/>
+
+<!-- Input con texto de ayuda -->
+<app-form-input
+  inputId="password"
+  label="Contraseña"
+  type="password"
+  [required]="true"
+  helpText="Mínimo 8 caracteres, una mayúscula y un número"
+/>
+```
+
+### Otros componentes de formulario
+
+El proyecto incluye componentes de formulario adicionales que siguen el mismo patrón:
+
+**Form Textarea:**
+```html
+<app-form-textarea
+  textareaId="message"
+  label="Mensaje"
+  placeholder="Escribe tu mensaje..."
+  [rows]="4"
+  [required]="true"
+  [showCharacterCount]="true"
+  [maxLength]="500"
+/>
+```
+
+**Form Select:**
+```html
+<app-form-select
+  selectId="country"
+  label="País"
+  [options]="[
+    { value: 'es', label: 'España' },
+    { value: 'mx', label: 'México' },
+    { value: 'ar', label: 'Argentina' }
+  ]"
+  placeholder="Selecciona un país"
+  [required]="true"
+/>
+```
+
+**Form Checkbox:**
+```html
+<app-form-checkbox
+  checkboxId="terms"
+  label="Acepto los términos y condiciones"
+  [required]="true"
+/>
+```
+
+### Características de accesibilidad implementadas
+
+| Característica | Implementación | Propósito |
+|---------------|----------------|-----------|
+| `for` / `id` | Label vinculado al input | Asociación explícita para lectores de pantalla |
+| `aria-invalid` | Se activa cuando hay error | Indica estado de error al usuario |
+| `aria-describedby` | Referencia a help/error text | Proporciona contexto adicional |
+| `role="alert"` | En mensajes de error | Anuncia errores inmediatamente |
+| `aria-label="campo requerido"` | En asterisco (*) | Explica el significado del asterisco |
+| `required` | Atributo nativo | Validación nativa del navegador |
+
+
+---
+
+# Sección 3: Sistema de componentes UI
+
+## 3.1 Componentes implementados
+
+### 1. Button (`app-button`)
+
+**Propósito**: Botón reutilizable con múltiples variantes de estilo, tamaños y estados.
+
+**Variantes disponibles**:
+- `primary`: Botón principal con color morado
+- `secondary`: Botón secundario con color amarillo
+- `ghost`: Botón transparente con borde
+- `danger`: Botón de acción destructiva (rojo)
+
+**Tamaños disponibles**:
+- `sm`: Pequeño (padding reducido)
+- `md`: Mediano (por defecto)
+- `lg`: Grande (padding aumentado)
+
+**Estados**:
+- Default
+- Hover
+- Focus
+- Disabled
+
+**Ejemplo de uso**:
+```html
+<!-- Variantes -->
+<app-button text="Primary" variant="primary" />
+<app-button text="Secondary" variant="secondary" />
+<app-button text="Ghost" variant="ghost" />
+<app-button text="Danger" variant="danger" />
+
+<!-- Tamaños -->
+<app-button text="Small" size="sm" />
+<app-button text="Medium" size="md" />
+<app-button text="Large" size="lg" />
+
+<!-- Estados -->
+<app-button text="Disabled" [disabled]="true" />
+<app-button text="Full Width" [fullWidth]="true" />
+
+<!-- Con evento -->
+<app-button text="Click me" (onClick)="handleClick($event)" />
+```
+
+---
+
+### 2. Card (`app-card`)
+
+**Propósito**: Tarjeta para mostrar contenido estructurado como series, películas o productos.
+
+**Variantes disponibles**:
+- `default`: Tarjeta básica
+- `horizontal`: Disposición horizontal
+- `elevated`: Con sombra elevada
+- `bordered`: Con borde visible
+- `compact`: Versión compacta
+- `interactive`: Con efectos hover
+- `media`: Para contenido multimedia
+- `rating`: Con sistema de valoración
+
+**Estados**:
+- Default
+- Hover (scale y sombra)
+- Con/sin footer
+- Con/sin imagen
+
+**Ejemplo de uso**:
+```html
+<!-- Card básica -->
+<app-card
+  title="TWIN PEAKS"
+  imageSrc="https://example.com/image.jpg"
+  imageAlt="Twin Peaks Series"
+/>
+
+<!-- Card con rating -->
+<app-card
+  variant="rating"
+  title="Breaking Bad"
+  [statBars]="[40, 50, 70, 100, 90]"
+/>
+
+<!-- Card interactiva -->
+<app-card
+  variant="interactive"
+  title="Stranger Things"
+  [hasFooter]="true"
+/>
+```
+
+---
+
+### 3. Form Input (`app-form-input`)
+
+**Propósito**: Campo de entrada de texto reutilizable con validación y accesibilidad.
+
+**Tipos disponibles**:
+- `text`: Texto plano
+- `email`: Correo electrónico
+- `password`: Contraseña
+- `tel`: Teléfono
+- `url`: URL
+- `number`: Numérico
+
+**Estados**:
+- Default
+- Focus
+- Error
+- Disabled
+- Con texto de ayuda
+
+**Ejemplo de uso**:
+```html
+<app-form-input
+  inputId="email"
   label="Email"
   type="email"
   placeholder="tu@email.com"
   [required]="true"
-  [showError]="emailInvalid"
-  errorMessage="Por favor ingresa un email válido"
-  helpText="Usaremos este email para contactarte"
+  helpText="Nunca compartiremos tu email"
 />
 
-<!-- Input de password -->
 <app-form-input
-  label="Password"
+  inputId="password"
+  label="Contraseña"
   type="password"
-  placeholder="••••••••"
+  [required]="true"
+  [showError]="true"
+  errorMessage="La contraseña es muy corta"
+/>
+```
+
+---
+
+### 4. Form Textarea (`app-form-textarea`)
+
+**Propósito**: Área de texto multilínea con contador de caracteres opcional.
+
+**Características**:
+- Rows configurables
+- Contador de caracteres
+- Límite máximo de caracteres
+
+**Estados**:
+- Default
+- Focus
+- Error
+- Disabled
+
+**Ejemplo de uso**:
+```html
+<app-form-textarea
+  textareaId="message"
+  label="Mensaje"
+  placeholder="Escribe tu mensaje..."
+  [rows]="4"
+  [maxLength]="500"
+  [showCharacterCount]="true"
   [required]="true"
 />
 ```
 
-### Propiedades
+---
 
-| Propiedad | Tipo | Default | Descripción |
-|-----------|------|---------|-------------|
-| `inputId` | string | auto-generado | ID único para el input |
-| `type` | string | 'text' | Tipo de input HTML |
-| `name` | string | '' | Nombre del input para formularios |
-| `label` | string | '' | Texto del label |
-| `placeholder` | string | '' | Placeholder del input |
-| `required` | boolean | false | Si el campo es requerido |
-| `disabled` | boolean | false | Si el input está deshabilitado |
-| `helpText` | string | '' | Texto de ayuda |
-| `errorMessage` | string | '' | Mensaje de error |
-| `showError` | boolean | false | Mostrar estado de error |
+### 5. Form Select (`app-form-select`)
 
-### Eventos
+**Propósito**: Dropdown/select con opciones configurables.
 
-| Evento | Tipo | Descripción |
-|--------|------|-------------|
-| `valueChange` | string | Se emite cuando el valor cambia |
-| `blurEvent` | void | Se emite cuando el input pierde el foco |
-| `focusEvent` | void | Se emite cuando el input obtiene el foco |
+**Estados**:
+- Default
+- Open
+- Selected
+- Error
+- Disabled
 
-## 5.2 Componente Close Button
-
-### Características Implementadas
-
-✅ **Botón Circular con Icono X**
-- Diseño circular con SVG centrado
-- Fondo rosa (#e893cf) con borde oscuro (#3d2a45)
-- Tamaño de 3.5rem × 3.5rem
-- Icono X con trazo grueso (stroke-width: 3)
-
-✅ **Estados Interactivos**
-- Estado hover con transformación scale(1.05)
-- Estado active con scale(0.95)
-- Focus visible con outline y box-shadow
-- Transiciones suaves en todos los estados
-
-✅ **Accesibilidad**
-- Atributo `aria-label="Cerrar"` para lectores de pantalla
-- Focus visible para navegación por teclado
-- Cursor pointer para indicar interactividad
-
-### Ubicación
-```
-src/app/components/shared/close-button/
-  ├── close-button.ts       # Componente con evento closeClick
-  ├── close-button.html     # Template con SVG
-  └── close-button.scss     # Estilos del botón circular
+**Ejemplo de uso**:
+```html
+<app-form-select
+  selectId="country"
+  label="País"
+  [options]="[
+    { value: 'es', label: 'España' },
+    { value: 'mx', label: 'México' }
+  ]"
+  placeholder="Selecciona un país"
+  [required]="true"
+/>
 ```
 
-### Ejemplo de Uso
+---
+
+### 6. Form Checkbox (`app-form-checkbox`)
+
+**Propósito**: Checkbox personalizado con estilos consistentes.
+
+**Estados**:
+- Unchecked
+- Checked
+- Focus
+- Disabled
+- Error
+
+**Ejemplo de uso**:
+```html
+<app-form-checkbox
+  checkboxId="terms"
+  label="Acepto los términos y condiciones"
+  [required]="true"
+/>
+```
+
+---
+
+### 7. Alert (`app-alert`)
+
+**Propósito**: Mostrar mensajes de información, éxito, advertencia o error.
+
+**Variantes**:
+- `info`: Información (azul)
+- `success`: Éxito (verde)
+- `warning`: Advertencia (amarillo)
+- `error`: Error (rojo)
+
+**Estados**:
+- Visible
+- Dismissible (con botón de cerrar)
+
+**Ejemplo de uso**:
+```html
+<app-alert
+  type="success"
+  message="Cambios guardados correctamente"
+  [dismissible]="true"
+/>
+
+<app-alert
+  type="error"
+  message="Ha ocurrido un error"
+  [dismissible]="false"
+/>
+```
+
+---
+
+### 8. Toast (`app-toast`)
+
+**Propósito**: Notificaciones temporales que aparecen y desaparecen automáticamente.
+
+**Variantes**:
+- `success`: Acción exitosa
+- `error`: Error
+- `warning`: Advertencia
+- `info`: Información
+
+**Características**:
+- Duración configurable
+- Auto-dismiss
+- Posición fija en pantalla
+
+**Ejemplo de uso**:
+```typescript
+// Desde el servicio ToastService
+this.toastService.show({
+  type: 'success',
+  message: 'Usuario registrado correctamente',
+  duration: 3000
+});
+```
+
+---
+
+### 9. Modal (`app-modal`)
+
+**Propósito**: Ventana modal para contenido destacado o formularios.
+
+**Características**:
+- Título configurable
+- Footer opcional
+- Cierre con botón X
+- Cierre con click en backdrop
+- Accesibilidad con role="dialog" y aria-modal
+
+**Ejemplo de uso**:
+```html
+<app-modal 
+  [isOpen]="showModal" 
+  title="Confirmar acción"
+  (close)="closeModal()"
+>
+  <p>¿Estás seguro de realizar esta acción?</p>
+  
+  <div modal-footer>
+    <app-button text="Cancelar" variant="ghost" (onClick)="closeModal()" />
+    <app-button text="Confirmar" variant="primary" (onClick)="confirm()" />
+  </div>
+</app-modal>
+```
+
+---
+
+### 10. Spinner (`app-spinner`)
+
+**Propósito**: Indicador de carga global conectado al LoadingService.
+
+**Características**:
+- Se muestra/oculta automáticamente según el servicio
+- Animación CSS con @keyframes
+- Overlay semi-transparente
+
+**Ejemplo de uso**:
+```typescript
+// Mostrar spinner
+this.loadingService.show();
+
+// Ocultar spinner
+this.loadingService.hide();
+```
+
+---
+
+### 11. Tabs (`app-tabs`)
+
+**Propósito**: Sistema de pestañas para organizar contenido.
+
+**Características**:
+- Navegación con teclado (flechas)
+- Evento al cambiar de pestaña
+- Pestaña activa por defecto configurable
+
+**Estados**:
+- Default
+- Active
+- Hover
+- Focus
+
+**Ejemplo de uso**:
+```html
+<app-tabs
+  [tabs]="[
+    { id: 'tab1', label: 'Pestaña 1', content: 'Contenido 1' },
+    { id: 'tab2', label: 'Pestaña 2', content: 'Contenido 2' }
+  ]"
+  activeTabId="tab1"
+  (tabChange)="onTabChange($event)"
+/>
+```
+
+---
+
+### 12. Tooltip (`app-tooltip`)
+
+**Propósito**: Mostrar información adicional al hacer hover o focus.
+
+**Posiciones**:
+- `top`
+- `bottom`
+- `left`
+- `right`
+
+**Características**:
+- Delay configurable
+- Se oculta automáticamente
+- Posicionamiento dinámico
+
+**Ejemplo de uso**:
+```html
+<app-tooltip text="Información adicional" position="top">
+  <app-button text="Hover me" />
+</app-tooltip>
+```
+
+---
+
+### 13. Theme Toggle (`app-theme-toggle`)
+
+**Propósito**: Cambiar entre tema claro y oscuro.
+
+**Características**:
+- Detecta preferencia del sistema (prefers-color-scheme)
+- Persistencia en localStorage
+- Toggle con icono sol/luna
+
+**Ejemplo de uso**:
+```html
+<app-theme-toggle />
+```
+
+---
+
+### 14. Close Button (`app-close-button`)
+
+**Propósito**: Botón de cierre reutilizable (X).
+
+**Tamaños**:
+- Default
+- `lg`: Grande
+
+**Ejemplo de uso**:
+```html
+<app-close-button (closeClick)="onClose()" />
+<app-close-button size="lg" (closeClick)="onClose()" />
+```
+
+---
+
+### 15. Star (`app-star`)
+
+**Propósito**: Estrella para sistema de valoración.
+
+**Estados**:
+- Empty (vacía)
+- Half (media estrella)
+- Filled (llena)
+- Hover
+- Clicked
+
+**Ejemplo de uso**:
+```html
+<app-star 
+  [filled]="true" 
+  (clickStar)="onRate($event)"
+/>
+```
+
+---
+
+### Tabla resumen de componentes
+
+| Componente | Variantes | Tamaños | Estados principales |
+|------------|-----------|---------|---------------------|
+| Button | primary, secondary, ghost, danger | sm, md, lg | default, hover, focus, disabled |
+| Card | default, horizontal, elevated, rating, media | - | default, hover |
+| Form Input | - | - | default, focus, error, disabled |
+| Form Textarea | - | rows configurables | default, focus, error, disabled |
+| Form Select | - | - | default, open, selected, error, disabled |
+| Form Checkbox | - | - | unchecked, checked, focus, disabled |
+| Alert | info, success, warning, error | - | visible, dismissible |
+| Toast | success, error, warning, info | - | visible, auto-dismiss |
+| Modal | - | - | open, closed |
+| Spinner | - | - | visible, hidden |
+| Tabs | - | - | default, active, hover, focus |
+| Tooltip | top, bottom, left, right | - | visible, hidden |
+| Theme Toggle | light, dark | - | - |
+| Close Button | - | default, lg | hover, focus |
+| Star | empty, half, filled | - | hover, clicked |
+
+
+## 3.2 Nomenclatura y metodología
+
+### Estrategia BEM aplicada
+
+**BEM (Block Element Modifier)** se aplica consistentemente en todo el proyecto:
+
+- **Block**: Componente independiente con significado propio
+- **Element**: Parte del bloque que no tiene significado independiente (separado con `__`)
+- **Modifier**: Variante del bloque o elemento (separado con `--`)
+
+### Ejemplos reales del proyecto
+
+**Button - Nomenclatura completa:**
+```scss
+// BLOCK: El componente completo
+.btn { }
+
+// ELEMENT: Parte del botón
+.btn__content { }
+.btn__icon { }
+
+// MODIFIERS: Variantes de estilo
+.btn--primary { }
+.btn--secondary { }
+.btn--ghost { }
+.btn--danger { }
+
+// MODIFIERS: Variantes de tamaño
+.btn--sm { }
+.btn--lg { }
+.btn--full { }
+
+// MODIFIERS: Estados
+.btn--disabled { }
+.btn--loading { }
+```
+
+**Card - Nomenclatura completa:**
+```scss
+// BLOCK
+.card { }
+
+// ELEMENTS
+.card__image-wrapper { }
+.card__image { }
+.card__body { }
+.card__title { }
+.card__content { }
+.card__footer { }
+
+// MODIFIERS
+.card--horizontal { }
+.card--elevated { }
+.card--bordered { }
+.card--compact { }
+.card--interactive { }
+.card--rating { }
+.card--featured { }
+```
+
+**Header - Nomenclatura completa:**
+```scss
+// BLOCK
+.header { }
+
+// ELEMENTS
+.header__container { }
+.header__logo { }
+.header__logo-text { }
+.header__toggle { }
+.header__toggle-bar { }
+.header__actions { }
+.header__btn { }
+.header__search { }
+.header__search-input { }
+.header__search-btn { }
+.header__mobile-menu { }
+
+// MODIFIERS
+.header__toggle--active { }
+.header__mobile-menu--open { }
+.header__btn--login { }
+.header__btn--logout { }
+```
+
+**Form Input - Nomenclatura completa:**
+```scss
+// BLOCK
+.form-input { }
+
+// ELEMENTS
+.form-input__label { }
+.form-input__required { }
+.form-input__field { }
+.form-input__help { }
+.form-input__error { }
+
+// MODIFIERS
+.form-input--error { }
+.form-input--disabled { }
+.form-input--success { }
+```
+
+### Cuándo usar modificadores vs clases de estado
+
+| Situación | Usar | Ejemplo |
+|-----------|------|---------|
+| Variante visual permanente | Modifier (`--`) | `.btn--primary`, `.card--horizontal` |
+| Estado temporal/dinámico | Modifier con clase condicional | `.header__toggle--active` |
+| Tamaño del componente | Modifier (`--`) | `.btn--sm`, `.btn--lg` |
+| Estado de error | Modifier (`--`) | `.form-input--error` |
+| Estado deshabilitado | Modifier (`--`) | `.btn--disabled` |
+| Elemento visible/oculto | Modifier (`--`) | `.modal--open`, `.menu--open` |
+
+### Reglas de nomenclatura
+
+1. **Nombres en inglés y lowercase**: `.card__title`, no `.tarjeta__titulo`
+2. **Nombres descriptivos**: `.card__image-wrapper`, no `.card__iw`
+3. **Un solo nivel de elemento**: `.card__title`, no `.card__body__title`
+4. **Modificadores autodescriptivos**: `.btn--primary`, `.alert--success`
+
+
+## 3.3 Style Guide
+
+### Propósito del Style Guide
+
+El Style Guide (`/style-guide`) sirve como:
+
+1. **Documentación visual**: Catálogo vivo de todos los componentes disponibles
+2. **Testing visual**: Verificar que los componentes se renderizan correctamente
+3. **Referencia para desarrollo**: Consulta rápida de variantes y estados
+4. **Consistencia de diseño**: Asegurar que todos usan los mismos componentes
+5. **Onboarding**: Facilitar la incorporación de nuevos desarrolladores
+
+### Estructura del Style Guide
+
+```
+📄 Style Guide (/style-guide)
+├── 1. Componentes de Formulario
+│   ├── Form Input
+│   ├── Form Textarea
+│   ├── Form Select
+│   └── Form Checkbox
+│
+├── 2. Botones
+│   ├── Button - Variantes
+│   ├── Button - Tamaños
+│   ├── Button - Estados
+│   └── Close Button
+│
+├── 3. Tarjetas y Contenedores
+│   └── Card - Media
+│
+├── 4. Notificaciones y Alertas
+│   └── Alert (info, success, warning, error)
+│
+└── 5. Cards
+    ├── Card - Media Variant
+    └── Card - Rating Variant
+```
+
+### Capturas del Style Guide
+
+> **Nota**: Las capturas de pantalla deben añadirse manualmente en la ruta `/docs/screenshots/`
+
+**Sección de Formularios:**
+> ![Style Guide - Formularios](/docs/screenshots/style-guide-forms.png)
+
+**Sección de Botones:**
+> ![Style Guide - Botones](/docs/screenshots/style-guide-buttons.png)
+
+**Sección de Alertas:**
+> ![Style Guide - Alertas](/docs/screenshots/style-guide-alerts.png)
+
+**Sección de Cards:**
+> ![Style Guide - Cards](/docs/screenshots/style-guide-cards.png)
+
+### Cómo acceder al Style Guide
+
+1. Iniciar la aplicación: `npm start`
+2. Navegar a: `http://localhost:4200/style-guide`
+3. O hacer click en "Guía de Estilos" desde la página Home
+
+### Ejemplo de código del Style Guide
 
 ```html
-<!-- Botón de cierre básico -->
-<app-close-button (closeClick)="onClose()" />
+<!-- style-guide.html -->
+<div class="style-guide">
+  <header class="style-guide__header">
+    <h1 class="style-guide__title">Guía de Estilos</h1>
+    <p class="style-guide__description">
+      Catálogo completo de componentes reutilizables del sistema de diseño BROADCAST
+    </p>
+  </header>
 
-<!-- En un modal o dialog -->
-<div class="modal-header">
-  <h2>Título del Modal</h2>
-  <app-close-button (closeClick)="closeModal()" />
+  <nav class="style-guide__nav">
+    <a href="#formularios">1. Componentes de Formulario</a>
+    <a href="#botones">2. Botones</a>
+    <a href="#tarjetas">3. Tarjetas</a>
+    <a href="#notificaciones">4. Notificaciones</a>
+  </nav>
+
+  <section id="botones" class="style-guide__section">
+    <h2>2. Botones</h2>
+    
+    <div class="style-guide__component">
+      <h3>Button - Variantes</h3>
+      <div class="style-guide__component-demo">
+        <app-button text="Primary" variant="primary" />
+        <app-button text="Secondary" variant="secondary" />
+        <app-button text="Ghost" variant="ghost" />
+        <app-button text="Danger" variant="danger" />
+      </div>
+    </div>
+  </section>
 </div>
 ```
-
-### Propiedades
-
-| Evento | Tipo | Descripción |
-|--------|------|-------------|
-| `closeClick` | void | Se emite cuando se hace clic en el botón |
-
-## 5.3 Actualización del Componente Button
-
-### Mejoras Implementadas
-
-✅ **Variante Primary con Estilo Amarillo**
-- Gradiente amarillo (#f4d03f → #e8be2d)
-- Texto oscuro (#3d2a45) para alto contraste
-- Bordes oscuros redondeados (border-radius: 1rem)
-- Sombra profunda para efecto elevado
-- Font weight bold para mayor presencia
-
-✅ **Propiedad Text Añadida**
-- Nuevo input `text` para pasar texto directamente
-- Compatible con `ng-content` para contenido complejo
-- Simplifica el uso del componente
-
-### Ejemplo de Uso
-
-```html
-<!-- Con propiedad text -->
-<app-button text="Log In" variant="primary" />
-<app-button text="Create account" variant="primary" />
-
-<!-- Con ng-content para contenido complejo -->
-<app-button variant="secondary">
-  <svg>...</svg>
-  Cancelar
-</app-button>
-```
-
-## 5.4 Página de Demostración (Home)
-
-### Contenido Implementado
-
-La página principal ahora sirve como **showcase completo del sistema de componentes**, organizado por categorías:
-
-#### 1. Componentes de Formulario
-- Form Input (text, email, password)
-- Form Textarea
-- Form Select
-- Form Checkbox
-- Form Radio Group
-
-#### 2. Botones
-- Button (variantes primary y secondary)
-- Close Button (circular con X)
-
-#### 3. Tarjetas y Contenedores
-- Card component
-
-#### 4. Notificaciones y Alertas
-- Alert component
-- Notification component
-
-#### 5. Ejemplos de Formularios Completos
-- **Formulario de Login**: "Welcome back!" con username/email y password
-- **Formulario de Registro**: "Create an account" con username, email, password y confirm password
-
-### Estilos de la Página
-
-✅ **Sistema de Grid Responsivo**
-- Layout adaptable con CSS Grid
-- Breakpoints para móvil, tablet y desktop
-- Espaciado consistente entre secciones
-
-✅ **Tarjetas de Demostración**
-- Fondo semi-transparente con gradiente
-- Bordes con color de acento
-- Padding y espaciado interno consistente
-
-✅ **Formularios de Ejemplo**
-- Tarjetas elevadas con sombras
-- Gradiente de fondo (#3d2a45 → #2c1a35)
-- Header con título y botón de cierre
-- Espaciado vertical entre inputs
-
-### Ubicación
-```
-src/app/pages/home/
-  ├── home.ts           # Componente con imports de todos los componentes
-  ├── home.html         # Template con showcase completo
-  └── home.scss         # Estilos de la página de demostración
-```
-
-## 5.5 Resumen de la Implementación
-
-Con la implementación de esta fase, ahora tenemos:
-
-✅ **Componente form-input completamente funcional** con HTML semántico y accesibilidad
-✅ **Componente close-button circular** con estilos personalizados
-✅ **Button actualizado** con variante amarilla y propiedad text
-✅ **Página de demostración completa** mostrando todos los componentes por categoría
-✅ **Formularios de ejemplo** (Login y Registro) con el diseño de las imágenes
-✅ **Sistema de estilos consistente** con colores rosa (#e893cf) y amarillo (#f4d03f)
-✅ **HTML semántico en todos los componentes** con labels asociados y ARIA
-✅ **Accesibilidad completa** con navegación por teclado y lectores de pantalla
-
-### Próximos Pasos Sugeridos
-
-- Implementar validación en tiempo real en los formularios
-- Añadir animaciones de entrada/salida en modales
-- Crear variants adicionales para los inputs (outline, filled)
-- Implementar sistema de temas claro/oscuro
-- Añadir más componentes de formulario (file upload, date picker, etc.)
-

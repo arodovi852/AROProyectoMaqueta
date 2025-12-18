@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Productos } from './pages/productos/productos';
 import { Contacto } from './pages/contacto/contacto';
+import { DemoComponents } from './pages/demo-components/demo-components';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,11 @@ export const routes: Routes = [
     path: 'contacto',
     component: Contacto,
     title: 'Contacto - BROADCAST'
+  },
+  {
+    path: 'demo',
+    component: DemoComponents,
+    title: 'Demo Componentes - BROADCAST'
   },
   {
     path: '**',

@@ -1,0 +1,95 @@
+.sibling-receiver {
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  background: rgba(var(--color-neutral-800), 0.5);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-secondary);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  margin: var(--spacing-6) auto;
+  max-width: 800px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-secondary-light);
+  }
+
+  &__title {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--color-secondary-light);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    font-family: var(--font-primary);
+    text-align: center;
+  }
+
+  &__description {
+    margin: 0 0 var(--spacing-xl) 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    font-family: var(--font-secondary);
+    text-align: center;
+  }
+
+  &__empty {
+    padding: var(--spacing-xl);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-align: center;
+    background: var(--color-box-level-2);
+    border-radius: 1rem;
+    border: 1px dashed var(--color-secondary);
+  }
+
+  &__messages {
+    margin-top: var(--spacing-lg);
+  }
+
+  &__messages-title {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--color-secondary-light);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  &__message {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-box-level-3);
+    border-radius: 1rem;
+    border-left: 3px solid var(--color-secondary);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    animation: slideInMessage 0.4s ease-out;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+
+    &:hover {
+      background: var(--color-box-level-4);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+@keyframes slideInMessage {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
