@@ -1,26 +1,8 @@
-// ==========================================================================
-// MIXINS Y FUNCIONES ÚTILES
-// ==========================================================================
-// Este archivo contiene mixins reutilizables que nos ahorran código repetitivo
-// y facilitan la implementación de patrones comunes.
-// ==========================================================================
 
-// Importar variables para usar en los mixins
 @import '../00-settings/variables';
 
-// ==========================================================================
-// MIXIN: RESPONSIVE
-// ==========================================================================
+// Resposnive
 // Facilita la escritura de media queries para diferentes breakpoints
-// 
-// Uso:
-// .elemento {
-//   font-size: 16px;
-//   
-//   @include responsive('md') {
-//     font-size: 18px;
-//   }
-// }
 
 @mixin responsive($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
@@ -43,22 +25,8 @@
     @warn "No existe el breakpoint `#{$breakpoint}` en el mapa $breakpoints.";
   }
 }
-
-// ==========================================================================
-// MIXIN: FLEXBOX CENTER
-// ==========================================================================
+// Flexbox Center
 // Centra elementos usando flexbox de forma rápida
-// 
-// Uso:
-// .container {
-//   @include flex-center;
-// }
-// 
-// Con dirección personalizada:
-// .container {
-//   @include flex-center(column);
-// }
-
 @mixin flex-center($direction: row, $gap: 0) {
   display: flex;
   flex-direction: $direction;
@@ -89,15 +57,8 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: GRID CENTER
-// ==========================================================================
+// Grid Center
 // Centra elementos usando CSS Grid
-// 
-// Uso:
-// .container {
-//   @include grid-center;
-// }
 
 @mixin grid-center {
   display: grid;
@@ -111,20 +72,9 @@
   gap: var(--spacing-4);
 }
 
-// ==========================================================================
-// MIXIN: TRANSICIONES
-// ==========================================================================
+// Transiciones
 // Aplica transiciones suaves a propiedades específicas
-// 
-// Uso:
-// .button {
-//   @include transition(background-color, transform);
-//   
-//   &:hover {
-//     background-color: $color-primary-light;
-//     transform: translateY(-2px);
-//   }
-// }
+
 
 @mixin transition($properties...) {
   $transitions: ();
@@ -164,20 +114,9 @@
   transition: $transitions;
 }
 
-// ==========================================================================
-// MIXIN: TRUNCATE TEXT
-// ==========================================================================
+// Truncate text
 // Trunca texto con puntos suspensivos
-// 
-// Uso:
-// .text {
-//   @include truncate;
-// }
-// 
-// Con múltiples líneas:
-// .text {
-//   @include truncate(3);
-// }
+
 
 @mixin truncate($lines: 1) {
   @if $lines == 1 {
@@ -193,15 +132,9 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: ASPECT RATIO
-// ==========================================================================
+// Aspect Ratio
 // Mantiene una relación de aspecto específica
-// 
-// Uso:
-// .image-container {
-//   @include aspect-ratio(16, 9);
-// }
+
 
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: $width / $height;
@@ -226,15 +159,9 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: VISUALLY HIDDEN
-// ==========================================================================
+// Visually Hidden
 // Oculta visualmente pero mantiene accesible para lectores de pantalla
-// 
-// Uso:
-// .sr-only {
-//   @include visually-hidden;
-// }
+
 
 @mixin visually-hidden {
   position: absolute;
@@ -248,15 +175,8 @@
   border-width: 0;
 }
 
-// ==========================================================================
-// MIXIN: FOCUS VISIBLE
-// ==========================================================================
+// Focus Visible
 // Estilos de focus accesibles y modernos
-// 
-// Uso:
-// .button {
-//   @include focus-visible($color-primary);
-// }
 
 @mixin focus-visible {
   $color: var(--color-primary-light);
@@ -271,15 +191,9 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: CONTAINER
-// ==========================================================================
+// Container
 // Crea un contenedor con ancho máximo y padding lateral
-// 
-// Uso:
-// .container {
-//   @include container;
-// }
+
 
 @mixin container {
   max-width: var(--max-width-xl);
@@ -290,15 +204,8 @@
   width: 100%;
 }
 
-// ==========================================================================
-// MIXIN: BUTTON RESET
-// ==========================================================================
+// Button Reset
 // Resetea estilos por defecto de botones
-// 
-// Uso:
-// .custom-button {
-//   @include button-reset;
-// }
 
 @mixin button-reset {
   background: none;
@@ -314,15 +221,8 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: HOVER LIFT
-// ==========================================================================
+// Hover lift
 // Efecto de elevación al hacer hover
-// 
-// Uso:
-// .card {
-//   @include hover-lift;
-// }
 
 @mixin hover-lift {
   @include transition(transform, box-shadow);
@@ -333,40 +233,23 @@
   }
 }
 
-// ==========================================================================
-// MIXIN: GRADIENT
-// ==========================================================================
+// Gradiente
 // Crea gradientes fácilmente
-// 
-// Uso:
-// .hero {
-//   @include gradient($color-primary, $color-secondary);
-// }
 
 @mixin gradient($start-color, $end-color, $direction: to right) {
   background: linear-gradient($direction, $start-color, $end-color);
 }
 
-// ==========================================================================
-// FUNCIÓN: REM
-// ==========================================================================
+// REM
 // Convierte px a rem basado en font-size base de 16px
-// 
-// Uso:
-// .element {
-//   padding: rem(24);  // 1.5rem
-// }
+
 
 @function rem($pixels) {
   @return calc($pixels / 16) * 1rem;
 }
 
-// ==========================================================================
-// FUNCIÓN: STRIP UNIT
-// ==========================================================================
+// Strip unit
 // Remueve la unidad de un valor
-// 
-// Uso interno para cálculos
 
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {

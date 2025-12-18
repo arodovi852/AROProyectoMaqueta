@@ -1,10 +1,3 @@
-// ==========================================================================
-// VARIABLES CSS - SISTEMA DE DESIGN TOKENS
-// ==========================================================================
-// Este archivo contiene todas las variables CSS (custom properties) que definen el sistema de diseño.
-// Son la única fuente de verdad para colores, tipografías, espaciados y propiedades visuales.
-// ==========================================================================
-
 :root {
 
 //Colores 
@@ -254,9 +247,8 @@
 --opacity-100: 1;
 }
 
-// ==========================================================================
-// DARK MODE - SOBREESCRITURA DE VARIABLES
-// ==========================================================================
+
+// Dark Mode
 
 .dark-mode {
   //Colores de texto para dark mode
@@ -277,11 +269,7 @@
   --color-box-level-5: #100A13;  // Más oscuro - caja más interna
 }
 
-// ==========================================================================
-// VARIABLES SCSS PARA USAR EN MIXINS Y FUNCIONES
-// ==========================================================================
-// Los mixins no pueden usar directamente var() en todas las situaciones,
-// por lo que mantenemos estas variables SCSS para uso en cálculos y condiciones.
+//Variables para mixins y funciones SCSS
 
 //Breakpoints map para el mixin responsive
 $breakpoints: (

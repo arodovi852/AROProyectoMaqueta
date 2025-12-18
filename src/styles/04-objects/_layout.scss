@@ -1,16 +1,12 @@
-// ==========================================================================
-// SISTEMA DE LAYOUT
-// ==========================================================================
+
+// Sistema de layout
 // Define el sistema de grid y utilidades de layout que se usan en toda la aplicación.
 // Incluye contenedores, grids responsivos y utilidades de Flexbox.
-// ==========================================================================
 
 @import '../00-settings/variables';
 @import '../01-tools/mixins';
 
-// ==========================================================================
-// CONTENEDORES
-// ==========================================================================
+// Contenedores
 
 // Contenedor principal con ancho máximo
 .container {
@@ -59,9 +55,7 @@
   padding-right: var(--spacing-4);
 }
 
-// ==========================================================================
-// SISTEMA DE GRID CSS
-// ==========================================================================
+// Sistema de grid CSS
 
 // Grid básico
 .grid {
@@ -166,9 +160,8 @@
 .row-span-4 { grid-row: span 4 / span 4; }
 .row-span-full { grid-row: 1 / -1; }
 
-// ==========================================================================
-// SISTEMA FLEXBOX
-// ==========================================================================
+
+//Sistema de Flexbox
 
 // Flex básico
 .flex {
@@ -233,9 +226,7 @@
 .flex-shrink { flex-shrink: 1; }
 .flex-shrink-0 { flex-shrink: 0; }
 
-// ==========================================================================
-// UTILIDADES DE LAYOUT COMBINADAS
-// ==========================================================================
+// Utilidades de layout combinadas
 
 // Centering con flex
 .flex-center {
@@ -256,9 +247,7 @@
   @include grid-center;
 }
 
-// ==========================================================================
-// SECCIONES Y BLOQUES COMUNES
-// ==========================================================================
+// Secciones y bloques comunes
 
 // Sección principal
 .section {
@@ -304,9 +293,7 @@
   flex: 1 0 auto;
 }
 
-// ==========================================================================
-// UTILIDADES DE ESPACIADO
-// ==========================================================================
+// Utilidades de espaciado
 
 // Margin
 .m-0 { margin: var(--spacing-0); }
