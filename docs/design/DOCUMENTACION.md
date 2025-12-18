@@ -1692,8 +1692,6 @@ Style Guide (/style-guide)
 
 ### Capturas del Style Guide
 
-> **Nota**: Las capturas de pantalla deben añadirse manualmente en la ruta `/docs/screenshots/`
-
 **Sección de Formularios:**
 > ![Style Guide - Formularios](https://github.com/arodovi852/AROProyectoMaqueta/blob/dev/docs/design/screenshots/Captura%20de%20pantalla%202025-12-18%20234312.png)
 
