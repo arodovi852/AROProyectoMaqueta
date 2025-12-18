@@ -12,11 +12,11 @@
 // ==========================================================================
 
 .login-form {
-  background: linear-gradient(135deg, #3d2a45 0%, #2c1a35 100%);
-  border: 0.1875rem solid #3d2a45;
-  border-radius: 1.5rem;
-  padding: var(--spacing-6);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, rgba(28, 27, 24, 0.95) 100%);
+  border: var(--border-thick) solid var(--color-primary-dark);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-2xl);
   max-width: 28rem;
   margin: 0 auto;
   width: 100%;
@@ -36,10 +36,11 @@
 .login-form__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: #ffffff;
+  color: var(--color-white);
   margin: 0;
   text-align: center;
   flex: 1;
+  font-family: var(--font-primary);
 }
 
 // ==========================================================================
@@ -104,15 +105,17 @@
 
 .login-form__footer {
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-white);
   font-size: var(--font-size-base);
+  font-family: var(--font-secondary);
   margin: var(--spacing-4) 0 0;
+  opacity: var(--opacity-90);
 }
 
 .login-form__link {
   background: none;
   border: none;
-  color: #e893cf;
+  color: var(--color-primary-light);
   font-weight: var(--font-weight-semibold);
   font-size: inherit;
   font-family: inherit;
@@ -122,13 +125,13 @@
   @include transition(color);
 
   &:hover {
-    color: #f0a4da;
+    color: var(--color-primary-lightest);
   }
 
   &:focus-visible {
-    outline: 0.125rem solid #e893cf;
-    outline-offset: 0.125rem;
-    border-radius: 0.125rem;
+    outline: var(--border-medium) solid var(--color-primary-light);
+    outline-offset: var(--spacing-1);
+    border-radius: var(--radius-sm);
   }
 }
 
