@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CloseButton } from '../close-button/close-button';
 
 /**
  * Componente Modal
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CloseButton],
   templateUrl: './modal.html',
   styleUrl: './modal.scss',
 })

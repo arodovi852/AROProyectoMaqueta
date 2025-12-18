@@ -10,12 +10,12 @@
   <div class="event-demo__section">
     <h4>Eventos de Click</h4>
     <div class="event-demo__controls">
-      <button class="btn btn--primary" (click)="onClick($event)">
+      <app-button variant="primary" (onClick)="onClick($event)">
         Click Simple ({{ clickCount }})
-      </button>
-      <button class="btn btn--secondary" (dblclick)="onDoubleClick($event)">
+      </app-button>
+      <app-button variant="secondary" (dblclick)="onDoubleClick($event)">
         Doble Click ({{ doubleClickCount }})
-      </button>
+      </app-button>
     </div>
   </div>
 
@@ -71,7 +71,7 @@
       (blur)="onBlur($event)"
     />
     <p class="event-demo__info">
-      Estado: <strong>{{ isFocused ? 'Con foco ✓' : 'Sin foco' }}</strong>
+      Estado: <strong>{{ isFocused ? 'Con foco' : 'Sin foco' }}</strong>
     </p>
   </div>
 

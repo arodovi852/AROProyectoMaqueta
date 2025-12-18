@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Button } from '../button/button';
+import { FormInput } from '../form-input/form-input';
 import { ToastService } from '../../../services/toast.service';
 import { nif, telefono, codigoPostal } from '../../../validators/custom-validators';
 import { atLeastOneRequired } from '../../../validators/cross-field-validators';
@@ -11,7 +12,7 @@ import { atLeastOneRequired } from '../../../validators/cross-field-validators';
   templateUrl: './contact-form-reactive.html',
   styleUrl: './contact-form-reactive.scss',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, Button]
+  imports: [CommonModule, ReactiveFormsModule, Button, FormInput]
 })
 export class ContactFormReactive {
   contactForm: FormGroup;

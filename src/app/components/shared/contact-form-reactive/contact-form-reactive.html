@@ -6,70 +6,54 @@
 
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form-reactive__form">
     <!-- Nombre -->
-    <div class="form-field">
-      <label for="name" class="form-field__label">Nombre completo *</label>
-      <input 
-        id="name"
-        type="text" 
-        formControlName="name"
-        class="form-field__input"
-        [class.form-field__input--invalid]="name.invalid && (name.dirty || name.touched)"
-        [class.form-field__input--valid]="name.valid && (name.dirty || name.touched)"
-        placeholder="Juan Pérez">
-      @if (name.invalid && (name.dirty || name.touched)) {
-        <span class="form-field__error">{{ getErrorMessage('name') }}</span>
-      }
-    </div>
+    <app-form-input
+      inputId="name"
+      type="text"
+      name="name"
+      label="Nombre completo"
+      placeholder="Juan Pérez"
+      [required]="true"
+      [showError]="name.invalid && (name.dirty || name.touched)"
+      [errorMessage]="getErrorMessage('name')"
+      formControlName="name">
+    </app-form-input>
 
     <!-- NIF -->
-    <div class="form-field">
-      <label for="nif" class="form-field__label">NIF *</label>
-      <input 
-        id="nif"
-        type="text" 
-        formControlName="nif"
-        class="form-field__input"
-        [class.form-field__input--invalid]="nif.invalid && (nif.dirty || nif.touched)"
-        [class.form-field__input--valid]="nif.valid && (nif.dirty || nif.touched)"
-        placeholder="12345678Z"
-        maxlength="9">
-      @if (nif.invalid && (nif.dirty || nif.touched)) {
-        <span class="form-field__error">{{ getErrorMessage('nif') }}</span>
-      }
-    </div>
+    <app-form-input
+      inputId="nif"
+      type="text"
+      name="nif"
+      label="NIF"
+      placeholder="12345678Z"
+      [required]="true"
+      [showError]="nif.invalid && (nif.dirty || nif.touched)"
+      [errorMessage]="getErrorMessage('nif')"
+      formControlName="nif">
+    </app-form-input>
 
     <!-- Email y Teléfono (al menos uno requerido) -->
     <div class="form-row">
-      <div class="form-field">
-        <label for="email" class="form-field__label">Email</label>
-        <input 
-          id="email"
-          type="email" 
-          formControlName="email"
-          class="form-field__input"
-          [class.form-field__input--invalid]="email.invalid && (email.dirty || email.touched)"
-          [class.form-field__input--valid]="email.valid && (email.dirty || email.touched)"
-          placeholder="email@ejemplo.com">
-        @if (email.invalid && (email.dirty || email.touched)) {
-          <span class="form-field__error">{{ getErrorMessage('email') }}</span>
-        }
-      </div>
+      <app-form-input
+        inputId="email"
+        type="email"
+        name="email"
+        label="Email"
+        placeholder="email@ejemplo.com"
+        [showError]="email.invalid && (email.dirty || email.touched)"
+        [errorMessage]="getErrorMessage('email')"
+        formControlName="email">
+      </app-form-input>
 
-      <div class="form-field">
-        <label for="telefono" class="form-field__label">Teléfono</label>
-        <input 
-          id="telefono"
-          type="tel" 
-          formControlName="telefono"
-          class="form-field__input"
-          [class.form-field__input--invalid]="telefono.invalid && (telefono.dirty || telefono.touched)"
-          [class.form-field__input--valid]="telefono.valid && (telefono.dirty || telefono.touched)"
-          placeholder="612345678"
-          maxlength="9">
-        @if (telefono.invalid && (telefono.dirty || telefono.touched)) {
-          <span class="form-field__error">{{ getErrorMessage('telefono') }}</span>
-        }
-      </div>
+      <app-form-input
+        inputId="telefono"
+        type="tel"
+        name="telefono"
+        label="Teléfono"
+        placeholder="612345678"
+        [showError]="telefono.invalid && (telefono.dirty || telefono.touched)"
+        [errorMessage]="getErrorMessage('telefono')"
+        formControlName="telefono">
+      </app-form-input>
     </div>
 
     @if (hasContactMethodError()) {
@@ -79,21 +63,16 @@
     }
 
     <!-- Código Postal -->
-    <div class="form-field">
-      <label for="codigoPostal" class="form-field__label">Código Postal</label>
-      <input 
-        id="codigoPostal"
-        type="text" 
-        formControlName="codigoPostal"
-        class="form-field__input"
-        [class.form-field__input--invalid]="codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched)"
-        [class.form-field__input--valid]="codigoPostal.valid && (codigoPostal.dirty || codigoPostal.touched)"
-        placeholder="28001"
-        maxlength="5">
-      @if (codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched)) {
-        <span class="form-field__error">{{ getErrorMessage('codigoPostal') }}</span>
-      }
-    </div>
+    <app-form-input
+      inputId="codigoPostal"
+      type="text"
+      name="codigoPostal"
+      label="Código Postal"
+      placeholder="28001"
+      [showError]="codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched)"
+      [errorMessage]="getErrorMessage('codigoPostal')"
+      formControlName="codigoPostal">
+    </app-form-input>
 
     <!-- Mensaje -->
     <div class="form-field">

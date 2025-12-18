@@ -62,6 +62,7 @@
     text-align: center;
     transition: all 0.3s ease;
     font-family: var(--font-secondary);
+    color: var(--color-text-primary);
 
     &.highlighted {
       background: var(--color-warning-light);

@@ -16,10 +16,10 @@
           [class.success]="isFieldAsyncValid('username')">
         
         @if (isFieldPending('username')) {
-          <span class="status-icon pending">⏳</span>
+          <span class="status-icon pending">...</span>
         }
         @if (isFieldAsyncValid('username')) {
-          <span class="status-icon success">✓</span>
+          <span class="status-icon success"></span>
         }
       </div>
       
@@ -41,7 +41,7 @@
       }
       
       @if (isFieldAsyncValid('username')) {
-        <div class="success-message">✓ Nombre de usuario disponible</div>
+        <div class="success-message">Nombre de usuario disponible</div>
       }
     </div>
 
@@ -58,10 +58,10 @@
           [class.success]="isFieldAsyncValid('email')">
         
         @if (isFieldPending('email')) {
-          <span class="status-icon pending">⏳</span>
+          <span class="status-icon pending">...</span>
         }
         @if (isFieldAsyncValid('email')) {
-          <span class="status-icon success">✓</span>
+          <span class="status-icon success"></span>
         }
       </div>
       
@@ -80,7 +80,7 @@
       }
       
       @if (isFieldAsyncValid('email')) {
-        <div class="success-message">✓ Correo electrónico disponible</div>
+        <div class="success-message">Correo electrónico disponible</div>
       }
     </div>
 
@@ -121,7 +121,7 @@
           class="toggle-password"
           (click)="togglePasswordVisibility()"
           [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
-          {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+          {{ showPassword ? 'Ocultar' : 'Mostrar' }}
         </button>
       </div>
       
@@ -163,7 +163,7 @@
           class="toggle-password"
           (click)="toggleConfirmPasswordVisibility()"
           [attr.aria-label]="showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
-          {{ showConfirmPassword ? '👁️' : '👁️‍🗨️' }}
+          {{ showConfirmPassword ? 'Ocultar' : 'Mostrar' }}
         </button>
       </div>
       

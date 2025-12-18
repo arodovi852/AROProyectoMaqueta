@@ -109,26 +109,26 @@
 // Variante Ghost (sin fondo, solo texto y borde opcional)
 .btn--ghost {
   background-color: transparent;
-  color: #ffffff;
-  border: 0.125rem solid rgba(255, 255, 255, 0.3);
+  color: var(--color-primary);
+  border: 0.125rem solid var(--color-primary);
   border-radius: 1rem;
   padding: var(--spacing-4) var(--spacing-8);
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
 
   &:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--color-box-level-2);
+    border-color: var(--color-primary-dark);
     transform: translateY(-0.125rem);
   }
 
   &:active:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--color-box-level-3);
     transform: translateY(0);
   }
 
   &:focus-visible {
-    outline: 0.1875rem solid rgba(255, 255, 255, 0.5);
+    outline: 0.1875rem solid var(--color-primary);
     outline-offset: 0.25rem;
   }
 }

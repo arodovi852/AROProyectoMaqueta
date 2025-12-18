@@ -1,6 +1,7 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Button } from '../button/button';
+import { CloseButton } from '../close-button/close-button';
 
 /**
  * Componente de Modal Interactivo
@@ -11,7 +12,7 @@ import { Button } from '../button/button';
   templateUrl: './interactive-modal.html',
   styleUrl: './interactive-modal.scss',
   standalone: true,
-  imports: [CommonModule, Button]
+  imports: [CommonModule, Button, CloseButton]
 })
 export class InteractiveModal {
   isOpen = false;

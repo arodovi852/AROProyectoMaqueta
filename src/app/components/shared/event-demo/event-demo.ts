@@ -26,13 +26,14 @@ export class EventDemo {
   inputValue = '';
 
   // Click simple
-  onClick(event: MouseEvent) {
+  onClick(event: Event | MouseEvent) {
     this.clickCount++;
-    this.addToLog(`Click en botón (${event.clientX}, ${event.clientY})`);
+    const mouseEvent = event as MouseEvent;
+    this.addToLog(`Click en botón (${mouseEvent.clientX || 0}, ${mouseEvent.clientY || 0})`);
   }
 
   // Doble click
-  onDoubleClick(event: MouseEvent) {
+  onDoubleClick(event: Event | MouseEvent) {
     this.doubleClickCount++;
     this.addToLog(`Doble click detectado`);
   }

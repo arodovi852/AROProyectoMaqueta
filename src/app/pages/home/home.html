@@ -115,200 +115,6 @@
       </div>
     </section>
 
-    <!-- ========== COMPONENTES EXISTENTES ========== -->
-
-    <!-- Categoría: Formularios -->
-    <section class="component-section">
-      <h2 class="component-section__title">1. Componentes de Formulario</h2>
-      
-      <div class="component-group">
-        <h3 class="component-group__title">Form Input</h3>
-        <div class="component-demo">
-          <div class="demo-row">
-            <app-form-input
-              label="Username / Email"
-              type="text"
-              placeholder="Username / Email"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Email"
-              type="email"
-              placeholder="Email"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Password"
-              type="password"
-              placeholder="Password"
-              [required]="true"
-            />
-          </div>
-          <div class="demo-row">
-            <app-form-input
-              label="Confirm password"
-              type="password"
-              placeholder="Confirm password"
-              [required]="true"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Form Textarea</h3>
-        <div class="component-demo">
-          <app-form-textarea
-            label="Mensaje"
-            placeholder="Escribe tu mensaje aquí..."
-            [required]="true"
-          />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Form Select</h3>
-        <div class="component-demo">
-          <app-form-select
-            label="País"
-            [required]="true"
-          />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Form Checkbox</h3>
-        <div class="component-demo">
-          <app-form-checkbox
-            label="Acepto los términos y condiciones"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Categoría: Botones -->
-    <section class="component-section">
-      <h2 class="component-section__title">2. Botones</h2>
-      
-      <div class="component-group">
-        <h3 class="component-group__title">Button - Variantes</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-button text="Primary" variant="primary" />
-          <app-button text="Secondary" variant="secondary" />
-          <app-button text="Ghost" variant="ghost" />
-          <app-button text="Danger" variant="danger" />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Button - Tamaños</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-button text="Small (sm)" variant="primary" size="sm" />
-          <app-button text="Medium (md)" variant="primary" size="md" />
-          <app-button text="Large (lg)" variant="primary" size="lg" />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Button - Estados</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-button text="Normal" variant="primary" />
-          <app-button text="Hover (pasa el mouse)" variant="primary" />
-          <app-button text="Disabled" variant="primary" [disabled]="true" />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Close Button</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-close-button (closeClick)="onClose()" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Categoría: Tarjetas y Contenedores -->
-    <section class="component-section">
-      <h2 class="component-section__title">3. Tarjetas y Contenedores</h2>
-      
-      <div class="component-group">
-        <h3 class="component-group__title">Card - Media (Series/Películas)</h3>
-        <div class="component-demo component-demo--horizontal">
-          <app-card 
-            variant="media"
-            imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
-            imageAlt="Twin Peaks"
-            hoverTitle="Twin Peaks"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Categoría: Notificaciones y Alertas -->
-    <section class="component-section">
-      <h2 class="component-section__title">4. Notificaciones y Alertas</h2>
-      
-      <div class="component-group">
-        <h3 class="component-group__title">Alert</h3>
-        <div class="component-demo component-demo--column">
-          <app-alert type="info" title="Information" [dismissible]="false">
-            This is an informational alert message.
-          </app-alert>
-          
-          <app-alert type="success" title="Success!" [dismissible]="false">
-            Your changes have been saved successfully.
-          </app-alert>
-          
-          <app-alert type="warning" title="Warning" [dismissible]="false">
-            Please review your input before proceeding.
-          </app-alert>
-          
-          <app-alert type="error" title="Error" [dismissible]="false">
-            An error occurred while processing your request.
-          </app-alert>
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Notification</h3>
-        <div class="component-demo">
-          
-        </div>
-      </div>
-    </section>
-
-    <!-- Cards con variantes -->
-    <section class="component-section">
-      <h2 class="component-section__title">5. Cards</h2>
-      
-      <div class="component-group">
-        <h3 class="component-group__title">Card - Media Variant</h3>
-        <div class="component-demo">
-          <app-card 
-            variant="media" 
-            imageSrc="Twin_Peaks_TV_Series-892912807-large.jpg"
-            hoverTitle="Twin Peaks"
-          />
-        </div>
-      </div>
-
-      <div class="component-group">
-        <h3 class="component-group__title">Card - Rating Variant</h3>
-        <div class="component-demo">
-          <app-card 
-            variant="rating" 
-            title="Series rating"
-            [statBars]="[20, 30, 40, 60, 80, 100, 90, 70, 50, 40]"
-            [totalStars]="5"
-            [filledStars]="3"
-          />
-        </div>
-      </div>
-    </section>
-
     <!-- ========== FASE 3: FORMULARIOS REACTIVOS AVANZADOS ========== -->
     <section class="component-section phase-3">
       <h2 class="component-section__title">FASE 3: Formularios Reactivos Avanzados</h2>
@@ -481,7 +287,6 @@
         <h3 class="component-group__title">Close Button</h3>
         <div class="component-demo component-demo--row">
           <app-close-button />
-          <app-close-button size="lg" />
         </div>
       </div>
     </section>
@@ -511,27 +316,31 @@
         <div class="component-demo component-demo--column">
           <app-alert
             type="info"
-            message="This is a informational alert message."
-            [dismissible]="false"
-          />
+            title="Information"
+            [dismissible]="false">
+            This is an informational alert message.
+          </app-alert>
           
           <app-alert
             type="success"
-            message="Your changes have been saved successfully."
-            [dismissible]="false"
-          />
+            title="Success!"
+            [dismissible]="false">
+            Your changes have been saved successfully.
+          </app-alert>
           
           <app-alert
             type="warning"
-            message="Please review your input before proceeding."
-            [dismissible]="false"
-          />
+            title="Warning"
+            [dismissible]="false">
+            Please review your input before proceeding.
+          </app-alert>
           
           <app-alert
             type="error"
-            message="An error occurred while processing your request."
-            [dismissible]="false"
-          />
+            title="Error"
+            [dismissible]="false">
+            An error occurred while processing your request.
+          </app-alert>
         </div>
       </div>
     </section>

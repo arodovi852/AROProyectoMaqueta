@@ -48,12 +48,14 @@ export class DomManipulation implements AfterViewInit {
     const newDiv = this.renderer.createElement('div');
     const text = this.renderer.createText(`Elemento creado a las ${new Date().toLocaleTimeString()}`);
     
-    this.renderer.setStyle(newDiv, 'backgroundColor', '#bee3f8');
+    this.renderer.setStyle(newDiv, 'backgroundColor', '#e893cf');
+    this.renderer.setStyle(newDiv, 'color', '#3d2a45');
     this.renderer.setStyle(newDiv, 'padding', '12px');
     this.renderer.setStyle(newDiv, 'marginTop', '8px');
-    this.renderer.setStyle(newDiv, 'borderRadius', '4px');
-    this.renderer.setStyle(newDiv, 'border', '2px solid #3182ce');
+    this.renderer.setStyle(newDiv, 'borderRadius', '1rem');
+    this.renderer.setStyle(newDiv, 'border', '2px solid #3d2a45');
     this.renderer.setStyle(newDiv, 'animation', 'fadeIn 0.3s ease');
+    this.renderer.setStyle(newDiv, 'fontFamily', '\'Do Hyeon\', sans-serif');
     
     this.renderer.appendChild(newDiv, text);
     this.renderer.appendChild(this.dynamicContainer.nativeElement, newDiv);

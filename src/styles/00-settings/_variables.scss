@@ -17,7 +17,7 @@
 --color-primary-lightest: #EDD5FF;
 
 //Colores secundarios
---color-secondary: #BFBF64;
+--color-secondary: #ecc332;
 --color-secondary-dark: #59592F;
 --color-secondary-light: #FEFE85;
 --color-secondary-lightest: #FFFFCC;
@@ -60,6 +60,13 @@
 --color-bg-primary: var(--color-secondary-lightest);
 --color-bg-secondary: var(--color-secondary-light);
 --color-bg-tertiary: var(--color-neutral-50);
+
+//Cajas de contenido - niveles de anidación (Light mode)
+--color-box-level-1: #FFF9E6;  // Más claro - caja externa
+--color-box-level-2: #FFF4CC;  // Medio claro
+--color-box-level-3: #FFEFB3;  // Medio
+--color-box-level-4: #FFE999;  // Medio oscuro
+--color-box-level-5: #FFE380;  // Más oscuro - caja más interna
 
 
 
@@ -261,6 +268,13 @@
   --color-bg-primary: var(--color-primary-dark);
   --color-bg-secondary: var(--color-neutral-900);
   --color-bg-tertiary: var(--color-neutral-800);
+
+  //Cajas de contenido - niveles de anidación (Dark mode)
+  --color-box-level-1: #2D1A33;  // Más claro - caja externa
+  --color-box-level-2: #251629;  // Medio claro
+  --color-box-level-3: #1E1222;  // Medio
+  --color-box-level-4: #170E1A;  // Medio oscuro
+  --color-box-level-5: #100A13;  // Más oscuro - caja más interna
 }
 
 // ==========================================================================

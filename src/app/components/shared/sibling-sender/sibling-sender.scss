@@ -35,8 +35,8 @@
   &__counter {
     margin: var(--spacing-lg) 0 0 0;
     padding: var(--spacing-md);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
+    background: var(--color-box-level-3);
+    border-radius: 1rem;
     color: var(--color-primary-light);
     font-size: var(--font-size-base);
     font-weight: 600;
