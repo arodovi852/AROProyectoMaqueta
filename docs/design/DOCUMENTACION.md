@@ -53,6 +53,8 @@ A partir de una paleta de colores definida, una tipografía consistente, unos bo
 
 ![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 232757.png>)
 
+
+
 ## 1.2 Metodología CSS: Explica qué metodología usas (BEM recomendado) y por qué. Muestra ejemplos de tu nomenclatura. Si usas BEM, explica que usarás bloques (.card), elementos (.card__title), y modificadores (.card--featured).
 
 Se ha utilizado la metodología BEM, donde el bloque representa un componente independiente con significado propio, el elemento representa parte del bloque que no tiene significado independiente y el modificador es una variante del bloque o elemento.
@@ -593,11 +595,7 @@ El orden se ha escogido porque cada carpeta depende de la anterior para funciona
 
 ## 1.6 ViewEncapsulation en Angular: Explica qué estrategia de encapsulación usarás. Angular por defecto usa Emulated (estilos encapsulados por componente). Documenta si mantendrás esto o usarás None (estilos globales). Justifica tu decisión.
 
-Se mantiene **ViewEncapsulation.Emulated** (valor por defecto de Angular) para la mayoría de componentes. Esta estrategia:
-
-1. **Encapsula los estilos** añadiendo atributos únicos a los elementos del componente
-2. **Evita conflictos** entre estilos de diferentes componentes
-3. **Permite usar selectores simples** sin preocuparse por colisiones globales
+Se mantiene **ViewEncapsulation.Emulated** (valor por defecto de Angular) para la mayoría de componentes. Esto encapsula los estilos, añadiendo atributos únicos a los elementos del componente, evita conflictos entre estilos de diferentes componentes y permite usar selectores simples sin preocuparse por colisiones globales
 
 **Excepción**: Los estilos globales en `src/styles/` usan ViewEncapsulation.None implícitamente al estar en archivos SCSS globales, permitiendo:
 - Design tokens accesibles en toda la aplicación
@@ -808,7 +806,7 @@ Contiene información del pie de página como navegación secundaria, redes soci
 ### Diagrama de jerarquía del proyecto
 
 ```
-📄 Página Home
+Página Home
 ├── h1: "Sistema de Componentes"
 │   ├── h2: "FASE 1: Manipulación del DOM y Eventos"
 │   │   ├── h3: "Theme Switcher"
@@ -828,7 +826,7 @@ Contiene información del pie de página como navegación secundaria, redes soci
 │       ├── h3: "Formulario de Contacto"
 │       └── h3: "Formulario de Perfil"
 
-📄 Página Style Guide
+Página Style Guide
 ├── h1: "Guía de Estilos"
 │   ├── h2: "1. Componentes de Formulario"
 │   │   ├── h3: "Form Input"
@@ -1141,20 +1139,19 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 1. Button (`app-button`)
 
-**Propósito**: Botón reutilizable con múltiples variantes de estilo, tamaños y estados.
+Es un botón reutilizable con múltiples variantes de estilo, tamaños y estados. Tiene como variantes:
 
-**Variantes disponibles**:
 - `primary`: Botón principal con color morado
 - `secondary`: Botón secundario con color amarillo
 - `ghost`: Botón transparente con borde
 - `danger`: Botón de acción destructiva (rojo)
 
-**Tamaños disponibles**:
+Sus tamaños disponibles son:
 - `sm`: Pequeño (padding reducido)
 - `md`: Mediano (por defecto)
 - `lg`: Grande (padding aumentado)
 
-**Estados**:
+Tienen como estados:
 - Default
 - Hover
 - Focus
@@ -1185,9 +1182,8 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 2. Card (`app-card`)
 
-**Propósito**: Tarjeta para mostrar contenido estructurado como series, películas o productos.
+Se refiere a las tarjetas para mostrar contenido estructurado como series, películas o productos. Tiene de variantes:
 
-**Variantes disponibles**:
 - `default`: Tarjeta básica
 - `horizontal`: Disposición horizontal
 - `elevated`: Con sombra elevada
@@ -1197,7 +1193,7 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 - `media`: Para contenido multimedia
 - `rating`: Con sistema de valoración
 
-**Estados**:
+Tiene de estados:
 - Default
 - Hover (scale y sombra)
 - Con/sin footer
@@ -1231,9 +1227,8 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 3. Form Input (`app-form-input`)
 
-**Propósito**: Campo de entrada de texto reutilizable con validación y accesibilidad.
+Son campo de entrada de texto reutilizable con validación y accesibilidad. Tiene disponibles:
 
-**Tipos disponibles**:
 - `text`: Texto plano
 - `email`: Correo electrónico
 - `password`: Contraseña
@@ -1241,7 +1236,7 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 - `url`: URL
 - `number`: Numérico
 
-**Estados**:
+Tienen de estados:
 - Default
 - Focus
 - Error
@@ -1273,14 +1268,9 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 4. Form Textarea (`app-form-textarea`)
 
-**Propósito**: Área de texto multilínea con contador de caracteres opcional.
+Es área de texto multilínea con contador de caracteres opcional. Tiene rows configurables, tiene contador de caracteres y un límite máximo de caracteres.
 
-**Características**:
-- Rows configurables
-- Contador de caracteres
-- Límite máximo de caracteres
-
-**Estados**:
+De estados tiene:
 - Default
 - Focus
 - Error
@@ -1303,9 +1293,8 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 5. Form Select (`app-form-select`)
 
-**Propósito**: Dropdown/select con opciones configurables.
+Es dropdown/select con opciones configurables. De estados tiene:
 
-**Estados**:
 - Default
 - Open
 - Selected
@@ -1330,9 +1319,8 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 6. Form Checkbox (`app-form-checkbox`)
 
-**Propósito**: Checkbox personalizado con estilos consistentes.
+Es un checkbox personalizado con estilos consistentes y los siguientes estados:
 
-**Estados**:
 - Unchecked
 - Checked
 - Focus
@@ -1352,9 +1340,8 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 7. Alert (`app-alert`)
 
-**Propósito**: Mostrar mensajes de información, éxito, advertencia o error.
+Muestra mensajes de información, éxito, advertencia o error, con las siguientes variantes:
 
-**Variantes**:
 - `info`: Información (azul)
 - `success`: Éxito (verde)
 - `warning`: Advertencia (amarillo)
@@ -1383,18 +1370,15 @@ El proyecto incluye componentes de formulario adicionales que siguen el mismo pa
 
 ### 8. Toast (`app-toast`)
 
-**Propósito**: Notificaciones temporales que aparecen y desaparecen automáticamente.
+Son notificaciones temporales que aparecen y desaparecen automáticamente con las siguientes variantes:
 
-**Variantes**:
 - `success`: Acción exitosa
 - `error`: Error
 - `warning`: Advertencia
 - `info`: Información
 
-**Características**:
-- Duración configurable
-- Auto-dismiss
-- Posición fija en pantalla
+
+Tiene una duración configurable, auto-dismiss y una posición fija en la pantalla
 
 **Ejemplo de uso**:
 ```typescript
@@ -1410,14 +1394,7 @@ this.toastService.show({
 
 ### 9. Modal (`app-modal`)
 
-**Propósito**: Ventana modal para contenido destacado o formularios.
-
-**Características**:
-- Título configurable
-- Footer opcional
-- Cierre con botón X
-- Cierre con click en backdrop
-- Accesibilidad con role="dialog" y aria-modal
+Es una ventana modal para contenido destacado o formularios. Tiene un título configurable, un footer opcional, un cierre con botón X, un cierre con click en backdrop y accesibilidad con role="dialog" y aria-modal
 
 **Ejemplo de uso**:
 ```html
@@ -1439,12 +1416,7 @@ this.toastService.show({
 
 ### 10. Spinner (`app-spinner`)
 
-**Propósito**: Indicador de carga global conectado al LoadingService.
-
-**Características**:
-- Se muestra/oculta automáticamente según el servicio
-- Animación CSS con @keyframes
-- Overlay semi-transparente
+Es el indicador de carga global conectado al LoadingService. Se muestra/oculta automáticamente según el servicio con una animación CSS con @keyframes y un overlay semi-transparente
 
 **Ejemplo de uso**:
 ```typescript
@@ -1459,12 +1431,7 @@ this.loadingService.hide();
 
 ### 11. Tabs (`app-tabs`)
 
-**Propósito**: Sistema de pestañas para organizar contenido.
-
-**Características**:
-- Navegación con teclado (flechas)
-- Evento al cambiar de pestaña
-- Pestaña activa por defecto configurable
+Sistema de pestañas para organizar contenido con navegación con teclado (flechas), evento al cambiar de pestaña y pestaña activa por defecto configurable.
 
 **Estados**:
 - Default
@@ -1488,18 +1455,7 @@ this.loadingService.hide();
 
 ### 12. Tooltip (`app-tooltip`)
 
-**Propósito**: Mostrar información adicional al hacer hover o focus.
-
-**Posiciones**:
-- `top`
-- `bottom`
-- `left`
-- `right`
-
-**Características**:
-- Delay configurable
-- Se oculta automáticamente
-- Posicionamiento dinámico
+Sirve para mostrar información adicional al hacer hover o focus. Tiene todas las posiciones direccionales (top bottom left right) con delay configurable, se oculta automáticamente y tiene posicionamiento dinámico.
 
 **Ejemplo de uso**:
 ```html
@@ -1512,12 +1468,7 @@ this.loadingService.hide();
 
 ### 13. Theme Toggle (`app-theme-toggle`)
 
-**Propósito**: Cambiar entre tema claro y oscuro.
-
-**Características**:
-- Detecta preferencia del sistema (prefers-color-scheme)
-- Persistencia en localStorage
-- Toggle con icono sol/luna
+Cambia entre tema claro y oscuro. Detecta preferencia del sistema (prefers-color-scheme), tiene persistencia en localStorage y toggle con icono sol/luna.
 
 **Ejemplo de uso**:
 ```html
@@ -1528,11 +1479,7 @@ this.loadingService.hide();
 
 ### 14. Close Button (`app-close-button`)
 
-**Propósito**: Botón de cierre reutilizable (X).
-
-**Tamaños**:
-- Default
-- `lg`: Grande
+Sirve como un botón de cierre reutilizable (X).
 
 **Ejemplo de uso**:
 ```html
@@ -1544,9 +1491,7 @@ this.loadingService.hide();
 
 ### 15. Star (`app-star`)
 
-**Propósito**: Estrella para sistema de valoración.
-
-**Estados**:
+Es un componente que simplemente sirve como representación estrella para sistema de valoración con los siguientes estados:
 - Empty (vacía)
 - Half (media estrella)
 - Filled (llena)
@@ -1721,7 +1666,7 @@ El Style Guide (`/style-guide`) sirve como:
 ### Estructura del Style Guide
 
 ```
-📄 Style Guide (/style-guide)
+Style Guide (/style-guide)
 ├── 1. Componentes de Formulario
 │   ├── Form Input
 │   ├── Form Textarea
@@ -1801,3 +1746,4 @@ El Style Guide (`/style-guide`) sirve como:
   </section>
 </div>
 ```
+
