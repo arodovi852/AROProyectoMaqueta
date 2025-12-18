@@ -2,6 +2,15 @@
 
 Proyecto Angular con componentes interactivos y sistema de temas. Implementa los requisitos de Cliente Fase 1: Manipulación del DOM y Eventos.
 
+## 🌐 Demo en Vivo
+
+Despliega este proyecto en segundos:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/arodovi852/AROProyectoMaqueta)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/arodovi852/AROProyectoMaqueta)
+
+📖 **[Guía Completa de Despliegue](DEPLOYMENT_GUIDE.md)** - Instrucciones detalladas para Vercel, Netlify, GitHub Pages y más.
+
 ## 🚀 Inicio Rápido
 
 ### Desarrollo Local (Node)
