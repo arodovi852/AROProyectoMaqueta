@@ -4,6 +4,8 @@ Proyecto Angular con componentes interactivos y sistema de temas. Implementa los
 
 ## 🚀 Inicio Rápido
 
+### Desarrollo Local (Node)
+
 ```bash
 # Instalar dependencias
 npm install
@@ -14,6 +16,21 @@ npm start
 # Compilar para producción
 npm run build
 ```
+
+### Desarrollo con Docker 🐳
+
+```bash
+# Construir y ejecutar con Docker Compose
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Acceder a la aplicación
+# http://localhost:8080
+```
+
+📖 **[Guía completa de Docker y CI/CD](./DOCKER_GUIDE.md)**
 
 ## 📋 Tabla de Contenidos
 

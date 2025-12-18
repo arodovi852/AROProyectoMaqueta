@@ -206,30 +206,20 @@
     </div>
 
     <!-- Checkboxes -->
-    <div class="form-group checkbox-group">
-      <label class="checkbox-label">
-        <input 
-          type="checkbox" 
-          formControlName="newsletter">
-        <span>Quiero recibir el boletín de noticias</span>
-      </label>
-    </div>
+    <app-form-checkbox
+      checkboxId="newsletter"
+      label="Quiero recibir el boletín de noticias"
+      formControlName="newsletter">
+    </app-form-checkbox>
 
-    <div class="form-group checkbox-group">
-      <label class="checkbox-label">
-        <input 
-          type="checkbox" 
-          formControlName="terms"
-          [class.error]="profileForm.get('terms')?.invalid && profileForm.get('terms')?.touched">
-        <span>Acepto los términos y condiciones *</span>
-      </label>
-      
-      @if (profileForm.get('terms')?.invalid && profileForm.get('terms')?.touched) {
-        <div class="error-message">
-          <span>Debes aceptar los términos y condiciones</span>
-        </div>
-      }
-    </div>
+    <app-form-checkbox
+      checkboxId="terms"
+      label="Acepto los términos y condiciones"
+      [required]="true"
+      [showError]="!!(profileForm.get('terms')?.invalid && profileForm.get('terms')?.touched)"
+      errorMessage="Debes aceptar los términos y condiciones"
+      formControlName="terms">
+    </app-form-checkbox>
 
     <!-- Estado de Validación -->
     @if (profileForm.pending) {

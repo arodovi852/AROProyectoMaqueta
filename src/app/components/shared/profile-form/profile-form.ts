@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Button } from '../button/button';
+import { FormCheckbox } from '../form-checkbox/form-checkbox';
 import { ToastService } from '../../../services/toast.service';
 import { ValidationService } from '../../../services/validation.service';
 import { passwordStrength, minAge } from '../../../validators/custom-validators';
@@ -13,7 +14,7 @@ import { uniqueEmail, usernameAvailable } from '../../../validators/async-valida
   templateUrl: './profile-form.html',
   styleUrl: './profile-form.scss',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, Button]
+  imports: [CommonModule, ReactiveFormsModule, Button, FormCheckbox]
 })
 export class ProfileForm {
   profileForm: FormGroup;
