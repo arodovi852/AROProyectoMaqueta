@@ -1,38 +1,26 @@
-Este documento engloba todo l
-
-
-- Sección 1: Arquitectura CSS y comunicación visual.
-
-- Sección 2: HTML semántico y estructura
-
-- Sección 3: Sistema de componentes UI
-
-
-
-
 # Sección 1: Arquitectura CSS y comunicación visual.
 
 ## 1.1 Principios de comunicación visual: Explica los 5 principios básicos y cómo los aplicas en tu proyecto:
 
 ### Jerarquía: Cómo usas tamaños, pesos y espaciado para crear importancia visual
 
-    Para crear una jerarquía visual, en el proyecto de Figma todos los tamaños siguen una base de 4px, facilitando el trabajo con los elementos, de forma que muchos tienen espaciado de 24, 32, 48 o 64px dependiendo de qué se necesite. Por ejemplo, si se quiere mostrar varios elementos más agrupados, tendrán menos espaciado (32px), mientras que si se quiere separar del resto estos tendrán un espacio mayor (64px).
+Para crear una jerarquía visual, en el proyecto de Figma todos los tamaños siguen una base de 4px, facilitando el trabajo con los elementos, de forma que muchos tienen espaciado de 24, 32, 48 o 64px dependiendo de qué se necesite. Por ejemplo, si se quiere mostrar varios elementos más agrupados, tendrán menos espaciado (32px), mientras que si se quiere separar del resto estos tendrán un espacio mayor (64px).
 
->Img
+>
 >Img
 
 
 
 ### Contraste: Cómo usas color, tamaño y peso para diferenciar elementos
     
-    Para poder llamar la atención visualmente, se ha escogido una paleta de colores morada y amarilla, una que alterna entre ambos colores en su modo claro y oscuro, de los cuales solo actualmente el modo oscuro se encuentra implementado en el proyecto de Figma:
+Para poder llamar la atención visualmente, se ha escogido una paleta de colores morada y amarilla, una que alterna entre ambos colores en su modo claro y oscuro, de los cuales solo actualmente el modo oscuro se encuentra implementado en el proyecto de Figma:
 
-    - En el modo oscuro, el morado predomina como color principal, yendo desde más claro a más oscuro conforme más contenido en un contenedor un elemento se encuentre, con las letras y los botones siendo de colores más claros para que destaquen frente al resto de elementos. Esta idea no se ve tan reflejado dentro del proyecto de Figma, pero cambios provisionales dentro del proyecto llevado a código muestran una nueva propuesta de esta idea. 
+- En el modo oscuro, el morado predomina como color principal, yendo desde más claro a más oscuro conforme más contenido en un contenedor un elemento se encuentre, con las letras y los botones siendo de colores más claros para que destaquen frente al resto de elementos. Esta idea no se ve tan reflejado dentro del proyecto de Figma, pero cambios provisionales dentro del proyecto llevado a código muestran una nueva propuesta de esta idea. 
 
 >Img
 >Img
     
-    - De esta forma, el modo claro tendría una idea opuesta, donde el fondo sería mucho más oscuro y conforme se va incluyendo dentro de contenedores se va a aclarando. Esto sirve como contraste con la letra morada oscura. Esto es una versión muy provisional del modo claro, y no es la definitiva en lo absoluto.
+- De esta forma, el modo claro tendría una idea opuesta, donde el fondo sería mucho más oscuro y conforme se va incluyendo dentro de contenedores se va a aclarando. Esto sirve como contraste con la letra morada oscura. Esto es una versión muy provisional del modo claro, y no es la definitiva en lo absoluto.
 
 >Img
 
@@ -40,7 +28,7 @@ Este documento engloba todo l
     
     Para mantener armonía en el proyecto, la mayoría de los elementos fueron centrados o, alternativamente, alineados con una grid, como se puede ver por los ejemplos por pantalla:
 
->Img 
+>
 >Img
 >Img
 
@@ -56,7 +44,9 @@ Este documento engloba todo l
 
 ### Repetición: Cómo creas coherencia repitiendo patrones visuales
 
+A partir de una paleta de colores definida, una tipografía consistente, unos bordes redondeados y unas animaciones consistentes en todo el programa se logra una estética única de la página.
 
+>Img
 
 ## 1.2 Metodología CSS: Explica qué metodología usas (BEM recomendado) y por qué. Muestra ejemplos de tu nomenclatura. Si usas BEM, explica que usarás bloques (.card), elementos (.card__title), y modificadores (.card--featured).
 
