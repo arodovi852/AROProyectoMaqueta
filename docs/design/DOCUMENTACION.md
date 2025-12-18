@@ -6,9 +6,8 @@
 
 Para crear una jerarquía visual, en el proyecto de Figma todos los tamaños siguen una base de 4px, facilitando el trabajo con los elementos, de forma que muchos tienen espaciado de 24, 32, 48 o 64px dependiendo de qué se necesite. Por ejemplo, si se quiere mostrar varios elementos más agrupados, tendrán menos espaciado (32px), mientras que si se quiere separar del resto estos tendrán un espacio mayor (64px).
 
->
->Img
 
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 232941.png>)
 
 
 ### Contraste: Cómo usas color, tamaño y peso para diferenciar elementos
@@ -17,36 +16,42 @@ Para poder llamar la atención visualmente, se ha escogido una paleta de colores
 
 - En el modo oscuro, el morado predomina como color principal, yendo desde más claro a más oscuro conforme más contenido en un contenedor un elemento se encuentre, con las letras y los botones siendo de colores más claros para que destaquen frente al resto de elementos. Esta idea no se ve tan reflejado dentro del proyecto de Figma, pero cambios provisionales dentro del proyecto llevado a código muestran una nueva propuesta de esta idea. 
 
->Img
->Img
-    
-- De esta forma, el modo claro tendría una idea opuesta, donde el fondo sería mucho más oscuro y conforme se va incluyendo dentro de contenedores se va a aclarando. Esto sirve como contraste con la letra morada oscura. Esto es una versión muy provisional del modo claro, y no es la definitiva en lo absoluto.
+Proyecto en Figma:
 
->Img
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 233546.png>)
+
+Página web provisional:
+
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 233434.png>)
+
+
+    
+- De esta forma, el modo claro tendría una idea opuesta, donde el fondo sería mucho más oscuro y conforme se va incluyendo dentro de contenedores se va a aclarando. Esto sirve como contraste con la letra morada oscura.
+
 
 ### Alineación: Tu estrategia de alineación (izquierda, centro, grid)
     
-    Para mantener armonía en el proyecto, la mayoría de los elementos fueron centrados o, alternativamente, alineados con una grid, como se puede ver por los ejemplos por pantalla:
+Para mantener armonía en el proyecto, la mayoría de los elementos fueron centrados o, alternativamente, alineados con una grid, como se puede ver por los ejemplos por pantalla:
 
->
->Img
->Img
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 231429.png>)
 
-    Además, la alineación se basaba en múltiplos de 12 para su espaciado.
+![alt text](../../assets/docs/image.png)
+
+Además, la alineación se basaba en múltiplos de 12 para su espaciado.
 
 
 ### Proximidad: Cómo agrupas elementos relacionados con espaciado
     
-    Para mostrar que los elementos están agrupados, se ha utilizado un espaciado específico para diferencias entre cada componente:
+Para mostrar que los elementos están agrupados, se ha utilizado un espaciado específico para diferencias entre cada componente:
 
->Img
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 232941.png>)
 
 
 ### Repetición: Cómo creas coherencia repitiendo patrones visuales
 
 A partir de una paleta de colores definida, una tipografía consistente, unos bordes redondeados y unas animaciones consistentes en todo el programa se logra una estética única de la página.
 
->Img
+![alt text](<../../assets/docs/Captura de pantalla 2025-12-18 232757.png>)
 
 ## 1.2 Metodología CSS: Explica qué metodología usas (BEM recomendado) y por qué. Muestra ejemplos de tu nomenclatura. Si usas BEM, explica que usarás bloques (.card), elementos (.card__title), y modificadores (.card--featured).
 
