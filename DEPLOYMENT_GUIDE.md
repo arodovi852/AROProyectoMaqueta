@@ -299,6 +299,35 @@ En Vercel/Netlify:
 
 ## 🚨 Troubleshooting
 
+### Error: "Cannot find module '@angular/animations'"
+
+**Error completo:**
+```
+TS2307: Cannot find module '@angular/animations' or its corresponding type declarations.
+```
+
+**Causa:** Falta instalar `@angular/animations` y otras dependencias de Angular que están en uso pero no en el `package.json`.
+
+**Solución:** Ya está resuelto en el proyecto con:
+
+1. **Archivo `.npmrc`** añadido con `legacy-peer-deps=true`
+2. **Dependencias añadidas** en `package.json`:
+   - `@angular/animations`
+   - `@angular/platform-browser-dynamic`
+   - `zone.js`
+
+Si sigues teniendo problemas en Vercel/Netlify:
+
+```bash
+# Localmente, instala con:
+npm install --legacy-peer-deps
+
+# O añade este archivo .npmrc en la raíz:
+echo "legacy-peer-deps=true" > .npmrc
+```
+
+Las configuraciones de Vercel y Netlify ya incluyen el flag `--legacy-peer-deps` automáticamente.
+
 ### Error: "Página en blanco después del deploy"
 
 **Solución:** Verifica la base path en producción.

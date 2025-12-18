@@ -1,0 +1,16 @@
+# Railway Configuration
+# https://railway.app
+
+[build]
+  builder = "NIXPACKS"
+  buildCommand = "npm install --legacy-peer-deps && npm run build:prod"
+
+[deploy]
+  startCommand = "npx serve -s dist/aroproyecto-maqueta/browser -l 3000"
+  restartPolicyType = "ON_FAILURE"
+  restartPolicyMaxRetries = 10
+
+[healthcheck]
+  path = "/"
+  timeout = 30
+  interval = 30

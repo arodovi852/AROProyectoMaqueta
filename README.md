@@ -4,12 +4,23 @@ Proyecto Angular con componentes interactivos y sistema de temas. Implementa los
 
 ## 🌐 Demo en Vivo
 
-Despliega este proyecto en segundos:
+Despliega este proyecto en minutos con estas plataformas:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/arodovi852/AROProyectoMaqueta)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/arodovi852/AROProyectoMaqueta)
+### ⭐ Recomendadas (Sin errores de dependencias)
 
-📖 **[Guía Completa de Despliegue](DEPLOYMENT_GUIDE.md)** - Instrucciones detalladas para Vercel, Netlify, GitHub Pages y más.
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+**Alternativas robustas:**
+- 🚂 **Railway:** [railway.app](https://railway.app) - Deploy con Docker
+- ☁️ **Cloudflare Pages:** [dash.cloudflare.com](https://dash.cloudflare.com) - Red CDN ultra-rápida
+- 🌐 **Netlify Drop:** [app.netlify.com/drop](https://app.netlify.com/drop) - Arrastra y suelta (instantáneo)
+
+### 📖 Documentación
+
+- **[🚀 Guía de Alternativas de Despliegue](DEPLOYMENT_ALTERNATIVES.md)** - Render, Railway, Cloudflare (SIN ERRORES)
+- **[📚 Guía Completa Original](DEPLOYMENT_GUIDE.md)** - Vercel, Netlify, GitHub Pages
+
+**¿Problemas con dependencias?** → Lee [DEPLOYMENT_ALTERNATIVES.md](DEPLOYMENT_ALTERNATIVES.md)
 
 ## 🚀 Inicio Rápido
 
