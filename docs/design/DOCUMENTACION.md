@@ -1695,16 +1695,16 @@ Style Guide (/style-guide)
 > **Nota**: Las capturas de pantalla deben añadirse manualmente en la ruta `/docs/screenshots/`
 
 **Sección de Formularios:**
-> ![Style Guide - Formularios](/docs/screenshots/style-guide-forms.png)
+> ![Style Guide - Formularios](https://github.com/arodovi852/AROProyectoMaqueta/blob/dev/docs/design/screenshots/Captura%20de%20pantalla%202025-12-18%20234312.png)
 
 **Sección de Botones:**
-> ![Style Guide - Botones](/docs/screenshots/style-guide-buttons.png)
+> ![Style Guide - Botones](https://github.com/arodovi852/AROProyectoMaqueta/blob/dev/docs/design/screenshots/Captura%20de%20pantalla%202025-12-18%20234323.png)
 
 **Sección de Alertas:**
-> ![Style Guide - Alertas](/docs/screenshots/style-guide-alerts.png)
+> ![Style Guide - Alertas](https://github.com/arodovi852/AROProyectoMaqueta/blob/dev/docs/design/screenshots/Captura%20de%20pantalla%202025-12-18%20234341.png)
 
 **Sección de Cards:**
-> ![Style Guide - Cards](/docs/screenshots/style-guide-cards.png)
+> ![Style Guide - Cards](https://github.com/arodovi852/AROProyectoMaqueta/blob/dev/docs/design/screenshots/Captura%20de%20pantalla%202025-12-18%20234351.png)
 
 ### Cómo acceder al Style Guide
 
