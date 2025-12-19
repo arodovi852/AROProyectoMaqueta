@@ -6,7 +6,7 @@
   buildCommand = "npm install --legacy-peer-deps && npm run build:prod"
 
 [deploy]
-  startCommand = "npx serve -s dist/aroproyecto-maqueta/browser -l 3000"
+  startCommand = "npx serve -s dist/AROProyectoMaqueta/browser/browser -l 3000"
   restartPolicyType = "ON_FAILURE"
   restartPolicyMaxRetries = 10
 
