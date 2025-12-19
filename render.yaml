@@ -7,7 +7,7 @@ services:
     name: aroproyecto-maqueta
     env: static
     buildCommand: npm install --legacy-peer-deps && npm run build:prod
-    staticPublishPath: ./dist/AROProyectoMaqueta/browser/browser
+    staticPublishPath: dist/AROProyectoMaqueta/browser/browser
     pullRequestPreviewsEnabled: true
     headers:
       - path: /*
