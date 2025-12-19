@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/aroproyecto-maqueta/browser"
+  publish = "dist/AROProyectoMaqueta/browser"
   command = "npm install --legacy-peer-deps && npm run build:prod"
 
 [build.environment]
