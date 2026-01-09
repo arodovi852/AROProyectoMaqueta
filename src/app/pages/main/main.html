@@ -1,0 +1,61 @@
+<!-- Contenido principal -->
+<main class="main-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__background"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__title-line hero__title-line--italic">Track series.</span>
+        <span class="hero__title-line hero__title-line--italic">Rate them.</span>
+        <span class="hero__title-line">See what's good.</span>
+      </h1>
+      <app-button
+        text="Get started"
+        variant="secondary"
+        size="lg"
+        class="hero__cta"
+        (onClick)="onGetStarted()"
+      ></app-button>
+    </div>
+  </section>
+
+  <!-- Popular This Week Section -->
+  <section class="series-section">
+    <div class="series-section__header">
+      <h2 class="series-section__title">Popular this week</h2>
+      <button class="series-section__see-more" (click)="onSeeMore('popular')">
+        See more
+      </button>
+    </div>
+    <div class="series-section__grid">
+      @for (series of popularSeries; track series.id) {
+        <app-card
+          [imageSrc]="series.imageSrc"
+          [imageAlt]="series.imageAlt"
+          [hoverTitle]="series.hoverTitle"
+          variant="media"
+        ></app-card>
+      }
+    </div>
+  </section>
+
+  <!-- Future Releases Section -->
+  <section class="series-section">
+    <div class="series-section__header">
+      <h2 class="series-section__title">Future releases</h2>
+      <button class="series-section__see-more" (click)="onSeeMore('future')">
+        See more
+      </button>
+    </div>
+    <div class="series-section__grid">
+      @for (series of futureReleases; track series.id) {
+        <app-card
+          [imageSrc]="series.imageSrc"
+          [imageAlt]="series.imageAlt"
+          [hoverTitle]="series.hoverTitle"
+          variant="media"
+        ></app-card>
+      }
+    </div>
+  </section>
+</main>

@@ -30,6 +30,7 @@
 // ==========================================================================
 
 .card__image-wrapper {
+  position: relative;
   width: 100%;
   overflow: hidden;
   background-color: var(--color-gray-100);

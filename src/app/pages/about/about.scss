@@ -1,0 +1,223 @@
+.about-page {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background: var(--color-bg-secondary, #f5f5f5);
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+// Hero
+.about-hero {
+  text-align: center;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-text-primary, #1a1a1a);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary, #666);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// Content Cards
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.about-card {
+  background: var(--color-bg-primary, #fff);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    color: var(--color-primary, #007bff);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  &__text {
+    color: var(--color-text-secondary, #666);
+    line-height: 1.7;
+  }
+}
+
+// Stats
+.about-stats {
+  margin-bottom: 4rem;
+  text-align: center;
+
+  &__title {
+    font-size: 2rem;
+    color: var(--color-text-primary, #1a1a1a);
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.stat-item {
+  background: var(--color-primary, #007bff);
+  color: white;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+
+  &__value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  &__label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+}
+
+// Team
+.about-team {
+  margin-bottom: 4rem;
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--color-text-primary, #1a1a1a);
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.team-card {
+  background: var(--color-bg-primary, #fff);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary, #007bff), var(--color-secondary, #6c757d));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    color: var(--color-text-primary, #1a1a1a);
+    margin-bottom: 0.25rem;
+  }
+
+  &__role {
+    color: var(--color-primary, #007bff);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  &__description {
+    color: var(--color-text-secondary, #666);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+// CTA
+.about-cta {
+  background: linear-gradient(135deg, var(--color-primary, #007bff), var(--color-secondary, #6c757d));
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &--primary {
+    background: white;
+    color: var(--color-primary, #007bff);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+}
