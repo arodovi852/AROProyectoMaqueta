@@ -377,9 +377,64 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 6: FORMULARIOS COMPLETOS -->
+    <!-- SECCIÓN 6: CARD LIST -->
     <section class="component-section">
-      <h2 class="component-section__title">6. Formularios Completos (con estructura semántica)</h2>
+      <h2 class="component-section__title">6. Card List (Listas de Series)</h2>
+      
+      <div class="component-group">
+        <h3 class="component-group__title">CardList - Tamaño normal</h3>
+        <p class="component-section__description">
+          Componente que muestra múltiples imágenes apiladas. Al hacer hover, las imágenes se expanden.
+        </p>
+        <div class="component-demo component-demo--row card-list-demo">
+          <app-card-list
+            title="Horror series"
+            [images]="cardListImages"
+          />
+          <app-card-list
+            title="Thrillers / Mystery series"
+            [images]="cardListImages"
+          />
+          <app-card-list
+            title="Reality TV shows"
+            [images]="cardListImages"
+          />
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3 class="component-group__title">CardList - Tamaño pequeño (small)</h3>
+        <p class="component-section__description">
+          Variante más compacta para espacios reducidos o grids más densos.
+        </p>
+        <div class="component-demo component-demo--row card-list-demo">
+          <app-card-list
+            title="Sci-Fi series"
+            [images]="cardListImages"
+            size="small"
+          />
+          <app-card-list
+            title="Comedy series"
+            [images]="cardListImages"
+            size="small"
+          />
+          <app-card-list
+            title="Drama series"
+            [images]="cardListImages"
+            size="small"
+          />
+          <app-card-list
+            title="Action series"
+            [images]="cardListImages"
+            size="small"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: FORMULARIOS COMPLETOS -->
+    <section class="component-section">
+      <h2 class="component-section__title">7. Formularios Completos (con estructura semántica)</h2>
       
       <div class="forms-demo">
         <!-- Formulario de Login -->

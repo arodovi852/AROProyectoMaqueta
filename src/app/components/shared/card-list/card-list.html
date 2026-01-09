@@ -1,0 +1,22 @@
+<div [class]="listClasses">
+  <div class="card-list__stack">
+    @for (image of visibleImages; track $index) {
+      <div 
+        class="card-list__card" 
+        [style.--card-index]="$index"
+        [style.--total-cards]="visibleImages.length"
+      >
+        <img 
+          [src]="image.src" 
+          [alt]="image.alt" 
+          class="card-list__image"
+          loading="lazy"
+        >
+      </div>
+    }
+  </div>
+  
+  @if (title) {
+    <h3 class="card-list__title">{{ title }}</h3>
+  }
+</div>

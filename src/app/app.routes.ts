@@ -4,6 +4,8 @@ import { Productos } from './pages/productos/productos';
 import { Contacto } from './pages/contacto/contacto';
 import { DemoComponents } from './pages/demo-components/demo-components';
 import { Main } from './pages/main/main';
+import { Lists } from './pages/lists/lists';
+import { ListInfo } from './pages/list-info/list-info';
 
 export const routes: Routes = [
   {
@@ -15,6 +17,16 @@ export const routes: Routes = [
     path: 'main',
     component: Main,
     title: 'BROADCASTTD - Track series. Rate them. See what\'s good.'
+  },
+  {
+    path: 'lists',
+    component: Lists,
+    title: 'Lists - BROADCASTTD'
+  },
+  {
+    path: 'listinfo',
+    component: ListInfo,
+    title: 'Create List - BROADCASTTD'
   },
   {
     path: 'productos',
