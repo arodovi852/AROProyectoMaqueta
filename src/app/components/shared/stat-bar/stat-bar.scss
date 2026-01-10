@@ -1,8 +1,8 @@
 @import '../../../../styles/01-tools/mixins';
 
 .stat-bar {
-  width: 1.25rem;
-  height: 5rem;
+  width: 1.5rem;
+  height: 6rem;
   display: flex;
   flex-direction: column-reverse;
   border-radius: 0.25rem;
@@ -11,6 +11,11 @@
   cursor: pointer;
   position: relative;
   
+  @media (min-width: 768px) {
+    width: 1.75rem;
+    height: 7rem;
+  }
+  
   &:hover {
     .stat-bar__fill {
       background-color: #ffffff;
@@ -18,7 +23,7 @@
   }
   
   &__fill {
-    background-color: #e893cf;
+    background-color: var(--color-primary-light);
     width: 100%;
     border-radius: 0.25rem;
     @include transition(background-color);

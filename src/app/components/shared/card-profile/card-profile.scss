@@ -1,0 +1,119 @@
+// ==========================================================================
+// COMPONENTE: CARD-PROFILE
+// ==========================================================================
+// Tarjeta de perfil de usuario con avatar estilizado
+// Incluye efecto hover con rotación y cambio de colores
+// ==========================================================================
+
+.card-profile {
+  display: inline-block;
+  
+  &__card {
+    background-color: var(--color-primary-dark);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  &__avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  &__head {
+    background-color: var(--color-primary-light);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  &__body {
+    background-color: var(--color-primary-light);
+    border-radius: 50% 50% 0 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  // Hover effect
+  &__card:hover {
+    background-color: var(--color-primary-light);
+    
+    .card-profile__avatar {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .card-profile__head,
+    .card-profile__body {
+      background-color: var(--color-primary-lightest);
+    }
+  }
+  
+  // ==========================================================================
+  // TAMAÑOS
+  // ==========================================================================
+  
+  // Small
+  &--sm {
+    .card-profile__card {
+      width: 80px;
+      height: 80px;
+      border-radius: 0.75rem;
+    }
+    
+    .card-profile__head {
+      width: 28px;
+      height: 28px;
+      margin-bottom: -4px;
+    }
+    
+    .card-profile__body {
+      width: 48px;
+      height: 28px;
+    }
+  }
+  
+  // Medium
+  &--md {
+    .card-profile__card {
+      width: 120px;
+      height: 120px;
+      border-radius: 1rem;
+    }
+    
+    .card-profile__head {
+      width: 42px;
+      height: 42px;
+      margin-bottom: -6px;
+    }
+    
+    .card-profile__body {
+      width: 72px;
+      height: 42px;
+    }
+  }
+  
+  // Large
+  &--lg {
+    .card-profile__card {
+      width: 160px;
+      height: 160px;
+      border-radius: 1.25rem;
+    }
+    
+    .card-profile__head {
+      width: 56px;
+      height: 56px;
+      margin-bottom: -8px;
+    }
+    
+    .card-profile__body {
+      width: 96px;
+      height: 56px;
+    }
+  }
+}

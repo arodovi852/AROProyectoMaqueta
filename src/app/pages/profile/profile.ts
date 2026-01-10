@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserAvatar } from '../../components/shared/user-avatar/user-avatar';
+import { CardProfile } from '../../components/shared/card-profile/card-profile';
 import { StatBar } from '../../components/shared/stat-bar/stat-bar';
 import { StatsCard } from '../../components/shared/stats-card/stats-card';
 import { Card } from '../../components/shared/card/card';
 import { CardList } from '../../components/shared/card-list/card-list';
-import { ReviewCard } from '../../components/shared/review-card/review-card';
+import { CardReview } from '../../components/shared/card-review/card-review';
 
 /**
  * Página Profile
@@ -14,7 +14,7 @@ import { ReviewCard } from '../../components/shared/review-card/review-card';
  */
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, UserAvatar, StatBar, StatsCard, Card, CardList, ReviewCard],
+  imports: [CommonModule, CardProfile, StatBar, StatsCard, Card, CardList, CardReview],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })

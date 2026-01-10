@@ -3,7 +3,7 @@
   <!-- Primera fila: Avatar, Stats Graph, Stats Card -->
   <section class="profile-page__header-row">
     <div class="profile-page__avatar">
-      <app-user-avatar [username]="username" size="lg" />
+      <app-card-profile [username]="username" size="lg" />
     </div>
     
     <div class="profile-page__stats-graph">
@@ -81,11 +81,10 @@
     </div>
     <div class="profile-section__reviews">
       @for (review of reviews; track review.username) {
-        <app-review-card 
+        <app-card-review 
           [username]="review.username"
           [rating]="review.rating"
           [reviewText]="review.reviewText"
-          [avatarColor]="review.avatarColor"
         />
       }
     </div>
