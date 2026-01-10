@@ -1,0 +1,11 @@
+<!-- Stats Graph Component -->
+<div class="stats-graph">
+  <div class="stats-graph__bars">
+    @for (bar of bars; track $index) {
+      <div class="stats-graph__bar-wrapper">
+        <div class="stats-graph__bar" [style.height.%]="bar"></div>
+      </div>
+    }
+  </div>
+  <span class="stats-graph__title">{{ title }}</span>
+</div>

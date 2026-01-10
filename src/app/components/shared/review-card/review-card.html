@@ -1,0 +1,35 @@
+<!-- Review Card Component -->
+<div class="review-card">
+  <!-- Avatar -->
+  <div class="review-card__avatar" [style.background-color]="avatarColor">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="review-card__avatar-icon">
+      <circle cx="12" cy="8" r="4" fill="#f5f0e8"/>
+      <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="#f5f0e8"/>
+    </svg>
+  </div>
+
+  <!-- Content -->
+  <div class="review-card__content">
+    <!-- Header: Username + Stars -->
+    <div class="review-card__header">
+      <span class="review-card__username">{{ username }}</span>
+      <div class="review-card__stars">
+        @for (star of stars; track $index) {
+          <svg 
+            class="review-card__star" 
+            [class.review-card__star--filled]="star === 1"
+            width="14" 
+            height="14" 
+            viewBox="0 0 24 24" 
+            fill="currentColor"
+          >
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        }
+      </div>
+    </div>
+
+    <!-- Review Text -->
+    <p class="review-card__text">{{ reviewText }}</p>
+  </div>
+</div>

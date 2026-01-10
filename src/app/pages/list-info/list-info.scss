@@ -4,29 +4,163 @@
 // Página para crear/editar una lista
 // ==========================================================================
 
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
 .list-info-page {
   min-height: 100vh;
-  background-color: #5a3d5c;
-  padding: var(--spacing-8);
+  background-color: #3d2a3f;
+  padding: var(--spacing-8) var(--spacing-6);
   
-  &__placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 50vh;
+  @media (min-width: 768px) {
+    padding: var(--spacing-10) var(--spacing-10);
+  }
+  
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
     color: #f5f0e8;
-    text-align: center;
+    margin: 0 0 var(--spacing-6) 0;
+    font-style: italic;
+  }
+}
+
+// ==========================================================================
+// FORMULARIO
+// ==========================================================================
+
+.list-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  
+  &__row {
+    display: flex;
+    gap: var(--spacing-6);
     
-    h1 {
-      font-family: var(--font-primary);
-      font-size: 2rem;
-      margin-bottom: var(--spacing-4);
+    &--with-avatar {
+      align-items: flex-start;
+    }
+  }
+  
+  &__field {
+    &--title {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 400px;
     }
     
-    p {
-      font-size: 1.125rem;
-      opacity: 0.8;
+    &--description {
+      width: 100%;
+      max-width: 700px;
     }
+    
+    &--add-game {
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    &--checkbox {
+      margin-top: var(--spacing-2);
+    }
+  }
+  
+  &__avatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    margin-top: 1.75rem; // Alinear con el input (debajo del label)
+  }
+  
+  &__avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4a9eff;
+  }
+  
+  &__avatar-svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  &__actions {
+    margin-top: var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// SOBREESCRITURA DE ESTILOS DE COMPONENTES
+// ==========================================================================
+
+.list-info-form {
+  // Estilo para los inputs (rosa/magenta con bordes redondeados)
+  .form-input__field,
+  .form-textarea__field {
+    background-color: #e88fd3;
+    border: 3px solid #c060a8;
+    border-radius: 1.5rem;
+    color: #3d2a3f;
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: 1rem;
+    
+    &::placeholder {
+      color: rgba(61, 42, 63, 0.5);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #d070b8;
+      box-shadow: 0 0 0 3px rgba(232, 143, 211, 0.3);
+    }
+  }
+  
+  .form-textarea__field {
+    border-radius: 1.25rem;
+    min-height: 140px;
+    resize: none;
+  }
+  
+  // Labels
+  .form-input__label,
+  .form-textarea__label {
+    color: #f5f0e8;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: var(--spacing-2);
+  }
+  
+  // Checkbox personalizado (rosa)
+  .form-checkbox__label {
+    color: #f5f0e8;
+    font-weight: 600;
+    gap: var(--spacing-3);
+  }
+  
+  .form-checkbox__custom {
+    width: 24px;
+    height: 24px;
+    background-color: #e88fd3;
+    border: 3px solid #c060a8;
+    border-radius: 4px;
+  }
+  
+  .form-checkbox__input:checked + .form-checkbox__custom {
+    background-color: #e88fd3;
+    border-color: #c060a8;
+  }
+  
+  .form-checkbox__text {
+    font-size: 1rem;
   }
 }

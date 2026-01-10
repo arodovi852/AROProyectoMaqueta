@@ -1,7 +1,59 @@
-<!-- Contenido principal - Pendiente de implementación -->
+<!-- Página Create List -->
 <div class="list-info-page">
-  <div class="list-info-page__placeholder">
-    <h1>Create List</h1>
-    <p>Esta página está en construcción.</p>
+  <div class="list-info-page__container">
+    <!-- Título de la página -->
+    <h1 class="list-info-page__title">Create list</h1>
+
+    <!-- Formulario -->
+    <form class="list-info-form" (ngSubmit)="onCreateList()">
+      <!-- Sección: Title -->
+      <div class="list-info-form__field list-info-form__field--title">
+        <app-form-input
+          label="Title"
+          name="title"
+          placeholder=""
+          (valueChange)="onTitleChange($event)"
+        />
+      </div>
+
+      <!-- Sección: Description -->
+      <div class="list-info-form__field list-info-form__field--description">
+        <app-form-textarea
+          label="Description"
+          name="description"
+          [rows]="6"
+          placeholder=""
+          (valueChange)="onDescriptionChange($event)"
+        />
+      </div>
+
+      <!-- Sección: Add game -->
+      <div class="list-info-form__field list-info-form__field--add-game">
+        <app-form-input
+          label="Add game"
+          name="addGame"
+          placeholder=""
+          (valueChange)="onAddGameChange($event)"
+        />
+      </div>
+
+      <!-- Sección: Public checkbox -->
+      <div class="list-info-form__field list-info-form__field--checkbox">
+        <app-form-checkbox
+          label="Public?"
+          name="isPublic"
+          (valueChange)="onPublicChange($event)"
+        />
+      </div>
+
+      <!-- Botón Create list -->
+      <div class="list-info-form__actions">
+        <app-button 
+          type="submit" 
+          variant="secondary"
+          text="Create list"
+        />
+      </div>
+    </form>
   </div>
 </div>

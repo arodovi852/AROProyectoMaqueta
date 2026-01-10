@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, Renderer2, HostListener, signal, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Button } from '../../../components/shared/button/button';
 import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
@@ -43,13 +43,19 @@ export class Header implements OnInit, OnDestroy {
    */
   currentUser = signal<AuthUser | null>(null);
 
+  /**
+   * Texto de búsqueda
+   */
+  searchQuery = '';
+
   private subscription: Subscription | null = null;
 
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -161,5 +167,25 @@ export class Header implements OnInit, OnDestroy {
     this.authService.logout();
     this.toastService.info('Sesión cerrada');
     this.closeMenu();
+  }
+
+  /**
+   * Actualizar query de búsqueda
+   */
+  onSearchInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value;
+  }
+
+  /**
+   * Ejecutar búsqueda y navegar a resultados
+   */
+  onSearch(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    this.router.navigate(['/searchresult'], { 
+      queryParams: { q: this.searchQuery } 
+    });
   }
 }

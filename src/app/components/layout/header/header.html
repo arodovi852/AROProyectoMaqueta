@@ -56,12 +56,15 @@
       </a>
 
       <!-- Campo de búsqueda -->
-      <div class="header__search">
+      <form class="header__search" (submit)="onSearch($event)">
         <input 
           type="search" 
           class="header__search-input" 
           placeholder="Search" 
           aria-label="Buscar"
+          [value]="searchQuery"
+          (input)="onSearchInput($event)"
+          (keydown.enter)="onSearch($event)"
         />
         <button 
           type="submit" 
@@ -73,7 +76,7 @@
             <path d="M12.5 12.5L17 17" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
-      </div>
+      </form>
     </div>
 
     <!-- Menú móvil desplegable -->

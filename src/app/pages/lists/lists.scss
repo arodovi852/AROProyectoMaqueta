@@ -13,7 +13,11 @@
 .lists-page {
   min-height: 100vh;
   background-color: #5a3d5c;
-  padding: var(--spacing-6) var(--spacing-12);
+  padding: var(--spacing-6) var(--spacing-16);
+  
+  @media (max-width: 1200px) {
+    padding: var(--spacing-6) var(--spacing-10);
+  }
   
   @media (max-width: 768px) {
     padding: var(--spacing-4) var(--spacing-6);
@@ -39,13 +43,13 @@
 // ==========================================================================
 
 .lists-section {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-16);
   
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
   }
   
   &__title {
@@ -76,27 +80,34 @@
   &__grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     
     &--large {
-      gap: 8rem 6rem;
-      padding: var(--spacing-6) 0;
+      gap: 6rem;
+      padding: var(--spacing-8) var(--spacing-4);
       
       @media (max-width: 1200px) {
-        gap: 6rem 4rem;
+        justify-content: space-evenly;
+        gap: 5rem;
       }
       
       @media (max-width: 768px) {
-        gap: 5rem 3rem;
+        justify-content: center;
+        gap: 4rem;
       }
     }
     
     &--small {
-      gap: 5rem 4rem;
-      padding: var(--spacing-4) 0;
+      gap: 4rem;
+      padding: var(--spacing-6) var(--spacing-4);
+      
+      @media (max-width: 1200px) {
+        justify-content: space-evenly;
+      }
       
       @media (max-width: 768px) {
-        gap: 4rem 2rem;
+        justify-content: center;
+        gap: 3rem;
       }
     }
   }

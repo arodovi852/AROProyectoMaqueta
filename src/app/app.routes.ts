@@ -6,6 +6,8 @@ import { DemoComponents } from './pages/demo-components/demo-components';
 import { Main } from './pages/main/main';
 import { Lists } from './pages/lists/lists';
 import { ListInfo } from './pages/list-info/list-info';
+import { SearchResult } from './pages/search-result/search-result';
+import { Profile } from './pages/profile/profile';
 
 export const routes: Routes = [
   {
@@ -42,6 +44,16 @@ export const routes: Routes = [
     path: 'demo',
     component: DemoComponents,
     title: 'Demo Componentes - BROADCAST'
+  },
+  {
+    path: 'searchresult',
+    component: SearchResult,
+    title: 'Search Results - BROADCASTTD'
+  },
+  {
+    path: 'profile',
+    component: Profile,
+    title: 'Profile - BROADCASTTD'
   },
   {
     path: '**',
