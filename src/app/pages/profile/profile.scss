@@ -13,14 +13,14 @@
 .profile-page {
   min-height: 100vh;
   background-color: #5a3d5c;
-  padding: var(--spacing-6) var(--spacing-4);
+  padding: var(--spacing-6) var(--spacing-6);
   
   @media (min-width: 768px) {
-    padding: var(--spacing-8) var(--spacing-8);
+    padding: var(--spacing-8) var(--spacing-10);
   }
   
   @media (min-width: 1024px) {
-    padding: var(--spacing-8) var(--spacing-12);
+    padding: var(--spacing-8) var(--spacing-16);
   }
 }
 
@@ -49,8 +49,29 @@
 }
 
 .profile-page__stats-graph {
-  flex: 1;
-  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background-color: rgba(107, 91, 122, 0.3);
+  border-radius: 0.75rem;
+  border: 3px solid #e88fd3;
+}
+
+.profile-page__stats-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 100px;
+}
+
+.profile-page__stats-label {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f5f0e8;
+  text-align: center;
 }
 
 .profile-page__stats-card {
@@ -98,10 +119,10 @@
   &__cards {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-3);
+    gap: var(--spacing-4);
     
     @media (min-width: 768px) {
-      gap: var(--spacing-4);
+      gap: var(--spacing-5);
     }
   }
   
@@ -123,21 +144,55 @@
 }
 
 // ==========================================================================
-// AJUSTES DE CARDS PARA PROFILE
+// AJUSTES DE CARDS PARA PROFILE (más pequeñas)
 // ==========================================================================
 
 .profile-section__cards {
   app-card {
-    flex: 0 0 calc(33.333% - var(--spacing-3));
-    max-width: 80px;
+    flex: 0 0 auto;
     
-    @media (min-width: 576px) {
-      flex: 0 0 auto;
-      max-width: 100px;
+    // Sobreescribir estilos de card para hacerlas pequeñas
+    ::ng-deep .card {
+      width: 70px;
+      border-radius: 0.5rem;
+      
+      @media (min-width: 576px) {
+        width: 80px;
+      }
+      
+      @media (min-width: 768px) {
+        width: 90px;
+      }
     }
     
-    @media (min-width: 768px) {
-      max-width: 120px;
+    ::ng-deep .card__image-wrapper {
+      height: 105px;
+      
+      @media (min-width: 576px) {
+        height: 120px;
+      }
+      
+      @media (min-width: 768px) {
+        height: 135px;
+      }
+    }
+    
+    ::ng-deep .card__image {
+      border-radius: 0.5rem;
+    }
+    
+    ::ng-deep .card__body {
+      padding: var(--spacing-1);
+    }
+    
+    ::ng-deep .card__title {
+      font-size: 0.65rem;
+      line-height: 1.2;
+      text-align: center;
+      
+      @media (min-width: 768px) {
+        font-size: 0.7rem;
+      }
     }
   }
 }

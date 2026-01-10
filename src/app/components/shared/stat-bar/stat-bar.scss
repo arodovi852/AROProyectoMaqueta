@@ -1,11 +1,11 @@
 @import '../../../../styles/01-tools/mixins';
 
 .stat-bar {
-  width: 2rem;
-  height: 10rem;
+  width: 1.25rem;
+  height: 5rem;
   display: flex;
   flex-direction: column-reverse;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   overflow: hidden;
   background-color: transparent;
   cursor: pointer;
@@ -20,7 +20,7 @@
   &__fill {
     background-color: #e893cf;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     @include transition(background-color);
   }
   
