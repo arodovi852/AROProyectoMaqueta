@@ -6,8 +6,10 @@ import { DemoComponents } from './pages/demo-components/demo-components';
 import { Main } from './pages/main/main';
 import { Lists } from './pages/lists/lists';
 import { ListInfo } from './pages/list-info/list-info';
+import { ListContent } from './pages/list-content/list-content';
 import { SearchResult } from './pages/search-result/search-result';
 import { Profile } from './pages/profile/profile';
+import { SeriesInfo } from './pages/series-info/series-info';
 
 export const routes: Routes = [
   {
@@ -54,6 +56,16 @@ export const routes: Routes = [
     path: 'profile',
     component: Profile,
     title: 'Profile - BROADCASTTD'
+  },
+  {
+    path: 'seriesinfo',
+    component: SeriesInfo,
+    title: 'Series Info - BROADCASTTD'
+  },
+  {
+    path: 'listcontent',
+    component: ListContent,
+    title: 'List Content - BROADCASTTD'
   },
   {
     path: '**',

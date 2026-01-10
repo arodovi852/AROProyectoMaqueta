@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProfile } from '../../components/shared/card-profile/card-profile';
 import { StatBar } from '../../components/shared/stat-bar/stat-bar';
-import { StatsCard } from '../../components/shared/stats-card/stats-card';
+import { CardData } from '../../components/shared/card-data/card-data';
 import { Card } from '../../components/shared/card/card';
 import { CardList } from '../../components/shared/card-list/card-list';
 import { CardReview } from '../../components/shared/card-review/card-review';
@@ -14,7 +14,7 @@ import { CardReview } from '../../components/shared/card-review/card-review';
  */
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, CardProfile, StatBar, StatsCard, Card, CardList, CardReview],
+  imports: [CommonModule, CardProfile, StatBar, CardData, Card, CardList, CardReview],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })

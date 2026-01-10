@@ -18,6 +18,7 @@ export class CardStatReview {
   @Input() statsBars: number[] = [30, 45, 55, 70, 80, 90, 95, 85, 75, 60];
   @Input() rating: number = 0;
   @Input() isWatchLater: boolean = false;
+  @Input() buttonText: string = 'Watch later';
   
   @Output() ratingChange = new EventEmitter<number>();
   @Output() watchLaterToggle = new EventEmitter<boolean>();
