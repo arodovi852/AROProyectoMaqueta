@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { CardProfile } from '../../components/shared/card-profile/card-profile';
 import { StatBar } from '../../components/shared/stat-bar/stat-bar';
 import { CardData } from '../../components/shared/card-data/card-data';
 import { Card } from '../../components/shared/card/card';
 import { CardList } from '../../components/shared/card-list/card-list';
 import { CardReview } from '../../components/shared/card-review/card-review';
+import { AuthService, AuthUser } from '../../services/auth.service';
+import { ToastService } from '../../services/toast.service';
 
 /**
- * Página Profile
+ * Página Profile (FASE 4 - Tarea 4)
  * 
- * Página de perfil del usuario con estadísticas, series y reseñas
+ * Página de perfil del usuario con estadísticas, series y reseñas.
+ * Protegida por authGuard - requiere autenticación.
  */
 @Component({
   selector: 'app-profile',
@@ -18,8 +22,14 @@ import { CardReview } from '../../components/shared/card-review/card-review';
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })
-export class Profile {
-  username = 'User';
+export class Profile implements OnInit {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private toast = inject(ToastService);
+
+  // Usuario actual
+  currentUser = signal<AuthUser | null>(null);
+  username = signal<string>('Usuario');
   
   // Estadísticas
   watched = 8;
@@ -92,20 +102,46 @@ export class Profile {
     {
       username: 'User1',
       rating: 3,
-      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu, aliquet sit amet ipsum. Nullam eget nulla pretium, lobortis turpis at, consectetur sapien. Duis quis congue tellus.',
+      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu.',
       avatarColor: '#6b5b7a'
     },
     {
       username: 'User2',
-      rating: 3,
-      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu, aliquet sit amet ipsum. Nullam eget nulla pretium, lobortis turpis at, consectetur sapien. Duis quis congue tellus.',
+      rating: 4,
+      reviewText: 'Excelente serie, muy recomendada para los amantes del género.',
       avatarColor: '#ecc332'
     },
     {
       username: 'User3',
-      rating: 3,
-      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu, aliquet sit amet ipsum. Nullam eget nulla pretium, lobortis turpis at, consectetur sapien. Duis quis congue tellus.',
+      rating: 5,
+      reviewText: 'Una obra maestra. La mejor serie que he visto en años.',
       avatarColor: '#6b5b7a'
     }
   ];
+
+  ngOnInit(): void {
+    // Obtener usuario actual
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser.set(user);
+      if (user) {
+        this.username.set(user.username);
+      }
+    });
+  }
+
+  /**
+   * Cerrar sesión (FASE 4 - Tarea 4)
+   */
+  logout(): void {
+    this.authService.logout();
+    this.toast.info('Sesión cerrada correctamente');
+    this.router.navigate(['/']);
+  }
+
+  /**
+   * Navegar a editar perfil
+   */
+  editProfile(): void {
+    this.router.navigate(['/profile/edit']);
+  }
 }

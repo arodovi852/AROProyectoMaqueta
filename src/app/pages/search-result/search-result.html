@@ -6,7 +6,7 @@
 
     <!-- Lista de resultados -->
     <div class="search-result-page__list">
-      @for (result of searchResults; track result.id) {
+      @for (result of searchResults(); track result.id) {
         <article class="search-result-card">
           <!-- Imagen de la serie -->
           <div class="search-result-card__image-wrapper">

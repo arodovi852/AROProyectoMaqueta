@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Card } from '../../components/shared/card/card';
 import { Button } from '../../components/shared/button/button';
+import { SeriesService, Series } from '../../services/series.service';
+import { ToastService } from '../../services/toast.service';
 
 /**
  * Interface para los datos de las tarjetas de series
@@ -14,10 +17,15 @@ interface SeriesCard {
 }
 
 /**
- * Página Main
+ * Página Main (FASE 4 - Tarea 2, FASE 5 - Tarea 5)
  * 
  * Página principal de la aplicación con hero section y grid de series.
  * Similar a plataformas de seguimiento de series como Trakt o Letterboxd.
+ * 
+ * Implementa:
+ * - Navegación programática con Router
+ * - Estados de carga y error
+ * - Integración con SeriesService
  */
 @Component({
   selector: 'app-main',
@@ -25,7 +33,15 @@ interface SeriesCard {
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })
-export class Main {
+export class Main implements OnInit {
+  private router = inject(Router);
+  private seriesService = inject(SeriesService);
+  private toast = inject(ToastService);
+
+  // Estados
+  loading = signal<boolean>(false);
+  error = signal<string | null>(null);
+  seriesFromApi = signal<Series[]>([]);
   /**
    * Series populares de la semana
    */
@@ -110,19 +126,61 @@ export class Main {
     }
   ];
 
-  /**
-   * Manejador del click en "Get started"
-   */
-  onGetStarted(): void {
-    console.log('Get started clicked');
-    // TODO: Implementar navegación o modal de registro
+  ngOnInit(): void {
+    this.loadSeriesFromApi();
   }
 
   /**
-   * Manejador del click en "See more"
+   * Carga series desde el servicio (FASE 5 - Tarea 5)
+   */
+  private loadSeriesFromApi(): void {
+    this.loading.set(true);
+    this.error.set(null);
+
+    this.seriesService.getAllSeries().subscribe({
+      next: (series) => {
+        this.seriesFromApi.set(series);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.error.set('Error al cargar las series');
+        this.toast.error('No se pudieron cargar las series');
+      }
+    });
+  }
+
+  /**
+   * Navegación programática a detalle de serie (FASE 4 - Tarea 2)
+   */
+  navigateToSeries(id: number): void {
+    this.router.navigate(['/series', id]);
+  }
+
+  /**
+   * Navegación programática con query params (FASE 4 - Tarea 2)
+   */
+  searchSeries(query: string): void {
+    this.router.navigate(['/searchresult'], {
+      queryParams: { q: query }
+    });
+  }
+
+  /**
+   * Manejador del click en "Get started" (FASE 4 - Tarea 2)
+   */
+  onGetStarted(): void {
+    // Navegación programática al perfil/registro
+    this.router.navigate(['/profile']);
+  }
+
+  /**
+   * Manejador del click en "See more" (FASE 4 - Tarea 2)
    */
   onSeeMore(section: string): void {
-    console.log('See more clicked for:', section);
-    // TODO: Implementar navegación a la sección completa
+    this.router.navigate(['/lists'], {
+      queryParams: { section },
+      fragment: section
+    });
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormInput } from '../../components/shared/form-input/form-input';
 import { CloseButton } from '../../components/shared/close-button/close-button';
 import { Button } from '../../components/shared/button/button';
@@ -40,6 +41,7 @@ import { CardList } from '../../components/shared/card-list/card-list';
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     FormInput,
     CloseButton,
     Button,

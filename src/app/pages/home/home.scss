@@ -7,6 +7,32 @@
 @import '../../../styles/01-tools/mixins';
 
 // ==========================================================================
+// BOTÓN DE ACCESO A MAIN (FASE 4)
+// ==========================================================================
+
+.home-main-access {
+  max-width: 75rem;
+  margin: 0 auto var(--spacing-6);
+  padding: var(--spacing-4);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(162, 100, 191, 0.3);
+
+  &__link {
+    display: block;
+    text-decoration: none;
+  }
+
+  // Efecto hover en el contenedor
+  &:hover {
+    box-shadow: 0 6px 25px rgba(162, 100, 191, 0.4);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+}
+
+// ==========================================================================
 // CONTENEDOR PRINCIPAL
 // ==========================================================================
 

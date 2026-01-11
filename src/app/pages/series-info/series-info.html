@@ -5,8 +5,8 @@
     <!-- Card de la serie (izquierda) -->
     <div class="series-info__card">
       <app-card 
-        [title]="series.title" 
-        [imageSrc]="series.imageSrc"
+        [title]="series().title" 
+        [imageSrc]="series().imageSrc"
         variant="media"
         size="lg"
       />
@@ -14,8 +14,8 @@
 
     <!-- Descripción (centro) -->
     <div class="series-info__description">
-      <h1 class="series-info__title">{{ series.title }}</h1>
-      <p class="series-info__text">{{ series.description }}</p>
+      <h1 class="series-info__title">{{ series().title }}</h1>
+      <p class="series-info__text">{{ series().description }}</p>
     </div>
 
     <!-- CardStatReview (derecha) -->
