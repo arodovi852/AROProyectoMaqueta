@@ -1,4 +1,11 @@
-<div [class]="cardClasses">
+<div 
+  [class]="cardClasses" 
+  [class.card--clickable]="clickable && variant !== 'rating'"
+  (click)="navigateToSeries()"
+  [attr.role]="clickable && variant !== 'rating' ? 'button' : null"
+  [attr.tabindex]="clickable && variant !== 'rating' ? 0 : null"
+  (keydown.enter)="navigateToSeries()"
+>
   @if (variant === 'rating') {
     <!-- Variante Rating: Series/Películas con estadísticas -->
     <div class="card__stats">

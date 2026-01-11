@@ -1,0 +1,50 @@
+<!-- Contenido principal -->
+<div class="lists-page">
+  <!-- Create List Button -->
+  <div class="lists-page__create-section">
+    <a routerLink="/listinfo">
+      <app-button
+        text="Create List +"
+        variant="secondary"
+        size="lg"
+      ></app-button>
+    </a>
+  </div>
+
+  <!-- Official Lists Section -->
+  <section class="lists-section">
+    <div class="lists-section__header">
+      <h2 class="lists-section__title">Official lists</h2>
+      <button class="lists-section__see-more" (click)="onSeeMore('official')">
+        See more
+      </button>
+    </div>
+    <div class="lists-section__grid lists-section__grid--large">
+      @for (list of officialLists; track list.title) {
+        <app-card-list
+          [title]="list.title"
+          [images]="list.images"
+        ></app-card-list>
+      }
+    </div>
+  </section>
+
+  <!-- Popular This Week Section -->
+  <section class="lists-section">
+    <div class="lists-section__header">
+      <h2 class="lists-section__title">Popular this week</h2>
+      <button class="lists-section__see-more" (click)="onSeeMore('popular')">
+        See more
+      </button>
+    </div>
+    <div class="lists-section__grid lists-section__grid--small">
+      @for (list of popularLists; track list.title) {
+        <app-card-list
+          [title]="list.title"
+          [images]="list.images"
+          size="small"
+        ></app-card-list>
+      }
+    </div>
+  </section>
+</div>

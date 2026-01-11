@@ -1,0 +1,134 @@
+// ==========================================================================
+// PÁGINA: LIST-CONTENT
+// ==========================================================================
+// Página que muestra el contenido de una lista con banner y series
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.list-content-page {
+  min-height: 100vh;
+  background-color: var(--color-primary-dark);
+}
+
+// ==========================================================================
+// BANNER
+// ==========================================================================
+
+.list-content-page__banner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  
+  @media (min-width: 768px) {
+    height: 280px;
+  }
+  
+  @media (min-width: 1024px) {
+    height: 320px;
+  }
+}
+
+.list-content-page__banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.list-content-page__banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-6) var(--spacing-6);
+  background: linear-gradient(
+    to top,
+    rgba(61, 42, 63, 0.95) 0%,
+    rgba(61, 42, 63, 0.7) 50%,
+    transparent 100%
+  );
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-8) var(--spacing-10);
+  }
+}
+
+.list-content-page__banner-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary-lightest);
+  margin: 0;
+  font-style: italic;
+}
+
+// ==========================================================================
+// CONTENIDO PRINCIPAL
+// ==========================================================================
+
+.list-content-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-6);
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-10);
+  }
+  
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: var(--spacing-10);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+// ==========================================================================
+// SECCIÓN DE SERIES
+// ==========================================================================
+
+.list-content-page__series {
+  flex: 1;
+}
+
+.list-content-page__series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-5);
+  }
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+}
+
+.list-content-page__series-card {
+  width: 100%;
+}
+
+// ==========================================================================
+// SIDEBAR
+// ==========================================================================
+
+.list-content-page__sidebar {
+  flex-shrink: 0;
+  
+  @media (min-width: 1024px) {
+    width: 320px;
+    position: sticky;
+    top: var(--spacing-6);
+    align-self: flex-start;
+  }
+}

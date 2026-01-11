@@ -1,0 +1,185 @@
+// ==========================================================================
+// PÁGINA: SERIES-INFO
+// ==========================================================================
+// Página de información detallada de una serie
+// ==========================================================================
+
+.series-info {
+  min-height: 100vh;
+  background-color: var(--color-primary-dark);
+  padding: var(--spacing-6);
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-8) var(--spacing-10);
+  }
+  
+  @media (min-width: 1024px) {
+    padding: var(--spacing-8) var(--spacing-16);
+  }
+}
+
+// ==========================================================================
+// PRIMERA FILA: HEADER
+// ==========================================================================
+
+.series-info__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-6);
+  }
+  
+  @media (min-width: 1024px) {
+    gap: var(--spacing-8);
+  }
+}
+
+// ==========================================================================
+// CARD DE LA SERIE
+// ==========================================================================
+
+.series-info__card {
+  flex-shrink: 0;
+  
+  // Ajustar tamaño del card - más ancho para mostrar imagen completa
+  ::ng-deep .card {
+    width: 200px;
+    
+    @media (min-width: 768px) {
+      width: 240px;
+    }
+    
+    @media (min-width: 1024px) {
+      width: 280px;
+    }
+  }
+  
+  ::ng-deep .card__image-wrapper {
+    height: 300px;
+    
+    @media (min-width: 768px) {
+      height: 360px;
+    }
+    
+    @media (min-width: 1024px) {
+      height: 420px;
+    }
+  }
+}
+
+// ==========================================================================
+// DESCRIPCIÓN
+// ==========================================================================
+
+.series-info__description {
+  flex: 1;
+  max-width: 500px;
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    text-align: left;
+    padding: var(--spacing-2) 0;
+    max-width: 400px;
+  }
+  
+  @media (min-width: 1024px) {
+    max-width: 450px;
+  }
+}
+
+.series-info__title {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-100);
+  margin: 0 0 var(--spacing-4) 0;
+  
+  @media (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 2rem;
+  }
+}
+
+.series-info__text {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-neutral-200);
+  line-height: 1.6;
+  margin: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.1rem;
+  }
+}
+
+// ==========================================================================
+// CARD STAT REVIEW
+// ==========================================================================
+
+.series-info__stat-review {
+  flex-shrink: 0;
+}
+
+// ==========================================================================
+// SECCIÓN DE REVIEWS
+// ==========================================================================
+
+.series-info__reviews {
+  margin-top: var(--spacing-8);
+}
+
+.series-info__reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.series-info__reviews-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-neutral-100);
+  margin: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.series-info__see-more {
+  background: transparent;
+  border: none;
+  color: var(--color-neutral-100);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  
+  &:hover {
+    opacity: 1;
+    color: var(--color-secondary);
+  }
+}
+
+.series-info__reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}

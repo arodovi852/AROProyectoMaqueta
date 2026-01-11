@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Star } from '../star/star';
 import { StatBar } from '../stat-bar/stat-bar';
 import { WatchLater } from '../watch-later/watch-later';
@@ -17,6 +18,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './card.scss',
 })
 export class Card {
+  private router = inject(Router);
+
+  /**
+   * URL a la que navegar al hacer click (opcional)
+   * Si no se proporciona, navega a /seriesinfo por defecto
+   */
+  @Input() link?: string;
+
+  /**
+   * Si la card es clickeable (navega a seriesinfo)
+   */
+  @Input() clickable = true;
+
   /**
    * URL de la imagen de la tarjeta
    */
@@ -135,5 +149,15 @@ export class Card {
     if (index < this.hoverStarIndex) return true;
     if (index === this.hoverStarIndex) return true;
     return false;
+  }
+
+  /**
+   * Navega a la página de detalle de serie
+   */
+  navigateToSeries(): void {
+    if (this.clickable && this.variant !== 'rating') {
+      const destination = this.link || '/seriesinfo';
+      this.router.navigate([destination]);
+    }
   }
 }

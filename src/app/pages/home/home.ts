@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormInput } from '../../components/shared/form-input/form-input';
 import { CloseButton } from '../../components/shared/close-button/close-button';
 import { Button } from '../../components/shared/button/button';
@@ -29,6 +30,9 @@ import { ContactFormReactive } from '../../components/shared/contact-form-reacti
 import { InvoiceForm } from '../../components/shared/invoice-form/invoice-form';
 import { ProfileForm } from '../../components/shared/profile-form/profile-form';
 
+// Componentes adicionales
+import { CardList } from '../../components/shared/card-list/card-list';
+
 /**
  * Página Home
  * 
@@ -37,6 +41,7 @@ import { ProfileForm } from '../../components/shared/profile-form/profile-form';
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     FormInput,
     CloseButton,
     Button,
@@ -62,7 +67,9 @@ import { ProfileForm } from '../../components/shared/profile-form/profile-form';
     // Fase 3
     ContactFormReactive,
     InvoiceForm,
-    ProfileForm
+    ProfileForm,
+    // Componentes adicionales
+    CardList
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -78,6 +85,14 @@ export class Home {
     { value: 'it', label: 'Italia' },
     { value: 'de', label: 'Alemania' },
     { value: 'uk', label: 'Reino Unido' }
+  ];
+
+  // Datos de ejemplo para CardList
+  cardListImages = [
+    { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
+    { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
+    { src: '/assets/Image_For_Card_3.jpg', alt: 'Alien: Earth' },
+    { src: '/assets/Image_For_Card_4.jpg', alt: 'The Haunting of Hill House' }
   ];
 
   // Manejador para el botón de cierre

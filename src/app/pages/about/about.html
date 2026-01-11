@@ -1,0 +1,73 @@
+<section class="about-page">
+  <div class="about-page__container">
+    <!-- Hero Section -->
+    <header class="about-hero">
+      <h1 class="about-hero__title">Sobre Nosotros</h1>
+      <p class="about-hero__subtitle">
+        Innovación tecnológica al servicio de tu negocio
+      </p>
+    </header>
+
+    <!-- Misión y Visión -->
+    <div class="about-content">
+      <article class="about-card">
+        <h2 class="about-card__title">Nuestra Misión</h2>
+        <p class="about-card__text">
+          En BROADCAST nos dedicamos a proporcionar soluciones tecnológicas de vanguardia 
+          que impulsen el crecimiento y la eficiencia de nuestros clientes. Creemos en la 
+          innovación constante y en la excelencia del servicio.
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h2 class="about-card__title">Nuestra Visión</h2>
+        <p class="about-card__text">
+          Ser el socio tecnológico de referencia para empresas que buscan transformar 
+          sus operaciones mediante soluciones digitales inteligentes y escalables.
+        </p>
+      </article>
+    </div>
+
+    <!-- Estadísticas -->
+    <section class="about-stats">
+      <h2 class="about-stats__title">Nuestros Números</h2>
+      <div class="about-stats__grid">
+        @for (stat of companyStats; track stat.label) {
+          <div class="stat-item">
+            <span class="stat-item__value">{{ stat.value }}</span>
+            <span class="stat-item__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="about-team">
+      <h2 class="about-team__title">Nuestro Equipo</h2>
+      <div class="about-team__grid">
+        @for (member of teamMembers; track member.name) {
+          <article class="team-card">
+            <div class="team-card__avatar">
+              {{ member.name.charAt(0) }}
+            </div>
+            <h3 class="team-card__name">{{ member.name }}</h3>
+            <p class="team-card__role">{{ member.role }}</p>
+            <p class="team-card__description">{{ member.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <h2 class="about-cta__title">¿Listo para empezar?</h2>
+      <p class="about-cta__text">
+        Descubre cómo podemos ayudarte a alcanzar tus objetivos tecnológicos.
+      </p>
+      <div class="about-cta__buttons">
+        <a routerLink="/contacto" class="btn btn--primary">Contáctanos</a>
+        <a routerLink="/productos" class="btn btn--secondary">Ver Productos</a>
+      </div>
+    </section>
+  </div>
+</section>

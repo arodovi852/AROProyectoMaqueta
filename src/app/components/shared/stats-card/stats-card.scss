@@ -1,0 +1,47 @@
+// ==========================================================================
+// COMPONENTE: STATS-CARD
+// ==========================================================================
+// Tarjeta de estadísticas de visualización del usuario
+// ==========================================================================
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+  
+  &__label {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f5f0e8;
+  }
+  
+  &__value {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    
+    &--watched {
+      background-color: #e88fd3;
+      color: #3d2a3f;
+    }
+    
+    &--saved {
+      background-color: #e88fd3;
+      color: #3d2a3f;
+    }
+    
+    &--average {
+      background-color: #ecc332;
+      color: #3d2a3f;
+    }
+  }
+}

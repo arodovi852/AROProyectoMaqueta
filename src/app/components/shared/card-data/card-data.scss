@@ -1,0 +1,66 @@
+// ==========================================================================
+// COMPONENTE: CARD-DATA
+// ==========================================================================
+// Tarjeta de estadísticas del usuario (Watched, Saved, Average)
+// ==========================================================================
+
+.card-data {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+  min-width: 180px;
+  
+  // ==========================================================================
+  // FILAS
+  // ==========================================================================
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+    
+    &--watched {
+      background-color: var(--color-primary-dark);
+      border-radius: 1rem 1rem 0 0;
+    }
+    
+    &--saved {
+      background-color: var(--color-primary);
+    }
+    
+    &--average {
+      background-color: var(--color-primary-light);
+      border-radius: 0 0 1rem 1rem;
+    }
+  }
+  
+  // ==========================================================================
+  // LABEL
+  // ==========================================================================
+  &__label {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-neutral-100);
+    
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+  
+  // ==========================================================================
+  // VALUE
+  // ==========================================================================
+  &__value {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-neutral-100);
+    
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+}

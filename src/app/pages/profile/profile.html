@@ -1,0 +1,92 @@
+<!-- Página Profile -->
+<div class="profile-page">
+  <!-- Primera fila: Avatar, Stats Graph, Stats Card -->
+  <section class="profile-page__header-row">
+    <div class="profile-page__avatar">
+      <app-card-profile [username]="username()" size="lg" />
+    </div>
+    
+    <div class="profile-page__stats-graph">
+      <div class="profile-page__stats-bars">
+        @for (bar of statsBars; track $index) {
+          <app-stat-bar [value]="bar" />
+        }
+      </div>
+      <span class="profile-page__stats-label">Stats</span>
+    </div>
+    
+    <div class="profile-page__stats-card">
+      <app-card-data [watched]="watched" [saved]="saved" [average]="average" />
+    </div>
+  </section>
+
+  <!-- Segunda fila: Logged series -->
+  <section class="profile-section">
+    <div class="profile-section__header">
+      <h2 class="profile-section__title">Logged series</h2>
+      <button class="profile-section__see-more">See more</button>
+    </div>
+    <div class="profile-section__cards">
+      @for (series of loggedSeries; track series.title) {
+        <app-card 
+          [title]="series.title" 
+          [imageSrc]="series.imageSrc"
+          variant="media"
+          size="sm"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- Tercera fila: Recently watched -->
+  <section class="profile-section">
+    <div class="profile-section__header">
+      <h2 class="profile-section__title">Recently watched</h2>
+      <button class="profile-section__see-more">See more</button>
+    </div>
+    <div class="profile-section__cards">
+      @for (series of recentlyWatched; track series.title) {
+        <app-card 
+          [title]="series.title" 
+          [imageSrc]="series.imageSrc"
+          variant="media"
+          size="sm"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- Cuarta fila: Personal lists -->
+  <section class="profile-section">
+    <div class="profile-section__header">
+      <h2 class="profile-section__title">Personal lists</h2>
+      <button class="profile-section__see-more">See more</button>
+    </div>
+    <div class="profile-section__lists">
+      @for (list of personalLists; track list.title) {
+        <app-card-list 
+          [title]="list.title" 
+          [images]="list.images"
+          size="small"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- Quinta fila: Reviews -->
+  <section class="profile-section">
+    <div class="profile-section__header">
+      <h2 class="profile-section__title">Reviews</h2>
+      <button class="profile-section__see-more">See more</button>
+    </div>
+    <div class="profile-section__reviews">
+      @for (review of reviews; track review.username) {
+        <app-card-review 
+          [username]="review.username"
+          [rating]="review.rating"
+          [reviewText]="review.reviewText"
+        />
+      }
+    </div>
+  </section>
+</div>

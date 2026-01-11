@@ -32,10 +32,24 @@
 }
 
 // ==========================================================================
+// ELEMENTO: .header__brand (Logo + Breadcrumbs)
+// ==========================================================================
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  flex-shrink: 0;
+}
+
+// ==========================================================================
 // ELEMENTO: .header__logo
 // ==========================================================================
 
 .header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
   text-decoration: none;
   color: var(--color-white);
   font-weight: var(--font-weight-bold);
@@ -54,8 +68,54 @@
   }
 }
 
+.header__home-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-white);
+}
+
+.header__logo-separator {
+  color: var(--color-text-secondary);
+  font-style: normal;
+  font-weight: 400;
+}
+
 .header__logo-text {
   font-family: var(--font-primary);
+}
+
+// ==========================================================================
+// ELEMENTO: .header__breadcrumbs (Inline breadcrumbs)
+// ==========================================================================
+
+.header__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.header__breadcrumb-separator {
+  color: var(--color-text-disabled);
+  margin: 0 var(--spacing-1);
+}
+
+.header__breadcrumb-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-style: normal;
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.header__breadcrumb-current {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-style: normal;
 }
 
 // ==========================================================================
@@ -75,6 +135,10 @@
 
 .header__btn {
   // Los estilos son manejados por el componente app-button
+}
+
+.header__btn-link {
+  text-decoration: none;
 }
 
 // ==========================================================================

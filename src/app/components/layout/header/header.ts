@@ -1,11 +1,12 @@
 import { Component, ElementRef, ViewChild, Renderer2, HostListener, signal, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Button } from '../../../components/shared/button/button';
 import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
 import { AuthModal } from '../../shared/auth-modal/auth-modal';
 import { AuthService, AuthUser } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
+import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
 import { Subscription } from 'rxjs';
 
 /**
@@ -22,6 +23,10 @@ import { Subscription } from 'rxjs';
   styleUrl: './header.scss',
 })
 export class Header implements OnInit, OnDestroy {
+  /**
+   * Breadcrumbs para navegación
+   */
+  breadcrumbs = signal<Breadcrumb[]>([]);
   /**
    * Referencia al botón toggle del menú móvil
    * Cliente Fase 1: Uso de @ViewChild para manipulación DOM
@@ -43,18 +48,30 @@ export class Header implements OnInit, OnDestroy {
    */
   currentUser = signal<AuthUser | null>(null);
 
+  /**
+   * Texto de búsqueda
+   */
+  searchQuery = '';
+
   private subscription: Subscription | null = null;
 
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router,
+    private breadcrumbService: BreadcrumbService
   ) {}
 
   ngOnInit(): void {
     this.subscription = this.authService.currentUser$.subscribe(
       user => this.currentUser.set(user)
+    );
+    
+    // Suscribirse a cambios de breadcrumbs
+    this.breadcrumbService.breadcrumbs$.subscribe(
+      crumbs => this.breadcrumbs.set(crumbs)
     );
   }
 
@@ -161,5 +178,25 @@ export class Header implements OnInit, OnDestroy {
     this.authService.logout();
     this.toastService.info('Sesión cerrada');
     this.closeMenu();
+  }
+
+  /**
+   * Actualizar query de búsqueda
+   */
+  onSearchInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value;
+  }
+
+  /**
+   * Ejecutar búsqueda y navegar a resultados
+   */
+  onSearch(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    this.router.navigate(['/searchresult'], { 
+      queryParams: { q: this.searchQuery } 
+    });
   }
 }

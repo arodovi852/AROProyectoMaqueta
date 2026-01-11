@@ -1,0 +1,134 @@
+// ==========================================================================
+// COMPONENTE: CARD-REVIEW
+// ==========================================================================
+// Tarjeta de reseña de usuario con CardProfile integrado
+// Incluye efecto hover que aclara los colores
+// ==========================================================================
+
+.card-review {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background-color: var(--color-primary-dark);
+  border-radius: 0.75rem;
+  border: 3px solid var(--color-primary-light);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+  // ==========================================================================
+  // AVATAR
+  // ==========================================================================
+  &__avatar {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    
+    // Hacer el CardProfile circular para esta vista
+    ::ng-deep .card-profile__card {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+    
+    ::ng-deep .card-profile__head {
+      width: 20px;
+      height: 20px;
+      margin-bottom: -3px;
+    }
+    
+    ::ng-deep .card-profile__body {
+      width: 36px;
+      height: 20px;
+    }
+  }
+  
+  // ==========================================================================
+  // CONTENT
+  // ==========================================================================
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  &__username {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-neutral-100);
+    transition: color 0.3s ease;
+  }
+  
+  // ==========================================================================
+  // STARS
+  // ==========================================================================
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+  
+  &__star {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+    
+    &--filled {
+      color: var(--color-primary);
+    }
+  }
+  
+  // ==========================================================================
+  // TEXT
+  // ==========================================================================
+  &__text {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--color-neutral-100);
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+    transition: color 0.3s ease;
+  }
+  
+  // ==========================================================================
+  // HOVER STATE
+  // ==========================================================================
+  &:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-lightest);
+    
+    .card-review__username {
+      color: var(--color-primary-dark);
+    }
+    
+    .card-review__star {
+      color: var(--color-primary-dark);
+      
+      &--filled {
+        color: var(--color-primary-dark);
+      }
+    }
+    
+    .card-review__text {
+      color: var(--color-primary-dark);
+    }
+    
+    // Hover del CardProfile interno
+    .card-review__avatar {
+      ::ng-deep .card-profile__card {
+        background-color: var(--color-primary-lightest);
+      }
+      
+      ::ng-deep .card-profile__head,
+      ::ng-deep .card-profile__body {
+        background-color: var(--color-neutral-100);
+      }
+    }
+  }
+}
