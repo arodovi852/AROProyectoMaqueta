@@ -1,9 +1,29 @@
 <header class="header">
   <div class="header__container">
-    <!-- Logo -->
-    <a routerLink="/" class="header__logo" aria-label="Ir a la página principal">
-      <span class="header__logo-text">BROADCASTTD</span>
-    </a>
+    <!-- Logo y Breadcrumbs -->
+    <div class="header__brand">
+      <a routerLink="/" class="header__logo" aria-label="Ir a la página principal">
+        <svg class="header__home-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span class="header__logo-separator">/</span>
+        <span class="header__logo-text">BROADCASTTD</span>
+      </a>
+      
+      <!-- Breadcrumbs inline -->
+      @if (breadcrumbs().length > 0) {
+        <nav class="header__breadcrumbs" aria-label="breadcrumb">
+          @for (crumb of breadcrumbs(); track crumb.url; let isLast = $last) {
+            <span class="header__breadcrumb-separator">/</span>
+            @if (isLast) {
+              <span class="header__breadcrumb-current">{{ crumb.label }}</span>
+            } @else {
+              <a [routerLink]="crumb.url" class="header__breadcrumb-link">{{ crumb.label }}</a>
+            }
+          }
+        </nav>
+      }
+    </div>
 
     <!-- Botón hamburguesa (solo mobile) -->
     <button

@@ -6,6 +6,7 @@ import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggl
 import { AuthModal } from '../../shared/auth-modal/auth-modal';
 import { AuthService, AuthUser } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
+import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
 import { Subscription } from 'rxjs';
 
 /**
@@ -22,6 +23,10 @@ import { Subscription } from 'rxjs';
   styleUrl: './header.scss',
 })
 export class Header implements OnInit, OnDestroy {
+  /**
+   * Breadcrumbs para navegación
+   */
+  breadcrumbs = signal<Breadcrumb[]>([]);
   /**
    * Referencia al botón toggle del menú móvil
    * Cliente Fase 1: Uso de @ViewChild para manipulación DOM
@@ -55,12 +60,18 @@ export class Header implements OnInit, OnDestroy {
     private elementRef: ElementRef,
     private authService: AuthService,
     private toastService: ToastService,
-    private router: Router
+    private router: Router,
+    private breadcrumbService: BreadcrumbService
   ) {}
 
   ngOnInit(): void {
     this.subscription = this.authService.currentUser$.subscribe(
       user => this.currentUser.set(user)
+    );
+    
+    // Suscribirse a cambios de breadcrumbs
+    this.breadcrumbService.breadcrumbs$.subscribe(
+      crumbs => this.breadcrumbs.set(crumbs)
     );
   }
 
