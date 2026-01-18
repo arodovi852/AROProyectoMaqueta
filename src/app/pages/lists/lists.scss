@@ -12,11 +12,17 @@
 
 .lists-page {
   min-height: 100vh;
-  background-color: #5a3d5c;
-  padding: var(--spacing-6) var(--spacing-16);
+  background-color: var(--color-bg-main);
+  padding: var(--spacing-6) var(--spacing-20);
+  max-width: var(--max-width-2xl);
+  margin: 0 auto;
+  
+  @media (max-width: 1400px) {
+    padding: var(--spacing-6) var(--spacing-16);
+  }
   
   @media (max-width: 1200px) {
-    padding: var(--spacing-6) var(--spacing-10);
+    padding: var(--spacing-6) var(--spacing-12);
   }
   
   @media (max-width: 768px) {
@@ -56,7 +62,7 @@
     font-family: var(--font-primary);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: 700;
-    color: #f5f0e8;
+    color: var(--color-text-light);
     margin: 0;
     font-style: italic;
   }
@@ -64,7 +70,7 @@
   &__see-more {
     background: transparent;
     border: none;
-    color: #f5f0e8;
+    color: var(--color-text-light);
     font-family: var(--font-primary);
     font-size: 0.9rem;
     cursor: pointer;
@@ -73,40 +79,45 @@
     
     &:hover {
       opacity: 1;
-      color: #ecc332;
+      color: var(--color-secondary);
     }
   }
   
   &__grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     
     &--large {
-      gap: 6rem;
-      padding: var(--spacing-8) var(--spacing-4);
+      gap: 8rem;
+      padding: var(--spacing-8) var(--spacing-10);
+      
+      @media (max-width: 1400px) {
+        gap: 6rem;
+      }
       
       @media (max-width: 1200px) {
-        justify-content: space-evenly;
         gap: 5rem;
       }
       
       @media (max-width: 768px) {
-        justify-content: center;
         gap: 4rem;
       }
     }
     
     &--small {
-      gap: 4rem;
-      padding: var(--spacing-6) var(--spacing-4);
+      gap: 5rem;
+      padding: var(--spacing-6) var(--spacing-10);
+      
+      @media (max-width: 1400px) {
+        gap: 4rem;
+      }
       
       @media (max-width: 1200px) {
-        justify-content: space-evenly;
+        gap: 3.5rem;
       }
       
       @media (max-width: 768px) {
-        justify-content: center;
         gap: 3rem;
       }
     }

@@ -53,6 +53,10 @@
 --color-bg-primary: var(--color-secondary-lightest);
 --color-bg-secondary: var(--color-secondary-light);
 --color-bg-tertiary: var(--color-neutral-50);
+--color-bg-main: #5a3d5c;
+--color-bg-page: #3d2a3f;
+--color-bg-header: #2c1338;
+--color-bg-header-dark: #1a0b21;
 
 //Cajas de contenido - niveles de anidación (Light mode)
 --color-box-level-1: #FFF9E6;  // Más claro - caja externa
@@ -60,6 +64,27 @@
 --color-box-level-3: #FFEFB3;  // Medio
 --color-box-level-4: #FFE999;  // Medio oscuro
 --color-box-level-5: #FFE380;  // Más oscuro - caja más interna
+
+// Colores de texto adicionales
+--color-text-light: #f5f0e8;
+--color-text-dark: #3d2a45;
+
+// Colores de acento
+--color-accent-pink: #e88fd3;
+--color-accent-pink-dark: #c060a8;
+--color-accent-pink-light: #d070b8;
+--color-accent-blue: #4a9eff;
+--color-secondary-hover: #f5d04a;
+
+// Colores de búsqueda/input
+--color-search-bg: #e893cf;
+--color-search-text: #3d2a45;
+--color-search-border: #3d2a45;
+
+// Colores de botones móvil
+--color-btn-yellow: #f4d03f;
+--color-error-light-custom: #ff6b6b;
+--color-error-hover: #ff5252;
 
 
 

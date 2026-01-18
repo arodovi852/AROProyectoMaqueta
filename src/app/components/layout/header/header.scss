@@ -15,7 +15,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+  background: linear-gradient(135deg, var(--color-bg-header) 0%, var(--color-bg-header-dark) 100%);
   box-shadow: var(--shadow-md);
 }
 
@@ -212,10 +212,10 @@
 .header__search-input {
   width: 100%;
   padding: var(--spacing-2) var(--spacing-10) var(--spacing-2) var(--spacing-3);
-  background-color: #e893cf;
-  border: 0.1875rem solid #3d2a45;
+  background-color: var(--color-search-bg);
+  border: 0.1875rem solid var(--color-search-border);
   border-radius: var(--radius-md);
-  color: #3d2a45;
+  color: var(--color-search-text);
   font-size: var(--font-size-sm);
   @include transition(background-color, border-color, color);
 
@@ -225,9 +225,9 @@
 
   &:focus {
     outline: none;
-    background-color: #ffffff;
-    color: #3d2a45;
-    border-color: #3d2a45;
+    background-color: var(--color-white);
+    color: var(--color-search-text);
+    border-color: var(--color-search-border);
   }
 }
 
@@ -238,11 +238,11 @@
   width: 2rem;
   height: 2rem;
   @include flex-center;
-  color: #3d2a45;
+  color: var(--color-search-text);
   @include transition(color);
 
   &:hover {
-    color: #1a0b21;
+    color: var(--color-bg-header-dark);
   }
 
   &:focus-visible {
@@ -341,12 +341,12 @@
 
   // Modificador: botón Log In
   &--login {
-    background-color: #f4d03f;
-    color: #1a0b21;
+    background-color: var(--color-btn-yellow);
+    color: var(--color-bg-header-dark);
 
     &:hover {
-      background-color: #ffffff;
-      color: #1a0b21;
+      background-color: var(--color-white);
+      color: var(--color-bg-header-dark);
     }
 
     &:active {
@@ -357,11 +357,11 @@
   // Modificador: botón Log Out
   &--logout {
     background-color: rgba(244, 67, 54, 0.2);
-    color: #ff6b6b;
+    color: var(--color-error-light-custom);
 
     &:hover {
       background-color: rgba(244, 67, 54, 0.3);
-      color: #ff5252;
+      color: var(--color-error-hover);
     }
 
     &:active {
@@ -376,9 +376,9 @@
     border: 0.125rem solid rgba(255, 255, 255, 0.3);
 
     &:hover {
-      background-color: #ffffff;
-      color: #1a0b21;
-      border-color: #ffffff;
+      background-color: var(--color-white);
+      color: var(--color-bg-header-dark);
+      border-color: var(--color-white);
     }
 
     &:active {
@@ -428,7 +428,7 @@
     top: 4.5rem; // Altura del header
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+    background: linear-gradient(135deg, var(--color-bg-header) 0%, var(--color-bg-header-dark) 100%);
     max-height: 0;
     overflow: hidden;
     box-shadow: var(--shadow-lg);

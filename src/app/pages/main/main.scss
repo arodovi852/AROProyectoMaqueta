@@ -122,8 +122,8 @@
   // Estilos del botón CTA con animación
   &__cta {
     ::ng-deep .btn {
-      background-color: var(--color-secondary, #ecc332) !important;
-      color: #3d2a45 !important;
+      background-color: var(--color-secondary) !important;
+      color: var(--color-text-dark) !important;
       border-radius: 2rem !important;
       padding: var(--spacing-2) var(--spacing-6) !important;
       font-weight: 700 !important;
@@ -136,7 +136,7 @@
       }
       
       &:hover {
-        background-color: #f5d04a !important;
+        background-color: var(--color-secondary-hover) !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }

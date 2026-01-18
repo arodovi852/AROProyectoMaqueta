@@ -12,7 +12,7 @@
 
 .list-info-page {
   min-height: 100vh;
-  background-color: #3d2a3f;
+  background-color: var(--color-bg-page);
   padding: var(--spacing-8) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -28,7 +28,7 @@
     font-family: var(--font-primary);
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
-    color: #f5f0e8;
+    color: var(--color-text-light);
     margin: 0 0 var(--spacing-6) 0;
     font-style: italic;
   }
@@ -86,7 +86,7 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #4a9eff;
+    border: 2px solid var(--color-accent-blue);
   }
   
   &__avatar-svg {
@@ -107,10 +107,10 @@
   // Estilo para los inputs (rosa/magenta con bordes redondeados)
   .form-input__field,
   .form-textarea__field {
-    background-color: #e88fd3;
-    border: 3px solid #c060a8;
+    background-color: var(--color-accent-pink);
+    border: 3px solid var(--color-accent-pink-dark);
     border-radius: 1.5rem;
-    color: #3d2a3f;
+    color: var(--color-bg-page);
     padding: var(--spacing-3) var(--spacing-4);
     font-size: 1rem;
     
@@ -120,7 +120,7 @@
     
     &:focus {
       outline: none;
-      border-color: #d070b8;
+      border-color: var(--color-accent-pink-light);
       box-shadow: 0 0 0 3px rgba(232, 143, 211, 0.3);
     }
   }
@@ -134,7 +134,7 @@
   // Labels
   .form-input__label,
   .form-textarea__label {
-    color: #f5f0e8;
+    color: var(--color-text-light);
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: var(--spacing-2);
@@ -142,7 +142,7 @@
   
   // Checkbox personalizado (rosa)
   .form-checkbox__label {
-    color: #f5f0e8;
+    color: var(--color-text-light);
     font-weight: 600;
     gap: var(--spacing-3);
   }
@@ -150,14 +150,14 @@
   .form-checkbox__custom {
     width: 24px;
     height: 24px;
-    background-color: #e88fd3;
-    border: 3px solid #c060a8;
+    background-color: var(--color-accent-pink);
+    border: 3px solid var(--color-accent-pink-dark);
     border-radius: 4px;
   }
   
   .form-checkbox__input:checked + .form-checkbox__custom {
-    background-color: #e88fd3;
-    border-color: #c060a8;
+    background-color: var(--color-accent-pink);
+    border-color: var(--color-accent-pink-dark);
   }
   
   .form-checkbox__text {

@@ -12,7 +12,7 @@
 
 .profile-page {
   min-height: 100vh;
-  background-color: #5a3d5c;
+  background-color: var(--color-bg-main);
   padding: var(--spacing-6) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -111,14 +111,14 @@
     font-family: var(--font-primary);
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 700;
-    color: #f5f0e8;
+    color: var(--color-text-light);
     margin: 0;
   }
   
   &__see-more {
     background: transparent;
     border: none;
-    color: #f5f0e8;
+    color: var(--color-text-light);
     font-family: var(--font-primary);
     font-size: 0.85rem;
     cursor: pointer;
@@ -127,7 +127,7 @@
     
     &:hover {
       opacity: 1;
-      color: #ecc332;
+      color: var(--color-secondary);
     }
   }
   
