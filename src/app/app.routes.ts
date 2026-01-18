@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
+import { Main } from './pages/main/main';
 import { NotFound } from './pages/not-found/not-found';
 import { authGuard } from './core/guards/auth.guard';
 import { pendingChangesGuard } from './core/guards/pending-changes.guard';
@@ -18,21 +18,21 @@ import { seriesResolver, seriesListResolver } from './core/resolvers/series.reso
  * - Ruta wildcard 404
  */
 export const routes: Routes = [
-  // ========== RUTAS PÚBLICAS ==========
+  // ========== LANDING PAGE (RUTA RAÍZ) ==========
   
   {
     path: '',
-    component: Home,
-    title: 'BROADCAST - Soluciones tecnológicas innovadoras',
+    component: Main,
+    title: 'BROADCASTTD - Track series. Rate them. See what\'s good.',
     data: { breadcrumb: 'Inicio' }
   },
 
-  // Ruta principal de la app de series
+  // Guía de estilos y demostración de componentes
   {
-    path: 'main',
-    loadComponent: () => import('./pages/main/main').then(m => m.Main),
-    title: 'BROADCASTTD - Track series. Rate them. See what\'s good.',
-    data: { breadcrumb: 'BROADCASTTD' }
+    path: 'guiadeestilos',
+    loadComponent: () => import('./pages/home/home').then(m => m.Home),
+    title: 'Guía de Estilos - BROADCAST',
+    data: { breadcrumb: 'Guía de Estilos' }
   },
 
   // ========== RUTAS DE PRODUCTOS (Lazy Loading) ==========

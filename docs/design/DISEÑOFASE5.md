@@ -7,7 +7,7 @@ OBJETIVOS DE LA FASE
 
 Optimizar todos los recursos multimedia de tu aplicación para que cargue rápido sin sacrificar calidad visual. Implementar técnicas modernas de imágenes responsive y crear animaciones CSS fluidas.
 
-Esta fase se coordina con DWEC Fase 5 donde implementas la carga dinámica de imágenes mediante servicios HTTP.
+Esta fase se coordina con DWEC (Clientes) Fase 5 donde implementas la carga dinámica de imágenes mediante servicios HTTP.
 TAREAS
 1. Optimización de imágenes
 

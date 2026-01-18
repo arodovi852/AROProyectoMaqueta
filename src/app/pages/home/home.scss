@@ -1,13 +1,14 @@
 // ==========================================================================
-// PÁGINA: HOME - SHOWCASE DE COMPONENTES
+// PÁGINA: HOME - GUÍA DE ESTILOS Y SHOWCASE DE COMPONENTES
 // ==========================================================================
 // Página de demostración de todos los componentes del sistema
+// Fase 4: Responsive Design
 // ==========================================================================
 
 @import '../../../styles/01-tools/mixins';
 
 // ==========================================================================
-// BOTÓN DE ACCESO A MAIN (FASE 4)
+// BOTÓN DE RETORNO A MAIN
 // ==========================================================================
 
 .home-main-access {
@@ -18,17 +19,17 @@
   border-radius: 1rem;
   text-align: center;
   box-shadow: 0 4px 20px rgba(162, 100, 191, 0.3);
+  transition: box-shadow var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
 
   &__link {
     display: block;
     text-decoration: none;
   }
 
-  // Efecto hover en el contenedor
   &:hover {
     box-shadow: 0 6px 25px rgba(162, 100, 191, 0.4);
     transform: translateY(-2px);
-    transition: all 0.3s ease;
   }
 }
 

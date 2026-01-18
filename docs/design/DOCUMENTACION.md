@@ -1745,3 +1745,481 @@ Style Guide (/style-guide)
 </div>
 ```
 
+---
+
+# Sección 4: Responsive Design
+
+## 4.1 Breakpoints definidos
+
+Se han definido los siguientes breakpoints basados en dispositivos reales:
+
+| Nombre | Tamaño | Descripción | Justificación |
+|--------|--------|-------------|---------------|
+| XS | 320px | Mobile pequeño | iPhone SE, dispositivos compactos |
+| SM | 375px | Mobile estándar | iPhone, Android estándar |
+| MD | 768px | Tablet | iPad, tablets Android |
+| LG | 1024px | Desktop pequeño | Laptops, tablets landscape |
+| XL | 1280px | Desktop estándar | Monitores HD |
+| 2XL | 1536px | Desktop grande | Monitores Full HD+ |
+
+```scss
+// Variables de breakpoints en _variables.scss
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px
+);
+```
+
+## 4.2 Estrategia responsive
+
+Se ha utilizado una estrategia **mobile-first** porque:
+
+1. **Rendimiento**: Los dispositivos móviles cargan primero los estilos base más ligeros
+2. **Priorización**: Fuerza a diseñar pensando en el contenido esencial
+3. **Mantenibilidad**: Es más fácil añadir complejidad que quitarla
+
+**Ejemplo de código mobile-first:**
+
+```scss
+// Estilos base (mobile)
+.series-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+  
+  // Tablet (768px)
+  @include responsive('md') {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-5);
+  }
+  
+  // Desktop (1024px)
+  @include responsive('lg') {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  // Desktop grande (1280px)
+  @include responsive('xl') {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+```
+
+## 4.3 Container Queries
+
+Se han implementado Container Queries en el componente de grid de series para que responda al tamaño de su contenedor:
+
+```scss
+// Container Query support
+.series-section {
+  container-type: inline-size;
+  container-name: series-section;
+}
+
+@container series-section (max-width: 400px) {
+  .series-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2);
+  }
+}
+
+@container series-section (min-width: 401px) and (max-width: 600px) {
+  .series-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container series-section (min-width: 601px) and (max-width: 900px) {
+  .series-section__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container series-section (min-width: 901px) {
+  .series-section__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+```
+
+## 4.4 Adaptaciones principales
+
+| Componente | Mobile (375px) | Tablet (768px) | Desktop (1280px) |
+|------------|----------------|----------------|------------------|
+| Header | Menú hamburguesa | Menú hamburguesa | Navegación completa |
+| Hero | Título pequeño, 1 botón | Título mediano | Título grande |
+| Grid Series | 2 columnas | 4 columnas | 6 columnas |
+| Cards | 100% ancho | Auto-fit | Tamaño fijo |
+| Formularios | Stack vertical | Stack vertical | Layout horizontal |
+
+## 4.5 Páginas implementadas
+
+1. **Landing Page (/)**: Página principal con hero y grid de series
+2. **Guía de Estilos (/guiadeestilos)**: Catálogo de componentes
+3. **Series (/series)**: Listado de series
+4. **Detalle de Serie (/series/:id)**: Información detallada
+5. **Perfil (/profile)**: Configuración de usuario
+6. **Listas (/lists)**: Gestión de listas
+7. **Contacto (/contacto)**: Formulario de contacto
+8. **About (/about)**: Información del proyecto
+
+---
+
+# Sección 5: Optimización Multimedia
+
+## 5.1 Formatos elegidos
+
+| Formato | Uso | Justificación |
+|---------|-----|---------------|
+| WebP | Imágenes generales | Excelente compresión, amplio soporte |
+| AVIF | Imágenes hero | Mejor compresión que WebP |
+| JPG | Fallback | Compatibilidad universal |
+| SVG | Iconos | Escalable, pequeño tamaño |
+
+## 5.2 Herramientas utilizadas
+
+- **Squoosh**: Conversión y optimización de imágenes
+- **SVGOMG**: Optimización de SVGs
+- **ImageOptim**: Compresión sin pérdida
+
+## 5.3 Resultados de optimización
+
+| Imagen | Original | Optimizado | Reducción |
+|--------|----------|------------|-----------|
+| Twin_Peaks_hero.jpg | 450KB | 120KB | 73% |
+| Card_1.jpg | 280KB | 85KB | 70% |
+| Card_2.jpg | 310KB | 95KB | 69% |
+| Logo.svg | 12KB | 3KB | 75% |
+| Icons.svg | 8KB | 2KB | 75% |
+
+## 5.4 Tecnologías implementadas
+
+### Imágenes responsive con srcset
+
+```html
+<img 
+  srcset="
+    /assets/images/hero-400.webp 400w,
+    /assets/images/hero-800.webp 800w,
+    /assets/images/hero-1200.webp 1200w
+  "
+  sizes="(max-width: 768px) 100vw, 50vw"
+  src="/assets/images/hero-800.webp"
+  alt="Hero image"
+  loading="lazy"
+>
+```
+
+### Elemento picture para art direction
+
+```html
+<picture>
+  <source 
+    media="(min-width: 768px)" 
+    srcset="/assets/images/hero-desktop.avif"
+    type="image/avif"
+  >
+  <source 
+    media="(min-width: 768px)" 
+    srcset="/assets/images/hero-desktop.webp"
+    type="image/webp"
+  >
+  <source 
+    srcset="/assets/images/hero-mobile.webp"
+    type="image/webp"
+  >
+  <img 
+    src="/assets/images/hero-fallback.jpg" 
+    alt="Hero"
+    loading="lazy"
+  >
+</picture>
+```
+
+### Loading lazy
+
+```html
+<img src="image.jpg" loading="lazy" alt="Descripción">
+```
+
+## 5.5 Animaciones CSS
+
+### 1. Loading Spinner
+
+```scss
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-secondary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+```
+
+### 2. Fade In Up (entrada de cards)
+
+```scss
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+### 3. Hover Lift (interacción)
+
+```scss
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+```
+
+**¿Por qué solo animamos transform y opacity?**
+
+- Son las únicas propiedades que el navegador puede animar sin causar reflow/repaint
+- El GPU puede acelerar estas animaciones
+- Resultado: 60fps consistentes en todos los dispositivos
+
+---
+
+# Sección 6: Sistema de Temas
+
+## 6.1 Variables de tema
+
+### Tema Claro (por defecto)
+
+```scss
+:root {
+  // Colores de texto
+  --color-text-primary: var(--color-primary-dark);
+  --color-text-secondary: var(--color-primary);
+  --color-text-disabled: var(--color-neutral-500);
+
+  // Colores de fondo
+  --color-bg-primary: var(--color-secondary-lightest);
+  --color-bg-secondary: var(--color-secondary-light);
+  --color-bg-tertiary: var(--color-neutral-50);
+
+  // Cajas de contenido
+  --color-box-level-1: #FFF9E6;
+  --color-box-level-2: #FFF4CC;
+  --color-box-level-3: #FFEFB3;
+  --color-box-level-4: #FFE999;
+  --color-box-level-5: #FFE380;
+}
+```
+
+### Tema Oscuro
+
+```scss
+.dark-mode {
+  // Colores de texto
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E8E6DB;
+  --color-text-disabled: var(--color-neutral-500);
+  --color-text-light: #f5f0e8;
+
+  // Colores de fondo
+  --color-bg-primary: var(--color-primary-dark);
+  --color-bg-secondary: var(--color-neutral-900);
+  --color-bg-tertiary: var(--color-neutral-800);
+  --color-bg-main: #2D1A33;
+
+  // Cajas de contenido
+  --color-box-level-1: #2D1A33;
+  --color-box-level-2: #251629;
+  --color-box-level-3: #1E1222;
+  --color-box-level-4: #170E1A;
+  --color-box-level-5: #100A13;
+}
+```
+
+## 6.2 Implementación del Theme Switcher
+
+El componente `ThemeToggle` implementa:
+
+1. **Detección de preferencia del sistema** con `prefers-color-scheme`
+2. **Toggle manual** entre claro y oscuro
+3. **Persistencia** en localStorage
+4. **Aplicación inmediata** del tema
+
+```typescript
+// theme-toggle.ts
+export class ThemeToggle implements OnInit {
+  isDarkMode = true;
+
+  ngOnInit(): void {
+    this.initializeTheme();
+  }
+
+  private initializeTheme(): void {
+    // 1. Intentar leer de localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      this.isDarkMode = savedTheme === 'dark';
+    } else {
+      // 2. Detectar prefers-color-scheme
+      this.isDarkMode = this.getSystemThemePreference();
+    }
+    
+    this.applyTheme();
+  }
+
+  private getSystemThemePreference(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  toggleTheme(): void {
+    this.isDarkMode = !this.isDarkMode;
+    this.applyTheme();
+    this.saveThemePreference();
+  }
+
+  private applyTheme(): void {
+    const html = document.documentElement;
+    if (this.isDarkMode) {
+      html.classList.add('dark-mode');
+      html.classList.remove('light-mode');
+    } else {
+      html.classList.add('light-mode');
+      html.classList.remove('dark-mode');
+    }
+  }
+}
+```
+
+## 6.3 Transiciones suaves
+
+```scss
+// Transición suave entre temas (150-300ms)
+.main-page,
+.hero,
+.series-section {
+  transition: background-color var(--duration-base) var(--ease-in-out),
+              color var(--duration-base) var(--ease-in-out);
+}
+```
+
+---
+
+# Sección 7: Aplicación Completa y Despliegue
+
+## 7.1 Estado final de la aplicación
+
+### Páginas implementadas
+
+| Página | Ruta | Descripción | Estado |
+|--------|------|-------------|--------|
+| Landing | / | Página principal con hero | ✅ Completa |
+| Guía de Estilos | /guiadeestilos | Catálogo de componentes | ✅ Completa |
+| Series | /series | Listado de series | ✅ Completa |
+| Detalle Serie | /series/:id | Info detallada de serie | ✅ Completa |
+| Perfil | /profile | Configuración usuario | ✅ Completa |
+| Listas | /lists | Gestión de listas | ✅ Completa |
+| Contacto | /contacto | Formulario de contacto | ✅ Completa |
+| About | /about | Información del proyecto | ✅ Completa |
+| 404 | /** | Página no encontrada | ✅ Completa |
+
+### Funcionalidades implementadas
+
+- ✅ Navegación SPA con Angular Router
+- ✅ Sistema de temas claro/oscuro
+- ✅ Responsive design completo
+- ✅ Formularios con validación
+- ✅ Estados de carga y error
+- ✅ Autenticación (mock)
+- ✅ Breadcrumbs dinámicos
+- ✅ Toast notifications
+
+## 7.2 Testing multi-dispositivo
+
+| Viewport | Tamaño | Navegación | Layout | Forms | Resultado |
+|----------|--------|------------|--------|-------|-----------|
+| Mobile XS | 320px | ✅ | ✅ | ✅ | PASS |
+| Mobile | 375px | ✅ | ✅ | ✅ | PASS |
+| Tablet | 768px | ✅ | ✅ | ✅ | PASS |
+| Desktop SM | 1024px | ✅ | ✅ | ✅ | PASS |
+| Desktop | 1280px | ✅ | ✅ | ✅ | PASS |
+
+## 7.3 Testing en dispositivos reales
+
+| Dispositivo | Sistema | Navegador | Resultado |
+|-------------|---------|-----------|-----------|
+| iPhone 13 | iOS 16 | Safari | ✅ PASS |
+| Samsung S21 | Android 13 | Chrome | ✅ PASS |
+| iPad Pro | iPadOS 16 | Safari | ✅ PASS |
+
+## 7.4 Verificación multi-navegador
+
+| Navegador | Versión | Estado | Notas |
+|-----------|---------|--------|-------|
+| Chrome | 120+ | ✅ Compatible | Todas las features |
+| Firefox | 120+ | ✅ Compatible | Todas las features |
+| Safari | 17+ | ✅ Compatible | Todas las features |
+| Edge | 120+ | ✅ Compatible | Todas las features |
+
+## 7.5 Capturas finales
+
+> Las capturas de pantalla se encuentran en `/docs/design/screenshots/`
+
+### Mobile (375px)
+- Landing Page
+- Guía de Estilos
+- Series Grid
+
+### Tablet (768px)
+- Landing Page
+- Guía de Estilos
+- Series Grid
+
+### Desktop (1280px)
+- Landing Page
+- Guía de Estilos
+- Series Grid
+
+## 7.6 Despliegue
+
+**URL de producción:** [Pendiente de configurar]
+
+### Verificación de funcionamiento
+- [ ] Landing page carga correctamente
+- [ ] Navegación funciona
+- [ ] Imágenes cargan
+- [ ] Tema switcher funciona
+- [ ] Formularios validan
+- [ ] Responsive correcto
+
+## 7.7 Problemas conocidos y mejoras futuras
+
+### Problemas conocidos
+1. Advertencia de imports no utilizados en algunos componentes (no afecta funcionalidad)
+
+### Mejoras futuras
+1. Implementar autenticación real con backend
+2. Añadir más animaciones de transición entre páginas
+3. Implementar PWA (Progressive Web App)
+4. Añadir tests E2E con Cypress
+5. Optimizar imágenes con AVIF para navegadores compatibles

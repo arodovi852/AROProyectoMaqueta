@@ -255,11 +255,13 @@
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #E8E6DB;
   --color-text-disabled: var(--color-neutral-500);
+  --color-text-light: #f5f0e8;
 
   //Colores de fondo para dark mode
   --color-bg-primary: var(--color-primary-dark);
   --color-bg-secondary: var(--color-neutral-900);
   --color-bg-tertiary: var(--color-neutral-800);
+  --color-bg-main: #2D1A33;
 
   //Cajas de contenido - niveles de anidación (Dark mode)
   --color-box-level-1: #2D1A33;  // Más claro - caja externa
@@ -267,6 +269,10 @@
   --color-box-level-3: #1E1222;  // Medio
   --color-box-level-4: #170E1A;  // Medio oscuro
   --color-box-level-5: #100A13;  // Más oscuro - caja más interna
+
+  // Colores de sombra para dark mode
+  --shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.5), 0 4px 6px -2px rgba(162, 100, 191, 0.3);
+  --shadow-secondary: 0 10px 15px -3px rgba(236, 195, 50, 0.4), 0 4px 6px -2px rgba(236, 195, 50, 0.2);
 }
 
 //Variables para mixins y funciones SCSS

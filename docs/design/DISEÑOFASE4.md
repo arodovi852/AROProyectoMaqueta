@@ -7,7 +7,7 @@ OBJETIVOS DE LA FASE
 
 Adaptar toda tu aplicación para que funcione perfectamente en todos los dispositivos desde mobile hasta desktop. Implementar Container Queries en componentes clave y crear layouts completos para todas las páginas de tu aplicación.
 
-Esta fase se coordina con DWEC Fase 4 donde implementas el sistema de rutas y navegación entre todas las páginas.
+Esta fase se coordina con DWEC (Clientes) Fase 4 donde implementas el sistema de rutas y navegación entre todas las páginas.
 TAREAS
 1. Adaptación responsive completa de la aplicación
 

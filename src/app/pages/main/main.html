@@ -1,8 +1,8 @@
-<!-- Contenido principal -->
+<!-- Contenido principal - Landing Page -->
 <main class="main-page">
-  <!-- Hero Section -->
+  <!-- Hero Section con imagen responsive -->
   <section class="hero">
-    <div class="hero__background"></div>
+    <div class="hero__background" role="img" aria-label="Background image from Twin Peaks"></div>
     <div class="hero__content">
       <h1 class="hero__title">
         <span class="hero__title-line hero__title-line--italic">Track series.</span>
@@ -15,47 +15,83 @@
         size="lg"
         class="hero__cta"
         (onClick)="onGetStarted()"
+        aria-label="Comenzar a usar BROADCASTTD"
       ></app-button>
     </div>
   </section>
 
-  <!-- Popular This Week Section -->
-  <section class="series-section">
-    <div class="series-section__header">
-      <h2 class="series-section__title">Popular this week</h2>
-      <button class="series-section__see-more" (click)="onSeeMore('popular')">
-        See more
-      </button>
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="loading-state" role="status" aria-live="polite">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <p class="loading-state__text">Cargando series...</p>
     </div>
-    <div class="series-section__grid">
-      @for (series of popularSeries; track series.id) {
-        <app-card
-          [imageSrc]="series.imageSrc"
-          [imageAlt]="series.imageAlt"
-          [hoverTitle]="series.hoverTitle"
-          variant="media"
-        ></app-card>
-      }
-    </div>
-  </section>
+  }
 
-  <!-- Future Releases Section -->
-  <section class="series-section">
-    <div class="series-section__header">
-      <h2 class="series-section__title">Future releases</h2>
-      <button class="series-section__see-more" (click)="onSeeMore('future')">
-        See more
-      </button>
+  <!-- Error State -->
+  @if (error()) {
+    <div class="error-state" role="alert">
+      <p class="error-state__text">{{ error() }}</p>
+      <app-button
+        text="Reintentar"
+        variant="primary"
+        size="md"
+        (onClick)="loadSeriesFromApi()"
+      ></app-button>
     </div>
-    <div class="series-section__grid">
-      @for (series of futureReleases; track series.id) {
-        <app-card
-          [imageSrc]="series.imageSrc"
-          [imageAlt]="series.imageAlt"
-          [hoverTitle]="series.hoverTitle"
-          variant="media"
-        ></app-card>
-      }
-    </div>
-  </section>
+  }
+
+  <!-- Popular This Week Section -->
+  @if (!loading() && !error()) {
+    <section class="series-section" aria-labelledby="popular-title">
+      <div class="series-section__header">
+        <h2 id="popular-title" class="series-section__title">Popular this week</h2>
+        <button 
+          class="series-section__see-more" 
+          (click)="onSeeMore('popular')"
+          aria-label="Ver más series populares"
+        >
+          See more
+        </button>
+      </div>
+      <div class="series-section__grid" role="list">
+        @for (series of popularSeries; track series.id) {
+          <app-card
+            [imageSrc]="series.imageSrc"
+            [imageAlt]="series.imageAlt"
+            [hoverTitle]="series.hoverTitle"
+            variant="media"
+            role="listitem"
+            (click)="navigateToSeries(series.id)"
+          ></app-card>
+        }
+      </div>
+    </section>
+
+    <!-- Future Releases Section -->
+    <section class="series-section" aria-labelledby="future-title">
+      <div class="series-section__header">
+        <h2 id="future-title" class="series-section__title">Future releases</h2>
+        <button 
+          class="series-section__see-more" 
+          (click)="onSeeMore('future')"
+          aria-label="Ver más próximos estrenos"
+        >
+          See more
+        </button>
+      </div>
+      <div class="series-section__grid" role="list">
+        @for (series of futureReleases; track series.id) {
+          <app-card
+            [imageSrc]="series.imageSrc"
+            [imageAlt]="series.imageAlt"
+            [hoverTitle]="series.hoverTitle"
+            variant="media"
+            role="listitem"
+            (click)="navigateToSeries(series.id)"
+          ></app-card>
+        }
+      </div>
+    </section>
+  }
 </main>

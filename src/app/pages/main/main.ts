@@ -133,7 +133,7 @@ export class Main implements OnInit {
   /**
    * Carga series desde el servicio (FASE 5 - Tarea 5)
    */
-  private loadSeriesFromApi(): void {
+  loadSeriesFromApi(): void {
     this.loading.set(true);
     this.error.set(null);
 
