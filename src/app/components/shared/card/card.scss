@@ -214,6 +214,40 @@
     object-position: center;
     @include transition(transform, filter);
   }
+
+  // Overlay oscuro para variante media
+  .card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    @include transition(opacity);
+    z-index: 2;
+  }
+
+  // Título hover para variante media
+  .card__hover-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-primary);
+    font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    @include transition(opacity);
+    z-index: 3;
+    white-space: normal;
+    max-width: 90%;
+    padding: var(--spacing-2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.3;
+  }
   
   &:hover {
     box-shadow: none;
@@ -225,6 +259,14 @@
     
     .card__image {
       transform: scale(1.1);
+    }
+
+    .card__overlay {
+      opacity: 1;
+    }
+
+    .card__hover-title {
+      opacity: 1;
     }
   }
   

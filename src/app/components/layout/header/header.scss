@@ -156,6 +156,49 @@
 }
 
 // ==========================================================================
+// ELEMENTO: .header__profile-link (Link al perfil con Card-Profile)
+// ==========================================================================
+
+.header__profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  @include transition(transform, box-shadow);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-profile-link (Link al perfil en móvil)
+// ==========================================================================
+
+.header__mobile-profile-link {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  padding: var(--spacing-3);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-3);
+  @include transition(background-color, transform);
+
+  &:hover {
+    background-color: rgba(232, 147, 207, 0.25);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
 // ELEMENTO: .header__search (Búsqueda)
 // ==========================================================================
 

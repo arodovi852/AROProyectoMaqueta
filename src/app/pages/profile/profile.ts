@@ -39,22 +39,22 @@ export class Profile implements OnInit {
 
   // Series loggeadas
   loggedSeries = [
-    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg' },
-    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg' },
-    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg' },
-    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg' },
-    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg' },
-    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg' },
+    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg', hoverTitle: 'Stranger Things' },
+    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg', hoverTitle: 'Twin Peaks' },
+    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg', hoverTitle: 'Breaking Bad' },
+    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg', hoverTitle: 'The Haunting of Hill House' },
+    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg', hoverTitle: 'The Walking Dead' },
+    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg', hoverTitle: 'Alien: Earth' },
   ];
 
   // Series vistas recientemente
   recentlyWatched = [
-    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg' },
-    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg' },
-    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg' },
-    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg' },
-    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg' },
-    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg' },
+    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg', hoverTitle: 'Stranger Things' },
+    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg', hoverTitle: 'Twin Peaks' },
+    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg', hoverTitle: 'Breaking Bad' },
+    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg', hoverTitle: 'The Haunting of Hill House' },
+    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg', hoverTitle: 'The Walking Dead' },
+    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg', hoverTitle: 'Alien: Earth' },
   ];
 
   // Listas personales

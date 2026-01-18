@@ -15,5 +15,5 @@ import { CommonModule } from '@angular/common';
 })
 export class CardProfile {
   @Input() username: string = 'User';
-  @Input() size: 'sm' | 'md' | 'lg' = 'lg';
+  @Input() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 }

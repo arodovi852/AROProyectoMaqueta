@@ -15,7 +15,7 @@
         size="lg"
         class="hero__cta"
         (onClick)="onGetStarted()"
-        aria-label="Comenzar a usar BROADCASTTD"
+        aria-label="Start using BROADCASTTD"
       ></app-button>
     </div>
   </section>
@@ -24,7 +24,7 @@
   @if (loading()) {
     <div class="loading-state" role="status" aria-live="polite">
       <div class="loading-spinner" aria-hidden="true"></div>
-      <p class="loading-state__text">Cargando series...</p>
+      <p class="loading-state__text">Loading series...</p>
     </div>
   }
 
@@ -33,7 +33,7 @@
     <div class="error-state" role="alert">
       <p class="error-state__text">{{ error() }}</p>
       <app-button
-        text="Reintentar"
+        text="Retry"
         variant="primary"
         size="md"
         (onClick)="loadSeriesFromApi()"
@@ -49,7 +49,7 @@
         <button 
           class="series-section__see-more" 
           (click)="onSeeMore('popular')"
-          aria-label="Ver más series populares"
+          aria-label="See more popular series"
         >
           See more
         </button>
@@ -75,7 +75,7 @@
         <button 
           class="series-section__see-more" 
           (click)="onSeeMore('future')"
-          aria-label="Ver más próximos estrenos"
+          aria-label="See more upcoming releases"
         >
           See more
         </button>

@@ -144,8 +144,8 @@ export class Main implements OnInit {
       },
       error: (err) => {
         this.loading.set(false);
-        this.error.set('Error al cargar las series');
-        this.toast.error('No se pudieron cargar las series');
+        this.error.set('Error loading series');
+        this.toast.error('Could not load series');
       }
     });
   }

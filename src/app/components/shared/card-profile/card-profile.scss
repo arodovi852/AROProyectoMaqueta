@@ -57,6 +57,26 @@
   // TAMAÑOS
   // ==========================================================================
   
+  // Extra Small (para header)
+  &--xs {
+    .card-profile__card {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.5rem;
+    }
+    
+    .card-profile__head {
+      width: 14px;
+      height: 14px;
+      margin-bottom: -2px;
+    }
+    
+    .card-profile__body {
+      width: 24px;
+      height: 14px;
+    }
+  }
+  
   // Small
   &--sm {
     .card-profile__card {

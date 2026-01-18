@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Button } from '../../../components/shared/button/button';
 import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
 import { AuthModal } from '../../shared/auth-modal/auth-modal';
+import { CardProfile } from '../../shared/card-profile/card-profile';
 import { AuthService, AuthUser } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
 import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
@@ -18,7 +19,7 @@ import { Subscription } from 'rxjs';
  */
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, Button, ThemeToggle, AuthModal],
+  imports: [CommonModule, RouterLink, Button, ThemeToggle, AuthModal, CardProfile],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

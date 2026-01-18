@@ -45,9 +45,14 @@
       <!-- Botón Theme Toggle -->
       <app-theme-toggle class="header__theme-toggle" />
       
-      <!-- Botones Log In/User o Log Out -->
+      <!-- Card Profile o Log In -->
       @if (currentUser()) {
-        <span class="header__username">{{ currentUser()!.username }}</span>
+        <a routerLink="/profile" class="header__profile-link" aria-label="Go to profile">
+          <app-card-profile 
+            [username]="currentUser()!.username"
+            size="xs"
+          />
+        </a>
         <app-button 
           text="Log Out"
           variant="secondary"
@@ -105,13 +110,16 @@
       [class.header__mobile-menu--open]="isMenuOpen"
     >
       @if (currentUser()) {
-        <div class="header__mobile-user">
-          <span class="header__mobile-username">{{ currentUser()!.username }}</span>
-        </div>
+        <a routerLink="/profile" class="header__mobile-profile-link" aria-label="Go to profile">
+          <app-card-profile 
+            [username]="currentUser()!.username"
+            size="xs"
+          />
+        </a>
         <button 
           type="button" 
           class="header__mobile-btn header__mobile-btn--logout" 
-          aria-label="Cerrar sesión"
+          aria-label="Log out"
           (click)="logout()"
         >
           Log Out
@@ -120,20 +128,16 @@
         <button 
           type="button" 
           class="header__mobile-btn header__mobile-btn--login" 
-          aria-label="Iniciar sesión"
+          aria-label="Log in"
           (click)="openAuthModal()"
         >
           Log In
         </button>
       }
 
-      <button 
-        type="button" 
-        class="header__mobile-btn header__mobile-btn--lists" 
-        aria-label="Listas"
-      >
+      <a routerLink="/lists" class="header__mobile-btn header__mobile-btn--lists" aria-label="Lists">
         Lists
-      </button>
+      </a>
     </div>
   </div>
 
