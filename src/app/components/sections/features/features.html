@@ -1,0 +1,22 @@
+<section class="features">
+  <div class="features__container">
+    <!-- Encabezado de sección -->
+    <div class="features__header">
+      <h2 class="features__title">Por qué elegirnos</h2>
+      <p class="features__description">
+        Descubre las ventajas que nos hacen líderes en soluciones tecnológicas
+      </p>
+    </div>
+
+    <!-- Grid de características -->
+    <div class="features__grid">
+      @for (feature of features; track feature.id) {
+        <article class="features__card">
+          <div class="features__icon" [innerHTML]="feature.icon"></div>
+          <h3 class="features__card-title">{{ feature.title }}</h3>
+          <p class="features__card-description">{{ feature.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

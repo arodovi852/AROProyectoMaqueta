@@ -1,0 +1,72 @@
+// ==========================================================================
+// COMPONENTE: REVIEW-CARD
+// ==========================================================================
+// Tarjeta de reseña de usuario
+// ==========================================================================
+
+.review-card {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background-color: rgba(107, 91, 122, 0.5);
+  border-radius: 0.75rem;
+  border: 2px solid #8a7a9a;
+  
+  &__avatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  &__avatar-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  &__username {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f5f0e8;
+  }
+  
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+  
+  &__star {
+    color: #6b5b7a;
+    
+    &--filled {
+      color: #ecc332;
+    }
+  }
+  
+  &__text {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-style: italic;
+    color: #f5f0e8;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+  }
+}

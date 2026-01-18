@@ -1,0 +1,148 @@
+<header class="header">
+  <div class="header__container">
+    <!-- Logo y Breadcrumbs -->
+    <div class="header__brand">
+      <a routerLink="/" class="header__logo" aria-label="Ir a la página principal">
+        <svg class="header__home-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span class="header__logo-separator">/</span>
+        <span class="header__logo-text">BROADCASTTD</span>
+      </a>
+      
+      <!-- Breadcrumbs inline -->
+      @if (breadcrumbs().length > 0) {
+        <nav class="header__breadcrumbs" aria-label="breadcrumb">
+          @for (crumb of breadcrumbs(); track crumb.url; let isLast = $last) {
+            <span class="header__breadcrumb-separator">/</span>
+            @if (isLast) {
+              <span class="header__breadcrumb-current">{{ crumb.label }}</span>
+            } @else {
+              <a [routerLink]="crumb.url" class="header__breadcrumb-link">{{ crumb.label }}</a>
+            }
+          }
+        </nav>
+      }
+    </div>
+
+    <!-- Botón hamburguesa (solo mobile) -->
+    <button
+      #toggleBtn
+      type="button"
+      class="header__toggle"
+      [class.header__toggle--active]="isMenuOpen"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Menú"
+    >
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
+    <!-- Botones y búsqueda -->
+    <div class="header__actions">
+      <!-- Botón Theme Toggle -->
+      <app-theme-toggle class="header__theme-toggle" />
+      
+      <!-- Card Profile o Log In -->
+      @if (currentUser()) {
+        <a routerLink="/profile" class="header__profile-link" aria-label="Go to profile">
+          <app-card-profile 
+            [username]="currentUser()!.username"
+            size="xs"
+          />
+        </a>
+        <app-button 
+          text="Log Out"
+          variant="secondary"
+          size="md"
+          class="header__btn header__btn--logout"
+          (onClick)="logout()"
+        />
+      } @else {
+        <app-button 
+          text="Log In"
+          variant="primary"
+          size="md"
+          class="header__btn header__btn--login"
+          (onClick)="openAuthModal()"
+        />
+      }
+
+      <!-- Botón Lists -->
+      <a routerLink="/lists" class="header__btn-link">
+        <app-button 
+          text="Lists"
+          variant="ghost"
+          size="md"
+          class="header__btn header__btn--lists"
+        />
+      </a>
+
+      <!-- Campo de búsqueda -->
+      <form class="header__search" (submit)="onSearch($event)">
+        <input 
+          type="search" 
+          class="header__search-input" 
+          placeholder="Search" 
+          aria-label="Buscar"
+          [value]="searchQuery"
+          (input)="onSearchInput($event)"
+          (keydown.enter)="onSearch($event)"
+        />
+        <button 
+          type="submit" 
+          class="header__search-btn" 
+          aria-label="Buscar"
+        >
+          <svg class="header__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+            <circle cx="8" cy="8" r="6" stroke-width="2"/>
+            <path d="M12.5 12.5L17 17" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div 
+      class="header__mobile-menu"
+      [class.header__mobile-menu--open]="isMenuOpen"
+    >
+      @if (currentUser()) {
+        <a routerLink="/profile" class="header__mobile-profile-link" aria-label="Go to profile">
+          <app-card-profile 
+            [username]="currentUser()!.username"
+            size="xs"
+          />
+        </a>
+        <button 
+          type="button" 
+          class="header__mobile-btn header__mobile-btn--logout" 
+          aria-label="Log out"
+          (click)="logout()"
+        >
+          Log Out
+        </button>
+      } @else {
+        <button 
+          type="button" 
+          class="header__mobile-btn header__mobile-btn--login" 
+          aria-label="Log in"
+          (click)="openAuthModal()"
+        >
+          Log In
+        </button>
+      }
+
+      <a routerLink="/lists" class="header__mobile-btn header__mobile-btn--lists" aria-label="Lists">
+        Lists
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal de autenticación -->
+  @if (showAuthModal()) {
+    <app-auth-modal (close)="closeAuthModal()"></app-auth-modal>
+  }
+</header>

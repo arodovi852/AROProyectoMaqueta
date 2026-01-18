@@ -1,0 +1,191 @@
+// ==========================================================================
+// COMPONENTE: FORM SELECT
+// ==========================================================================
+// Select/dropdown de formulario reutilizable con estilos personalizados
+// Bloque BEM: .form-select
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .form-select
+// ==========================================================================
+
+.form-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+
+  // Modificador: error
+  &--error {
+    .form-select__field {
+      border-color: var(--color-error);
+      
+      &:focus {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 0.1875rem rgba(244, 67, 54, 0.1);
+      }
+    }
+  }
+
+  // Modificador: disabled
+  &--disabled {
+    .form-select__label {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+
+    .form-select__wrapper {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-select__field {
+      cursor: not-allowed;
+    }
+
+    .form-select__icon {
+      opacity: 0.5;
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__label
+// ==========================================================================
+
+.form-select__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-family: var(--font-secondary);
+  margin-bottom: var(--spacing-1);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__required
+// ==========================================================================
+
+.form-select__required {
+  color: var(--color-error);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__wrapper
+// ==========================================================================
+
+.form-select__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__field
+// ==========================================================================
+
+.form-select__field {
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-5);
+  padding-right: var(--spacing-10); // Espacio para el icono
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.25rem;
+  background-color: #e893cf;
+  color: #3d2a45;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-secondary);
+  text-align: center;
+  cursor: pointer;
+  appearance: none; // Quitar el estilo nativo del navegador
+  @include transition(border-color, background-color, box-shadow, color);
+
+  // Estilos para las opciones
+  option {
+    background-color: var(--color-neutral-800);
+    color: var(--color-text-primary);
+    padding: var(--spacing-2);
+  }
+
+  // Placeholder (opción deshabilitada)
+  option:disabled {
+    color: var(--color-neutral-500);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary-dark);
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 0.1875rem rgba(162, 100, 191, 0.1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-neutral-800);
+    color: var(--color-text-disabled);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__icon
+// ==========================================================================
+
+.form-select__icon {
+  position: absolute;
+  right: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-neutral-400);
+  @include transition(color);
+
+  .form-select__field:hover:not(:disabled) ~ & {
+    color: var(--color-neutral-300);
+  }
+
+  .form-select__field:focus ~ & {
+    color: var(--color-primary);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__help
+// ==========================================================================
+
+.form-select__help {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-select__error
+// ==========================================================================
+
+.form-select__error {
+  font-size: var(--font-size-xs);
+  color: var(--color-error-light);
+  margin: 0;
+  line-height: var(--line-height-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+
+  &::before {
+    content: '⚠';
+    font-size: var(--font-size-sm);
+  }
+}

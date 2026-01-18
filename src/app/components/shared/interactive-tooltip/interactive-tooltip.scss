@@ -1,0 +1,267 @@
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tooltip-demo {
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+
+  &__header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-secondary);
+  }
+
+  &__section {
+    margin-bottom: var(--spacing-8);
+    padding: var(--spacing-5);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-neutral-200);
+
+    h4 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-5);
+      font-family: var(--font-primary);
+    }
+  }
+
+  &__info {
+    padding: var(--spacing-4);
+    background: var(--color-info-light);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-info);
+
+    p {
+      margin: 0;
+      color: var(--color-info-dark);
+      font-size: var(--font-size-sm);
+      font-family: var(--font-secondary);
+    }
+  }
+}
+
+.tooltip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  padding: 40px var(--spacing-5);
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip {
+  position: absolute;
+  background: var(--color-neutral-800);
+  color: var(--color-neutral-50);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-secondary);
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    animation: tooltipFadeIn 0.2s ease;
+  }
+
+  // Posiciones
+  &--top {
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--color-neutral-800);
+    }
+  }
+
+  &--bottom {
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-bottom-color: var(--color-neutral-800);
+    }
+  }
+
+  &--left {
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: var(--color-neutral-800);
+    }
+  }
+
+  &--right {
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: var(--color-neutral-800);
+    }
+  }
+
+  // Estilos especiales
+  &--info {
+    background: var(--color-info);
+
+    &.tooltip--top::after {
+      border-top-color: var(--color-info);
+    }
+
+    &.tooltip--bottom::after {
+      border-bottom-color: var(--color-info);
+    }
+  }
+
+  &--warning {
+    background: var(--color-warning);
+
+    &.tooltip--top::after {
+      border-top-color: var(--color-warning);
+    }
+
+    &.tooltip--bottom::after {
+      border-bottom-color: var(--color-warning);
+    }
+  }
+
+  &--success {
+    background: var(--color-success);
+
+    &.tooltip--top::after {
+      border-top-color: var(--color-success);
+    }
+
+    &.tooltip--bottom::after {
+      border-bottom-color: var(--color-success);
+    }
+  }
+}
+
+// Note: Using project Button component instead of custom .btn styles
+
+.ui-examples {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: var(--spacing-5);
+}
+
+.icon-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-md);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+
+  &:hover {
+    background: var(--color-neutral-200);
+    transform: scale(1.1);
+  }
+}
+
+.badge {
+  padding: 6px 12px;
+  background: var(--color-success);
+  color: var(--color-neutral-50);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-secondary);
+
+  &:hover {
+    background: var(--color-success-dark);
+    transform: scale(1.05);
+  }
+}
+
+.text-with-tooltip {
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-xs);
+  color: var(--color-text-primary);
+  cursor: help;
+  border-bottom: 2px dotted var(--color-text-secondary);
+  transition: all 0.2s ease;
+  font-family: var(--font-secondary);
+
+  &:hover {
+    background: var(--color-neutral-200);
+    color: var(--color-text-primary);
+  }
+}

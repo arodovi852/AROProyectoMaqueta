@@ -1,0 +1,148 @@
+// ==========================================================================
+// SECCIÓN: FEATURES
+// ==========================================================================
+// Sección de características con grid de tarjetas
+// Bloque BEM: .features
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE BASE: .features
+// ==========================================================================
+
+.features {
+  padding: var(--spacing-20) 0;
+  background-color: var(--color-white);
+}
+
+// ==========================================================================
+// ELEMENTO: .features__container
+// ==========================================================================
+
+.features__container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+// ==========================================================================
+// ELEMENTO: .features__header
+// ==========================================================================
+
+.features__header {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto var(--spacing-16);
+}
+
+// ==========================================================================
+// ELEMENTO: .features__title
+// ==========================================================================
+
+.features__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  margin: 0 0 var(--spacing-4) 0;
+
+  @include responsive(md) {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .features__description
+// ==========================================================================
+
+.features__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-neutral-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+// ==========================================================================
+// ELEMENTO: .features__grid
+// ==========================================================================
+
+.features__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+
+  @include responsive(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .features__card
+// ==========================================================================
+
+.features__card {
+  padding: var(--spacing-8);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+  border: 0.0625rem solid var(--color-neutral-200);
+  @include transition(transform, box-shadow, border-color);
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary-light);
+
+    .features__icon {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .features__icon
+// ==========================================================================
+
+.features__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+  background-color: var(--color-primary-lightest);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  @include transition(transform);
+
+  :deep(svg) {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .features__card-title
+// ==========================================================================
+
+.features__card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .features__card-description
+// ==========================================================================
+
+.features__card-description {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-600);
+  line-height: 1.6;
+  margin: 0;
+}

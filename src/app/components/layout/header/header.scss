@@ -1,0 +1,465 @@
+// ==========================================================================
+// COMPONENTE: HEADER
+// ==========================================================================
+// Header principal de la aplicación con navegación responsive
+// Bloque BEM: .header
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .header
+// ==========================================================================
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+  box-shadow: var(--shadow-md);
+}
+
+// ==========================================================================
+// ELEMENTO: .header__container
+// ==========================================================================
+
+.header__container {
+  @include container;
+  @include flex-between(center);
+  height: 4.5rem; // 72px
+  gap: var(--spacing-4);
+  padding: 0 var(--spacing-6);
+}
+
+// ==========================================================================
+// ELEMENTO: .header__brand (Logo + Breadcrumbs)
+// ==========================================================================
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  flex-shrink: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__logo
+// ==========================================================================
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-family: var(--font-primary);
+  @include transition(opacity);
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+.header__home-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-white);
+}
+
+.header__logo-separator {
+  color: var(--color-text-secondary);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.header__logo-text {
+  font-family: var(--font-primary);
+}
+
+// ==========================================================================
+// ELEMENTO: .header__breadcrumbs (Inline breadcrumbs)
+// ==========================================================================
+
+.header__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.header__breadcrumb-separator {
+  color: var(--color-text-disabled);
+  margin: 0 var(--spacing-1);
+}
+
+.header__breadcrumb-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-style: normal;
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.header__breadcrumb-current {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-style: normal;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__actions
+// ==========================================================================
+
+.header__actions {
+  @include flex-center(row, var(--spacing-4));
+  margin-left: auto;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__btn (Botones)
+// ==========================================================================
+// Nota: Los botones del header ahora usan el componente app-button
+// No se necesitan estilos adicionales aquí
+
+.header__btn {
+  // Los estilos son manejados por el componente app-button
+}
+
+.header__btn-link {
+  text-decoration: none;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__username (Nombre de usuario)
+// ==========================================================================
+
+.header__username {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__profile-link (Link al perfil con Card-Profile)
+// ==========================================================================
+
+.header__profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  @include transition(transform, box-shadow);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-profile-link (Link al perfil en móvil)
+// ==========================================================================
+
+.header__mobile-profile-link {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  padding: var(--spacing-3);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-3);
+  @include transition(background-color, transform);
+
+  &:hover {
+    background-color: rgba(232, 147, 207, 0.25);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__search (Búsqueda)
+// ==========================================================================
+
+.header__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 16rem;
+}
+
+.header__search-input {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-10) var(--spacing-2) var(--spacing-3);
+  background-color: #e893cf;
+  border: 0.1875rem solid #3d2a45;
+  border-radius: var(--radius-md);
+  color: #3d2a45;
+  font-size: var(--font-size-sm);
+  @include transition(background-color, border-color, color);
+
+  &::placeholder {
+    color: rgba(61, 42, 69, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #ffffff;
+    color: #3d2a45;
+    border-color: #3d2a45;
+  }
+}
+
+.header__search-btn {
+  @include button-reset;
+  position: absolute;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  @include flex-center;
+  color: #3d2a45;
+  @include transition(color);
+
+  &:hover {
+    color: #1a0b21;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+.header__search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__theme-toggle
+// ==========================================================================
+
+.header__theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+// ==========================================================================
+// ELEMENTO: .header__toggle (Botón hamburguesa)
+// ==========================================================================
+
+.header__toggle {
+  @include button-reset;
+  display: none; // Oculto por defecto en desktop
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+.header__toggle-bar {
+  width: 100%;
+  height: 0.1875rem;
+  background-color: var(--color-white);
+  border-radius: 0.125rem;
+  @include transition(transform, opacity, background-color);
+  transform-origin: center;
+}
+
+// Estado activo del botón hamburguesa
+.header__toggle--active {
+  .header__toggle-bar {
+    &:nth-child(1) {
+      transform: translateY(0.5rem) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: translateY(-0.5rem) rotate(-45deg);
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-menu (Menú móvil desplegable)
+// ==========================================================================
+
+.header__mobile-menu {
+  display: none; // Oculto en desktop
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-btn (Botones en menú móvil)
+// ==========================================================================
+
+.header__mobile-btn {
+  @include button-reset;
+  width: 100%;
+  padding: var(--spacing-4);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  @include transition(background-color, transform);
+  cursor: pointer;
+  margin-bottom: var(--spacing-3);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Modificador: botón Log In
+  &--login {
+    background-color: #f4d03f;
+    color: #1a0b21;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #1a0b21;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Modificador: botón Log Out
+  &--logout {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #ff6b6b;
+
+    &:hover {
+      background-color: rgba(244, 67, 54, 0.3);
+      color: #ff5252;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Modificador: botón Lists
+  &--lists {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 0.125rem solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background-color: #ffffff;
+      color: #1a0b21;
+      border-color: #ffffff;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .header__mobile-user (Usuario en menú móvil)
+// ==========================================================================
+
+.header__mobile-user {
+  padding: var(--spacing-4);
+  background-color: rgba(232, 147, 207, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-3);
+  text-align: center;
+}
+
+.header__mobile-username {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+// ==========================================================================
+// RESPONSIVE: MOBILE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .header__toggle {
+    display: flex; // Mostrar en mobile
+  }
+
+  .header__actions {
+    display: none; // Ocultar botones del desktop en mobile
+  }
+
+  .header__mobile-menu {
+    display: block;
+    position: fixed;
+    top: 4.5rem; // Altura del header
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    @include transition(max-height);
+    padding: 0 var(--spacing-4);
+  }
+
+  .header__mobile-menu--open {
+    max-height: 15rem; // Suficiente para los 2 botones
+    padding: var(--spacing-4);
+  }
+
+  .header__container {
+    padding: 0 var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE: TABLET
+// ==========================================================================
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header__search {
+    width: 12rem;
+  }
+
+  .header__actions {
+    gap: var(--spacing-3);
+  }
+
+  .header__nav-list {
+    gap: var(--spacing-4);
+  }
+}

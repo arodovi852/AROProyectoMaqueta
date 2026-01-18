@@ -1,0 +1,200 @@
+<div class="tooltip-demo">
+  <div class="tooltip-demo__header">
+    <h3 class="tooltip-demo__title">Tooltips Interactivos</h3>
+    <p class="tooltip-demo__description">
+      Tooltips con eventos mouseenter/mouseleave
+    </p>
+  </div>
+
+  <!-- Posiciones -->
+  <div class="tooltip-demo__section">
+    <h4>Tooltips por Posición</h4>
+    <div class="tooltip-grid">
+      <!-- Tooltip Arriba -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="primary"
+          (mouseenter)="showTooltip('top')"
+          (mouseleave)="hideTooltip('top')"
+        >
+          Hover Arriba
+        </app-button>
+        <div 
+          class="tooltip tooltip--top"
+          [class.tooltip--visible]="tooltips['top']"
+        >
+          Tooltip arriba
+        </div>
+      </div>
+
+      <!-- Tooltip Derecha -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="primary"
+          (mouseenter)="showTooltip('right')"
+          (mouseleave)="hideTooltip('right')"
+        >
+          Hover Derecha
+        </app-button>
+        <div 
+          class="tooltip tooltip--right"
+          [class.tooltip--visible]="tooltips['right']"
+        >
+          Tooltip derecha
+        </div>
+      </div>
+
+      <!-- Tooltip Abajo -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="primary"
+          (mouseenter)="showTooltip('bottom')"
+          (mouseleave)="hideTooltip('bottom')"
+        >
+          Hover Abajo
+        </app-button>
+        <div 
+          class="tooltip tooltip--bottom"
+          [class.tooltip--visible]="tooltips['bottom']"
+        >
+          Tooltip abajo
+        </div>
+      </div>
+
+      <!-- Tooltip Izquierda -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="primary"
+          (mouseenter)="showTooltip('left')"
+          (mouseleave)="hideTooltip('left')"
+        >
+          Hover Izquierda
+        </app-button>
+        <div 
+          class="tooltip tooltip--left"
+          [class.tooltip--visible]="tooltips['left']"
+        >
+          Tooltip izquierda
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estilos de Tooltips -->
+  <div class="tooltip-demo__section">
+    <h4>Tooltips con Diferentes Estilos</h4>
+    <div class="tooltip-grid">
+      <!-- Info Tooltip -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="secondary"
+          (mouseenter)="showTooltip('info')"
+          (mouseleave)="hideTooltip('info')"
+        >
+          Info
+        </app-button>
+        <div 
+          class="tooltip tooltip--top tooltip--info"
+          [class.tooltip--visible]="tooltips['info']"
+        >
+          Información adicional sobre esta acción
+        </div>
+      </div>
+
+      <!-- Warning Tooltip -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="secondary"
+          (mouseenter)="showTooltip('warning')"
+          (mouseleave)="hideTooltip('warning')"
+        >
+          Warning
+        </app-button>
+        <div 
+          class="tooltip tooltip--top tooltip--warning"
+          [class.tooltip--visible]="tooltips['warning']"
+        >
+          Cuidado: Esta acción es irreversible
+        </div>
+      </div>
+
+      <!-- Success Tooltip -->
+      <div class="tooltip-wrapper">
+        <app-button
+          variant="primary"
+          (mouseenter)="showTooltip('success')"
+          (mouseleave)="hideTooltip('success')"
+        >
+          Success
+        </app-button>
+        <div 
+          class="tooltip tooltip--top tooltip--success"
+          [class.tooltip--visible]="tooltips['success']"
+        >
+          Operación completada exitosamente
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltips en Elementos -->
+  <div class="tooltip-demo__section">
+    <h4>Tooltips en Elementos UI</h4>
+    <div class="ui-examples">
+      <!-- Icono con tooltip -->
+      <div class="tooltip-wrapper">
+        <div 
+          class="icon-button"
+          (mouseenter)="showTooltip('hover')"
+          (mouseleave)="hideTooltip('hover')"
+        >
+          CFG
+        </div>
+        <div 
+          class="tooltip tooltip--bottom"
+          [class.tooltip--visible]="tooltips['hover']"
+        >
+          Configuración
+        </div>
+      </div>
+
+      <!-- Badge con tooltip -->
+      <div class="tooltip-wrapper">
+        <div 
+          class="badge"
+          (mouseenter)="showTooltip('badge')"
+          (mouseleave)="hideTooltip('badge')"
+        >
+          Nuevo
+        </div>
+        <div 
+          class="tooltip tooltip--bottom"
+          [class.tooltip--visible]="tooltips['badge']"
+        >
+          Este elemento es nuevo
+        </div>
+      </div>
+
+      <!-- Texto con tooltip -->
+      <div class="tooltip-wrapper">
+        <span 
+          class="text-with-tooltip"
+          (mouseenter)="showTooltip('text')"
+          (mouseleave)="hideTooltip('text')"
+        >
+          Hover sobre este texto
+        </span>
+        <div 
+          class="tooltip tooltip--top"
+          [class.tooltip--visible]="tooltips['text']"
+        >
+          Este es un texto con tooltip explicativo
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tooltip-demo__info">
+    <p>Los tooltips se muestran automáticamente al pasar el mouse y se ocultan al salir</p>
+  </div>
+</div>

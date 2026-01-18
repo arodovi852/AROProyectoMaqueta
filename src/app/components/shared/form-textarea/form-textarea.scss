@@ -1,0 +1,178 @@
+// ==========================================================================
+// COMPONENTE: FORM TEXTAREA
+// ==========================================================================
+// Textarea de formulario reutilizable con validación y contador de caracteres
+// Bloque BEM: .form-textarea
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .form-textarea
+// ==========================================================================
+
+.form-textarea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+
+  // Modificador: error
+  &--error {
+    .form-textarea__field {
+      border-color: var(--color-error);
+      
+      &:focus {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 0.1875rem rgba(244, 67, 54, 0.1);
+      }
+    }
+  }
+
+  // Modificador: disabled
+  &--disabled {
+    .form-textarea__label {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+
+    .form-textarea__field {
+      background-color: var(--color-neutral-800);
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__label-wrapper
+// ==========================================================================
+
+.form-textarea__label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__label
+// ==========================================================================
+
+.form-textarea__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-family: var(--font-secondary);
+  margin-bottom: var(--spacing-1);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__required
+// ==========================================================================
+
+.form-textarea__required {
+  color: var(--color-error);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__counter
+// ==========================================================================
+
+.form-textarea__counter {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
+  font-family: var(--font-secondary);
+  white-space: nowrap;
+
+  // Modificador: warning (cerca del límite)
+  &--warning {
+    color: var(--color-warning);
+  }
+
+  // Modificador: error (excede el límite)
+  &--error {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__field
+// ==========================================================================
+
+.form-textarea__field {
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-5);
+  border: 0.1875rem solid #3d2a45;
+  border-radius: 1.25rem;
+  background-color: #e893cf;
+  color: #3d2a45;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-secondary);
+  text-align: center;
+  line-height: var(--line-height-normal);
+  resize: vertical;
+  min-height: 6rem;
+  @include transition(border-color, background-color, box-shadow, color);
+
+  &::placeholder {
+    color: #5a4060;
+    font-weight: var(--font-weight-medium);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary-dark);
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 0.25rem rgba(232, 147, 207, 0.3);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__help
+// ==========================================================================
+
+.form-textarea__help {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+// ==========================================================================
+// ELEMENTO: .form-textarea__error
+// ==========================================================================
+
+.form-textarea__error {
+  font-size: var(--font-size-xs);
+  color: var(--color-error-light);
+  margin: 0;
+  line-height: var(--line-height-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+
+  &::before {
+    content: '⚠';
+    font-size: var(--font-size-sm);
+  }
+}

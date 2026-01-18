@@ -1,0 +1,60 @@
+<div class="form-checkbox" [class.form-checkbox--error]="showError" [class.form-checkbox--disabled]="disabled">
+  <label class="form-checkbox__label">
+    <!-- Checkbox input -->
+    <input
+      type="checkbox"
+      [id]="checkboxId"
+      [name]="name"
+      [required]="required"
+      [disabled]="disabled"
+      [checked]="checked"
+      [attr.aria-invalid]="showError ? 'true' : null"
+      [attr.aria-describedby]="ariaDescribedBy"
+      (change)="onCheckboxChange($event)"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      class="form-checkbox__input"
+    />
+
+    <!-- Custom checkbox visual -->
+    <span class="form-checkbox__custom">
+      <!-- Checkmark icon -->
+      <svg 
+        class="form-checkbox__icon" 
+        width="12" 
+        height="12" 
+        viewBox="0 0 12 12" 
+        fill="none" 
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M2 6l3 3 5-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+
+    <!-- Label text -->
+    <span class="form-checkbox__text">
+      {{ label }}
+      <span *ngIf="required" class="form-checkbox__required" aria-label="campo requerido">*</span>
+    </span>
+  </label>
+
+  <!-- Texto de ayuda -->
+  <p 
+    *ngIf="helpText && !showError" 
+    [id]="helpTextId" 
+    class="form-checkbox__help"
+  >
+    {{ helpText }}
+  </p>
+
+  <!-- Mensaje de error -->
+  <p 
+    *ngIf="showError && errorMessage" 
+    [id]="errorId" 
+    class="form-checkbox__error" 
+    role="alert"
+  >
+    {{ errorMessage }}
+  </p>
+</div>

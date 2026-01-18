@@ -1,0 +1,287 @@
+:root {
+
+//Colores 
+
+
+//Colores primarios
+--color-primary: #A264BF;
+--color-primary-dark: #38263B;
+--color-primary-light: #D885FE;
+--color-primary-lightest: #EDD5FF;
+
+//Colores secundarios
+--color-secondary: #ecc332;
+--color-secondary-dark: #59592F;
+--color-secondary-light: #FEFE85;
+--color-secondary-lightest: #FFFFCC;
+
+//Escala de grises
+--color-neutral-50: #FFFDEB;
+--color-neutral-100: #F8F7F2;
+--color-neutral-200: #E8E6DB;
+--color-neutral-300: #D1CFC4;
+--color-neutral-400: #B0ADA1;
+--color-neutral-500: #8F8C7F;
+--color-neutral-600: #6F6D63;
+--color-neutral-700: #514F48;
+--color-neutral-800: #36342F;
+--color-neutral-900: #1C1B18;
+
+//Colores semánticos
+--color-success: #4CAF50;
+--color-success-light: #81C784;
+--color-success-dark: #388E3C;
+
+--color-error: #F44336;
+--color-error-light: #E57373;
+--color-error-dark: #D32F2F;
+
+--color-warning: #FF9800;
+--color-warning-light: #FFB74D;
+--color-warning-dark: #F57C00;
+
+--color-info: #2196F3;
+--color-info-light: #64B5F6;
+--color-info-dark: #1976D2;
+
+//Colores de texto principal (Light mode - por defecto)
+--color-text-primary: var(--color-primary-dark);
+--color-text-secondary: var(--color-primary);
+--color-text-disabled: var(--color-neutral-500);
+
+//Colores de fondo (Light mode - por defecto)
+--color-bg-primary: var(--color-secondary-lightest);
+--color-bg-secondary: var(--color-secondary-light);
+--color-bg-tertiary: var(--color-neutral-50);
+
+//Cajas de contenido - niveles de anidación (Light mode)
+--color-box-level-1: #FFF9E6;  // Más claro - caja externa
+--color-box-level-2: #FFF4CC;  // Medio claro
+--color-box-level-3: #FFEFB3;  // Medio
+--color-box-level-4: #FFE999;  // Medio oscuro
+--color-box-level-5: #FFE380;  // Más oscuro - caja más interna
+
+
+
+//Tipografías
+
+//Familias de fuentes
+--font-primary: 'MochiyPopOne', sans-serif;
+--font-secondary: 'Do Hyeon', sans-serif;
+--font-fallback: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+//Escala tipográfica 
+--font-size-xs: 0.75rem;   // 12px
+--font-size-sm: 0.875rem;  // 14px
+--font-size-base: 1rem;    // 16px
+--font-size-lg: 1.125rem;  // 18px
+--font-size-xl: 1.25rem;   // 20px
+--font-size-2xl: 1.5rem;   // 24px
+--font-size-3xl: 1.875rem; // 30px
+--font-size-4xl: 2.25rem;  // 36px
+--font-size-5xl: 3rem;     // 48px
+--font-size-6xl: 3.75rem;  // 60px 
+
+//Pesos de fuente
+--font-weight-light: 300;
+--font-weight-regular: 400;
+--font-weight-medium: 500;
+--font-weight-semibold: 600;
+--font-weight-bold: 700;
+
+//Line-heights
+--line-height-tight: 1.2;    
+--line-height-normal: 1.5;   
+--line-height-relaxed: 1.75; 
+
+//Letter spacing
+--letter-spacing-tight: -0.02em;
+--letter-spacing-normal: 0;
+--letter-spacing-wide: 0.02em;
+--letter-spacing-wider: 0.05em;
+
+//Espaciados
+
+//Escala basada en 4px (0.25rem)
+
+--spacing-0: 0;
+--spacing-1: 0.25rem;
+--spacing-2: 0.5rem;    
+--spacing-3: 0.75rem;   
+--spacing-4: 1rem;      
+--spacing-5: 1.25rem;   
+--spacing-6: 1.5rem;
+--spacing-7: 1.75rem;
+--spacing-8: 2rem;
+--spacing-10: 2.5rem;
+--spacing-12: 3rem; 
+--spacing-14: 3.5rem;
+--spacing-16: 4rem;
+--spacing-20: 5rem;
+--spacing-24: 6rem;
+--spacing-28: 7rem;
+--spacing-32: 8rem;
+
+// Alias de espaciado
+--spacing-xs: 0.5rem;   // 8px
+--spacing-sm: 0.75rem;  // 12px
+--spacing-md: 1rem;     // 16px
+--spacing-lg: 1.5rem;   // 24px
+--spacing-xl: 2rem;     // 32px
+--spacing-2xl: 3rem;    // 48px 
+
+
+//Breakpoints
+
+//Móvil grande
+--breakpoint-sm: 640px;
+//Tablet
+--breakpoint-md: 768px;
+//Desktop
+--breakpoint-lg: 1024px;  
+//Desktop grande
+--breakpoint-xl: 1280px;
+//Desktop extra grande
+--breakpoint-2xl: 1536px; 
+
+//Sombras *revisar
+--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+--shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+--shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+--shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+--shadow-none: none;
+
+// Sombras con colores provisionales
+--shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.4), 0 4px 6px -2px rgba(162, 100, 191, 0.2);
+--shadow-secondary: 0 10px 15px -3px rgba(191, 191, 100, 0.4), 0 4px 6px -2px rgba(191, 191, 100, 0.2);
+
+// Color blanco
+--color-white: #FFFFFF;
+
+// Container max width
+--container-max-width: 1280px;
+
+// Header height
+--header-height: 5rem;
+
+
+//Bordes
+
+//Grosor
+--border-thin: 1px;
+--border-medium: 2px;
+--border-thick: 4px;
+
+//Radio
+--radius-none: 0;
+--radius-sm: 0.125rem;   // 2px
+--radius-base: 0.25rem;  // 4px
+--radius-md: 0.375rem;   // 6px
+--radius-lg: 0.5rem;     // 8px
+--radius-xl: 0.75rem;    // 12px
+--radius-2xl: 1rem;      // 16px
+--radius-3xl: 1.5rem;    // 24px
+--radius-full: 9999px;   // Círculos perfectos
+
+
+//Transciones
+
+//Tiempo
+--duration-fast: 150ms;
+--duration-base: 300ms;
+--duration-slow: 500ms;
+
+//Eases
+--ease-in: ease-in;
+--ease-out: ease-out;
+--ease-in-out: ease-in-out;
+--ease-linear: linear;
+
+//Transciones para utilizar
+--transition-fast: all var(--duration-fast) var(--ease-in-out);
+--transition-base: all var(--duration-base) var(--ease-in-out);
+--transition-slow: all var(--duration-slow) var(--ease-in-out);
+
+//Transiciones específicas
+--transition-colors: color var(--duration-base) var(--ease-in-out), 
+                    background-color var(--duration-base) var(--ease-in-out),
+                    border-color var(--duration-base) var(--ease-in-out);
+--transition-transform: transform var(--duration-base) var(--ease-in-out);
+--transition-opacity: opacity var(--duration-base) var(--ease-in-out);
+
+//Z-index
+
+--z-index-dropdown: 1000;
+--z-index-sticky: 1020;
+--z-index-fixed: 1030;
+--z-index-modal-backdrop: 1040;
+--z-index-modal: 1050;
+--z-index-popover: 1060;
+--z-index-tooltip: 1070;
+
+//Otros
+
+//Max-width
+
+--max-width-sm: 640px;
+--max-width-md: 768px;
+--max-width-lg: 1024px;
+--max-width-xl: 1280px;
+--max-width-2xl: 1536px;
+--max-width-full: 100%;
+
+//Opacidad
+--opacity-0: 0;
+--opacity-10: 0.1;
+--opacity-20: 0.2;
+--opacity-30: 0.3;
+--opacity-40: 0.4;
+--opacity-50: 0.5;
+--opacity-60: 0.6;
+--opacity-70: 0.7;
+--opacity-80: 0.8;
+--opacity-90: 0.9;
+--opacity-100: 1;
+}
+
+
+// Dark Mode
+
+.dark-mode {
+  //Colores de texto para dark mode
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E8E6DB;
+  --color-text-disabled: var(--color-neutral-500);
+  --color-text-light: #f5f0e8;
+
+  //Colores de fondo para dark mode
+  --color-bg-primary: var(--color-primary-dark);
+  --color-bg-secondary: var(--color-neutral-900);
+  --color-bg-tertiary: var(--color-neutral-800);
+  --color-bg-main: #2D1A33;
+
+  //Cajas de contenido - niveles de anidación (Dark mode)
+  --color-box-level-1: #2D1A33;  // Más claro - caja externa
+  --color-box-level-2: #251629;  // Medio claro
+  --color-box-level-3: #1E1222;  // Medio
+  --color-box-level-4: #170E1A;  // Medio oscuro
+  --color-box-level-5: #100A13;  // Más oscuro - caja más interna
+
+  // Colores de sombra para dark mode
+  --shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.5), 0 4px 6px -2px rgba(162, 100, 191, 0.3);
+  --shadow-secondary: 0 10px 15px -3px rgba(236, 195, 50, 0.4), 0 4px 6px -2px rgba(236, 195, 50, 0.2);
+}
+
+//Variables para mixins y funciones SCSS
+
+//Breakpoints map para el mixin responsive
+$breakpoints: (
+'sm': 640px,
+'md': 768px,
+'lg': 1024px,
+'xl': 1280px,
+'2xl': 1536px
+);

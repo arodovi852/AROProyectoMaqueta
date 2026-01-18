@@ -1,0 +1,17 @@
+@if (visible) {
+  <!-- Overlay -->
+  <div class="notification-overlay" [@fadeIn] (click)="onConfirm()"></div>
+  
+  <!-- Modal -->
+  <div class="notification" role="dialog" aria-modal="true" [@scaleIn]>
+    <h2 class="notification__title">{{ title }}</h2>
+    
+    <app-button 
+      class="notification__button"
+      [variant]="'primary'"
+      (click)="onConfirm()"
+    >
+      {{ buttonText }}
+    </app-button>
+  </div>
+}

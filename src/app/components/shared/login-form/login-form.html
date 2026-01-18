@@ -1,0 +1,61 @@
+<div class="login-form">
+  <div class="login-form__header">
+    <h2 class="login-form__title">Welcome back!</h2>
+    <app-close-button (closeClick)="onClose()" />
+  </div>
+
+  <form 
+    class="login-form__form" 
+    method="post" 
+    (submit)="onSubmit($event)"
+    novalidate
+  >
+    <fieldset class="login-form__fieldset">
+      <legend class="login-form__legend">Credenciales de acceso</legend>
+      
+      <div class="login-form__field">
+        <app-form-input
+          inputId="login-username"
+          type="text"
+          name="username"
+          label=""
+          placeholder="Username / Email"
+          [required]="true"
+          helpText="Introduce tu nombre de usuario o correo electrónico"
+        />
+      </div>
+
+      <div class="login-form__field">
+        <app-form-input
+          inputId="login-password"
+          type="password"
+          name="password"
+          label=""
+          placeholder="Password"
+          [required]="true"
+          helpText="Introduce tu contraseña"
+        />
+      </div>
+
+      <div class="login-form__submit">
+        <app-button 
+          type="submit" 
+          text="Log In" 
+          variant="primary"
+          [fullWidth]="true"
+        />
+      </div>
+    </fieldset>
+  </form>
+
+  <p class="login-form__footer">
+    New here? 
+    <button 
+      type="button" 
+      class="login-form__link"
+      (click)="onCreateAccount()"
+    >
+      Create an account!
+    </button>
+  </p>
+</div>

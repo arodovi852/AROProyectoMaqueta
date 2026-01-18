@@ -1,0 +1,111 @@
+<div class="contact-form-reactive">
+  <h3 class="contact-form-reactive__title">Formulario de Contacto</h3>
+  <p class="contact-form-reactive__description">
+    Validadores personalizados: NIF, teléfono, código postal y cross-field validation
+  </p>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form-reactive__form">
+    <!-- Nombre -->
+    <app-form-input
+      inputId="name"
+      type="text"
+      name="name"
+      label="Nombre completo"
+      placeholder="Juan Pérez"
+      [required]="true"
+      [showError]="name.invalid && (name.dirty || name.touched)"
+      [errorMessage]="getErrorMessage('name')"
+      formControlName="name">
+    </app-form-input>
+
+    <!-- NIF -->
+    <app-form-input
+      inputId="nif"
+      type="text"
+      name="nif"
+      label="NIF"
+      placeholder="12345678Z"
+      [required]="true"
+      [showError]="nif.invalid && (nif.dirty || nif.touched)"
+      [errorMessage]="getErrorMessage('nif')"
+      formControlName="nif">
+    </app-form-input>
+
+    <!-- Email y Teléfono (al menos uno requerido) -->
+    <div class="form-row">
+      <app-form-input
+        inputId="email"
+        type="email"
+        name="email"
+        label="Email"
+        placeholder="email@ejemplo.com"
+        [showError]="email.invalid && (email.dirty || email.touched)"
+        [errorMessage]="getErrorMessage('email')"
+        formControlName="email">
+      </app-form-input>
+
+      <app-form-input
+        inputId="telefono"
+        type="tel"
+        name="telefono"
+        label="Teléfono"
+        placeholder="612345678"
+        [showError]="telefono.invalid && (telefono.dirty || telefono.touched)"
+        [errorMessage]="getErrorMessage('telefono')"
+        formControlName="telefono">
+      </app-form-input>
+    </div>
+
+    @if (hasContactMethodError()) {
+      <div class="form-field__error form-field__error--cross">
+        Debe proporcionar al menos un email o teléfono
+      </div>
+    }
+
+    <!-- Código Postal -->
+    <app-form-input
+      inputId="codigoPostal"
+      type="text"
+      name="codigoPostal"
+      label="Código Postal"
+      placeholder="28001"
+      [showError]="codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched)"
+      [errorMessage]="getErrorMessage('codigoPostal')"
+      formControlName="codigoPostal">
+    </app-form-input>
+
+    <!-- Mensaje -->
+    <div class="form-field">
+      <label for="message" class="form-field__label">Mensaje *</label>
+      <textarea 
+        id="message"
+        formControlName="message"
+        class="form-field__textarea"
+        [class.form-field__textarea--invalid]="message.invalid && (message.dirty || message.touched)"
+        [class.form-field__textarea--valid]="message.valid && (message.dirty || message.touched)"
+        placeholder="Escribe tu mensaje aquí..."
+        rows="4"></textarea>
+      @if (message.invalid && (message.dirty || message.touched)) {
+        <span class="form-field__error">{{ getErrorMessage('message') }}</span>
+      }
+    </div>
+
+    <!-- Botones -->
+    <div class="contact-form-reactive__actions">
+      <app-button 
+        type="submit"
+        variant="primary" 
+        size="md"
+        [disabled]="contactForm.invalid">
+        Enviar mensaje
+      </app-button>
+      <app-button 
+        type="button"
+        variant="ghost" 
+        size="md"
+        (onClick)="onReset()">
+        Reiniciar
+      </app-button>
+    </div>
+  </form>
+</div>

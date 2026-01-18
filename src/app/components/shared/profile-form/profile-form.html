@@ -1,0 +1,249 @@
+<div class="profile-form-container">
+  <h2>Formulario de Perfil con Validación Asíncrona</h2>
+  <p class="description">Este formulario demuestra validadores asíncronos que comprueban la disponibilidad en tiempo real.</p>
+  
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <!-- Username con validación asíncrona -->
+    <div class="form-group">
+      <label for="username">Nombre de Usuario *</label>
+      <div class="input-with-status">
+        <input 
+          id="username"
+          type="text" 
+          formControlName="username"
+          placeholder="usuario123"
+          [class.error]="profileForm.get('username')?.invalid && profileForm.get('username')?.touched"
+          [class.success]="isFieldAsyncValid('username')">
+        
+        @if (isFieldPending('username')) {
+          <span class="status-icon pending">...</span>
+        }
+        @if (isFieldAsyncValid('username')) {
+          <span class="status-icon success"></span>
+        }
+      </div>
+      
+      @if (profileForm.get('username')?.invalid && profileForm.get('username')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('username')?.errors?.['required']) {
+            <span>El nombre de usuario es obligatorio</span>
+          }
+          @if (profileForm.get('username')?.errors?.['minlength']) {
+            <span>Mínimo 3 caracteres</span>
+          }
+          @if (profileForm.get('username')?.errors?.['maxlength']) {
+            <span>Máximo 20 caracteres</span>
+          }
+          @if (profileForm.get('username')?.errors?.['unavailable']) {
+            <span>Este nombre de usuario ya está en uso</span>
+          }
+        </div>
+      }
+      
+      @if (isFieldAsyncValid('username')) {
+        <div class="success-message">Nombre de usuario disponible</div>
+      }
+    </div>
+
+    <!-- Email con validación asíncrona -->
+    <div class="form-group">
+      <label for="email">Correo Electrónico *</label>
+      <div class="input-with-status">
+        <input 
+          id="email"
+          type="email" 
+          formControlName="email"
+          placeholder="usuario@ejemplo.com"
+          [class.error]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"
+          [class.success]="isFieldAsyncValid('email')">
+        
+        @if (isFieldPending('email')) {
+          <span class="status-icon pending">...</span>
+        }
+        @if (isFieldAsyncValid('email')) {
+          <span class="status-icon success"></span>
+        }
+      </div>
+      
+      @if (profileForm.get('email')?.invalid && profileForm.get('email')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('email')?.errors?.['required']) {
+            <span>El correo electrónico es obligatorio</span>
+          }
+          @if (profileForm.get('email')?.errors?.['email']) {
+            <span>Formato de correo inválido</span>
+          }
+          @if (profileForm.get('email')?.errors?.['taken']) {
+            <span>Este correo electrónico ya está registrado</span>
+          }
+        </div>
+      }
+      
+      @if (isFieldAsyncValid('email')) {
+        <div class="success-message">Correo electrónico disponible</div>
+      }
+    </div>
+
+    <!-- Fecha de Nacimiento -->
+    <div class="form-group">
+      <label for="birthDate">Fecha de Nacimiento *</label>
+      <input 
+        id="birthDate"
+        type="date" 
+        formControlName="birthDate"
+        [class.error]="profileForm.get('birthDate')?.invalid && profileForm.get('birthDate')?.touched">
+      
+      @if (profileForm.get('birthDate')?.invalid && profileForm.get('birthDate')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('birthDate')?.errors?.['required']) {
+            <span>La fecha de nacimiento es obligatoria</span>
+          }
+          @if (profileForm.get('birthDate')?.errors?.['minAge']) {
+            <span>{{ profileForm.get('birthDate')?.errors?.['minAge'] }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Contraseña con validación de fortaleza -->
+    <div class="form-group">
+      <label for="password">Contraseña *</label>
+      <div class="password-input">
+        <input 
+          id="password"
+          [type]="showPassword ? 'text' : 'password'" 
+          formControlName="password"
+          placeholder="Mínimo 8 caracteres"
+          [class.error]="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">
+        
+        <button 
+          type="button"
+          class="toggle-password"
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+          {{ showPassword ? 'Ocultar' : 'Mostrar' }}
+        </button>
+      </div>
+      
+      @if (profileForm.get('password')?.invalid && profileForm.get('password')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('password')?.errors?.['required']) {
+            <span>La contraseña es obligatoria</span>
+          }
+          @if (profileForm.get('password')?.errors?.['minlength']) {
+            <span>Mínimo 8 caracteres</span>
+          }
+          @if (profileForm.get('password')?.errors?.['passwordStrength']) {
+            <div class="password-requirements">
+              <p>La contraseña debe incluir:</p>
+              <ul>
+                @for (missing of getPasswordStrengthErrors(); track missing) {
+                  <li>{{ missing }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Confirmar Contraseña -->
+    <div class="form-group">
+      <label for="confirmPassword">Confirmar Contraseña *</label>
+      <div class="password-input">
+        <input 
+          id="confirmPassword"
+          [type]="showConfirmPassword ? 'text' : 'password'" 
+          formControlName="confirmPassword"
+          placeholder="Repite la contraseña"
+          [class.error]="(profileForm.get('confirmPassword')?.invalid || profileForm.errors?.['passwordMismatch']) && profileForm.get('confirmPassword')?.touched">
+        
+        <button 
+          type="button"
+          class="toggle-password"
+          (click)="toggleConfirmPasswordVisibility()"
+          [attr.aria-label]="showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+          {{ showConfirmPassword ? 'Ocultar' : 'Mostrar' }}
+        </button>
+      </div>
+      
+      @if (profileForm.get('confirmPassword')?.invalid && profileForm.get('confirmPassword')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('confirmPassword')?.errors?.['required']) {
+            <span>Debes confirmar la contraseña</span>
+          }
+        </div>
+      }
+      
+      @if (profileForm.errors?.['passwordMismatch'] && profileForm.get('confirmPassword')?.touched) {
+        <div class="error-message">
+          <span>Las contraseñas no coinciden</span>
+        </div>
+      }
+    </div>
+
+    <!-- Biografía -->
+    <div class="form-group">
+      <label for="bio">Biografía</label>
+      <textarea 
+        id="bio"
+        formControlName="bio"
+        placeholder="Cuéntanos sobre ti (máximo 500 caracteres)"
+        rows="4"
+        [class.error]="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched"></textarea>
+      
+      <div class="char-count">
+        {{ profileForm.get('bio')?.value?.length || 0 }} / 500
+      </div>
+      
+      @if (profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched) {
+        <div class="error-message">
+          @if (profileForm.get('bio')?.errors?.['maxlength']) {
+            <span>Máximo 500 caracteres</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Checkboxes -->
+    <app-form-checkbox
+      checkboxId="newsletter"
+      label="Quiero recibir el boletín de noticias"
+      formControlName="newsletter">
+    </app-form-checkbox>
+
+    <app-form-checkbox
+      checkboxId="terms"
+      label="Acepto los términos y condiciones"
+      [required]="true"
+      [showError]="!!(profileForm.get('terms')?.invalid && profileForm.get('terms')?.touched)"
+      errorMessage="Debes aceptar los términos y condiciones"
+      formControlName="terms">
+    </app-form-checkbox>
+
+    <!-- Estado de Validación -->
+    @if (profileForm.pending) {
+      <div class="validation-status pending">
+        <span class="spinner"></span>
+        Validando información...
+      </div>
+    }
+
+    <!-- Botones de Acción -->
+    <div class="form-actions">
+      <app-button 
+        type="submit"
+        variant="primary"
+        [disabled]="profileForm.invalid || profileForm.pending">
+        Crear Perfil
+      </app-button>
+      
+      <app-button 
+        type="button"
+        variant="secondary"
+        (click)="onReset()">
+        Reiniciar
+      </app-button>
+    </div>
+  </form>
+</div>

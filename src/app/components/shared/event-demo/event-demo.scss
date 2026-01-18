@@ -1,0 +1,191 @@
+.event-demo {
+  padding: var(--spacing-6);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+
+  &__header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-secondary);
+  }
+
+  &__section {
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+
+    h4 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-4);
+      font-family: var(--font-primary);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: var(--spacing-3);
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--spacing-4) var(--spacing-5);
+    border: 0.1875rem solid #3d2a45;
+    border-radius: 1.25rem;
+    background-color: #e893cf;
+    color: #3d2a45;
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-3);
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: #5a4060;
+      font-weight: var(--font-weight-medium);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-primary-dark);
+      background-color: #ffffff;
+      color: var(--color-primary-dark);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background-color: #ffffff;
+      color: var(--color-primary-dark);
+      box-shadow: 0 0 0 0.25rem rgba(232, 147, 207, 0.3);
+    }
+
+    &.focused {
+      border-color: var(--color-success);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.2);
+    }
+  }
+
+  &__info {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-2);
+    font-family: var(--font-secondary);
+
+    strong {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  &__mouse-area {
+    padding: 40px;
+    background: var(--color-neutral-100);
+    border: 2px dashed var(--color-neutral-300);
+    border-radius: var(--radius-xs);
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &.active {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+      border-style: solid;
+    }
+
+    p {
+      margin: var(--spacing-2) 0;
+      color: var(--color-text-secondary);
+      font-family: var(--font-secondary);
+    }
+  }
+
+  &__coords {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+  }
+
+  &__propagation-outer {
+    padding: 30px;
+    background: var(--color-error-light);
+    border: 2px solid var(--color-error);
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    text-align: center;
+
+    p {
+      color: var(--color-error-dark);
+      margin-bottom: var(--spacing-4);
+      font-family: var(--font-secondary);
+    }
+  }
+
+  &__propagation-inner {
+    padding: var(--spacing-5);
+    background: var(--color-success-light);
+    border: 2px solid var(--color-success);
+    border-radius: var(--radius-xs);
+    color: var(--color-success-dark);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-secondary);
+  }
+
+  &__log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-3);
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  &__log {
+    background: var(--color-neutral-800);
+    border-radius: var(--radius-xs);
+    padding: var(--spacing-3);
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: var(--font-size-xs);
+  }
+
+  &__log-item {
+    padding: 6px 8px;
+    color: var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-neutral-600);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__log-empty {
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--spacing-5);
+    font-family: var(--font-secondary);
+  }
+}
+
+// Note: Using project Button component instead of custom .btn styles

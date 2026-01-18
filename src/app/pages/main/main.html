@@ -1,0 +1,97 @@
+<!-- Contenido principal - Landing Page -->
+<main class="main-page">
+  <!-- Hero Section con imagen responsive -->
+  <section class="hero">
+    <div class="hero__background" role="img" aria-label="Background image from Twin Peaks"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__title-line hero__title-line--italic">Track series.</span>
+        <span class="hero__title-line hero__title-line--italic">Rate them.</span>
+        <span class="hero__title-line">See what's good.</span>
+      </h1>
+      <app-button
+        text="Get started"
+        variant="secondary"
+        size="lg"
+        class="hero__cta"
+        (onClick)="onGetStarted()"
+        aria-label="Start using BROADCASTTD"
+      ></app-button>
+    </div>
+  </section>
+
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="loading-state" role="status" aria-live="polite">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <p class="loading-state__text">Loading series...</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error()) {
+    <div class="error-state" role="alert">
+      <p class="error-state__text">{{ error() }}</p>
+      <app-button
+        text="Retry"
+        variant="primary"
+        size="md"
+        (onClick)="loadSeriesFromApi()"
+      ></app-button>
+    </div>
+  }
+
+  <!-- Popular This Week Section -->
+  @if (!loading() && !error()) {
+    <section class="series-section" aria-labelledby="popular-title">
+      <div class="series-section__header">
+        <h2 id="popular-title" class="series-section__title">Popular this week</h2>
+        <button 
+          class="series-section__see-more" 
+          (click)="onSeeMore('popular')"
+          aria-label="See more popular series"
+        >
+          See more
+        </button>
+      </div>
+      <div class="series-section__grid" role="list">
+        @for (series of popularSeries; track series.id) {
+          <app-card
+            [imageSrc]="series.imageSrc"
+            [imageAlt]="series.imageAlt"
+            [hoverTitle]="series.hoverTitle"
+            variant="media"
+            role="listitem"
+            (click)="navigateToSeries(series.id)"
+          ></app-card>
+        }
+      </div>
+    </section>
+
+    <!-- Future Releases Section -->
+    <section class="series-section" aria-labelledby="future-title">
+      <div class="series-section__header">
+        <h2 id="future-title" class="series-section__title">Future releases</h2>
+        <button 
+          class="series-section__see-more" 
+          (click)="onSeeMore('future')"
+          aria-label="See more upcoming releases"
+        >
+          See more
+        </button>
+      </div>
+      <div class="series-section__grid" role="list">
+        @for (series of futureReleases; track series.id) {
+          <app-card
+            [imageSrc]="series.imageSrc"
+            [imageAlt]="series.imageAlt"
+            [hoverTitle]="series.hoverTitle"
+            variant="media"
+            role="listitem"
+            (click)="navigateToSeries(series.id)"
+          ></app-card>
+        }
+      </div>
+    </section>
+  }
+</main>

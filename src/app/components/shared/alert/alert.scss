@@ -1,0 +1,134 @@
+// ==========================================================================
+// COMPONENTE: ALERT
+// ==========================================================================
+// Alerta reutilizable con variantes de tipo
+// Bloque BEM: .alert
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE BASE: .alert
+// ==========================================================================
+
+.alert {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  border-left: 0.25rem solid transparent;
+  @include transition(opacity, transform);
+}
+
+// ==========================================================================
+// ELEMENTO: .alert__icon
+// ==========================================================================
+
+.alert__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.125rem;
+}
+
+// ==========================================================================
+// ELEMENTO: .alert__content
+// ==========================================================================
+
+.alert__content {
+  flex: 1;
+  min-width: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .alert__title
+// ==========================================================================
+
+.alert__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .alert__message
+// ==========================================================================
+
+.alert__message {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+// ==========================================================================
+// ELEMENTO: .alert__close
+// ==========================================================================
+
+.alert__close {
+  @include button-reset;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  opacity: 0.6;
+  @include transition(opacity, background-color);
+
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
+// MODIFICADOR: TIPOS DE ALERTA
+// ==========================================================================
+
+// Tipo Info (por defecto)
+.alert--info {
+  background-color: var(--color-info-light);
+  color: var(--color-info-dark);
+  border-left-color: var(--color-info);
+
+  .alert__icon {
+    color: var(--color-info);
+  }
+}
+
+// Tipo Success
+.alert--success {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+  border-left-color: var(--color-success);
+
+  .alert__icon {
+    color: var(--color-success);
+  }
+}
+
+// Tipo Warning
+.alert--warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+  border-left-color: var(--color-warning);
+
+  .alert__icon {
+    color: var(--color-warning);
+  }
+}
+
+// Tipo Error
+.alert--error {
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+  border-left-color: var(--color-error);
+
+  .alert__icon {
+    color: var(--color-error);
+  }
+}

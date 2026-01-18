@@ -1,0 +1,267 @@
+// ==========================================================================
+// COMPONENTE: CONTACT FORM
+// ==========================================================================
+// Formulario de contacto completo con todos los campos y validaciones
+// Bloque BEM: .contact-form
+// ==========================================================================
+
+@import '../../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BLOQUE: .contact-form
+// ==========================================================================
+
+.contact-form {
+  background-color: var(--color-neutral-900);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  max-width: 50rem;
+  margin: 0 auto;
+
+  @include responsive('md') {
+    padding: var(--spacing-10);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__header
+// ==========================================================================
+
+.contact-form__header {
+  margin-bottom: var(--spacing-8);
+  text-align: center;
+}
+
+.contact-form__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-3) 0;
+  font-family: var(--font-primary);
+
+  @include responsive('md') {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+.contact-form__description {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-400);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__form
+// ==========================================================================
+
+.contact-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__fieldset
+// ==========================================================================
+
+.contact-form__fieldset {
+  border: 0.0625rem solid var(--color-neutral-800);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-6);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__legend
+// ==========================================================================
+
+.contact-form__legend {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-light);
+  padding: 0 var(--spacing-2);
+  font-family: var(--font-secondary);
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__row
+// ==========================================================================
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-5);
+
+  @include responsive('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__field
+// ==========================================================================
+// Los componentes de formulario ya tienen su propio spacing
+
+// ==========================================================================
+// ELEMENTO: .contact-form__success
+// ==========================================================================
+
+.contact-form__success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 0.0625rem solid var(--color-success);
+  border-radius: var(--radius-md);
+  color: var(--color-success-light);
+}
+
+.contact-form__success-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.contact-form__success-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-success-light);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+.contact-form__success-message {
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__error-banner
+// ==========================================================================
+
+.contact-form__error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 0.0625rem solid var(--color-error);
+  border-radius: var(--radius-md);
+  color: var(--color-error-light);
+  font-size: var(--font-size-sm);
+}
+
+.contact-form__error-icon {
+  flex-shrink: 0;
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__actions
+// ==========================================================================
+
+.contact-form__actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  @include responsive('sm') {
+    flex-wrap: nowrap;
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__button
+// ==========================================================================
+
+.contact-form__button {
+  @include button-reset;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-secondary);
+  cursor: pointer;
+  @include transition(background-color, transform, box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  min-width: 8rem;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-0.0625rem);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Modificador: primary
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+      box-shadow: var(--shadow-lg);
+    }
+
+    &:focus-visible {
+      @include focus-visible;
+    }
+  }
+
+  // Modificador: secondary
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-neutral-300);
+    border: 0.0625rem solid var(--color-neutral-700);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-neutral-800);
+      border-color: var(--color-neutral-600);
+    }
+
+    &:focus-visible {
+      @include focus-visible;
+    }
+  }
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__loading
+// ==========================================================================
+
+.contact-form__loading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+// ==========================================================================
+// ELEMENTO: .contact-form__spinner
+// ==========================================================================
+
+.contact-form__spinner {
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

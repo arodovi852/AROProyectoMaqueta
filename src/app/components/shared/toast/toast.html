@@ -1,0 +1,12 @@
+<div class="toast-container">
+  @if (toast()) {
+    <div class="toast" [class]="'toast--' + toast()!.type" (click)="dismiss()">
+      <div class="toast__content">
+        <span class="toast__message">{{ toast()!.message }}</span>
+        <button class="toast__close" (click)="dismiss()" aria-label="Cerrar notificación">
+          ×
+        </button>
+      </div>
+    </div>
+  }
+</div>

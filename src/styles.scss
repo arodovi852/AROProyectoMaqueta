@@ -1,0 +1,60 @@
+/* ==========================================================================
+   ESTILOS GLOBALES - ARQUITECTURA ITCSS
+   ========================================================================== */
+/* Este archivo importa todos los estilos en orden ITCSS (Inverted Triangle CSS).
+   El orden es CRÍTICO: va desde lo más genérico y de baja especificidad,
+   hasta lo más específico y de alta especificidad.
+   
+   Capas ITCSS:
+   1. Settings - Variables y configuración
+   2. Tools - Mixins y funciones
+   3. Generic - Resets y normalize
+   4. Elements - Estilos base de elementos HTML sin clases
+   5. Objects - Patrones de layout y estructura
+   6. Components - Componentes de UI específicos
+   7. Utilities - Clases de utilidad con !important
+   ========================================================================== */
+
+/* ==========================================================================
+   00-SETTINGS - Variables y Design Tokens
+   ========================================================================== */
+@import 'styles/00-settings/variables';
+
+/* ==========================================================================
+   01-TOOLS - Mixins y Funciones
+   ========================================================================== */
+@import 'styles/01-tools/mixins';
+
+/* ==========================================================================
+   02-GENERIC - Reset CSS
+   ========================================================================== */
+@import 'styles/02-generic/reset';
+
+/* ==========================================================================
+   03-ELEMENTS - Estilos base de elementos HTML
+   ========================================================================== */
+@import 'styles/03-elements/base';
+
+/* ==========================================================================
+   04-OBJECTS - Sistema de Layout
+   ========================================================================== */
+@import 'styles/04-objects/layout';
+
+/* ==========================================================================
+   05-COMPONENTS - Componentes específicos
+   ========================================================================== */
+@import 'styles/05-components/buttons';
+@import 'styles/05-components/footer';
+@import 'styles/05-components/header';
+
+/* ==========================================================================
+   06-UTILITIES - Clases de utilidad
+   ========================================================================== */
+@import 'styles/06-utilities/helpers';
+
+/* ==========================================================================
+   NOTA: Los estilos específicos de componentes Angular se encuentran
+   en sus respectivos archivos .scss dentro de cada componente.
+   Angular usa ViewEncapsulation.Emulated por defecto, lo que encapsula
+   los estilos a nivel de componente.
+   ========================================================================== */

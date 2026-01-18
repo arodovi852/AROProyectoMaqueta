@@ -1,0 +1,436 @@
+// ==========================================================================
+// PÁGINA: MAIN (LANDING PAGE)
+// ==========================================================================
+// Página principal con hero y grid de series
+// Fase 4: Responsive Design completo
+// Fase 5: Multimedia optimizada
+// Fase 6: Sistema de temas
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.main-page {
+  min-height: 100vh;
+  background-color: var(--color-bg-main, #5a3d5c);
+  transition: background-color var(--duration-base) var(--ease-in-out);
+}
+
+// ==========================================================================
+// HERO SECTION - RESPONSIVE
+// ==========================================================================
+
+.hero {
+  position: relative;
+  height: clamp(280px, 50vh, 500px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  // Mobile pequeño (320px)
+  @media (max-width: 374px) {
+    height: 260px;
+  }
+  
+  // Mobile estándar (375px)
+  @media (min-width: 375px) and (max-width: 767px) {
+    height: 300px;
+  }
+  
+  // Tablet (768px)
+  @include responsive('md') {
+    height: 400px;
+  }
+  
+  // Desktop pequeño (1024px)
+  @include responsive('lg') {
+    height: 450px;
+  }
+  
+  // Desktop estándar (1280px)
+  @include responsive('xl') {
+    height: 500px;
+  }
+  
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(to bottom, rgba(90, 61, 92, 0.7) 0%, rgba(90, 61, 92, 0.9) 100%),
+      url('/assets/Twin_Peaks_TV_Series-892912807-large.jpg') center center / cover no-repeat;
+    z-index: 1;
+    
+    // Optimización de rendimiento para la imagen de fondo
+    will-change: transform;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-4);
+    width: 100%;
+    max-width: 800px;
+    
+    @include responsive('md') {
+      padding: var(--spacing-6);
+    }
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    color: var(--color-secondary, #ecc332);
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    
+    // Mobile pequeño
+    @media (max-width: 374px) {
+      font-size: 1.1rem;
+      margin-bottom: var(--spacing-3);
+    }
+    
+    @include responsive('md') {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-6);
+    }
+    
+    @include responsive('lg') {
+      font-size: 2.5rem;
+    }
+  }
+  
+  &__title-line {
+    display: block;
+    
+    &--italic {
+      font-style: italic;
+    }
+  }
+  
+  // Estilos del botón CTA con animación
+  &__cta {
+    ::ng-deep .btn {
+      background-color: var(--color-secondary, #ecc332) !important;
+      color: #3d2a45 !important;
+      border-radius: 2rem !important;
+      padding: var(--spacing-2) var(--spacing-6) !important;
+      font-weight: 700 !important;
+      transition: transform var(--duration-fast) var(--ease-out),
+                  box-shadow var(--duration-fast) var(--ease-out),
+                  background-color var(--duration-fast) var(--ease-out) !important;
+      
+      @include responsive('md') {
+        padding: var(--spacing-3) var(--spacing-8) !important;
+      }
+      
+      &:hover {
+        background-color: #f5d04a !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// SERIES SECTION - RESPONSIVE CON CONTAINER QUERIES
+// ==========================================================================
+
+.series-section {
+  padding: var(--spacing-6) var(--spacing-4);
+  margin: 0 auto;
+  max-width: 1400px;
+  
+  // Container Query support
+  container-type: inline-size;
+  container-name: series-section;
+  
+  // Mobile pequeño (320px)
+  @media (max-width: 374px) {
+    padding: var(--spacing-4) var(--spacing-3);
+  }
+  
+  // Mobile estándar (375px)
+  @media (min-width: 375px) and (max-width: 767px) {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+  
+  // Tablet (768px)
+  @include responsive('md') {
+    padding: var(--spacing-8) var(--spacing-6);
+  }
+  
+  // Desktop (1024px+)
+  @include responsive('lg') {
+    padding: var(--spacing-8) var(--spacing-8);
+  }
+  
+  // Desktop grande (1280px+)
+  @include responsive('xl') {
+    padding: var(--spacing-10) var(--spacing-12);
+  }
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    
+    @include responsive('md') {
+      margin-bottom: var(--spacing-6);
+    }
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: var(--color-text-light, #f5f0e8);
+    margin: 0;
+  }
+  
+  &__see-more {
+    background: transparent;
+    border: none;
+    color: var(--color-text-light, #f5f0e8);
+    font-family: var(--font-primary);
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity var(--duration-fast) var(--ease-in-out),
+                color var(--duration-fast) var(--ease-in-out);
+    
+    &:hover {
+      opacity: 1;
+      color: var(--color-secondary, #ecc332);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--color-secondary);
+      outline-offset: 2px;
+    }
+  }
+  
+  // Grid responsive con breakpoints específicos
+  &__grid {
+    display: grid;
+    gap: var(--spacing-3);
+    justify-items: center;
+    
+    // Mobile pequeño (320px) - 2 columnas
+    grid-template-columns: repeat(2, 1fr);
+    
+    // Mobile estándar (375px) - 2 columnas con más espacio
+    @media (min-width: 375px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-4);
+    }
+    
+    // Tablet pequeño (576px) - 3 columnas
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-4);
+    }
+    
+    // Tablet (768px) - 4 columnas
+    @include responsive('md') {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-5);
+    }
+    
+    // Desktop pequeño (1024px) - 5 columnas
+    @include responsive('lg') {
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--spacing-6);
+    }
+    
+    // Desktop estándar (1280px) - 6 columnas
+    @include responsive('xl') {
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--spacing-6);
+    }
+  }
+}
+
+// ==========================================================================
+// CONTAINER QUERIES PARA CARDS (Fase 4 - Tarea 2)
+// ==========================================================================
+
+@container series-section (max-width: 400px) {
+  .series-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2);
+  }
+}
+
+@container series-section (min-width: 401px) and (max-width: 600px) {
+  .series-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container series-section (min-width: 601px) and (max-width: 900px) {
+  .series-section__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container series-section (min-width: 901px) {
+  .series-section__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+// ==========================================================================
+// AJUSTES DE CARDS RESPONSIVE
+// ==========================================================================
+
+.main-page {
+  :host ::ng-deep .card--media,
+  ::ng-deep .card--media {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    
+    .card__image-wrapper {
+      height: 100%;
+    }
+    
+    .card__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// ==========================================================================
+// ANIMACIONES CSS OPTIMIZADAS (Fase 5 - Tarea 4)
+// ==========================================================================
+
+// Animación de fade-in para cards
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animación de pulse para loading
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Aplicar animación a cards
+.series-section__grid {
+  > * {
+    animation: fadeInUp var(--duration-base) var(--ease-out) forwards;
+    opacity: 0;
+    
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 50}ms;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// SOPORTE DARK MODE (Fase 6)
+// ==========================================================================
+
+:host-context(.dark-mode) {
+  .main-page {
+    background-color: var(--color-bg-primary);
+  }
+  
+  .hero__background {
+    background: 
+      linear-gradient(to bottom, rgba(30, 20, 35, 0.8) 0%, rgba(30, 20, 35, 0.95) 100%),
+      url('/assets/Twin_Peaks_TV_Series-892912807-large.jpg') center center / cover no-repeat;
+  }
+  
+  .series-section__title,
+  .series-section__see-more {
+    color: var(--color-text-primary);
+  }
+}
+
+// ==========================================================================
+// ESTADOS DE CARGA Y ERROR
+// ==========================================================================
+
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12);
+  text-align: center;
+  color: var(--color-text-light, #f5f0e8);
+  
+  &__text {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-lg);
+    margin-top: var(--spacing-4);
+  }
+}
+
+// Loading spinner optimizado (Fase 5)
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-secondary, #ecc332);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ==========================================================================
+// TRANSICIONES SUAVES ENTRE TEMAS (Fase 6 - Tarea 4)
+// ==========================================================================
+
+.main-page,
+.hero,
+.hero__background,
+.series-section,
+.series-section__title,
+.series-section__see-more {
+  transition: background-color var(--duration-base) var(--ease-in-out),
+              color var(--duration-base) var(--ease-in-out);
+}

@@ -1,0 +1,44 @@
+<!-- Página List Content -->
+<div class="list-content-page">
+  <!-- Banner -->
+  <div class="list-content-page__banner">
+    <img 
+      [src]="bannerImage" 
+      [alt]="listName"
+      class="list-content-page__banner-image"
+    >
+    <div class="list-content-page__banner-overlay">
+      <h1 class="list-content-page__banner-title">{{ listName }}</h1>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="list-content-page__content">
+    <!-- Columna izquierda: Series de la lista -->
+    <div class="list-content-page__series">
+      <div class="list-content-page__series-grid">
+        @for (item of series; track item.title) {
+          <app-card
+            [imageSrc]="item.imageSrc"
+            [imageAlt]="item.title"
+            [hoverTitle]="item.title"
+            variant="media"
+            class="list-content-page__series-card"
+          />
+        }
+      </div>
+    </div>
+
+    <!-- Columna derecha: CardStatReview -->
+    <div class="list-content-page__sidebar">
+      <app-card-stat-review
+        [statsBars]="statsBars"
+        [rating]="listRating"
+        [isWatchLater]="isSaved"
+        buttonText="Save list"
+        (ratingChange)="onRatingChange($event)"
+        (watchLaterToggle)="onSaveListToggle($event)"
+      />
+    </div>
+  </div>
+</div>

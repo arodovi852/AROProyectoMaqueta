@@ -1,0 +1,50 @@
+<!-- Página Series Info -->
+<div class="series-info">
+  <!-- Primera fila: Card, Descripción, CardStatReview -->
+  <section class="series-info__header">
+    <!-- Card de la serie (izquierda) -->
+    <div class="series-info__card">
+      <app-card 
+        [title]="series().title" 
+        [imageSrc]="series().imageSrc"
+        variant="media"
+        size="lg"
+      />
+    </div>
+
+    <!-- Descripción (centro) -->
+    <div class="series-info__description">
+      <h1 class="series-info__title">{{ series().title }}</h1>
+      <p class="series-info__text">{{ series().description }}</p>
+    </div>
+
+    <!-- CardStatReview (derecha) -->
+    <div class="series-info__stat-review">
+      <app-card-stat-review 
+        [statsBars]="statsBars"
+        [rating]="seriesRating"
+        [isWatchLater]="isWatchLater"
+        (ratingChange)="onRatingChange($event)"
+        (watchLaterToggle)="onWatchLaterToggle($event)"
+      />
+    </div>
+  </section>
+
+  <!-- Sección de Reviews -->
+  <section class="series-info__reviews">
+    <div class="series-info__reviews-header">
+      <h2 class="series-info__reviews-title">Reviews</h2>
+      <button class="series-info__see-more">See more</button>
+    </div>
+    
+    <div class="series-info__reviews-list">
+      @for (review of reviews; track review.username) {
+        <app-card-review 
+          [username]="review.username"
+          [rating]="review.rating"
+          [reviewText]="review.reviewText"
+        />
+      }
+    </div>
+  </section>
+</div>

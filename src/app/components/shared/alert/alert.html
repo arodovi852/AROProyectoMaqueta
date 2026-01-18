@@ -1,0 +1,51 @@
+<div [class]="alertClasses" role="alert">
+  <!-- Icono -->
+  <div class="alert__icon">
+    @switch (type) {
+      @case ('success') {
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      }
+      @case ('warning') {
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M10 6v4m0 4h.01M8.228 2.667l-7 12A2 2 0 003 18h14a2 2 0 001.772-2.933l-7-12a2 2 0 00-3.544 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      }
+      @case ('error') {
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 8l4 4m0-4l-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      }
+      @default {
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-8V6m0 8h.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      }
+    }
+  </div>
+
+  <!-- Contenido -->
+  <div class="alert__content">
+    @if (title) {
+      <h4 class="alert__title">{{ title }}</h4>
+    }
+    <div class="alert__message">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Botón de cierre -->
+  @if (dismissible) {
+    <button 
+      type="button" 
+      class="alert__close"
+      aria-label="Cerrar alerta"
+      (click)="onClose()"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">
+        <path d="M12 4L4 12M4 4l8 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  }
+</div>

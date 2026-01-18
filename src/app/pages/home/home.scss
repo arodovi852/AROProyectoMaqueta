@@ -1,0 +1,331 @@
+// ==========================================================================
+// PÁGINA: HOME - GUÍA DE ESTILOS Y SHOWCASE DE COMPONENTES
+// ==========================================================================
+// Página de demostración de todos los componentes del sistema
+// Fase 4: Responsive Design
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// BOTÓN DE RETORNO A MAIN
+// ==========================================================================
+
+.home-main-access {
+  max-width: 75rem;
+  margin: 0 auto var(--spacing-6);
+  padding: var(--spacing-4);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(162, 100, 191, 0.3);
+  transition: box-shadow var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+
+  &__link {
+    display: block;
+    text-decoration: none;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba(162, 100, 191, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.component-showcase {
+  min-height: 100vh;
+  padding: var(--spacing-8) var(--spacing-4);
+
+  &__container {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 40rem;
+    margin: 0 auto;
+    font-family: var(--font-secondary);
+  }
+}
+
+// ==========================================================================
+// SECCIONES DE COMPONENTES
+// ==========================================================================
+
+.component-section {
+  margin-bottom: var(--spacing-12);
+  padding: var(--spacing-6);
+  background: var(--color-box-level-1);
+  border-radius: 1rem;
+  border: 0.125rem solid var(--color-primary);
+
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-3);
+    border-bottom: 0.125rem solid var(--color-primary-light);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-secondary);
+  }
+
+  // Fase 1 - Estilos especiales (tonos morados)
+  &.phase-1 {
+    background: var(--color-box-level-1);
+    border: 0.125rem solid var(--color-primary);
+    box-shadow: 0 4px 12px rgba(162, 100, 191, 0.2);
+
+    .component-section__title {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary-light);
+    }
+  }
+
+  // Fase 2 - Estilos especiales (tonos amarillos)
+  &.phase-2 {
+    background: var(--color-box-level-1);
+    border: 0.125rem solid var(--color-secondary);
+    box-shadow: 0 4px 12px rgba(191, 191, 100, 0.2);
+
+    .component-section__title {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary-light);
+    }
+  }
+
+  // Fase 3 - Estilos especiales (tonos morados más intensos)
+  &.phase-3 {
+    background: var(--color-box-level-1);
+    border: 0.125rem solid var(--color-primary-dark);
+    box-shadow: 0 4px 12px rgba(162, 100, 191, 0.25);
+
+    .component-section__title {
+      color: var(--color-primary-dark);
+      border-bottom-color: var(--color-primary);
+    }
+  }
+}
+
+// ==========================================================================
+// GRUPOS DE COMPONENTES
+// ==========================================================================
+
+.component-group {
+  margin-bottom: var(--spacing-8);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-secondary);
+  }
+}
+
+// ==========================================================================
+// ÁREA DE DEMOSTRACIÓN
+// ==========================================================================
+
+.component-demo {
+  padding: var(--spacing-6);
+  background: var(--color-box-level-2);
+  border-radius: 1rem;
+  border: 0.0625rem solid var(--color-primary);
+
+  // Modificador: horizontal
+  &--horizontal {
+    display: flex;
+    gap: var(--spacing-4);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  // Modificador: column
+  &--column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  // Modificador: siblings (para componentes hermanos lado a lado)
+  &--siblings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.demo-row {
+  margin-bottom: var(--spacing-4);
+  max-width: 28rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ==========================================================================
+// EJEMPLOS DE FORMULARIOS COMPLETOS
+// ==========================================================================
+
+.forms-demo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-6);
+  justify-items: center;
+  align-items: start;
+}
+
+// ==========================================================================
+// NAVEGACIÓN INTERNA
+// ==========================================================================
+
+.home-nav {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  padding: var(--spacing-6) var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+  background: var(--color-box-level-1);
+  border-radius: 1rem;
+  border: 0.125rem solid var(--color-primary);
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ==========================================================================
+// SECCIÓN DE GUÍA DE ESTILOS
+// ==========================================================================
+
+.style-guide-section {
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-8);
+  border-top: 0.125rem solid var(--color-primary-light);
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+    padding: var(--spacing-8) var(--spacing-4);
+    background: var(--color-box-level-1);
+    border-radius: 1rem;
+    border: 0.125rem solid var(--color-primary);
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-primary);
+  }
+
+  &__description {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    max-width: 48rem;
+    margin: 0 auto;
+    font-family: var(--font-secondary);
+  }
+}
+
+// Estilos específicos para demos de la guía
+.component-demo {
+  // Modificador: fila (para botones y elementos horizontales)
+  &--row {
+    display: flex;
+    gap: var(--spacing-4);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  // Modificador: formulario
+  &--form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+    max-width: 32rem;
+  }
+
+  // Ejemplo de hover para botones
+  .button-hover-example {
+    app-button {
+      // Se puede agregar lógica CSS específica si es necesario
+    }
+  }
+}
+
+// ==========================================================================
+// RESPONSIVE
+// ==========================================================================
+
+@media (max-width: 768px) {
+  .component-showcase {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+
+  .component-section {
+    padding: var(--spacing-4);
+  }
+
+  .forms-demo {
+    grid-template-columns: 1fr;
+  }
+
+  .home-nav {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-3);
+  }
+
+  .style-guide-section__header {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+
+  .component-demo--row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

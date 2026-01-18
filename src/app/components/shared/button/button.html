@@ -1,0 +1,14 @@
+<button 
+  [type]="type"
+  [class]="buttonClasses"
+  [disabled]="disabled"
+  (click)="onClick.emit($event)"
+>
+  <span class="btn__content">
+    @if (text) {
+      {{ text }}
+    } @else {
+      <ng-content></ng-content>
+    }
+  </span>
+</button>

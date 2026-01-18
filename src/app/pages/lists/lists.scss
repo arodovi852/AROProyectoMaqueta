@@ -1,0 +1,114 @@
+// ==========================================================================
+// PÁGINA: LISTS
+// ==========================================================================
+// Página de listas de series
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.lists-page {
+  min-height: 100vh;
+  background-color: #5a3d5c;
+  padding: var(--spacing-6) var(--spacing-16);
+  
+  @media (max-width: 1200px) {
+    padding: var(--spacing-6) var(--spacing-10);
+  }
+  
+  @media (max-width: 768px) {
+    padding: var(--spacing-4) var(--spacing-6);
+  }
+}
+
+// ==========================================================================
+// CREATE LIST SECTION
+// ==========================================================================
+
+.lists-page__create-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-10);
+  
+  a {
+    text-decoration: none;
+  }
+}
+
+// ==========================================================================
+// LISTS SECTION
+// ==========================================================================
+
+.lists-section {
+  margin-bottom: var(--spacing-16);
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: #f5f0e8;
+    margin: 0;
+    font-style: italic;
+  }
+  
+  &__see-more {
+    background: transparent;
+    border: none;
+    color: #f5f0e8;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.8;
+    @include transition(opacity, color);
+    
+    &:hover {
+      opacity: 1;
+      color: #ecc332;
+    }
+  }
+  
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    &--large {
+      gap: 6rem;
+      padding: var(--spacing-8) var(--spacing-4);
+      
+      @media (max-width: 1200px) {
+        justify-content: space-evenly;
+        gap: 5rem;
+      }
+      
+      @media (max-width: 768px) {
+        justify-content: center;
+        gap: 4rem;
+      }
+    }
+    
+    &--small {
+      gap: 4rem;
+      padding: var(--spacing-6) var(--spacing-4);
+      
+      @media (max-width: 1200px) {
+        justify-content: space-evenly;
+      }
+      
+      @media (max-width: 768px) {
+        justify-content: center;
+        gap: 3rem;
+      }
+    }
+  }
+}

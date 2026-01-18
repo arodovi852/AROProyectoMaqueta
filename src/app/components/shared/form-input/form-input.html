@@ -1,0 +1,47 @@
+<div class="form-input" [class.form-input--error]="showError" [class.form-input--disabled]="disabled">
+  <!-- Label del input -->
+  <label 
+    *ngIf="label" 
+    [for]="inputId" 
+    class="form-input__label"
+  >
+    {{ label }}
+    <span *ngIf="required" class="form-input__required" aria-label="campo requerido">*</span>
+  </label>
+
+  <!-- Input field -->
+  <input
+    [id]="inputId"
+    [type]="type"
+    [name]="name"
+    [placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+    [attr.aria-invalid]="showError ? 'true' : null"
+    [attr.aria-describedby]="ariaDescribedBy"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    class="form-input__field"
+  />
+
+  <!-- Texto de ayuda -->
+  <p 
+    *ngIf="helpText && !showError" 
+    [id]="helpTextId" 
+    class="form-input__help"
+  >
+    {{ helpText }}
+  </p>
+
+  <!-- Mensaje de error -->
+  <p 
+    *ngIf="showError && errorMessage" 
+    [id]="errorId" 
+    class="form-input__error" 
+    role="alert"
+  >
+    {{ errorMessage }}
+  </p>
+</div>

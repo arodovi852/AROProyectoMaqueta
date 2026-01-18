@@ -1,0 +1,29 @@
+<!-- Página de resultados de búsqueda -->
+<div class="search-result-page">
+  <div class="search-result-page__container">
+    <!-- Título -->
+    <h1 class="search-result-page__title">Results for your search:</h1>
+
+    <!-- Lista de resultados -->
+    <div class="search-result-page__list">
+      @for (result of searchResults(); track result.id) {
+        <article class="search-result-card">
+          <!-- Imagen de la serie -->
+          <div class="search-result-card__image-wrapper">
+            <img 
+              [src]="result.image" 
+              [alt]="result.title"
+              class="search-result-card__image"
+            />
+          </div>
+
+          <!-- Contenido: Título y descripción -->
+          <div class="search-result-card__content">
+            <h2 class="search-result-card__title">{{ result.title }}</h2>
+            <p class="search-result-card__description">{{ result.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</div>

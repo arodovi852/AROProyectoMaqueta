@@ -1,0 +1,227 @@
+// ==========================================================================
+// PÁGINA: PROFILE
+// ==========================================================================
+// Página de perfil del usuario
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.profile-page {
+  min-height: 100vh;
+  background-color: #5a3d5c;
+  padding: var(--spacing-6) var(--spacing-6);
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-8) var(--spacing-10);
+  }
+  
+  @media (min-width: 1024px) {
+    padding: var(--spacing-8) var(--spacing-16);
+  }
+}
+
+// ==========================================================================
+// PRIMERA FILA: HEADER
+// ==========================================================================
+
+.profile-page__header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-4);
+  
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--spacing-8);
+  }
+}
+
+.profile-page__avatar {
+  flex-shrink: 0;
+}
+
+.profile-page__stats-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-8);
+  background-color: var(--color-primary-dark);
+  border-radius: 1rem;
+  border: 3px solid var(--color-primary-light);
+  min-width: 280px;
+  
+  @media (min-width: 768px) {
+    min-width: 320px;
+    padding: var(--spacing-8) var(--spacing-10);
+  }
+}
+
+.profile-page__stats-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 120px;
+  
+  @media (min-width: 768px) {
+    height: 140px;
+    gap: 16px;
+  }
+}
+
+.profile-page__stats-label {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-100);
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.profile-page__stats-card {
+  flex-shrink: 0;
+}
+
+// ==========================================================================
+// SECCIONES
+// ==========================================================================
+
+.profile-section {
+  margin-bottom: var(--spacing-6);
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: #f5f0e8;
+    margin: 0;
+  }
+  
+  &__see-more {
+    background: transparent;
+    border: none;
+    color: #f5f0e8;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    opacity: 0.8;
+    @include transition(opacity, color);
+    
+    &:hover {
+      opacity: 1;
+      color: #ecc332;
+    }
+  }
+  
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-4);
+    
+    @media (min-width: 768px) {
+      justify-content: space-between;
+      gap: var(--spacing-5);
+    }
+  }
+  
+  &__lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-8) var(--spacing-6);
+    padding: 0 var(--spacing-4);
+    
+    @media (min-width: 768px) {
+      justify-content: space-between;
+      gap: var(--spacing-10) var(--spacing-8);
+      padding: 0 var(--spacing-6);
+    }
+  }
+  
+  &__reviews {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// AJUSTES DE CARDS PARA PROFILE (más pequeñas)
+// ==========================================================================
+
+.profile-section__cards {
+  app-card {
+    flex: 0 0 auto;
+    
+    // Sobreescribir estilos de card para hacerlas más grandes
+    ::ng-deep .card {
+      width: 100px;
+      border-radius: 0.5rem;
+      
+      @media (min-width: 576px) {
+        width: 120px;
+      }
+      
+      @media (min-width: 768px) {
+        width: 140px;
+      }
+      
+      @media (min-width: 1200px) {
+        width: 160px;
+      }
+    }
+    
+    ::ng-deep .card__image-wrapper {
+      height: 150px;
+      
+      @media (min-width: 576px) {
+        height: 180px;
+      }
+      
+      @media (min-width: 768px) {
+        height: 210px;
+      }
+      
+      @media (min-width: 1200px) {
+        height: 240px;
+      }
+    }
+    
+    ::ng-deep .card__image {
+      border-radius: 0.5rem;
+    }
+    
+    ::ng-deep .card__body {
+      padding: var(--spacing-1);
+    }
+    
+    ::ng-deep .card__title {
+      font-size: 0.7rem;
+      line-height: 1.2;
+      text-align: center;
+      
+      @media (min-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
