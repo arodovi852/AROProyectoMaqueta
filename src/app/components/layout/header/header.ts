@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, Renderer2, HostListener, signal, OnInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer2, HostListener, signal, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Button } from '../../../components/shared/button/button';
 import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggle';
 import { AuthModal } from '../../shared/auth-modal/auth-modal';
@@ -8,7 +9,7 @@ import { CardProfile } from '../../shared/card-profile/card-profile';
 import { AuthService, AuthUser } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
 import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 
 /**
  * Componente Header
@@ -19,9 +20,10 @@ import { Subscription } from 'rxjs';
  */
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, Button, ThemeToggle, AuthModal, CardProfile],
+  imports: [CommonModule, RouterLink, Button, ThemeToggle, AuthModal, CardProfile, ReactiveFormsModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header implements OnInit, OnDestroy {
   /**
@@ -50,11 +52,14 @@ export class Header implements OnInit, OnDestroy {
   currentUser = signal<AuthUser | null>(null);
 
   /**
-   * Texto de búsqueda
+   * Texto de búsqueda con FormControl para debounce
+   * FASE 6: Búsqueda en tiempo real con debounce
    */
+  searchControl = new FormControl('');
   searchQuery = '';
 
   private subscription: Subscription | null = null;
+  private searchSubscription: Subscription | null = null;
 
   constructor(
     private renderer: Renderer2,
@@ -74,11 +79,25 @@ export class Header implements OnInit, OnDestroy {
     this.breadcrumbService.breadcrumbs$.subscribe(
       crumbs => this.breadcrumbs.set(crumbs)
     );
+
+    // FASE 6: Búsqueda con debounce de 300ms
+    this.searchSubscription = this.searchControl.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.searchQuery = value || '';
+      if (this.searchQuery.length >= 2) {
+        this.performSearch();
+      }
+    });
   }
 
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
     }
   }
 
@@ -182,7 +201,7 @@ export class Header implements OnInit, OnDestroy {
   }
 
   /**
-   * Actualizar query de búsqueda
+   * Actualizar query de búsqueda (mantener para compatibilidad)
    */
   onSearchInput(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -190,7 +209,19 @@ export class Header implements OnInit, OnDestroy {
   }
 
   /**
-   * Ejecutar búsqueda y navegar a resultados
+   * Ejecutar búsqueda automática con debounce
+   * FASE 6: Búsqueda en tiempo real
+   */
+  private performSearch(): void {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/searchresult'], { 
+        queryParams: { q: this.searchQuery } 
+      });
+    }
+  }
+
+  /**
+   * Ejecutar búsqueda y navegar a resultados (submit manual)
    */
   onSearch(event?: Event): void {
     if (event) {

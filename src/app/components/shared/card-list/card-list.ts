@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
@@ -20,6 +20,7 @@ interface CardListImage {
   imports: [CommonModule],
   templateUrl: './card-list.html',
   styleUrl: './card-list.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardList {
   /**

@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Star } from '../star/star';
 import { StatBar } from '../stat-bar/stat-bar';
@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
   imports: [Star, StatBar, WatchLater, CommonModule],
   templateUrl: './card.html',
   styleUrl: './card.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Card {
   private router = inject(Router);

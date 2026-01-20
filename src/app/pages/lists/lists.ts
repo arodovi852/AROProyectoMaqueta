@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Button } from '../../components/shared/button/button';
@@ -22,6 +22,7 @@ interface ListData {
   imports: [CommonModule, RouterLink, Button, CardList],
   templateUrl: './lists.html',
   styleUrl: './lists.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Lists {
   /**

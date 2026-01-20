@@ -80,15 +80,14 @@
         />
       </a>
 
-      <!-- Campo de búsqueda -->
+      <!-- Campo de búsqueda con debounce -->
       <form class="header__search" (submit)="onSearch($event)">
         <input 
           type="search" 
           class="header__search-input" 
           placeholder="Search" 
           aria-label="Buscar"
-          [value]="searchQuery"
-          (input)="onSearchInput($event)"
+          [formControl]="searchControl"
           (keydown.enter)="onSearch($event)"
         />
         <button 
