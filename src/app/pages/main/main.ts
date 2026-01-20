@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Card } from '../../components/shared/card/card';
@@ -32,6 +32,7 @@ interface SeriesCard {
   imports: [CommonModule, Card, Button],
   templateUrl: './main.html',
   styleUrl: './main.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Main implements OnInit {
   private router = inject(Router);

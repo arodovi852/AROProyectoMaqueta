@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CardProfile } from '../../components/shared/card-profile/card-profile';
@@ -21,6 +21,7 @@ import { ToastService } from '../../services/toast.service';
   imports: [CommonModule, CardProfile, StatBar, CardData, Card, CardList, CardReview],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Profile implements OnInit {
   private authService = inject(AuthService);
