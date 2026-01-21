@@ -66,19 +66,24 @@
     </div>
   </section>
 
-  <!-- Fourth row: Personal lists -->
+  <!-- Fourth row: Saved lists -->
   <section class="profile-section">
     <div class="profile-section__header">
-      <h2 class="profile-section__title">Personal lists</h2>
+      <h2 class="profile-section__title">Saved lists</h2>
       <button class="profile-section__see-more">See more</button>
     </div>
     <div class="profile-section__lists">
-      @for (list of personalLists; track list.title) {
-        <app-card-list 
-          [title]="list.title" 
-          [images]="list.images"
-          size="small"
-        />
+      @if (savedLists().length === 0) {
+        <p class="profile-section__empty">No lists saved yet. Save lists from list content pages!</p>
+      } @else {
+        @for (list of savedLists(); track list.id) {
+          <app-card-list 
+            [listId]="list.id"
+            [title]="list.title" 
+            [images]="list.images"
+            size="small"
+          />
+        }
       }
     </div>
   </section>

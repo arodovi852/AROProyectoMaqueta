@@ -1,0 +1,134 @@
+// ==========================================================================
+// PAGE: SEE MORE
+// ==========================================================================
+// Page displaying a large grid of series cards
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// MAIN CONTAINER
+// ==========================================================================
+
+.see-more-page {
+  min-height: 100vh;
+  background-color: var(--color-bg-main, hsl(294, 20%, 30%));
+  padding: var(--spacing-4);
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-6) var(--spacing-8);
+  }
+  
+  @media (min-width: 1024px) {
+    padding: var(--spacing-8) var(--spacing-12);
+  }
+}
+
+// ==========================================================================
+// HEADER
+// ==========================================================================
+
+.see-more-page__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid hsla(36, 45%, 80%, 0.2);
+}
+
+.see-more-page__back {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: transparent;
+  border: none;
+  color: hsl(36, 45%, 93%);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  
+  &:hover {
+    background-color: hsla(36, 45%, 93%, 0.1);
+    color: hsl(46, 83%, 56%);
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.see-more-page__title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  color: hsl(46, 83%, 56%);
+  margin: 0;
+}
+
+// ==========================================================================
+// CONTENT
+// ==========================================================================
+
+.see-more-page__content {
+  width: 100%;
+}
+
+.see-more-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-4);
+  
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--spacing-5);
+  }
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-6);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.see-more-page__card {
+  // Card sizing
+  ::ng-deep .card {
+    width: 100%;
+    aspect-ratio: 2/3;
+    
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// ==========================================================================
+// EMPTY STATE
+// ==========================================================================
+
+.see-more-page__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  
+  p {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: hsl(36, 45%, 80%);
+    font-style: italic;
+  }
+}

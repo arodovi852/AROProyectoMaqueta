@@ -18,8 +18,17 @@ export interface TrackedSeries {
   addedAt: Date;
 }
 
+export interface SavedList {
+  id: string;
+  title: string;
+  bannerImage: string;
+  seriesCount: number;
+  addedAt: Date;
+}
+
 const LOGGED_SERIES_KEY = 'broadcasttd_logged_series';
 const RECENTLY_WATCHED_KEY = 'broadcasttd_recently_watched';
+const SAVED_LISTS_KEY = 'broadcasttd_saved_lists';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -33,11 +42,13 @@ export class UserService {
   // Signals for reactive updates
   loggedSeries = signal<TrackedSeries[]>(this.loadLoggedSeries());
   recentlyWatched = signal<TrackedSeries[]>(this.loadRecentlyWatched());
+  savedLists = signal<SavedList[]>(this.loadSavedLists());
 
   constructor() {
     // Initialize from localStorage
     this.loggedSeries.set(this.loadLoggedSeries());
     this.recentlyWatched.set(this.loadRecentlyWatched());
+    this.savedLists.set(this.loadSavedLists());
   }
 
   // ============================================
@@ -143,6 +154,56 @@ export class UserService {
   getSeriesRating(seriesId: number): number | undefined {
     const series = this.loadRecentlyWatched().find(s => s.id === seriesId);
     return series?.rating;
+  }
+
+  // ============================================
+  // SAVED LISTS
+  // ============================================
+
+  private loadSavedLists(): SavedList[] {
+    try {
+      const data = localStorage.getItem(SAVED_LISTS_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private saveSavedLists(lists: SavedList[]): void {
+    localStorage.setItem(SAVED_LISTS_KEY, JSON.stringify(lists));
+    this.savedLists.set(lists);
+  }
+
+  saveList(list: SavedList): boolean {
+    const current = this.loadSavedLists();
+    const exists = current.some(l => l.id === list.id);
+    
+    if (!exists) {
+      const newList = { ...list, addedAt: new Date() };
+      const updated = [newList, ...current];
+      this.saveSavedLists(updated);
+      return true;
+    }
+    return false;
+  }
+
+  removeList(listId: string): boolean {
+    const current = this.loadSavedLists();
+    const filtered = current.filter(l => l.id !== listId);
+    
+    if (filtered.length !== current.length) {
+      this.saveSavedLists(filtered);
+      return true;
+    }
+    return false;
+  }
+
+  isListSaved(listId: string): boolean {
+    return this.loadSavedLists().some(l => l.id === listId);
+  }
+
+  getSavedLists(): SavedList[] {
+    return this.loadSavedLists();
   }
 
   // ============================================

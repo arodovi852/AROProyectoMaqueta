@@ -302,9 +302,8 @@ export class Main implements OnInit, OnDestroy {
    * See more click handler (PHASE 4 - Task 2)
    */
   onSeeMore(section: string): void {
-    this.router.navigate(['/lists'], {
-      queryParams: { section },
-      fragment: section
+    this.router.navigate(['/seemore'], {
+      queryParams: { section }
     });
   }
 }

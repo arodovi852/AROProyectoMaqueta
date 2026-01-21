@@ -1,5 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 /**
  * Interface para las imágenes de la lista
@@ -14,6 +15,7 @@ interface CardListImage {
  * 
  * Displays a list of series with multiple stacked images in a fan layout.
  * On hover, the images expand showing all the cards.
+ * Clicking navigates to /listcontent/:listId
  */
 @Component({
   selector: 'app-card-list',
@@ -23,10 +25,17 @@ interface CardListImage {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardList {
+  private router = inject(Router);
+
   /**
    * Título de la lista (ej: "Horror series")
    */
   @Input() title = '';
+
+  /**
+   * Unique identifier for the list
+   */
+  @Input() listId = '';
 
   /**
    * Array de imágenes para mostrar en el stack
@@ -60,4 +69,14 @@ export class CardList {
     }
     return classes.join(' ');
   }
+
+  /**
+   * Navigate to list content page
+   */
+  onListClick(): void {
+    if (this.listId) {
+      this.router.navigate(['/listcontent', this.listId]);
+    }
+  }
+}
 }

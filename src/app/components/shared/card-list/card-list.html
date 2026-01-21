@@ -1,4 +1,13 @@
-<div [class]="listClasses">
+<div 
+  [class]="listClasses" 
+  (click)="onListClick()" 
+  [style.cursor]="listId ? 'pointer' : 'default'"
+  role="button"
+  [tabindex]="listId ? 0 : -1"
+  (keydown.enter)="onListClick()"
+  (keydown.space)="onListClick()"
+  [attr.aria-label]="'View list: ' + title"
+>
   <div class="card-list__stack">
     @for (image of visibleImages; track $index) {
       <div 

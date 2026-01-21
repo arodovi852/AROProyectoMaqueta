@@ -20,8 +20,9 @@
       </button>
     </div>
     <div class="lists-section__grid lists-section__grid--large">
-      @for (list of officialLists; track list.title) {
+      @for (list of officialLists; track list.id) {
         <app-card-list
+          [listId]="list.id"
           [title]="list.title"
           [images]="list.images"
         ></app-card-list>
@@ -38,8 +39,9 @@
       </button>
     </div>
     <div class="lists-section__grid lists-section__grid--small">
-      @for (list of popularLists; track list.title) {
+      @for (list of popularLists; track list.id) {
         <app-card-list
+          [listId]="list.id"
           [title]="list.title"
           [images]="list.images"
           size="small"

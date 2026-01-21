@@ -9,7 +9,7 @@ import { CardList } from '../../components/shared/card-list/card-list';
 import { CardReview } from '../../components/shared/card-review/card-review';
 import { AuthService, AuthUser } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
-import { UserService, TrackedSeries } from '../../services/user.service';
+import { UserService, TrackedSeries, SavedList } from '../../services/user.service';
 
 /**
  * Profile Page (PHASE 4 - Task 4)
@@ -20,6 +20,7 @@ import { UserService, TrackedSeries } from '../../services/user.service';
  * Features:
  * - Logged Series: Shows series added via "Watch Later"
  * - Recently Watched: Shows last 6 rated series (most recent first)
+ * - Saved Lists: Shows lists saved from /listcontent
  */
 @Component({
   selector: 'app-profile',
@@ -50,45 +51,8 @@ export class Profile implements OnInit {
   // Recently watched series (from UserService - Rated series)
   recentlyWatched = signal<{ title: string; imageSrc: string; hoverTitle: string; rating?: number }[]>([]);
 
-  // Personal lists
-  personalLists = [
-    {
-      title: 'My Favorites',
-      images: [
-        { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
-        { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
-        { src: '/assets/Image_For_Card_3.jpg', alt: 'The Haunting' },
-        { src: '/assets/Image_For_Card_4.jpg', alt: 'Walking Dead' }
-      ]
-    },
-    {
-      title: 'Watch Later',
-      images: [
-        { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
-        { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
-        { src: '/assets/Image_For_Card_3.jpg', alt: 'The Haunting' },
-        { src: '/assets/Image_For_Card_4.jpg', alt: 'Walking Dead' }
-      ]
-    },
-    {
-      title: 'Horror',
-      images: [
-        { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
-        { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
-        { src: '/assets/Image_For_Card_3.jpg', alt: 'The Haunting' },
-        { src: '/assets/Image_For_Card_4.jpg', alt: 'Walking Dead' }
-      ]
-    },
-    {
-      title: 'Sci-Fi',
-      images: [
-        { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
-        { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
-        { src: '/assets/Image_For_Card_3.jpg', alt: 'The Haunting' },
-        { src: '/assets/Image_For_Card_4.jpg', alt: 'Walking Dead' }
-      ]
-    }
-  ];
+  // Saved lists (from UserService)
+  savedLists = signal<{ id: string; title: string; images: { src: string; alt: string }[] }[]>([]);
 
   // Reviews
   reviews = [
@@ -117,6 +81,7 @@ export class Profile implements OnInit {
     effect(() => {
       this.updateLoggedSeries();
       this.updateRecentlyWatched();
+      this.updateSavedLists();
       this.updateStatistics();
     });
   }
@@ -133,6 +98,7 @@ export class Profile implements OnInit {
     // Load series data
     this.updateLoggedSeries();
     this.updateRecentlyWatched();
+    this.updateSavedLists();
     this.updateStatistics();
   }
 
@@ -167,8 +133,9 @@ export class Profile implements OnInit {
   private updateStatistics(): void {
     const logged = this.userService.getLoggedSeries();
     const watched = this.userService.getRecentlyWatched();
+    const lists = this.userService.getSavedLists();
     
-    this.saved.set(logged.length);
+    this.saved.set(logged.length + lists.length);
     this.watched.set(watched.length);
     
     // Calculate average rating
@@ -179,6 +146,24 @@ export class Profile implements OnInit {
     } else {
       this.average.set(0);
     }
+  }
+
+  /**
+   * Update saved lists from UserService
+   */
+  private updateSavedLists(): void {
+    const lists = this.userService.getSavedLists();
+    // Convert SavedList to format expected by CardList component
+    this.savedLists.set(lists.map(l => ({
+      id: l.id,
+      title: l.title,
+      images: [
+        { src: l.bannerImage, alt: l.title },
+        { src: l.bannerImage, alt: l.title },
+        { src: l.bannerImage, alt: l.title },
+        { src: l.bannerImage, alt: l.title }
+      ]
+    })));
   }
 
   /**

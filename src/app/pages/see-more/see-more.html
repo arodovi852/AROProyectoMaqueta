@@ -1,0 +1,35 @@
+<!-- See More Page -->
+<div class="see-more-page">
+  <!-- Header -->
+  <header class="see-more-page__header">
+    <button class="see-more-page__back" (click)="goBack()" aria-label="Go back">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Back
+    </button>
+    <h1 class="see-more-page__title">{{ pageTitle() }}</h1>
+  </header>
+
+  <!-- Series Grid -->
+  <section class="see-more-page__content">
+    <div class="see-more-page__grid">
+      @for (item of series(); track item.id) {
+        <app-card
+          [imageSrc]="item.imageSrc"
+          [imageAlt]="item.title"
+          [hoverTitle]="item.title"
+          [seriesId]="item.id"
+          variant="media"
+          class="see-more-page__card"
+        />
+      }
+    </div>
+
+    @if (series().length === 0) {
+      <div class="see-more-page__empty">
+        <p>No series found for this section.</p>
+      </div>
+    }
+  </section>
+</div>

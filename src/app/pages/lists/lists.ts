@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Button } from '../../components/shared/button/button';
 import { CardList } from '../../components/shared/card-list/card-list';
 
@@ -8,6 +8,7 @@ import { CardList } from '../../components/shared/card-list/card-list';
  * Interface for list data
  */
 interface ListData {
+  id: string;
   title: string;
   images: { src: string; alt: string }[];
 }
@@ -25,11 +26,14 @@ interface ListData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Lists {
+  private router = inject(Router);
+
   /**
    * Official lists (large size)
    */
   officialLists: ListData[] = [
     {
+      id: 'horror',
       title: 'Horror series',
       images: [
         { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
@@ -39,6 +43,7 @@ export class Lists {
       ]
     },
     {
+      id: 'thrillers',
       title: 'Thrillers / Mystery series',
       images: [
         { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
@@ -48,6 +53,7 @@ export class Lists {
       ]
     },
     {
+      id: 'reality',
       title: 'Reality TV shows',
       images: [
         { src: '/assets/Image_For_Card_3.jpg', alt: 'Alien: Earth' },
@@ -59,10 +65,11 @@ export class Lists {
   ];
 
   /**
-   * Listas populares (tamaño pequeño)
+   * Popular lists (small size)
    */
   popularLists: ListData[] = [
     {
+      id: 'short-series',
       title: 'Less than 10 episodes long',
       images: [
         { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
@@ -72,6 +79,7 @@ export class Lists {
       ]
     },
     {
+      id: 'netflix-removed',
       title: 'Removed from Netflix',
       images: [
         { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
@@ -81,6 +89,7 @@ export class Lists {
       ]
     },
     {
+      id: 'female-leads',
       title: 'Female leads',
       images: [
         { src: '/assets/Image_For_Card_4.jpg', alt: 'The Haunting of Hill House' },
@@ -90,6 +99,7 @@ export class Lists {
       ]
     },
     {
+      id: 'indie-animation',
       title: 'Indie animation series',
       images: [
         { src: '/assets/Images_For_Card_11.jpg', alt: 'Smiling Friends' },
@@ -101,9 +111,9 @@ export class Lists {
   ];
 
   /**
-   * Manejador del click en "See more"
+   * Handle "See more" click - navigate to see more page
    */
   onSeeMore(section: string): void {
-    console.log('See more clicked for:', section);
+    this.router.navigate(['/seemore'], { queryParams: { section } });
   }
 }

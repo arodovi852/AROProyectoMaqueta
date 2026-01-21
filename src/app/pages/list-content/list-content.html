@@ -1,14 +1,14 @@
-<!-- Página List Content -->
+<!-- List Content Page -->
 <div class="list-content-page">
   <!-- Banner -->
   <div class="list-content-page__banner">
     <img 
-      [src]="bannerImage" 
-      [alt]="listName"
+      [src]="bannerImage()" 
+      [alt]="listName()"
       class="list-content-page__banner-image"
     >
     <div class="list-content-page__banner-overlay">
-      <h1 class="list-content-page__banner-title">{{ listName }}</h1>
+      <h1 class="list-content-page__banner-title">{{ listName() }}</h1>
     </div>
   </div>
 
@@ -17,11 +17,12 @@
     <!-- Left column: Series in the list -->
     <div class="list-content-page__series">
       <div class="list-content-page__series-grid">
-        @for (item of series; track item.title) {
+        @for (item of series(); track item.id) {
           <app-card
             [imageSrc]="item.imageSrc"
             [imageAlt]="item.title"
             [hoverTitle]="item.title"
+            [seriesId]="item.id"
             variant="media"
             class="list-content-page__series-card"
           />
@@ -33,8 +34,8 @@
     <div class="list-content-page__sidebar">
       <app-card-stat-review
         [statsBars]="statsBars"
-        [rating]="listRating"
-        [isWatchLater]="isSaved"
+        [rating]="listRating()"
+        [isWatchLater]="isSaved()"
         buttonText="Save list"
         (ratingChange)="onRatingChange($event)"
         (watchLaterToggle)="onSaveListToggle($event)"

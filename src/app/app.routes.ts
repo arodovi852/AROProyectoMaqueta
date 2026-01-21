@@ -82,9 +82,20 @@ export const routes: Routes = [
   },
   {
     path: 'listcontent',
+    redirectTo: 'listcontent/horror',
+    pathMatch: 'full'
+  },
+  {
+    path: 'listcontent/:listId',
     loadComponent: () => import('./pages/list-content/list-content').then(m => m.ListContent),
     title: 'List Content - BROADCASTTD',
     data: { breadcrumb: 'List Content' }
+  },
+  {
+    path: 'seemore',
+    loadComponent: () => import('./pages/see-more/see-more').then(m => m.SeeMore),
+    title: 'See More - BROADCASTTD',
+    data: { breadcrumb: 'See More' }
   },
 
   // ========== USER ROUTES (Protected with authGuard) ==========
