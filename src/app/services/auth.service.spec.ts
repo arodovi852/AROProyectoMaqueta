@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService, AuthUser } from './auth.service';
 
 /**
- * Tests para AuthService
- * FASE 7: Testing unitario de servicios
+ * Tests for AuthService
+ * PHASE 7: Service unit testing
  */
 describe('AuthService', () => {
   let service: AuthService;
@@ -11,7 +11,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(AuthService);
-    // Limpiar localStorage antes de cada test
+    // Clear localStorage before each test
     localStorage.clear();
   });
 
@@ -28,7 +28,7 @@ describe('AuthService', () => {
       const result = service.register('testuser', 'test@example.com', 'password123');
       
       expect(result.success).toBeTruthy();
-      expect(result.message).toBe('Usuario registrado correctamente');
+      expect(result.message).toBe('User registered successfully');
     });
 
     it('should fail when username already exists', () => {
@@ -36,7 +36,7 @@ describe('AuthService', () => {
       const result = service.register('testuser', 'test2@example.com', 'password456');
       
       expect(result.success).toBeFalsy();
-      expect(result.message).toBe('El nombre de usuario ya existe');
+      expect(result.message).toBe('Username already exists');
     });
 
     it('should fail when email already exists', () => {
@@ -44,7 +44,7 @@ describe('AuthService', () => {
       const result = service.register('user2', 'test@example.com', 'password456');
       
       expect(result.success).toBeFalsy();
-      expect(result.message).toBe('El email ya está registrado');
+      expect(result.message).toBe('Email is already registered');
     });
   });
 
@@ -57,7 +57,7 @@ describe('AuthService', () => {
       const result = service.login('testuser', 'password123');
       
       expect(result.success).toBeTruthy();
-      expect(result.message).toContain('Bienvenido');
+      expect(result.message).toContain('Welcome');
     });
 
     it('should login with valid email', () => {
@@ -70,7 +70,7 @@ describe('AuthService', () => {
       const result = service.login('testuser', 'wrongpassword');
       
       expect(result.success).toBeFalsy();
-      expect(result.message).toBe('Usuario o contraseña incorrectos');
+      expect(result.message).toBe('Incorrect username or password');
     });
 
     it('should fail with non-existent user', () => {

@@ -1,9 +1,9 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 /**
- * Componente Close Button
+ * Close Button Component
  * 
- * Botón circular de cierre con icono X
+ * Circular close button with X icon
  */
 @Component({
   selector: 'app-close-button',

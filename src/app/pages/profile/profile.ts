@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CardProfile } from '../../components/shared/card-profile/card-profile';
@@ -9,12 +9,17 @@ import { CardList } from '../../components/shared/card-list/card-list';
 import { CardReview } from '../../components/shared/card-review/card-review';
 import { AuthService, AuthUser } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
+import { UserService, TrackedSeries } from '../../services/user.service';
 
 /**
- * Página Profile (FASE 4 - Tarea 4)
+ * Profile Page (PHASE 4 - Task 4)
  * 
- * Página de perfil del usuario con estadísticas, series y reseñas.
- * Protegida por authGuard - requiere autenticación.
+ * User profile page with statistics, series and reviews.
+ * Protected by authGuard - requires authentication.
+ * 
+ * Features:
+ * - Logged Series: Shows series added via "Watch Later"
+ * - Recently Watched: Shows last 6 rated series (most recent first)
  */
 @Component({
   selector: 'app-profile',
@@ -27,38 +32,25 @@ export class Profile implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private toast = inject(ToastService);
+  private userService = inject(UserService);
 
-  // Usuario actual
+  // Current user
   currentUser = signal<AuthUser | null>(null);
-  username = signal<string>('Usuario');
+  username = signal<string>('User');
   
-  // Estadísticas
-  watched = 8;
-  saved = 3;
-  average = 3.7;
+  // Statistics
+  watched = signal<number>(0);
+  saved = signal<number>(0);
+  average = signal<number>(0);
   statsBars = [50, 75, 40, 85, 60, 45, 90, 70];
 
-  // Series loggeadas
-  loggedSeries = [
-    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg', hoverTitle: 'Stranger Things' },
-    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg', hoverTitle: 'Twin Peaks' },
-    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg', hoverTitle: 'Breaking Bad' },
-    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg', hoverTitle: 'The Haunting of Hill House' },
-    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg', hoverTitle: 'The Walking Dead' },
-    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg', hoverTitle: 'Alien: Earth' },
-  ];
+  // Logged series (from UserService - Watch Later)
+  loggedSeries = signal<{ title: string; imageSrc: string; hoverTitle: string }[]>([]);
 
-  // Series vistas recientemente
-  recentlyWatched = [
-    { title: 'Stranger Things', imageSrc: '/assets/Images_For_Card_2.jpg', hoverTitle: 'Stranger Things' },
-    { title: 'Twin Peaks', imageSrc: '/assets/Images_For_Card_1.jpg', hoverTitle: 'Twin Peaks' },
-    { title: 'Breaking Bad', imageSrc: '/assets/Image_For_Card_5.jpg', hoverTitle: 'Breaking Bad' },
-    { title: 'The Haunting of Hill House', imageSrc: '/assets/Image_For_Card_3.jpg', hoverTitle: 'The Haunting of Hill House' },
-    { title: 'The Walking Dead', imageSrc: '/assets/Image_For_Card_4.jpg', hoverTitle: 'The Walking Dead' },
-    { title: 'Alien: Earth', imageSrc: '/assets/Image_For_Card_6.jpg', hoverTitle: 'Alien: Earth' },
-  ];
+  // Recently watched series (from UserService - Rated series)
+  recentlyWatched = signal<{ title: string; imageSrc: string; hoverTitle: string; rating?: number }[]>([]);
 
-  // Listas personales
+  // Personal lists
   personalLists = [
     {
       title: 'My Favorites',
@@ -109,38 +101,97 @@ export class Profile implements OnInit {
     {
       username: 'User2',
       rating: 4,
-      reviewText: 'Excelente serie, muy recomendada para los amantes del género.',
+      reviewText: 'Excellent series, highly recommended for genre lovers.',
       avatarColor: '#ecc332'
     },
     {
       username: 'User3',
       rating: 5,
-      reviewText: 'Una obra maestra. La mejor serie que he visto en años.',
+      reviewText: 'A masterpiece. The best series I\'ve seen in years.',
       avatarColor: '#6b5b7a'
     }
   ];
 
+  constructor() {
+    // Effect to reactively update from UserService signals
+    effect(() => {
+      this.updateLoggedSeries();
+      this.updateRecentlyWatched();
+      this.updateStatistics();
+    });
+  }
+
   ngOnInit(): void {
-    // Obtener usuario actual
+    // Get current user
     this.authService.currentUser$.subscribe(user => {
       this.currentUser.set(user);
       if (user) {
         this.username.set(user.username);
       }
     });
+
+    // Load series data
+    this.updateLoggedSeries();
+    this.updateRecentlyWatched();
+    this.updateStatistics();
   }
 
   /**
-   * Cerrar sesión (FASE 4 - Tarea 4)
+   * Update logged series from UserService
+   */
+  private updateLoggedSeries(): void {
+    const series = this.userService.getLoggedSeries();
+    this.loggedSeries.set(series.map(s => ({
+      title: s.title,
+      imageSrc: s.imageSrc,
+      hoverTitle: s.hoverTitle
+    })));
+  }
+
+  /**
+   * Update recently watched from UserService (last 6, most recent first)
+   */
+  private updateRecentlyWatched(): void {
+    const series = this.userService.getRecentlyWatched();
+    this.recentlyWatched.set(series.map(s => ({
+      title: s.title,
+      imageSrc: s.imageSrc,
+      hoverTitle: s.hoverTitle,
+      rating: s.rating
+    })));
+  }
+
+  /**
+   * Update statistics based on tracked series
+   */
+  private updateStatistics(): void {
+    const logged = this.userService.getLoggedSeries();
+    const watched = this.userService.getRecentlyWatched();
+    
+    this.saved.set(logged.length);
+    this.watched.set(watched.length);
+    
+    // Calculate average rating
+    const ratings = watched.filter(s => s.rating).map(s => s.rating!);
+    if (ratings.length > 0) {
+      const avg = ratings.reduce((sum, r) => sum + r, 0) / ratings.length;
+      this.average.set(Math.round(avg * 10) / 10);
+    } else {
+      this.average.set(0);
+    }
+  }
+
+  /**
+   * Logout (PHASE 4 - Task 4)
    */
   logout(): void {
     this.authService.logout();
-    this.toast.info('Sesión cerrada correctamente');
+    this.toast.info('Session closed successfully');
     this.router.navigate(['/']);
   }
 
   /**
-   * Navegar a editar perfil
+   * Navigate to edit profile
    */
   editProfile(): void {
     this.router.navigate(['/profile/edit']);

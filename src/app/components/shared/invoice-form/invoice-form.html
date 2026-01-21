@@ -1,36 +1,36 @@
 <div class="invoice-form-container">
-  <h2>Formulario de Factura con FormArray</h2>
-  <p class="description">Este formulario demuestra el uso de FormArray para gestionar listas dinámicas. Mínimo total: 100€</p>
+  <h2>Invoice Form with FormArray</h2>
+  <p class="description">This form demonstrates the use of FormArray to manage dynamic lists. Minimum total: €100</p>
   
   <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
-    <!-- Cliente -->
+    <!-- Customer -->
     <div class="form-group">
-      <label for="customer">Cliente *</label>
+      <label for="customer">Customer *</label>
       <input 
         id="customer"
         type="text" 
         formControlName="customer"
-        placeholder="Nombre del cliente"
+        placeholder="Customer name"
         [class.error]="invoiceForm.get('customer')?.invalid && invoiceForm.get('customer')?.touched">
       
       @if (invoiceForm.get('customer')?.invalid && invoiceForm.get('customer')?.touched) {
         <div class="error-message">
           @if (invoiceForm.get('customer')?.errors?.['required']) {
-            <span>El nombre del cliente es obligatorio</span>
+            <span>Customer name is required</span>
           }
         </div>
       }
     </div>
 
-    <!-- Teléfonos (FormArray) -->
+    <!-- Phones (FormArray) -->
     <div class="array-section">
       <div class="array-header">
-        <h3>Teléfonos de Contacto</h3>
+        <h3>Contact Phones</h3>
         <app-button 
           variant="secondary"
           size="sm"
           (click)="addPhone()">
-          + Añadir Teléfono
+          + Add Phone
         </app-button>
       </div>
       
@@ -38,18 +38,18 @@
         @for (phone of phones.controls; track $index) {
           <div [formGroupName]="$index" class="array-item">
             <div class="form-group flex-grow">
-              <label [for]="'phone-' + $index">Teléfono {{ $index + 1 }} *</label>
+              <label [for]="'phone-' + $index">Phone {{ $index + 1 }} *</label>
               <input 
                 [id]="'phone-' + $index"
                 type="tel" 
                 formControlName="phone"
-                placeholder="Ej: 612345678"
+                placeholder="Ex: 612345678"
                 [class.error]="phone.get('phone')?.invalid && phone.get('phone')?.touched">
               
               @if (phone.get('phone')?.invalid && phone.get('phone')?.touched) {
                 <div class="error-message">
                   @if (phone.get('phone')?.errors?.['required']) {
-                    <span>El teléfono es obligatorio</span>
+                    <span>Phone is required</span>
                   }
                   @if (phone.get('phone')?.errors?.['telefono']) {
                     <span>{{ phone.get('phone')?.errors?.['telefono'] }}</span>
@@ -63,22 +63,22 @@
               size="sm"
               (click)="removePhone($index)"
               [disabled]="phones.length === 1">
-              Eliminar
+              Remove
             </app-button>
           </div>
         }
       </div>
     </div>
 
-    <!-- Direcciones (FormArray) -->
+    <!-- Addresses (FormArray) -->
     <div class="array-section">
       <div class="array-header">
-        <h3>Direcciones de Entrega</h3>
+        <h3>Delivery Addresses</h3>
         <app-button 
           variant="secondary"
           size="sm"
           (click)="addAddress()">
-          + Añadir Dirección
+          + Add Address
         </app-button>
       </div>
       
@@ -87,35 +87,35 @@
           <div [formGroupName]="$index" class="array-item address-item">
             <div class="address-fields">
               <div class="form-group">
-                <label [for]="'street-' + $index">Calle *</label>
+                <label [for]="'street-' + $index">Street *</label>
                 <input 
                   [id]="'street-' + $index"
                   type="text" 
                   formControlName="street"
-                  placeholder="Calle y número"
+                  placeholder="Street and number"
                   [class.error]="address.get('street')?.invalid && address.get('street')?.touched">
                 
                 @if (address.get('street')?.invalid && address.get('street')?.touched) {
-                  <div class="error-message">La calle es obligatoria</div>
+                  <div class="error-message">Street is required</div>
                 }
               </div>
 
               <div class="form-group">
-                <label [for]="'city-' + $index">Ciudad *</label>
+                <label [for]="'city-' + $index">City *</label>
                 <input 
                   [id]="'city-' + $index"
                   type="text" 
                   formControlName="city"
-                  placeholder="Ciudad"
+                  placeholder="City"
                   [class.error]="address.get('city')?.invalid && address.get('city')?.touched">
                 
                 @if (address.get('city')?.invalid && address.get('city')?.touched) {
-                  <div class="error-message">La ciudad es obligatoria</div>
+                  <div class="error-message">City is required</div>
                 }
               </div>
 
               <div class="form-group">
-                <label [for]="'zip-' + $index">Código Postal *</label>
+                <label [for]="'zip-' + $index">Postal Code *</label>
                 <input 
                   [id]="'zip-' + $index"
                   type="text" 
@@ -126,7 +126,7 @@
                 @if (address.get('zip')?.invalid && address.get('zip')?.touched) {
                   <div class="error-message">
                     @if (address.get('zip')?.errors?.['required']) {
-                      <span>El código postal es obligatorio</span>
+                      <span>Postal code is required</span>
                     }
                     @if (address.get('zip')?.errors?.['codigoPostal']) {
                       <span>{{ address.get('zip')?.errors?.['codigoPostal'] }}</span>
@@ -141,22 +141,22 @@
               size="sm"
               (click)="removeAddress($index)"
               [disabled]="addresses.length === 1">
-              Eliminar
+              Remove
             </app-button>
           </div>
         }
       </div>
     </div>
 
-    <!-- Items de Factura (FormArray) -->
+    <!-- Invoice Items (FormArray) -->
     <div class="array-section">
       <div class="array-header">
-        <h3>Artículos de la Factura</h3>
+        <h3>Invoice Items</h3>
         <app-button 
           variant="secondary"
           size="sm"
           (click)="addItem()">
-          + Añadir Artículo
+          + Add Item
         </app-button>
       </div>
       
@@ -165,21 +165,21 @@
           <div [formGroupName]="$index" class="array-item item-row">
             <div class="item-fields">
               <div class="form-group">
-                <label [for]="'description-' + $index">Descripción *</label>
+                <label [for]="'description-' + $index">Description *</label>
                 <input 
                   [id]="'description-' + $index"
                   type="text" 
                   formControlName="description"
-                  placeholder="Descripción del artículo"
+                  placeholder="Item description"
                   [class.error]="item.get('description')?.invalid && item.get('description')?.touched">
                 
                 @if (item.get('description')?.invalid && item.get('description')?.touched) {
-                  <div class="error-message">La descripción es obligatoria</div>
+                  <div class="error-message">Description is required</div>
                 }
               </div>
 
               <div class="form-group quantity-group">
-                <label [for]="'quantity-' + $index">Cantidad *</label>
+                <label [for]="'quantity-' + $index">Quantity *</label>
                 <input 
                   [id]="'quantity-' + $index"
                   type="number" 
@@ -190,17 +190,17 @@
                 @if (item.get('quantity')?.invalid && item.get('quantity')?.touched) {
                   <div class="error-message">
                     @if (item.get('quantity')?.errors?.['required']) {
-                      <span>La cantidad es obligatoria</span>
+                      <span>Quantity is required</span>
                     }
                     @if (item.get('quantity')?.errors?.['min']) {
-                      <span>Mínimo: 1</span>
+                      <span>Minimum: 1</span>
                     }
                   </div>
                 }
               </div>
 
               <div class="form-group price-group">
-                <label [for]="'price-' + $index">Precio *</label>
+                <label [for]="'price-' + $index">Price *</label>
                 <input 
                   [id]="'price-' + $index"
                   type="number" 
@@ -213,10 +213,10 @@
                 @if (item.get('price')?.invalid && item.get('price')?.touched) {
                   <div class="error-message">
                     @if (item.get('price')?.errors?.['required']) {
-                      <span>El precio es obligatorio</span>
+                      <span>Price is required</span>
                     }
                     @if (item.get('price')?.errors?.['min']) {
-                      <span>Mínimo: 0.01€</span>
+                      <span>Minimum: €0.01</span>
                     }
                   </div>
                 }
@@ -224,7 +224,7 @@
 
               <div class="item-total">
                 <span class="label">Subtotal:</span>
-                <span class="value">{{ getItemTotal($index).toFixed(2) }}€</span>
+                <span class="value">€{{ getItemTotal($index).toFixed(2) }}</span>
               </div>
             </div>
             
@@ -233,43 +233,43 @@
               size="sm"
               (click)="removeItem($index)"
               [disabled]="items.length === 1">
-              Eliminar
+              Remove
             </app-button>
           </div>
         }
       </div>
     </div>
 
-    <!-- Total de la Factura -->
+    <!-- Invoice Total -->
     <div class="total-section">
       <div class="total-row">
         <span class="total-label">TOTAL:</span>
         <span class="total-value" [class.error-total]="hasTotalMinimoError()">
-          {{ getTotal().toFixed(2) }}€
+          €{{ getTotal().toFixed(2) }}
         </span>
       </div>
       
       @if (hasTotalMinimoError()) {
         <div class="error-message total-error">
-          El total debe ser al menos 100€ (actual: {{ getTotal().toFixed(2) }}€)
+          Total must be at least €100 (current: €{{ getTotal().toFixed(2) }})
         </div>
       }
     </div>
 
-    <!-- Botones de Acción -->
+    <!-- Action Buttons -->
     <div class="form-actions">
       <app-button 
         type="submit"
         variant="primary"
         [disabled]="invoiceForm.invalid">
-        Crear Factura
+        Create Invoice
       </app-button>
       
       <app-button 
         type="button"
         variant="secondary"
         (click)="onReset()">
-        Reiniciar
+        Reset
       </app-button>
     </div>
   </form>

@@ -10,10 +10,10 @@ interface CardListImage {
 }
 
 /**
- * Componente CardList
+ * CardList Component
  * 
- * Muestra una lista de series con múltiples imágenes apiladas en forma de abanico.
- * Al hacer hover, las imágenes se expanden mostrando todas las cards.
+ * Displays a list of series with multiple stacked images in a fan layout.
+ * On hover, the images expand showing all the cards.
  */
 @Component({
   selector: 'app-card-list',

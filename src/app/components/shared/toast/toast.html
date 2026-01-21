@@ -3,7 +3,7 @@
     <div class="toast" [class]="'toast--' + toast()!.type" (click)="dismiss()">
       <div class="toast__content">
         <span class="toast__message">{{ toast()!.message }}</span>
-        <button class="toast__close" (click)="dismiss()" aria-label="Cerrar notificación">
+        <button class="toast__close" (click)="dismiss()" aria-label="Close notification">
           ×
         </button>
       </div>

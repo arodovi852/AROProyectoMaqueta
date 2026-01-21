@@ -4,7 +4,7 @@ import { Observable, of, delay, map, catchError } from 'rxjs';
 import { ApiService } from '../core/services/api.service';
 
 /**
- * Interface de Serie (FASE 5 - Tarea 3)
+ * Series Interface (PHASE 5 - Task 3)
  */
 export interface Series {
   id: string;
@@ -21,7 +21,7 @@ export interface Series {
 }
 
 /**
- * DTO para crear serie
+ * DTO for creating series
  */
 export interface CreateSeriesDto {
   title: string;
@@ -33,12 +33,12 @@ export interface CreateSeriesDto {
 }
 
 /**
- * DTO para actualizar serie
+ * DTO for updating series
  */
 export interface UpdateSeriesDto extends Partial<CreateSeriesDto> {}
 
 /**
- * Respuesta paginada de series
+ * Paginated series response
  */
 export interface SeriesListResponse {
   items: Series[];
@@ -48,25 +48,25 @@ export interface SeriesListResponse {
 }
 
 /**
- * Servicio de Series (FASE 5 - Tareas 2, 3, 4, 5)
+ * Series Service (PHASE 5 - Tasks 2, 3, 4, 5)
  * 
- * Implementa operaciones CRUD completas para series.
- * Usa datos simulados para demostración.
+ * Implements complete CRUD operations for series.
+ * Uses simulated data for demonstration.
  */
 @Injectable({ providedIn: 'root' })
 export class SeriesService {
   private http = inject(HttpClient);
   
-  // Estado de carga
+  // Loading state
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
 
-  // Datos simulados de series
+  // Simulated series data
   private mockSeries: Series[] = [
     {
       id: '1',
       title: 'Twin Peaks',
-      description: 'Una serie de misterio sobre la investigación de la muerte de Laura Palmer.',
+      description: 'A mystery series about the investigation of Laura Palmer\'s death.',
       year: 1990,
       rating: 4.5,
       imageUrl: '/assets/Images_For_Card_1.jpg',
@@ -78,7 +78,7 @@ export class SeriesService {
     {
       id: '2',
       title: 'Stranger Things',
-      description: 'Un grupo de amigos descubre fenómenos sobrenaturales en su pequeño pueblo.',
+      description: 'A group of friends discover supernatural phenomena in their small town.',
       year: 2016,
       rating: 4.7,
       imageUrl: '/assets/Images_For_Card_2.jpg',
@@ -90,7 +90,7 @@ export class SeriesService {
     {
       id: '3',
       title: 'Alien: Earth',
-      description: 'Spin-off de la franquicia Alien ambientado en la Tierra.',
+      description: 'Spin-off of the Alien franchise set on Earth.',
       year: 2025,
       rating: 0,
       imageUrl: '/assets/Image_For_Card_3.jpg',
@@ -102,7 +102,7 @@ export class SeriesService {
     {
       id: '4',
       title: 'The Haunting of Hill House',
-      description: 'Una familia enfrentada a recuerdos traumáticos de una casa encantada.',
+      description: 'A family confronted with traumatic memories of a haunted house.',
       year: 2018,
       rating: 4.8,
       imageUrl: '/assets/Image_For_Card_4.jpg',
@@ -114,7 +114,7 @@ export class SeriesService {
     {
       id: '5',
       title: 'The Walking Dead',
-      description: 'Supervivientes luchan por sobrevivir en un apocalipsis zombi.',
+      description: 'Survivors fight to survive in a zombie apocalypse.',
       year: 2010,
       rating: 4.2,
       imageUrl: '/assets/Image_For_Card_5.jpg',
@@ -126,7 +126,7 @@ export class SeriesService {
     {
       id: '6',
       title: 'Breaking Bad',
-      description: 'Un profesor de química se convierte en fabricante de metanfetamina.',
+      description: 'A chemistry teacher becomes a methamphetamine manufacturer.',
       year: 2008,
       rating: 4.9,
       imageUrl: '/assets/Image_For_Card_6.jpg',
@@ -134,17 +134,89 @@ export class SeriesService {
       seasons: 5,
       status: 'ended',
       createdAt: '2024-01-06T00:00:00Z'
+    },
+    {
+      id: '7',
+      title: 'It: Welcome to Derry',
+      description: 'IT prequel set in the 60s, exploring the origins of terror in Derry.',
+      year: 2025,
+      rating: 0,
+      imageUrl: '/assets/Images_For_Card_7.png',
+      genre: ['Horror', 'Drama'],
+      seasons: 1,
+      status: 'upcoming',
+      createdAt: '2024-01-07T00:00:00Z'
+    },
+    {
+      id: '8',
+      title: 'Buffy the Vampire Slayer',
+      description: 'A young woman chosen to fight vampires, demons and dark forces.',
+      year: 1997,
+      rating: 4.6,
+      imageUrl: '/assets/Images_For_Card_8.png',
+      genre: ['Fantasy', 'Drama', 'Horror'],
+      seasons: 7,
+      status: 'ended',
+      createdAt: '2024-01-08T00:00:00Z'
+    },
+    {
+      id: '9',
+      title: 'Black Mirror',
+      description: 'Sci-fi anthology that explores the consequences of technology.',
+      year: 2011,
+      rating: 4.7,
+      imageUrl: '/assets/Images_For_Card_9.jpg',
+      genre: ['Sci-Fi', 'Drama', 'Thriller'],
+      seasons: 6,
+      status: 'ongoing',
+      createdAt: '2024-01-09T00:00:00Z'
+    },
+    {
+      id: '10',
+      title: 'The Creep Tapes',
+      description: 'Found footage horror series based on the Creep film franchise.',
+      year: 2025,
+      rating: 0,
+      imageUrl: '/assets/Images_For_Card_10.jpg',
+      genre: ['Horror', 'Found Footage'],
+      seasons: 1,
+      status: 'upcoming',
+      createdAt: '2024-01-10T00:00:00Z'
+    },
+    {
+      id: '11',
+      title: 'Smiling Friends',
+      description: 'Animated comedy about a small company dedicated to making people smile.',
+      year: 2022,
+      rating: 4.5,
+      imageUrl: '/assets/Images_For_Card_11.jpg',
+      genre: ['Animation', 'Comedy'],
+      seasons: 2,
+      status: 'ongoing',
+      createdAt: '2024-01-11T00:00:00Z'
+    },
+    {
+      id: '12',
+      title: "JoJo's Bizarre Adventure",
+      description: 'Saga multigeneracional de la familia Joestar enfrentando amenazas sobrenaturales.',
+      year: 2012,
+      rating: 4.8,
+      imageUrl: '/assets/Images_For_Card_12.jpg',
+      genre: ['Animation', 'Action', 'Adventure'],
+      seasons: 6,
+      status: 'ongoing',
+      createdAt: '2024-01-12T00:00:00Z'
     }
   ];
 
   /**
-   * GET: Obtener todas las series (FASE 5 - Tarea 2)
+   * GET: Get all series (PHASE 5 - Task 2)
    */
   getAllSeries(): Observable<Series[]> {
     this.loading.set(true);
     this.error.set(null);
 
-    // Simulamos una llamada HTTP con delay
+    // Simulate an HTTP call with delay
     return of(this.mockSeries).pipe(
       delay(500),
       map(series => {
@@ -153,14 +225,14 @@ export class SeriesService {
       }),
       catchError(error => {
         this.loading.set(false);
-        this.error.set('Error al cargar las series');
+        this.error.set('Error loading series');
         throw error;
       })
     );
   }
 
   /**
-   * GET: Obtener serie por ID (FASE 5 - Tarea 2)
+   * GET: Get series by ID (PHASE 5 - Task 2)
    */
   getSeriesById(id: string): Observable<Series> {
     this.loading.set(true);
@@ -173,20 +245,20 @@ export class SeriesService {
       map(s => {
         this.loading.set(false);
         if (!s) {
-          throw new Error('Serie no encontrada');
+          throw new Error('Series not found');
         }
         return s;
       }),
       catchError(error => {
         this.loading.set(false);
-        this.error.set('Serie no encontrada');
+        this.error.set('Series not found');
         throw error;
       })
     );
   }
 
   /**
-   * GET: Obtener series con filtros y paginación (FASE 5 - Tarea 4)
+   * GET: Get series with filters and pagination (PHASE 5 - Task 4)
    */
   getSeriesFiltered(page: number = 1, pageSize: number = 10, search?: string, genre?: string): Observable<SeriesListResponse> {
     this.loading.set(true);
@@ -202,12 +274,12 @@ export class SeriesService {
       );
     }
 
-    // Aplicar filtro de género
+    // Apply genre filter
     if (genre) {
       filtered = filtered.filter(s => s.genre.includes(genre));
     }
 
-    // Paginación
+    // Pagination
     const start = (page - 1) * pageSize;
     const items = filtered.slice(start, start + pageSize);
 
@@ -226,7 +298,7 @@ export class SeriesService {
   }
 
   /**
-   * POST: Crear nueva serie (FASE 5 - Tarea 2)
+   * POST: Create new series (PHASE 5 - Task 2)
    */
   create(dto: CreateSeriesDto): Observable<Series> {
     this.loading.set(true);
@@ -250,7 +322,7 @@ export class SeriesService {
   }
 
   /**
-   * PUT: Actualizar serie completa (FASE 5 - Tarea 2)
+   * PUT: Update complete series (PHASE 5 - Task 2)
    */
   update(id: string, dto: UpdateSeriesDto): Observable<Series> {
     this.loading.set(true);
@@ -262,7 +334,7 @@ export class SeriesService {
       map(idx => {
         if (idx === -1) {
           this.loading.set(false);
-          throw new Error('Serie no encontrada');
+          throw new Error('Series not found');
         }
 
         this.mockSeries[idx] = {
@@ -278,7 +350,7 @@ export class SeriesService {
   }
 
   /**
-   * DELETE: Eliminar serie (FASE 5 - Tarea 2)
+   * DELETE: Delete series (PHASE 5 - Task 2)
    */
   delete(id: string): Observable<void> {
     this.loading.set(true);

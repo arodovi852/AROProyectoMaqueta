@@ -2,8 +2,8 @@ import { Component, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente de menú hamburguesa
- * Implementa toggle con cierre al hacer click fuera
+ * Hamburger Menu Component
+ * Implements toggle with close on click outside
  */
 @Component({
   selector: 'app-hamburger-menu',
@@ -17,26 +17,26 @@ export class HamburgerMenu {
 
   constructor(private elementRef: ElementRef) {}
 
-  // Toggle del menú
+  // Menu toggle
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
 
-  // Cerrar menú
+  // Close menu
   closeMenu() {
     this.isOpen = false;
   }
 
-  // Listener para clicks en el document
+  // Listener for document clicks
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    // Si el menú está abierto y el click fue fuera del componente, cerrar
+    // If the menu is open and the click was outside the component, close it
     if (this.isOpen && !this.elementRef.nativeElement.contains(event.target)) {
       this.closeMenu();
     }
   }
 
-  // Prevenir el cierre cuando se hace click dentro del menú
+  // Prevent closing when clicking inside the menu
   onMenuClick(event: MouseEvent) {
     event.stopPropagation();
   }

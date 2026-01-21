@@ -7,7 +7,7 @@
   (keydown.enter)="navigateToSeries()"
 >
   @if (variant === 'rating') {
-    <!-- Variante Rating: Series/Películas con estadísticas -->
+    <!-- Rating Variant: Series/Movies with statistics -->
     <div class="card__stats">
       @for (barValue of statBars; track $index) {
         <app-stat-bar [value]="barValue"></app-stat-bar>
@@ -30,7 +30,7 @@
         </div>
         
         @if (showCancelButton) {
-          <button class="card__cancel-rating" (click)="onCancelRating()" aria-label="Cancelar valoración">
+          <button class="card__cancel-rating" (click)="onCancelRating()" aria-label="Cancel rating">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
             </svg>
@@ -41,8 +41,8 @@
       <app-watch-later></app-watch-later>
     </div>
   } @else {
-    <!-- Otras variantes -->
-    <!-- Imagen (opcional) -->
+    <!-- Other variants -->
+    <!-- Image (optional) -->
     @if (imageSrc) {
       <div class="card__image-wrapper">
         <img 
@@ -57,30 +57,30 @@
           <div class="card__logo-text">{{ logoText }}</div>
         }
         
-        <!-- Overlay oscuro en hover -->
+        <!-- Dark overlay on hover -->
         <div class="card__overlay"></div>
         
-        <!-- Título que aparece en hover -->
+        <!-- Title that appears on hover -->
         @if (hoverTitle) {
           <div class="card__hover-title">{{ hoverTitle }}</div>
         }
       </div>
     }
 
-    <!-- Contenido principal -->
+    <!-- Main content -->
     <div class="card__body">
-      <!-- Título (opcional) -->
+      <!-- Title (optional) -->
       @if (title) {
         <h3 class="card__title">{{ title }}</h3>
       }
 
-      <!-- Contenido proyectado -->
+      <!-- Projected content -->
       <div class="card__content">
         <ng-content></ng-content>
       </div>
     </div>
 
-    <!-- Footer (opcional) -->
+    <!-- Footer (optional) -->
     @if (hasFooter) {
       <div class="card__footer">
         <ng-content select="[card-footer]"></ng-content>

@@ -203,7 +203,7 @@
         accent-color: var(--color-primary);
 
         &.error {
-          outline: 2px solid #ef4444;
+          outline: 2px solid hsl(0, 84%, 60%);
         }
       }
 

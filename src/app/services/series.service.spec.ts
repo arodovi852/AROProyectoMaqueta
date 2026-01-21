@@ -4,8 +4,8 @@ import { SeriesService, Series, SeriesListResponse } from './series.service';
 import { firstValueFrom } from 'rxjs';
 
 /**
- * Tests para SeriesService
- * FASE 7: Testing unitario de servicios
+ * Tests for SeriesService
+ * PHASE 7: Service unit testing
  */
 describe('SeriesService', () => {
   let service: SeriesService;

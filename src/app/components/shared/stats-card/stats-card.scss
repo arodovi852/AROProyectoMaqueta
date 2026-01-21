@@ -19,7 +19,7 @@
     font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 600;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
   }
   
   &__value {
@@ -30,18 +30,18 @@
     border-radius: 0.25rem;
     
     &--watched {
-      background-color: #e88fd3;
-      color: #3d2a3f;
+      background-color: hsl(317, 67%, 73%);
+      color: hsl(294, 22%, 21%);
     }
     
     &--saved {
-      background-color: #e88fd3;
-      color: #3d2a3f;
+      background-color: hsl(317, 67%, 73%);
+      color: hsl(294, 22%, 21%);
     }
     
     &--average {
-      background-color: #ecc332;
-      color: #3d2a3f;
+      background-color: hsl(46, 83%, 56%);
+      color: hsl(294, 22%, 21%);
     }
   }
 }

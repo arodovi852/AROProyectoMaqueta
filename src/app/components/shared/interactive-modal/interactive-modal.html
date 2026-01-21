@@ -1,35 +1,35 @@
 <div class="modal-demo">
   <div class="modal-demo__header">
-    <h3 class="modal-demo__title">Modal Interactivo</h3>
+    <h3 class="modal-demo__title">Interactive Modal</h3>
     <p class="modal-demo__description">
-      Modal con cierre por ESC, click fuera y botón
+      Modal with ESC key, outside click and button close
     </p>
   </div>
 
   <div class="modal-demo__controls">
     <app-button variant="primary" (onClick)="openModal()">
-      Abrir Modal
+      Open Modal
     </app-button>
     <app-button variant="primary" (onClick)="openSuccessModal()">
-      Modal Éxito
+      Success Modal
     </app-button>
     <app-button variant="secondary" (onClick)="openWarningModal()">
-      Modal Advertencia
+      Warning Modal
     </app-button>
     <app-button variant="danger" (onClick)="openErrorModal()">
-      Modal Error
+      Error Modal
     </app-button>
     <app-button variant="secondary" (onClick)="openInfoModal()">
-      Modal Info
+      Info Modal
     </app-button>
   </div>
 
   <div class="modal-demo__info">
-    <p><strong>Formas de cerrar el modal:</strong></p>
+    <p><strong>Ways to close the modal:</strong></p>
     <ul>
-      <li>Presionar tecla <code>ESC</code></li>
-      <li>Click fuera del modal (en el overlay oscuro)</li>
-      <li>Click en el botón de cerrar</li>
+      <li>Press <code>ESC</code> key</li>
+      <li>Click outside the modal (on the dark overlay)</li>
+      <li>Click the close button</li>
     </ul>
   </div>
 
@@ -60,13 +60,13 @@
         <p>{{ modalContent }}</p>
         
         <div class="modal__demo-content">
-          <h4>Contenido del Modal</h4>
-          <p>Este es un modal completamente funcional que demuestra:</p>
+          <h4>Modal Content</h4>
+          <p>This is a fully functional modal that demonstrates:</p>
           <ul>
-            <li>Manejo de eventos de teclado (ESC)</li>
-            <li>Propagación de eventos (click)</li>
-            <li>HostListener para eventos globales</li>
-            <li>Animaciones CSS</li>
+            <li>Keyboard event handling (ESC)</li>
+            <li>Event propagation (click)</li>
+            <li>HostListener for global events</li>
+            <li>CSS animations</li>
           </ul>
         </div>
       </div>
@@ -74,10 +74,10 @@
       <!-- Footer -->
       <div class="modal__footer">
         <app-button variant="ghost" (onClick)="closeModal()">
-          Cancelar
+          Cancel
         </app-button>
         <app-button variant="primary" (onClick)="closeModal()">
-          Aceptar
+          Accept
         </app-button>
       </div>
     </div>

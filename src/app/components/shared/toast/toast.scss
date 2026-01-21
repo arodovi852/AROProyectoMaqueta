@@ -47,19 +47,19 @@
   }
 
   &--success {
-    background-color: #4caf50;
+    background-color: hsl(122, 39%, 49%);
   }
 
   &--error {
-    background-color: #f44336;
+    background-color: hsl(4, 90%, 58%);
   }
 
   &--info {
-    background-color: #2196f3;
+    background-color: hsl(207, 90%, 54%);
   }
 
   &--warning {
-    background-color: #ff9800;
+    background-color: hsl(36, 100%, 50%);
   }
 }
 

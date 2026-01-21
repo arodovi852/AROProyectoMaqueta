@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Componente Form Textarea
+ * Form Textarea Component
  * 
- * Textarea reutilizable con validación, contador de caracteres y accesibilidad.
- * Implementa ControlValueAccessor para integración con Angular Forms.
+ * Reusable textarea with validation, character counter and accessibility.
+ * Implements ControlValueAccessor for Angular Forms integration.
  */
 @Component({
   selector: 'app-form-textarea',

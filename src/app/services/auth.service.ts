@@ -49,28 +49,28 @@ export class AuthService {
   register(username: string, email: string, password: string): { success: boolean; message: string } {
     const users = this.getUsers();
     
-    // Verificar si el usuario o email ya existen
+    // Check if username or email already exists
     if (users.some(u => u.username === username)) {
-      return { success: false, message: 'El nombre de usuario ya existe' };
+      return { success: false, message: 'Username already exists' };
     }
     
     if (users.some(u => u.email === email)) {
-      return { success: false, message: 'El email ya está registrado' };
+      return { success: false, message: 'Email is already registered' };
     }
 
-    // Crear nuevo usuario
+    // Create new user
     const newUser: User = {
       id: this.generateId(),
       username,
       email,
-      password, // En producción, esto debería estar hasheado
+      password, // In production, this should be hashed
       createdAt: new Date()
     };
 
     users.push(newUser);
     this.saveUsers(users);
 
-    return { success: true, message: 'Usuario registrado correctamente' };
+    return { success: true, message: 'User registered successfully' };
   }
 
   login(usernameOrEmail: string, password: string): { success: boolean; message: string } {
@@ -82,10 +82,10 @@ export class AuthService {
     );
 
     if (!user) {
-      return { success: false, message: 'Usuario o contraseña incorrectos' };
+      return { success: false, message: 'Incorrect username or password' };
     }
 
-    // Guardar sesión
+    // Save session
     const authUser: AuthUser = {
       id: user.id,
       username: user.username,
@@ -96,7 +96,7 @@ export class AuthService {
     this.currentUserSubject.next(authUser);
     this.isAuthenticated.set(true);
 
-    return { success: true, message: `Bienvenido ${user.username}!` };
+    return { success: true, message: `Welcome ${user.username}!` };
   }
 
   logout(): void {

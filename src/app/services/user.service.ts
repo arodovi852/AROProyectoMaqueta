@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable, of, delay, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -9,14 +9,145 @@ export interface User {
   active: boolean;
 }
 
+export interface TrackedSeries {
+  id: number;
+  title: string;
+  imageSrc: string;
+  hoverTitle: string;
+  rating?: number;
+  addedAt: Date;
+}
+
+const LOGGED_SERIES_KEY = 'broadcasttd_logged_series';
+const RECENTLY_WATCHED_KEY = 'broadcasttd_recently_watched';
+
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private users: User[] = [
-    { id: 1, name: 'Juan Pérez', email: 'juan@example.com', active: true },
-    { id: 2, name: 'María García', email: 'maria@example.com', active: true },
-    { id: 3, name: 'Carlos López', email: 'carlos@example.com', active: false },
-    { id: 4, name: 'Ana Martínez', email: 'ana@example.com', active: true },
+    { id: 1, name: 'John Perez', email: 'john@example.com', active: true },
+    { id: 2, name: 'Mary Garcia', email: 'mary@example.com', active: true },
+    { id: 3, name: 'Carlos Lopez', email: 'carlos@example.com', active: false },
+    { id: 4, name: 'Anna Martinez', email: 'anna@example.com', active: true },
   ];
+
+  // Signals for reactive updates
+  loggedSeries = signal<TrackedSeries[]>(this.loadLoggedSeries());
+  recentlyWatched = signal<TrackedSeries[]>(this.loadRecentlyWatched());
+
+  constructor() {
+    // Initialize from localStorage
+    this.loggedSeries.set(this.loadLoggedSeries());
+    this.recentlyWatched.set(this.loadRecentlyWatched());
+  }
+
+  // ============================================
+  // LOGGED SERIES (Watch Later)
+  // ============================================
+
+  private loadLoggedSeries(): TrackedSeries[] {
+    try {
+      const data = localStorage.getItem(LOGGED_SERIES_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private saveLoggedSeries(series: TrackedSeries[]): void {
+    localStorage.setItem(LOGGED_SERIES_KEY, JSON.stringify(series));
+    this.loggedSeries.set(series);
+  }
+
+  addToLoggedSeries(series: TrackedSeries): boolean {
+    const current = this.loadLoggedSeries();
+    const exists = current.some(s => s.id === series.id);
+    
+    if (!exists) {
+      const newSeries = { ...series, addedAt: new Date() };
+      const updated = [newSeries, ...current];
+      this.saveLoggedSeries(updated);
+      return true;
+    }
+    return false;
+  }
+
+  removeFromLoggedSeries(seriesId: number): boolean {
+    const current = this.loadLoggedSeries();
+    const filtered = current.filter(s => s.id !== seriesId);
+    
+    if (filtered.length !== current.length) {
+      this.saveLoggedSeries(filtered);
+      return true;
+    }
+    return false;
+  }
+
+  isInLoggedSeries(seriesId: number): boolean {
+    return this.loadLoggedSeries().some(s => s.id === seriesId);
+  }
+
+  getLoggedSeries(): TrackedSeries[] {
+    return this.loadLoggedSeries();
+  }
+
+  // ============================================
+  // RECENTLY WATCHED (Rated Series)
+  // ============================================
+
+  private loadRecentlyWatched(): TrackedSeries[] {
+    try {
+      const data = localStorage.getItem(RECENTLY_WATCHED_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private saveRecentlyWatched(series: TrackedSeries[]): void {
+    localStorage.setItem(RECENTLY_WATCHED_KEY, JSON.stringify(series));
+    this.recentlyWatched.set(series);
+  }
+
+  addToRecentlyWatched(series: TrackedSeries): void {
+    let current = this.loadRecentlyWatched();
+    
+    // Remove if already exists (to update position)
+    current = current.filter(s => s.id !== series.id);
+    
+    // Add to beginning with timestamp
+    const newSeries = { ...series, addedAt: new Date() };
+    current = [newSeries, ...current];
+    
+    // Keep only the last 6
+    if (current.length > 6) {
+      current = current.slice(0, 6);
+    }
+    
+    this.saveRecentlyWatched(current);
+  }
+
+  updateSeriesRating(seriesId: number, rating: number): void {
+    const current = this.loadRecentlyWatched();
+    const index = current.findIndex(s => s.id === seriesId);
+    
+    if (index !== -1) {
+      current[index].rating = rating;
+      this.saveRecentlyWatched(current);
+    }
+  }
+
+  getRecentlyWatched(): TrackedSeries[] {
+    return this.loadRecentlyWatched();
+  }
+
+  getSeriesRating(seriesId: number): number | undefined {
+    const series = this.loadRecentlyWatched().find(s => s.id === seriesId);
+    return series?.rating;
+  }
+
+  // ============================================
+  // USER METHODS
+  // ============================================
 
   getUsers(): Observable<User[]> {
     return of(this.users).pipe(
@@ -50,6 +181,6 @@ export class UserService {
   }
 
   private handleError(err: any): Observable<never> {
-    return throwError(() => new Error('Error cargando usuarios'));
+    return throwError(() => new Error('Error loading users'));
   }
 }

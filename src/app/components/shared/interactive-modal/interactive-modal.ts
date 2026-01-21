@@ -4,8 +4,8 @@ import { Button } from '../button/button';
 import { CloseButton } from '../close-button/close-button';
 
 /**
- * Componente de Modal Interactivo
- * Modal que se puede cerrar con ESC, click fuera, o botón de cierre
+ * Interactive Modal Component
+ * Modal that can be closed with ESC, click outside, or close button
  */
 @Component({
   selector: 'app-interactive-modal',
@@ -16,22 +16,22 @@ import { CloseButton } from '../close-button/close-button';
 })
 export class InteractiveModal {
   isOpen = false;
-  modalTitle = 'Modal de Demostración';
-  modalContent = 'Este modal se puede cerrar con ESC, haciendo click fuera, o con el botón de cierre.';
+  modalTitle = 'Demo Modal';
+  modalContent = 'This modal can be closed with ESC, by clicking outside, or with the close button.';
 
   constructor(private elementRef: ElementRef) {}
 
-  // Abrir modal
+  // Open modal
   openModal() {
     this.isOpen = true;
   }
 
-  // Cerrar modal
+  // Close modal
   closeModal() {
     this.isOpen = false;
   }
 
-  // Listener para la tecla ESC
+  // ESC key listener
   @HostListener('document:keydown.escape')
   onEscapePressed() {
     if (this.isOpen) {
@@ -39,38 +39,38 @@ export class InteractiveModal {
     }
   }
 
-  // Cerrar al hacer click en el overlay (fuera del modal)
+  // Close when clicking the overlay (outside the modal)
   onOverlayClick(event: MouseEvent) {
     this.closeModal();
   }
 
-  // Prevenir el cierre cuando se hace click dentro del modal
+  // Prevent closing when clicking inside the modal
   onModalClick(event: MouseEvent) {
     event.stopPropagation();
   }
 
-  // Diferentes tipos de modales para demostración
+  // Different modal types for demonstration
   openSuccessModal() {
-    this.modalTitle = '✅ Éxito';
-    this.modalContent = 'La operación se completó correctamente.';
+    this.modalTitle = '✅ Success';
+    this.modalContent = 'The operation completed successfully.';
     this.openModal();
   }
 
   openWarningModal() {
-    this.modalTitle = '⚠️ Advertencia';
-    this.modalContent = 'Ten cuidado con esta acción.';
+    this.modalTitle = '⚠️ Warning';
+    this.modalContent = 'Be careful with this action.';
     this.openModal();
   }
 
   openInfoModal() {
-    this.modalTitle = 'ℹ️ Información';
-    this.modalContent = 'Aquí tienes información importante.';
+    this.modalTitle = 'ℹ️ Information';
+    this.modalContent = 'Here is some important information.';
     this.openModal();
   }
 
   openErrorModal() {
     this.modalTitle = '❌ Error';
-    this.modalContent = 'Ocurrió un error al procesar la solicitud.';
+    this.modalContent = 'An error occurred while processing the request.';
     this.openModal();
   }
 }

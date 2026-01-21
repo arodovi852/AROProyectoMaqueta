@@ -4,12 +4,12 @@ import { Card } from '../../components/shared/card/card';
 import { CardStatReview } from '../../components/shared/card-stat-review/card-stat-review';
 
 /**
- * Página ListContent
+ * ListContent Page
  * 
- * Página que muestra el contenido de una lista con:
- * - Banner de imágenes
- * - Series de la lista (Cards)
- * - CardStatReview para guardar la lista
+ * Page that displays list content with:
+ * - Image banner
+ * - List series (Cards)
+ * - CardStatReview to save the list
  */
 @Component({
   selector: 'app-list-content',

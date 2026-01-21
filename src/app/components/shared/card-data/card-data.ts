@@ -2,12 +2,12 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Card Data
+ * Card Data Component
  * 
- * Tarjeta que muestra estadísticas del usuario:
- * - Series vistas (Watched)
- * - Series guardadas (Saved)
- * - Promedio de puntuación (Average)
+ * Card that displays user statistics:
+ * - Watched series (Watched)
+ * - Saved series (Saved)
+ * - Average score (Average)
  */
 @Component({
   selector: 'app-card-data',

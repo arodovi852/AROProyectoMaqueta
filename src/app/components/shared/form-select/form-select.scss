@@ -93,10 +93,10 @@
   width: 100%;
   padding: var(--spacing-4) var(--spacing-5);
   padding-right: var(--spacing-10); // Espacio para el icono
-  border: 0.1875rem solid #3d2a45;
+  border: 0.1875rem solid hsl(286, 26%, 22%);
   border-radius: 1.25rem;
-  background-color: #e893cf;
-  color: #3d2a45;
+  background-color: hsl(317, 67%, 73%);
+  color: hsl(286, 26%, 22%);
   font-size: 1.125rem;
   font-weight: var(--font-weight-semibold);
   font-family: var(--font-secondary);
@@ -119,16 +119,16 @@
 
   &:hover:not(:disabled) {
     border-color: var(--color-primary-dark);
-    background-color: #ffffff;
+    background-color: hsl(0, 0%, 100%);
     color: var(--color-primary-dark);
   }
 
   &:focus {
     outline: none;
     border-color: var(--color-primary);
-    background-color: #ffffff;
+    background-color: hsl(0, 0%, 100%);
     color: var(--color-primary-dark);
-    box-shadow: 0 0 0 0.1875rem rgba(162, 100, 191, 0.1);
+    box-shadow: 0 0 0 0.1875rem hsla(285, 43%, 57%, 0.1);
   }
 
   &:disabled {

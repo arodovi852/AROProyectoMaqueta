@@ -1,13 +1,13 @@
 <div class="hamburger-demo">
   <div class="hamburger-demo__header">
-    <h3 class="hamburger-demo__title">Menú Hamburguesa</h3>
+    <h3 class="hamburger-demo__title">Hamburger Menu</h3>
     <p class="hamburger-demo__description">
-      Toggle con cierre al hacer click fuera
+      Toggle with close on click outside
     </p>
   </div>
 
   <div class="hamburger-menu">
-    <!-- Botón hamburguesa -->
+    <!-- Hamburger button -->
     <button 
       class="hamburger-menu__button"
       [class.hamburger-menu__button--active]="isOpen"
@@ -20,7 +20,7 @@
       <span class="hamburger-menu__line"></span>
     </button>
 
-    <!-- Menú desplegable -->
+    <!-- Dropdown menu -->
     <nav 
       class="hamburger-menu__nav"
       [class.hamburger-menu__nav--open]="isOpen"
@@ -29,27 +29,27 @@
       <ul class="hamburger-menu__list">
         <li class="hamburger-menu__item">
           <a href="#" class="hamburger-menu__link" (click)="closeMenu()">
-            Inicio
+            Home
           </a>
         </li>
         <li class="hamburger-menu__item">
           <a href="#" class="hamburger-menu__link" (click)="closeMenu()">
-            Productos
+            Products
           </a>
         </li>
         <li class="hamburger-menu__item">
           <a href="#" class="hamburger-menu__link" (click)="closeMenu()">
-            Acerca de
+            About
           </a>
         </li>
         <li class="hamburger-menu__item">
           <a href="#" class="hamburger-menu__link" (click)="closeMenu()">
-            Contacto
+            Contact
           </a>
         </li>
         <li class="hamburger-menu__item">
           <a href="#" class="hamburger-menu__link" (click)="closeMenu()">
-            Configuración
+            Settings
           </a>
         </li>
       </ul>
@@ -64,9 +64,9 @@
   </div>
 
   <div class="hamburger-demo__info">
-    <p>Estado del menú: <strong>{{ isOpen ? 'Abierto' : 'Cerrado' }}</strong></p>
+    <p>Menu status: <strong>{{ isOpen ? 'Open' : 'Closed' }}</strong></p>
     <p class="hamburger-demo__hint">
-      Haz click fuera del menú para cerrarlo
+      Click outside the menu to close it
     </p>
   </div>
 </div>

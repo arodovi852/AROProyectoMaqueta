@@ -1,37 +1,37 @@
-<!-- Página de Demostración de Componentes y Guía de Estilos -->
+<!-- Component and Style Guide Demo Page -->
 <div class="component-showcase">
-  <!-- Botón de retorno a la página principal -->
+  <!-- Back to main page button -->
   <div class="home-main-access">
     <a routerLink="/" class="home-main-access__link">
-      <app-button text="← Volver a BROADCASTTD" variant="primary" size="lg" [fullWidth]="true" />
+      <app-button text="← Back to BROADCASTTD" variant="primary" size="lg" [fullWidth]="true" />
     </a>
   </div>
 
-  <!-- Botones de navegación -->
+  <!-- Navigation buttons -->
   <nav class="home-nav">
     <a href="#fases">
-      <app-button text="Fases de Cliente" variant="primary" size="lg" />
+      <app-button text="Client Phases" variant="primary" size="lg" />
     </a>
     <a href="#guia-estilos">
-      <app-button text="Guía de Estilos" variant="secondary" size="lg" />
+      <app-button text="Style Guide" variant="secondary" size="lg" />
     </a>
   </nav>
   <div class="component-showcase__container">
     <header class="component-showcase__header">
-      <h1 class="component-showcase__title">Sistema de Componentes</h1>
+      <h1 class="component-showcase__title">Component System</h1>
       <p class="component-showcase__description">
-        Demostración de todos los componentes disponibles en el proyecto
+        Demonstration of all components available in the project
       </p>
     </header>
 
-    <!-- Sección de Fases de Cliente -->
+    <!-- Client Phases Section -->
     <div id="fases" class="fases-section">
 
-    <!-- ========== FASE 1: MANIPULACIÓN DEL DOM Y EVENTOS ========== -->
+    <!-- ========== PHASE 1: DOM MANIPULATION AND EVENTS ========== -->
     <section class="component-section phase-1">
-      <h2 class="component-section__title">FASE 1: Manipulación del DOM y Eventos</h2>
+      <h2 class="component-section__title">PHASE 1: DOM Manipulation and Events</h2>
       <p class="component-section__description">
-        Implementación de manipulación del DOM, gestión de eventos y componentes interactivos
+        Implementation of DOM manipulation, event handling and interactive components
       </p>
 
       <!-- Theme Switcher -->
@@ -42,33 +42,33 @@
         </div>
       </div>
 
-      <!-- Manipulación del DOM -->
+      <!-- DOM Manipulation -->
       <div class="component-group">
-        <h3 class="component-group__title">Manipulación del DOM</h3>
+        <h3 class="component-group__title">DOM Manipulation</h3>
         <div class="component-demo">
           <app-dom-manipulation />
         </div>
       </div>
 
-      <!-- Sistema de Eventos -->
+      <!-- Event System -->
       <div class="component-group">
-        <h3 class="component-group__title">Sistema de Eventos</h3>
+        <h3 class="component-group__title">Event System</h3>
         <div class="component-demo">
           <app-event-demo />
         </div>
       </div>
 
-      <!-- Menú Hamburguesa -->
+      <!-- Hamburger Menu -->
       <div class="component-group">
-        <h3 class="component-group__title">Menú Hamburguesa</h3>
+        <h3 class="component-group__title">Hamburger Menu</h3>
         <div class="component-demo">
           <app-hamburger-menu />
         </div>
       </div>
 
-      <!-- Modal Interactivo -->
+      <!-- Interactive Modal -->
       <div class="component-group">
-        <h3 class="component-group__title">Modal Interactivo</h3>
+        <h3 class="component-group__title">Interactive Modal</h3>
         <div class="component-demo">
           <app-interactive-modal />
         </div>
@@ -91,18 +91,18 @@
       </div>
     </section>
 
-    <!-- ========== FASE 2: COMUNICACIÓN Y SERVICIOS ========== -->
+    <!-- ========== PHASE 2: COMMUNICATION AND SERVICES ========== -->
     <section class="component-section phase-2">
-      <h2 class="component-section__title">FASE 2: Componentes Interactivos y Comunicación</h2>
+      <h2 class="component-section__title">PHASE 2: Interactive Components and Communication</h2>
       <p class="component-section__description">
-        Implementación de servicios de comunicación, notificaciones y gestión de estados de carga
+        Implementation of communication services, notifications and loading state management
       </p>
 
-      <!-- Comunicación entre Componentes -->
+      <!-- Component Communication -->
       <div class="component-group">
-        <h3 class="component-group__title">Comunicación entre Componentes Hermanos</h3>
+        <h3 class="component-group__title">Sibling Component Communication</h3>
         <p class="component-section__description">
-          Demuestra el uso de CommunicationService con RxJS BehaviorSubject
+          Demonstrates the use of CommunicationService with RxJS BehaviorSubject
         </p>
         <div class="component-demo component-demo--siblings">
           <app-sibling-sender />
@@ -110,11 +110,11 @@
         </div>
       </div>
 
-      <!-- Loading States y Toasts -->
+      <!-- Loading States and Toasts -->
       <div class="component-group">
-        <h3 class="component-group__title">Sistema de Loading States y Notificaciones</h3>
+        <h3 class="component-group__title">Loading States and Notification System</h3>
         <p class="component-section__description">
-          Demuestra LoadingService (spinner global), ToastService (notificaciones) y UserService (separación de responsabilidades)
+          Demonstrates LoadingService (global spinner), ToastService (notifications) and UserService (separation of responsibilities)
         </p>
         <div class="component-demo">
           <app-loading-demo />
@@ -122,40 +122,40 @@
       </div>
     </section>
 
-    <!-- ========== FASE 3: FORMULARIOS REACTIVOS AVANZADOS ========== -->
+    <!-- ========== PHASE 3: ADVANCED REACTIVE FORMS ========== -->
     <section class="component-section phase-3">
-      <h2 class="component-section__title">FASE 3: Formularios Reactivos Avanzados</h2>
+      <h2 class="component-section__title">PHASE 3: Advanced Reactive Forms</h2>
       <p class="component-section__description">
-        Implementación de ReactiveFormsModule con validadores personalizados (síncronos, asíncronos y cross-field) y FormArray para contenido dinámico
+        Implementation of ReactiveFormsModule with custom validators (synchronous, asynchronous and cross-field) and FormArray for dynamic content
       </p>
 
-      <!-- Formulario de Contacto con Validadores Personalizados -->
+      <!-- Contact Form with Custom Validators -->
       <div class="component-group">
-        <h3 class="component-group__title">Formulario de Contacto con Validadores Personalizados</h3>
+        <h3 class="component-group__title">Contact Form with Custom Validators</h3>
         <p class="component-section__description">
-          Validadores: NIF, Teléfono, Código Postal, y validación cross-field (al menos email o teléfono)
+          Validators: NIF, Phone, Postal Code, and cross-field validation (at least email or phone)
         </p>
         <div class="component-demo">
           <app-contact-form-reactive />
         </div>
       </div>
 
-      <!-- Formulario de Factura con FormArray -->
+      <!-- Invoice Form with FormArray -->
       <div class="component-group">
-        <h3 class="component-group__title">Formulario de Factura con FormArray</h3>
+        <h3 class="component-group__title">Invoice Form with FormArray</h3>
         <p class="component-section__description">
-          Demuestra FormArray para gestionar listas dinámicas: teléfonos, direcciones y artículos. Validación cross-field de total mínimo.
+          Demonstrates FormArray for managing dynamic lists: phones, addresses and items. Cross-field validation of minimum total.
         </p>
         <div class="component-demo">
           <app-invoice-form />
         </div>
       </div>
 
-      <!-- Formulario de Perfil con Validación Asíncrona -->
+      <!-- Profile Form with Async Validation -->
       <div class="component-group">
-        <h3 class="component-group__title">Formulario de Perfil con Validación Asíncrona</h3>
+        <h3 class="component-group__title">Profile Form with Async Validation</h3>
         <p class="component-section__description">
-          Validadores asíncronos para verificar disponibilidad de email y username en tiempo real, con indicadores visuales de estado
+          Async validators to check email and username availability in real-time, with visual status indicators
         </p>
         <div class="component-demo">
           <app-profile-form />
@@ -163,20 +163,20 @@
       </div>
     </section>
     </div>
-    <!-- Fin de Fases de Cliente -->
+    <!-- End of Client Phases -->
 
-    <!-- ========== GUÍA DE ESTILOS ========== -->
+    <!-- ========== STYLE GUIDE ========== -->
     <div id="guia-estilos" class="style-guide-section">
       <header class="style-guide-section__header">
-        <h1 class="style-guide-section__title">Guía de Estilos</h1>
+        <h1 class="style-guide-section__title">Style Guide</h1>
         <p class="style-guide-section__description">
-          Catálogo completo de componentes reutilizables del sistema de diseño
+          Complete catalog of reusable components from the design system
         </p>
       </header>
 
-    <!-- SECCIÓN 1: COMPONENTES DE FORMULARIO -->
+    <!-- SECTION 1: FORM COMPONENTS -->
     <section class="component-section">
-      <h2 class="component-section__title">1. Componentes de Formulario</h2>
+      <h2 class="component-section__title">1. Form Components</h2>
       
       <!-- Form Input -->
       <div class="component-group">
@@ -222,8 +222,8 @@
         <div class="component-demo component-demo--form">
           <app-form-textarea
             id="guide-textarea"
-            label="Mensaje"
-            placeholder="Escribe tu mensaje aquí..."
+            label="Message"
+            placeholder="Write your message here..."
             [rows]="4"
             [required]="true"
           />
@@ -236,9 +236,9 @@
         <div class="component-demo component-demo--form">
           <app-form-select
             id="guide-select"
-            label="País"
+            label="Country"
             [options]="selectOptions"
-            placeholder="Selecciona una opción"
+            placeholder="Select an option"
             [required]="true"
           />
         </div>
@@ -250,18 +250,18 @@
         <div class="component-demo component-demo--form">
           <app-form-checkbox
             checkboxId="guide-checkbox"
-            label="Acepto los términos y condiciones"
+            label="I accept the terms and conditions"
           />
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: BOTONES -->
+    <!-- SECTION 2: BUTTONS -->
     <section class="component-section">
-      <h2 class="component-section__title">2. Botones</h2>
+      <h2 class="component-section__title">2. Buttons</h2>
       
       <div class="component-group">
-        <h3 class="component-group__title">Button - Variantes</h3>
+        <h3 class="component-group__title">Button - Variants</h3>
         <div class="component-demo component-demo--row">
           <app-button text="Primary" variant="primary" />
           <app-button text="Secondary" variant="secondary" />
@@ -271,7 +271,7 @@
       </div>
 
       <div class="component-group">
-        <h3 class="component-group__title">Button - Tamaños</h3>
+        <h3 class="component-group__title">Button - Sizes</h3>
         <div class="component-demo component-demo--row">
           <app-button text="Small (sm)" size="sm" />
           <app-button text="Medium (md)" size="md" />
@@ -280,11 +280,11 @@
       </div>
 
       <div class="component-group">
-        <h3 class="component-group__title">Button - Estados</h3>
+        <h3 class="component-group__title">Button - States</h3>
         <div class="component-demo component-demo--row">
           <app-button text="Normal" variant="primary" />
           <div class="button-hover-example">
-            <app-button text="Hover (pasa el mouse)" variant="primary" />
+            <app-button text="Hover (mouse over)" variant="primary" />
           </div>
           <app-button text="Disabled" variant="primary" [disabled]="true" />
         </div>
@@ -298,12 +298,12 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: TARJETAS Y CONTENEDORES -->
+    <!-- SECTION 3: CARDS AND CONTAINERS -->
     <section class="component-section">
-      <h2 class="component-section__title">3. Tarjetas y Contenedores</h2>
+      <h2 class="component-section__title">3. Cards and Containers</h2>
       
       <div class="component-group">
-        <h3 class="component-group__title">Card - Media (Series/Películas)</h3>
+        <h3 class="component-group__title">Card - Media (Series/Movies)</h3>
         <div class="component-demo">
           <app-card
             variant="media"
@@ -314,9 +314,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 4: NOTIFICACIONES Y ALERTAS -->
+    <!-- SECTION 4: NOTIFICATIONS AND ALERTS -->
     <section class="component-section">
-      <h2 class="component-section__title">4. Notificaciones y Alertas</h2>
+      <h2 class="component-section__title">4. Notifications and Alerts</h2>
       
       <div class="component-group">
         <h3 class="component-group__title">Alert</h3>
@@ -352,7 +352,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 5: CARDS -->
+    <!-- SECTION 5: CARDS -->
     <section class="component-section">
       <h2 class="component-section__title">5. Cards</h2>
       
@@ -370,7 +370,7 @@
       <div class="component-group">
         <h3 class="component-group__title">Card - Rating Variant</h3>
         <p class="component-section__description">
-          Card con gráfico de valoraciones, sistema de estrellas y botón de acción
+          Card with rating chart, star system and action button
         </p>
         <div class="component-demo">
           <app-card
@@ -384,14 +384,14 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 6: CARD LIST -->
+    <!-- SECTION 6: CARD LIST -->
     <section class="component-section">
-      <h2 class="component-section__title">6. Card List (Listas de Series)</h2>
+      <h2 class="component-section__title">6. Card List (Series Lists)</h2>
       
       <div class="component-group">
-        <h3 class="component-group__title">CardList - Tamaño normal</h3>
+        <h3 class="component-group__title">CardList - Normal size</h3>
         <p class="component-section__description">
-          Componente que muestra múltiples imágenes apiladas. Al hacer hover, las imágenes se expanden.
+          Component that displays multiple stacked images. On hover, images expand.
         </p>
         <div class="component-demo component-demo--row card-list-demo">
           <app-card-list
@@ -410,9 +410,9 @@
       </div>
 
       <div class="component-group">
-        <h3 class="component-group__title">CardList - Tamaño pequeño (small)</h3>
+        <h3 class="component-group__title">CardList - Small size</h3>
         <p class="component-section__description">
-          Variante más compacta para espacios reducidos o grids más densos.
+          More compact variant for reduced spaces or denser grids.
         </p>
         <div class="component-demo component-demo--row card-list-demo">
           <app-card-list
@@ -439,19 +439,19 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 7: FORMULARIOS COMPLETOS -->
+    <!-- SECTION 7: COMPLETE FORMS -->
     <section class="component-section">
-      <h2 class="component-section__title">7. Formularios Completos (con estructura semántica)</h2>
+      <h2 class="component-section__title">7. Complete Forms (with semantic structure)</h2>
       
       <div class="forms-demo">
-        <!-- Formulario de Login -->
+        <!-- Login Form -->
         <app-login-form 
           (closeForm)="onClose()"
           (submitForm)="onLoginSubmit($event)"
           (createAccount)="onCreateAccountRequest()"
         />
 
-        <!-- Formulario de Registro -->
+        <!-- Register Form -->
         <app-register-form 
           (closeForm)="onClose()"
           (submitForm)="onRegisterSubmit($event)"

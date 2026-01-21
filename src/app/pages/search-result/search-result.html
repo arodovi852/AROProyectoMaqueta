@@ -1,14 +1,14 @@
-<!-- Página de resultados de búsqueda -->
+<!-- Search results page -->
 <div class="search-result-page">
   <div class="search-result-page__container">
-    <!-- Título -->
+    <!-- Title -->
     <h1 class="search-result-page__title">Results for your search:</h1>
 
-    <!-- Lista de resultados -->
+    <!-- Results list -->
     <div class="search-result-page__list">
       @for (result of searchResults(); track result.id) {
         <article class="search-result-card">
-          <!-- Imagen de la serie -->
+          <!-- Series image -->
           <div class="search-result-card__image-wrapper">
             <img 
               [src]="result.image" 
@@ -17,7 +17,7 @@
             />
           </div>
 
-          <!-- Contenido: Título y descripción -->
+          <!-- Content: Title and description -->
           <div class="search-result-card__content">
             <h2 class="search-result-card__title">{{ result.title }}</h2>
             <p class="search-result-card__description">{{ result.description }}</p>

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CloseButton } from '../close-button/close-button';
 
 /**
- * Componente Modal
+ * Modal Component
  * 
- * Modal reutilizable con cierre por ESC, click fuera y botón de cerrar.
- * Implementa requisitos de Cliente Fase 1:
- * - Manipulación DOM con ViewChild y Renderer2
- * - Event binding y @HostListener
- * - Prevención de comportamientos por defecto
+ * Reusable modal with close by ESC, click outside and close button.
+ * Implements Client Phase 1 requirements:
+ * - DOM manipulation with ViewChild and Renderer2
+ * - Event binding and @HostListener
+ * - Prevention of default behaviors
  */
 @Component({
   selector: 'app-modal',

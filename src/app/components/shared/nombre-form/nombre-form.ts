@@ -7,10 +7,10 @@ import { FormSelect, SelectOption } from '../form-select/form-select';
 import { FormCheckbox } from '../form-checkbox/form-checkbox';
 
 /**
- * Componente Contact Form
+ * Contact Form Component
  * 
- * Formulario de contacto completo con validaciones usando ReactiveFormsModule.
- * Implementa todos los componentes de formulario reutilizables.
+ * Complete contact form with validations using ReactiveFormsModule.
+ * Implements all reusable form components.
  */
 @Component({
   selector: 'app-contact-form',
@@ -27,29 +27,29 @@ import { FormCheckbox } from '../form-checkbox/form-checkbox';
 })
 export class NombreForm implements OnInit {
   /**
-   * FormGroup del formulario de contacto
+   * Contact form FormGroup
    */
   contactForm!: FormGroup;
 
   /**
-   * Indica si el formulario ha sido enviado
+   * Indicates if the form has been submitted
    */
   submitted: boolean = false;
 
   /**
-   * Indica si el formulario se está enviando
+   * Indicates if the form is being submitted
    */
   isSubmitting: boolean = false;
 
   /**
-   * Opciones para el select de asunto
+   * Options for subject select
    */
   subjectOptions: SelectOption[] = [
-    { value: 'info', label: 'Información General' },
-    { value: 'sales', label: 'Consulta Comercial' },
-    { value: 'support', label: 'Soporte Técnico' },
-    { value: 'partnership', label: 'Oportunidad de Negocio' },
-    { value: 'other', label: 'Otro' }
+    { value: 'info', label: 'General Information' },
+    { value: 'sales', label: 'Sales Inquiry' },
+    { value: 'support', label: 'Technical Support' },
+    { value: 'partnership', label: 'Business Opportunity' },
+    { value: 'other', label: 'Other' }
   ];
 
   constructor(private formBuilder: FormBuilder) {}
@@ -59,7 +59,7 @@ export class NombreForm implements OnInit {
   }
 
   /**
-   * Inicializa el formulario con validaciones
+   * Initialize form with validations
    */
   private initializeForm(): void {
     this.contactForm = this.formBuilder.group({
@@ -93,34 +93,34 @@ export class NombreForm implements OnInit {
     }
 
     if (field.errors['required']) {
-      return 'Este campo es obligatorio';
+      return 'This field is required';
     }
 
     if (field.errors['email']) {
-      return 'Por favor, introduce un email válido';
+      return 'Please enter a valid email';
     }
 
     if (field.errors['minlength']) {
       const minLength = field.errors['minlength'].requiredLength;
-      return `Debe tener al menos ${minLength} caracteres`;
+      return `Must have at least ${minLength} characters`;
     }
 
     if (field.errors['maxlength']) {
       const maxLength = field.errors['maxlength'].requiredLength;
-      return `No puede exceder ${maxLength} caracteres`;
+      return `Cannot exceed ${maxLength} characters`;
     }
 
-    return 'Campo inválido';
+    return 'Invalid field';
   }
 
   /**
-   * Maneja el envío del formulario
+   * Handles form submission
    */
   onSubmit(): void {
     this.submitted = true;
 
     if (this.contactForm.invalid) {
-      // Marcar todos los campos como tocados para mostrar errores
+      // Mark all fields as touched to show errors
       Object.keys(this.contactForm.controls).forEach(key => {
         this.contactForm.get(key)?.markAsTouched();
       });
@@ -129,21 +129,21 @@ export class NombreForm implements OnInit {
 
     this.isSubmitting = true;
 
-    // Simular envío (en producción, aquí iría la llamada al servicio)
-    console.log('Datos del formulario:', this.contactForm.value);
+    // Simulate submission (in production, service call would go here)
+    console.log('Form data:', this.contactForm.value);
 
-    // Simular delay de red
+    // Simulate network delay
     setTimeout(() => {
       this.isSubmitting = false;
-      console.log('Formulario enviado con éxito');
+      console.log('Form submitted successfully');
       
-      // En un caso real, aquí resetearías el formulario
+      // In a real case, you would reset the form here
       // this.onReset();
     }, 2000);
   }
 
   /**
-   * Resetea el formulario
+   * Reset form
    */
   onReset(): void {
     this.contactForm.reset();

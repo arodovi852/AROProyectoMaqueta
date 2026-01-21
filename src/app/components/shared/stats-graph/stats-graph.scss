@@ -30,7 +30,7 @@
   
   &__bar {
     width: 100%;
-    background-color: #e88fd3;
+    background-color: hsl(317, 67%, 73%);
     border-radius: 2px 2px 0 0;
     min-height: 8px;
     transition: height 0.3s ease;
@@ -40,7 +40,7 @@
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-weight: 600;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
     text-align: center;
   }
 }

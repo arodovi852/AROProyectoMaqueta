@@ -6,45 +6,45 @@ import { pendingChangesGuard } from './core/guards/pending-changes.guard';
 import { seriesResolver, seriesListResolver } from './core/resolvers/series.resolver';
 
 /**
- * Configuración de rutas de la aplicación (FASE 4)
+ * Application routes configuration (PHASE 4)
  * 
- * Implementa:
- * - Rutas principales con breadcrumbs
- * - Rutas con parámetros (:id)
- * - Rutas hijas anidadas
- * - Lazy loading para módulos de features
- * - Guards de autenticación y cambios pendientes
- * - Resolvers para precarga de datos
- * - Ruta wildcard 404
+ * Implements:
+ * - Main routes with breadcrumbs
+ * - Routes with parameters (:id)
+ * - Nested child routes
+ * - Lazy loading for feature modules
+ * - Authentication and pending changes guards
+ * - Resolvers for data preloading
+ * - Wildcard 404 route
  */
 export const routes: Routes = [
-  // ========== LANDING PAGE (RUTA RAÍZ) ==========
+  // ========== LANDING PAGE (ROOT ROUTE) ==========
   
   {
     path: '',
     component: Main,
     title: 'BROADCASTTD - Track series. Rate them. See what\'s good.',
-    data: { breadcrumb: 'Inicio' }
+    data: { breadcrumb: 'Home' }
   },
 
-  // Guía de estilos y demostración de componentes
+  // Style guide and component demonstration
   {
     path: 'guiadeestilos',
     loadComponent: () => import('./pages/home/home').then(m => m.Home),
-    title: 'Guía de Estilos - BROADCAST',
-    data: { breadcrumb: 'Guía de Estilos' }
+    title: 'Style Guide - BROADCAST',
+    data: { breadcrumb: 'Style Guide' }
   },
 
-  // ========== RUTAS DE PRODUCTOS (Lazy Loading) ==========
+  // ========== PRODUCT ROUTES (Lazy Loading) ==========
   
   {
     path: 'productos',
     loadComponent: () => import('./pages/productos/productos').then(m => m.Productos),
-    title: 'Productos - BROADCAST',
-    data: { breadcrumb: 'Productos' }
+    title: 'Products - BROADCAST',
+    data: { breadcrumb: 'Products' }
   },
 
-  // ========== RUTAS DE SERIES (Con parámetros y resolver) ==========
+  // ========== SERIES ROUTES (With parameters and resolver) ==========
   
   {
     path: 'series',
@@ -59,84 +59,83 @@ export const routes: Routes = [
       {
         path: ':id',
         loadComponent: () => import('./pages/series-info/series-info').then(m => m.SeriesInfo),
-        title: 'Detalle de Serie - BROADCASTTD',
-        data: { breadcrumb: 'Detalle' },
+        title: 'Series Detail - BROADCASTTD',
+        data: { breadcrumb: 'Detail' },
         resolve: { series: seriesResolver }
       }
     ]
   },
 
-  // ========== RUTAS DE LISTAS ==========
+  // ========== LIST ROUTES ==========
   
   {
     path: 'lists',
     loadComponent: () => import('./pages/lists/lists').then(m => m.Lists),
     title: 'Lists - BROADCASTTD',
-    data: { breadcrumb: 'Listas' }
+    data: { breadcrumb: 'Lists' }
   },
   {
     path: 'listinfo',
     loadComponent: () => import('./pages/list-info/list-info').then(m => m.ListInfo),
     title: 'Create List - BROADCASTTD',
-    data: { breadcrumb: 'Crear Lista' }
+    data: { breadcrumb: 'Create List' }
   },
   {
     path: 'listcontent',
     loadComponent: () => import('./pages/list-content/list-content').then(m => m.ListContent),
     title: 'List Content - BROADCASTTD',
-    data: { breadcrumb: 'Contenido de Lista' }
+    data: { breadcrumb: 'List Content' }
   },
 
-  // ========== RUTAS DE USUARIO (Protegidas con authGuard) ==========
+  // ========== USER ROUTES (Protected with authGuard) ==========
   
   {
     path: 'profile',
     loadComponent: () => import('./pages/profile/profile').then(m => m.Profile),
     title: 'Profile - BROADCASTTD',
-    data: { breadcrumb: 'Perfil' },
+    data: { breadcrumb: 'Profile' },
     canActivate: [authGuard]
   },
 
-  // ========== RUTAS ADICIONALES ==========
+  // ========== ADDITIONAL ROUTES ==========
   
   {
     path: 'contacto',
     loadComponent: () => import('./pages/contacto/contacto').then(m => m.Contacto),
-    title: 'Contacto - BROADCAST',
-    data: { breadcrumb: 'Contacto' },
-    canDeactivate: [pendingChangesGuard] // Proteger formulario de contacto
+    title: 'Contact - BROADCAST',
+    data: { breadcrumb: 'Contact' },
+    canDeactivate: [pendingChangesGuard] // Protect contact form
   },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about').then(m => m.About),
-    title: 'Sobre Nosotros - BROADCAST',
-    data: { breadcrumb: 'Sobre Nosotros' }
+    title: 'About Us - BROADCAST',
+    data: { breadcrumb: 'About Us' }
   },
   {
     path: 'searchresult',
     loadComponent: () => import('./pages/search-result/search-result').then(m => m.SearchResult),
     title: 'Search Results - BROADCASTTD',
-    data: { breadcrumb: 'Resultados de Búsqueda' }
+    data: { breadcrumb: 'Search Results' }
   },
   {
     path: 'demo',
     loadComponent: () => import('./pages/demo-components/demo-components').then(m => m.DemoComponents),
-    title: 'Demo Componentes - BROADCAST',
+    title: 'Component Demo - BROADCAST',
     data: { breadcrumb: 'Demo' }
   },
   {
     path: 'seriesinfo',
-    loadComponent: () => import('./pages/series-info/series-info').then(m => m.SeriesInfo),
-    title: 'Series Info - BROADCASTTD',
-    data: { breadcrumb: 'Info de Serie' }
+    redirectTo: '/series/1',
+    pathMatch: 'full'
   },
 
-  // ========== RUTA 404 (Wildcard - siempre al final) ==========
+  // ========== 404 ROUTE (Wildcard - always last) ==========
   
   {
     path: '**',
     component: NotFound,
-    title: '404 - Página no encontrada',
-    data: { breadcrumb: 'No encontrado' }
+    title: '404 - Page not found',
+    data: { breadcrumb: 'Not found' }
   }
 ];

@@ -11,7 +11,7 @@ import { FormTextarea } from '../../components/shared/form-textarea/form-textare
 import { LoginForm } from '../../components/shared/login-form/login-form';
 import { RegisterForm } from '../../components/shared/register-form/register-form';
 
-// Componentes Fase 1
+// Phase 1 Components
 import { ThemeSwitcher } from '../../components/shared/theme-switcher/theme-switcher';
 import { DomManipulation } from '../../components/shared/dom-manipulation/dom-manipulation';
 import { EventDemo } from '../../components/shared/event-demo/event-demo';
@@ -20,23 +20,23 @@ import { InteractiveModal } from '../../components/shared/interactive-modal/inte
 import { InteractiveTabs } from '../../components/shared/interactive-tabs/interactive-tabs';
 import { InteractiveTooltip } from '../../components/shared/interactive-tooltip/interactive-tooltip';
 
-// Componentes Fase 2
+// Phase 2 Components
 import { SiblingSender } from '../../components/shared/sibling-sender/sibling-sender';
 import { SiblingReceiver } from '../../components/shared/sibling-receiver/sibling-receiver';
 import { LoadingDemo } from '../../components/shared/loading-demo/loading-demo';
 
-// Componentes Fase 3
+// Phase 3 Components
 import { ContactFormReactive } from '../../components/shared/contact-form-reactive/contact-form-reactive';
 import { InvoiceForm } from '../../components/shared/invoice-form/invoice-form';
 import { ProfileForm } from '../../components/shared/profile-form/profile-form';
 
-// Componentes adicionales
+// Additional components
 import { CardList } from '../../components/shared/card-list/card-list';
 
 /**
- * Página Home
+ * Home Page
  * 
- * Página de demostración de componentes
+ * Component demonstration page
  */
 @Component({
   selector: 'app-home',
@@ -52,7 +52,7 @@ import { CardList } from '../../components/shared/card-list/card-list';
     FormTextarea,
     LoginForm,
     RegisterForm,
-    // Fase 1
+    // Phase 1
     ThemeSwitcher,
     DomManipulation,
     EventDemo,
@@ -60,34 +60,34 @@ import { CardList } from '../../components/shared/card-list/card-list';
     InteractiveModal,
     InteractiveTabs,
     InteractiveTooltip,
-    // Fase 2
+    // Phase 2
     SiblingSender,
     SiblingReceiver,
     LoadingDemo,
-    // Fase 3
+    // Phase 3
     ContactFormReactive,
     InvoiceForm,
     ProfileForm,
-    // Componentes adicionales
+    // Additional components
     CardList
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-  // Control de visibilidad de la notificación
+  // Notification visibility control
   showNotification = false;
 
-  // Opciones para el select en la guía de estilos
+  // Options for style guide select
   selectOptions = [
-    { value: 'es', label: 'España' },
-    { value: 'fr', label: 'Francia' },
-    { value: 'it', label: 'Italia' },
-    { value: 'de', label: 'Alemania' },
-    { value: 'uk', label: 'Reino Unido' }
+    { value: 'es', label: 'Spain' },
+    { value: 'fr', label: 'France' },
+    { value: 'it', label: 'Italy' },
+    { value: 'de', label: 'Germany' },
+    { value: 'uk', label: 'United Kingdom' }
   ];
 
-  // Datos de ejemplo para CardList
+  // Example data for CardList
   cardListImages = [
     { src: '/assets/Images_For_Card_1.jpg', alt: 'Twin Peaks' },
     { src: '/assets/Images_For_Card_2.jpg', alt: 'Stranger Things' },
@@ -95,12 +95,12 @@ export class Home {
     { src: '/assets/Image_For_Card_4.jpg', alt: 'The Haunting of Hill House' }
   ];
 
-  // Manejador para el botón de cierre
+  // Handler for the close button
   onClose(): void {
-    console.log('Botón de cierre clicado');
+    console.log('Close button clicked');
   }
 
-  // Manejadores para los formularios
+  // Form handlers
   onLoginSubmit(data: any): void {
     console.log('Login submitted:', data);
   }

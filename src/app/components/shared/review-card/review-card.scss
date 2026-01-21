@@ -8,9 +8,9 @@
   display: flex;
   gap: var(--spacing-4);
   padding: var(--spacing-4);
-  background-color: rgba(107, 91, 122, 0.5);
+  background-color: hsla(276, 16%, 42%, 0.5);
   border-radius: 0.75rem;
-  border: 2px solid #8a7a9a;
+  border: 2px solid hsl(270, 13%, 54%);
   
   &__avatar {
     flex-shrink: 0;
@@ -44,7 +44,7 @@
     font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 600;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
   }
   
   &__stars {
@@ -53,10 +53,10 @@
   }
   
   &__star {
-    color: #6b5b7a;
+    color: hsl(276, 14%, 42%);
     
     &--filled {
-      color: #ecc332;
+      color: hsl(46, 83%, 56%);
     }
   }
   
@@ -64,7 +64,7 @@
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-style: italic;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
     line-height: 1.5;
     margin: 0;
     opacity: 0.9;

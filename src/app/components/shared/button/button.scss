@@ -50,54 +50,54 @@
 
 // Variante Primary (estilo amarillo como en las imágenes)
 .btn--primary {
-  background: linear-gradient(180deg, #f4d03f 0%, #e8be2d 100%);
-  color: #3d2a45;
-  border: 0.1875rem solid #3d2a45;
+  background: linear-gradient(180deg, hsl(50, 88%, 60%) 0%, hsl(47, 80%, 54%) 100%);
+  color: hsl(286, 26%, 22%);
+  border: 0.1875rem solid hsl(286, 26%, 22%);
   border-radius: 1rem;
   padding: var(--spacing-4) var(--spacing-8);
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
-  text-shadow: 0 0.0625rem 0.125rem rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0.0625rem 0.125rem hsla(0, 0%, 100%, 0.3);
+  box-shadow: 0 0.25rem 0.5rem hsla(0, 0%, 0%, 0.3);
 
   &:hover:not(:disabled) {
-    background: #ffffff;
-    color: #3d2a45;
+    background: hsl(0, 0%, 100%);
+    color: hsl(286, 26%, 22%);
     transform: translateY(-0.125rem);
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.375rem 0.75rem hsla(0, 0%, 0%, 0.4);
   }
 
   &:active:not(:disabled) {
-    background: #ffffff;
-    color: #3d2a45;
+    background: hsl(0, 0%, 100%);
+    color: hsl(286, 26%, 22%);
     transform: translateY(0);
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.125rem 0.25rem hsla(0, 0%, 0%, 0.3);
   }
 }
 
 // Variante Secondary
 .btn--secondary {
-  background: linear-gradient(180deg, #A264BF 0%, #A264BF 100%);
-  color: #3d2a45;
-  border: 0.1875rem solid #3d2a45;
+  background: linear-gradient(180deg, hsl(285, 43%, 57%) 0%, hsl(285, 43%, 57%) 100%);
+  color: hsl(286, 26%, 22%);
+  border: 0.1875rem solid hsl(286, 26%, 22%);
   border-radius: 1rem;
   padding: var(--spacing-4) var(--spacing-8);
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.25rem 0.5rem hsla(0, 0%, 0%, 0.3);
 
   &:hover:not(:disabled) {
-    background: #ffffff;
-    color: #3d2a45;
+    background: hsl(0, 0%, 100%);
+    color: hsl(286, 26%, 22%);
     transform: translateY(-0.125rem);
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.375rem 0.75rem hsla(0, 0%, 0%, 0.4);
   }
 
   &:active:not(:disabled) {
-    background: #ffffff;
-    color: #3d2a45;
+    background: hsl(0, 0%, 100%);
+    color: hsl(286, 26%, 22%);
     transform: translateY(0);
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.125rem 0.25rem hsla(0, 0%, 0%, 0.3);
   }
 
   &:focus-visible {
@@ -135,25 +135,25 @@
 
 // Variante Danger (rojo, para acciones destructivas)
 .btn--danger {
-  background: linear-gradient(180deg, #F44336 0%, #D32F2F 100%);
-  color: #ffffff;
-  border: 0.1875rem solid #8B0000;
+  background: linear-gradient(180deg, hsl(4, 90%, 58%) 0%, hsl(0, 65%, 51%) 100%);
+  color: hsl(0, 0%, 100%);
+  border: 0.1875rem solid hsl(0, 100%, 27%);
   border-radius: 1rem;
   padding: var(--spacing-4) var(--spacing-8);
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.25rem 0.5rem hsla(0, 0%, 0%, 0.3);
 
   &:hover:not(:disabled) {
-    background: linear-gradient(180deg, #E53935 0%, #C62828 100%);
+    background: linear-gradient(180deg, hsl(5, 79%, 56%) 0%, hsl(2, 64%, 47%) 100%);
     transform: translateY(-0.125rem);
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.375rem 0.75rem hsla(0, 0%, 0%, 0.4);
   }
 
   &:active:not(:disabled) {
-    background: linear-gradient(180deg, #D32F2F 0%, #B71C1C 100%);
+    background: linear-gradient(180deg, hsl(0, 65%, 51%) 0%, hsl(0, 72%, 40%) 100%);
     transform: translateY(0);
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.125rem 0.25rem hsla(0, 0%, 0%, 0.3);
   }
 
   &:focus-visible {

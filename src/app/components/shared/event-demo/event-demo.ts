@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Button } from '../button/button';
 
 /**
- * Componente de demostración del sistema de eventos
- * Muestra event binding, eventos de teclado, mouse, focus y blur
+ * Event system demonstration Component
+ * Shows event binding, keyboard, mouse, focus and blur events
  */
 @Component({
   selector: 'app-event-demo',
@@ -15,7 +15,7 @@ import { Button } from '../button/button';
   imports: [CommonModule, FormsModule, Button]
 })
 export class EventDemo {
-  // Estado para los eventos
+  // State for events
   clickCount = 0;
   lastKey = '';
   mousePosition = { x: 0, y: 0 };
@@ -25,20 +25,20 @@ export class EventDemo {
   doubleClickCount = 0;
   inputValue = '';
 
-  // Click simple
+  // Simple click
   onClick(event: Event | MouseEvent) {
     this.clickCount++;
     const mouseEvent = event as MouseEvent;
     this.addToLog(`Click en botón (${mouseEvent.clientX || 0}, ${mouseEvent.clientY || 0})`);
   }
 
-  // Doble click
+  // Double click
   onDoubleClick(event: Event | MouseEvent) {
     this.doubleClickCount++;
     this.addToLog(`Doble click detectado`);
   }
 
-  // Eventos de teclado
+  // Keyboard events
   onKeyDown(event: KeyboardEvent) {
     this.lastKey = event.key;
     this.addToLog(`Tecla presionada: ${event.key}`);
@@ -48,12 +48,12 @@ export class EventDemo {
     this.addToLog(`Tecla liberada: ${event.key}`);
   }
 
-  // Evento especial: Enter
+  // Special event: Enter
   onEnterPressed() {
     this.addToLog(`¡Enter presionado! Valor: "${this.inputValue}"`);
   }
 
-  // Eventos de mouse
+  // Mouse events
   onMouseMove(event: MouseEvent) {
     this.mousePosition = {
       x: event.clientX,
@@ -71,7 +71,7 @@ export class EventDemo {
     this.addToLog('Mouse salió del área');
   }
 
-  // Eventos de focus
+  // Focus events
   onFocus(event: FocusEvent) {
     this.isFocused = true;
     this.addToLog('Input recibió foco');

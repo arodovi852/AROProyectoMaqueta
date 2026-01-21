@@ -4,45 +4,45 @@
 
 
 //Colores primarios
---color-primary: #A264BF;
---color-primary-dark: #38263B;
---color-primary-light: #D885FE;
---color-primary-lightest: #EDD5FF;
+--color-primary: hsl(285, 43%, 57%);
+--color-primary-dark: hsl(290, 21%, 19%);
+--color-primary-light: hsl(281, 99%, 76%);
+--color-primary-lightest: hsl(276, 100%, 92%);
 
 //Colores secundarios
---color-secondary: #ecc332;
---color-secondary-dark: #59592F;
---color-secondary-light: #FEFE85;
---color-secondary-lightest: #FFFFCC;
+--color-secondary: hsl(46, 83%, 56%);
+--color-secondary-dark: hsl(60, 31%, 27%);
+--color-secondary-light: hsl(60, 99%, 76%);
+--color-secondary-lightest: hsl(60, 100%, 90%);
 
 //Escala de grises
---color-neutral-50: #FFFDEB;
---color-neutral-100: #F8F7F2;
---color-neutral-200: #E8E6DB;
---color-neutral-300: #D1CFC4;
---color-neutral-400: #B0ADA1;
---color-neutral-500: #8F8C7F;
---color-neutral-600: #6F6D63;
---color-neutral-700: #514F48;
---color-neutral-800: #36342F;
---color-neutral-900: #1C1B18;
+--color-neutral-50: hsl(55, 100%, 96%);
+--color-neutral-100: hsl(50, 24%, 96%);
+--color-neutral-200: hsl(51, 24%, 88%);
+--color-neutral-300: hsl(51, 13%, 79%);
+--color-neutral-400: hsl(48, 9%, 66%);
+--color-neutral-500: hsl(49, 8%, 53%);
+--color-neutral-600: hsl(50, 7%, 41%);
+--color-neutral-700: hsl(47, 7%, 30%);
+--color-neutral-800: hsl(43, 9%, 20%);
+--color-neutral-900: hsl(45, 10%, 10%);
 
 //Colores semánticos
---color-success: #4CAF50;
---color-success-light: #81C784;
---color-success-dark: #388E3C;
+--color-success: hsl(122, 39%, 49%);
+--color-success-light: hsl(122, 38%, 64%);
+--color-success-dark: hsl(122, 43%, 39%);
 
---color-error: #F44336;
---color-error-light: #E57373;
---color-error-dark: #D32F2F;
+--color-error: hsl(4, 90%, 58%);
+--color-error-light: hsl(0, 69%, 67%);
+--color-error-dark: hsl(0, 65%, 51%);
 
---color-warning: #FF9800;
---color-warning-light: #FFB74D;
---color-warning-dark: #F57C00;
+--color-warning: hsl(36, 100%, 50%);
+--color-warning-light: hsl(36, 100%, 65%);
+--color-warning-dark: hsl(33, 100%, 49%);
 
---color-info: #2196F3;
---color-info-light: #64B5F6;
---color-info-dark: #1976D2;
+--color-info: hsl(207, 90%, 54%);
+--color-info-light: hsl(207, 89%, 68%);
+--color-info-dark: hsl(210, 79%, 46%);
 
 //Colores de texto principal (Light mode - por defecto)
 --color-text-primary: var(--color-primary-dark);
@@ -55,19 +55,19 @@
 --color-bg-tertiary: var(--color-neutral-50);
 
 //Cajas de contenido - niveles de anidación (Light mode)
---color-box-level-1: #FFF9E6;  // Más claro - caja externa
---color-box-level-2: #FFF4CC;  // Medio claro
---color-box-level-3: #FFEFB3;  // Medio
---color-box-level-4: #FFE999;  // Medio oscuro
---color-box-level-5: #FFE380;  // Más oscuro - caja más interna
+--color-box-level-1: hsl(47, 100%, 95%);  // Más claro - caja externa
+--color-box-level-2: hsl(47, 100%, 90%);  // Medio claro
+--color-box-level-3: hsl(47, 100%, 85%);  // Medio
+--color-box-level-4: hsl(47, 100%, 80%);  // Medio oscuro
+--color-box-level-5: hsl(47, 100%, 75%);  // Más oscuro - caja más interna
 
 
 
 //Tipografías
 
 //Familias de fuentes
---font-primary: 'MochiyPopOne', sans-serif;
---font-secondary: 'Do Hyeon', sans-serif;
+--font-primary: 'Bebas Neue', sans-serif;     // Para títulos y logo BROADCASTTD
+--font-secondary: 'Inter', sans-serif;        // Para texto legible y cuerpo
 --font-fallback: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
 //Escala tipográfica 
@@ -155,11 +155,11 @@
 --shadow-none: none;
 
 // Sombras con colores provisionales
---shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.4), 0 4px 6px -2px rgba(162, 100, 191, 0.2);
---shadow-secondary: 0 10px 15px -3px rgba(191, 191, 100, 0.4), 0 4px 6px -2px rgba(191, 191, 100, 0.2);
+--shadow-primary: 0 10px 15px -3px hsla(285, 43%, 57%, 0.4), 0 4px 6px -2px hsla(285, 43%, 57%, 0.2);
+--shadow-secondary: 0 10px 15px -3px hsla(60, 31%, 57%, 0.4), 0 4px 6px -2px hsla(60, 31%, 57%, 0.2);
 
 // Color blanco
---color-white: #FFFFFF;
+--color-white: hsl(0, 0%, 100%);
 
 // Container max width
 --container-max-width: 1280px;
@@ -252,27 +252,27 @@
 
 .dark-mode {
   //Colores de texto para dark mode
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #E8E6DB;
+  --color-text-primary: hsl(0, 0%, 100%);
+  --color-text-secondary: hsl(51, 24%, 88%);
   --color-text-disabled: var(--color-neutral-500);
-  --color-text-light: #f5f0e8;
+  --color-text-light: hsl(36, 45%, 93%);
 
   //Colores de fondo para dark mode
   --color-bg-primary: var(--color-primary-dark);
   --color-bg-secondary: var(--color-neutral-900);
   --color-bg-tertiary: var(--color-neutral-800);
-  --color-bg-main: #2D1A33;
+  --color-bg-main: hsl(286, 33%, 15%);
 
   //Cajas de contenido - niveles de anidación (Dark mode)
-  --color-box-level-1: #2D1A33;  // Más claro - caja externa
-  --color-box-level-2: #251629;  // Medio claro
-  --color-box-level-3: #1E1222;  // Medio
-  --color-box-level-4: #170E1A;  // Medio oscuro
-  --color-box-level-5: #100A13;  // Más oscuro - caja más interna
+  --color-box-level-1: hsl(286, 33%, 15%);  // Más claro - caja externa
+  --color-box-level-2: hsl(285, 33%, 12%);  // Medio claro
+  --color-box-level-3: hsl(285, 29%, 9%);   // Medio
+  --color-box-level-4: hsl(285, 29%, 8%);   // Medio oscuro
+  --color-box-level-5: hsl(284, 29%, 5%);   // Más oscuro - caja más interna
 
   // Colores de sombra para dark mode
-  --shadow-primary: 0 10px 15px -3px rgba(162, 100, 191, 0.5), 0 4px 6px -2px rgba(162, 100, 191, 0.3);
-  --shadow-secondary: 0 10px 15px -3px rgba(236, 195, 50, 0.4), 0 4px 6px -2px rgba(236, 195, 50, 0.2);
+  --shadow-primary: 0 10px 15px -3px hsla(285, 43%, 57%, 0.5), 0 4px 6px -2px hsla(285, 43%, 57%, 0.3);
+  --shadow-secondary: 0 10px 15px -3px hsla(47, 81%, 56%, 0.4), 0 4px 6px -2px hsla(47, 81%, 56%, 0.2);
 }
 
 //Variables para mixins y funciones SCSS

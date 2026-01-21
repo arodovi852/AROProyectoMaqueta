@@ -43,45 +43,45 @@ export class ContactFormReactive {
   onSubmit(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
-      this.toastService.warning('Por favor, corrige los errores del formulario');
+      this.toastService.warning('Please correct the form errors');
       return;
     }
 
-    console.log('Formulario de contacto enviado:', this.contactForm.value);
-    this.toastService.success('Mensaje de contacto enviado correctamente');
+    console.log('Contact form submitted:', this.contactForm.value);
+    this.toastService.success('Contact message sent successfully');
     this.contactForm.reset();
   }
 
   onReset(): void {
     this.contactForm.reset();
-    this.toastService.info('Formulario reiniciado');
+    this.toastService.info('Form reset');
   }
 
   getErrorMessage(controlName: string): string {
     const control = this.contactForm.get(controlName);
     if (!control || !control.errors) return '';
 
-    if (control.errors['required']) return `${this.getFieldName(controlName)} es obligatorio`;
+    if (control.errors['required']) return `${this.getFieldName(controlName)} is required`;
     if (control.errors['minlength']) {
       const minLength = control.errors['minlength'].requiredLength;
-      return `Mínimo ${minLength} caracteres`;
+      return `Minimum ${minLength} characters`;
     }
-    if (control.errors['email']) return 'Email inválido';
-    if (control.errors['invalidNif']) return 'NIF inválido (formato: 12345678Z)';
-    if (control.errors['invalidTelefono']) return 'Teléfono inválido (formato: 6/7XXXXXXXX)';
-    if (control.errors['invalidCP']) return 'Código postal inválido (5 dígitos)';
+    if (control.errors['email']) return 'Invalid email';
+    if (control.errors['invalidNif']) return 'Invalid NIF (format: 12345678Z)';
+    if (control.errors['invalidTelefono']) return 'Invalid phone (format: 6/7XXXXXXXX)';
+    if (control.errors['invalidCP']) return 'Invalid postal code (5 digits)';
 
     return '';
   }
 
   getFieldName(controlName: string): string {
     const names: { [key: string]: string } = {
-      name: 'Nombre',
+      name: 'Name',
       nif: 'NIF',
       email: 'Email',
-      telefono: 'Teléfono',
-      codigoPostal: 'Código Postal',
-      message: 'Mensaje'
+      telefono: 'Phone',
+      codigoPostal: 'Postal Code',
+      message: 'Message'
     };
     return names[controlName] || controlName;
   }

@@ -1,12 +1,12 @@
-<!-- Página Create List -->
+<!-- Create List Page -->
 <div class="list-info-page">
   <div class="list-info-page__container">
-    <!-- Título de la página -->
+    <!-- Page title -->
     <h1 class="list-info-page__title">Create list</h1>
 
-    <!-- Formulario -->
+    <!-- Form -->
     <form class="list-info-form" (ngSubmit)="onCreateList()">
-      <!-- Sección: Title -->
+      <!-- Section: Title -->
       <div class="list-info-form__field list-info-form__field--title">
         <app-form-input
           label="Title"
@@ -16,7 +16,7 @@
         />
       </div>
 
-      <!-- Sección: Description -->
+      <!-- Section: Description -->
       <div class="list-info-form__field list-info-form__field--description">
         <app-form-textarea
           label="Description"
@@ -27,7 +27,7 @@
         />
       </div>
 
-      <!-- Sección: Add game -->
+      <!-- Section: Add game -->
       <div class="list-info-form__field list-info-form__field--add-game">
         <app-form-input
           label="Add game"
@@ -37,7 +37,7 @@
         />
       </div>
 
-      <!-- Sección: Public checkbox -->
+      <!-- Section: Public checkbox -->
       <div class="list-info-form__field list-info-form__field--checkbox">
         <app-form-checkbox
           label="Public?"
@@ -46,7 +46,7 @@
         />
       </div>
 
-      <!-- Botón Create list -->
+      <!-- Create list button -->
       <div class="list-info-form__actions">
         <app-button 
           type="submit" 

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 /**
- * Interface de Breadcrumb (FASE 4 - Tarea 6)
+ * Breadcrumb Interface (PHASE 4 - Task 6)
  */
 export interface Breadcrumb {
   label: string;
@@ -12,10 +12,10 @@ export interface Breadcrumb {
 }
 
 /**
- * Servicio de Breadcrumbs (FASE 4 - Tarea 6)
+ * Breadcrumb Service (PHASE 4 - Task 6)
  * 
- * Genera breadcrumbs dinámicos basados en la configuración de rutas.
- * Se actualiza automáticamente con cada navegación.
+ * Generates dynamic breadcrumbs based on route configuration.
+ * Updates automatically with each navigation.
  */
 @Injectable({ providedIn: 'root' })
 export class BreadcrumbService {
@@ -25,7 +25,7 @@ export class BreadcrumbService {
   breadcrumbs$ = this.breadcrumbsSubject.asObservable();
 
   constructor() {
-    // Escuchar cambios de navegación
+    // Listen to navigation changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -35,17 +35,17 @@ export class BreadcrumbService {
   }
 
   /**
-   * Construye los breadcrumbs recursivamente desde la ruta raíz
+   * Builds breadcrumbs recursively from the root route
    */
   private buildBreadcrumbs(route: ActivatedRouteSnapshot, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {
-    // Obtener el título de la ruta (desde data.breadcrumb o title)
+    // Get the route title (from data.breadcrumb or title)
     const label = route.data['breadcrumb'] || route.title || '';
     
-    // Construir la URL
+    // Build the URL
     const path = route.routeConfig?.path || '';
     const nextUrl = path ? `${url}/${path}` : url;
 
-    // Añadir breadcrumb si tiene label
+    // Add breadcrumb if it has a label
     if (label) {
       breadcrumbs.push({
         label,
@@ -53,7 +53,7 @@ export class BreadcrumbService {
       });
     }
 
-    // Procesar rutas hijas
+    // Process child routes
     if (route.children.length) {
       for (const child of route.children) {
         this.buildBreadcrumbs(child, nextUrl, breadcrumbs);
@@ -64,7 +64,7 @@ export class BreadcrumbService {
   }
 
   /**
-   * Obtener breadcrumbs actuales
+   * Get current breadcrumbs
    */
   getBreadcrumbs(): Breadcrumb[] {
     return this.breadcrumbsSubject.value;

@@ -3,8 +3,8 @@ import { ToastService, ToastMessage } from './toast.service';
 import { firstValueFrom, skip } from 'rxjs';
 
 /**
- * Tests para ToastService
- * FASE 7: Testing unitario de servicios
+ * Tests for ToastService
+ * PHASE 7: Service unit testing
  */
 describe('ToastService', () => {
   let service: ToastService;

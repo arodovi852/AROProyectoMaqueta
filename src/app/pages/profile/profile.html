@@ -1,6 +1,6 @@
-<!-- Página Profile -->
+<!-- Profile Page -->
 <div class="profile-page">
-  <!-- Primera fila: Avatar, Stats Graph, Stats Card -->
+  <!-- First row: Avatar, Stats Graph, Stats Card -->
   <section class="profile-page__header-row">
     <div class="profile-page__avatar">
       <app-card-profile [username]="username()" size="lg" />
@@ -16,49 +16,57 @@
     </div>
     
     <div class="profile-page__stats-card">
-      <app-card-data [watched]="watched" [saved]="saved" [average]="average" />
+      <app-card-data [watched]="watched()" [saved]="saved()" [average]="average()" />
     </div>
   </section>
 
-  <!-- Segunda fila: Logged series -->
+  <!-- Second row: Logged series -->
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Logged series</h2>
       <button class="profile-section__see-more">See more</button>
     </div>
     <div class="profile-section__cards">
-      @for (series of loggedSeries; track series.title) {
-        <app-card 
-          [title]="series.title" 
-          [imageSrc]="series.imageSrc"
-          [hoverTitle]="series.hoverTitle"
-          variant="media"
-          size="sm"
-        />
+      @if (loggedSeries().length === 0) {
+        <p class="profile-section__empty">No series added to Watch Later yet. Add series from the series detail page!</p>
+      } @else {
+        @for (series of loggedSeries(); track series.title) {
+          <app-card 
+            [title]="series.title" 
+            [imageSrc]="series.imageSrc"
+            [hoverTitle]="series.hoverTitle"
+            variant="media"
+            size="sm"
+          />
+        }
       }
     </div>
   </section>
 
-  <!-- Tercera fila: Recently watched -->
+  <!-- Third row: Recently watched -->
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Recently watched</h2>
       <button class="profile-section__see-more">See more</button>
     </div>
     <div class="profile-section__cards">
-      @for (series of recentlyWatched; track series.title) {
-        <app-card 
-          [title]="series.title" 
-          [imageSrc]="series.imageSrc"
-          [hoverTitle]="series.hoverTitle"
-          variant="media"
-          size="sm"
-        />
+      @if (recentlyWatched().length === 0) {
+        <p class="profile-section__empty">No series rated yet. Rate series from the series detail page!</p>
+      } @else {
+        @for (series of recentlyWatched(); track series.title) {
+          <app-card 
+            [title]="series.title" 
+            [imageSrc]="series.imageSrc"
+            [hoverTitle]="series.hoverTitle + (series.rating ? ' - ★' + series.rating : '')"
+            variant="media"
+            size="sm"
+          />
+        }
       }
     </div>
   </section>
 
-  <!-- Cuarta fila: Personal lists -->
+  <!-- Fourth row: Personal lists -->
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Personal lists</h2>
@@ -75,7 +83,7 @@
     </div>
   </section>
 
-  <!-- Quinta fila: Reviews -->
+  <!-- Fifth row: Reviews -->
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Reviews</h2>

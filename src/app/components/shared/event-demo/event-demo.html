@@ -1,50 +1,50 @@
 <div class="event-demo">
   <div class="event-demo__header">
-    <h3 class="event-demo__title">Sistema de Eventos Angular</h3>
+    <h3 class="event-demo__title">Angular Event System</h3>
     <p class="event-demo__description">
-      Demostración de event binding y manejo de eventos
+      Event binding and handling demonstration
     </p>
   </div>
 
-  <!-- Eventos de Click -->
+  <!-- Click Events -->
   <div class="event-demo__section">
-    <h4>Eventos de Click</h4>
+    <h4>Click Events</h4>
     <div class="event-demo__controls">
       <app-button variant="primary" (onClick)="onClick($event)">
-        Click Simple ({{ clickCount }})
+        Simple Click ({{ clickCount }})
       </app-button>
       <app-button variant="secondary" (dblclick)="onDoubleClick($event)">
-        Doble Click ({{ doubleClickCount }})
+        Double Click ({{ doubleClickCount }})
       </app-button>
     </div>
   </div>
 
-  <!-- Eventos de Teclado -->
+  <!-- Keyboard Events -->
   <div class="event-demo__section">
-    <h4>Eventos de Teclado</h4>
+    <h4>Keyboard Events</h4>
     <input 
       type="text" 
       class="event-demo__input"
-      placeholder="Escribe algo..."
+      placeholder="Type something..."
       (keydown)="onKeyDown($event)"
       (keyup)="onKeyUp($event)"
       [(ngModel)]="inputValue"
     />
     <p class="event-demo__info" *ngIf="lastKey">
-      Última tecla: <strong>{{ lastKey }}</strong>
+      Last key: <strong>{{ lastKey }}</strong>
     </p>
     
     <input 
       type="text" 
       class="event-demo__input"
-      placeholder="Presiona Enter aquí..."
+      placeholder="Press Enter here..."
       (keyup.enter)="onEnterPressed()"
     />
   </div>
 
-  <!-- Eventos de Mouse -->
+  <!-- Mouse Events -->
   <div class="event-demo__section">
-    <h4>Eventos de Mouse</h4>
+    <h4>Mouse Events</h4>
     <div 
       class="event-demo__mouse-area"
       [class.active]="isMouseInside"
@@ -52,62 +52,62 @@
       (mouseleave)="onMouseLeave()"
       (mousemove)="onMouseMove($event)"
     >
-      <p>Mueve el mouse aquí</p>
+      <p>Move mouse here</p>
       <p class="event-demo__coords">
-        Posición: X={{ mousePosition.x }}, Y={{ mousePosition.y }}
+        Position: X={{ mousePosition.x }}, Y={{ mousePosition.y }}
       </p>
     </div>
   </div>
 
-  <!-- Eventos de Focus -->
+  <!-- Focus Events -->
   <div class="event-demo__section">
-    <h4>Eventos de Focus y Blur</h4>
+    <h4>Focus and Blur Events</h4>
     <input 
       type="text" 
       class="event-demo__input"
       [class.focused]="isFocused"
-      placeholder="Click aquí para focus..."
+      placeholder="Click here for focus..."
       (focus)="onFocus($event)"
       (blur)="onBlur($event)"
     />
     <p class="event-demo__info">
-      Estado: <strong>{{ isFocused ? 'Con foco' : 'Sin foco' }}</strong>
+      Status: <strong>{{ isFocused ? 'Focused' : 'Not focused' }}</strong>
     </p>
   </div>
 
-  <!-- Prevención de Default -->
+  <!-- Prevent Default -->
   <div class="event-demo__section">
-    <h4>Prevenir Comportamiento Por Defecto</h4>
+    <h4>Prevent Default Behavior</h4>
     <form (submit)="onSubmit($event)">
       <input 
         type="text" 
         class="event-demo__input"
-        placeholder="Nombre..."
+        placeholder="Name..."
         required
       />
       <app-button type="submit" variant="primary">
-        Enviar (sin recarga)
+        Submit (no reload)
       </app-button>
     </form>
   </div>
 
-  <!-- Propagación de Eventos -->
+  <!-- Event Propagation -->
   <div class="event-demo__section">
-    <h4>Propagación de Eventos</h4>
+    <h4>Event Propagation</h4>
     <div class="event-demo__propagation-outer" (click)="onOuterClick()">
-      <p>Click aquí (evento se propaga)</p>
+      <p>Click here (event propagates)</p>
       <div class="event-demo__propagation-inner" (click)="onInnerClick($event)">
-        Click aquí (propagación detenida)
+        Click here (propagation stopped)
       </div>
     </div>
   </div>
 
-  <!-- Log de Eventos -->
+  <!-- Event Log -->
   <div class="event-demo__section">
     <div class="event-demo__log-header">
-      <h4>Log de Eventos</h4>
+      <h4>Event Log</h4>
       <app-button variant="ghost" size="sm" (onClick)="clearLog()">
-        Limpiar Log
+        Clear Log
       </app-button>
     </div>
     <div class="event-demo__log">
@@ -115,14 +115,14 @@
         {{ log }}
       </div>
       <div *ngIf="eventLog.length === 0" class="event-demo__log-empty">
-        No hay eventos registrados
+        No events recorded
       </div>
     </div>
   </div>
 
   <div class="event-demo__controls">
     <app-button variant="danger" (onClick)="resetAll()">
-      Resetear Todo
+      Reset All
     </app-button>
   </div>
 </div>

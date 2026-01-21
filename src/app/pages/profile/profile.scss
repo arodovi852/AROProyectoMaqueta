@@ -12,7 +12,7 @@
 
 .profile-page {
   min-height: 100vh;
-  background-color: #5a3d5c;
+  background-color: hsl(294, 20%, 30%);
   padding: var(--spacing-6) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -111,14 +111,14 @@
     font-family: var(--font-primary);
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 700;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
     margin: 0;
   }
   
   &__see-more {
     background: transparent;
     border: none;
-    color: #f5f0e8;
+    color: hsl(36, 45%, 93%);
     font-family: var(--font-primary);
     font-size: 0.85rem;
     cursor: pointer;
@@ -127,7 +127,7 @@
     
     &:hover {
       opacity: 1;
-      color: #ecc332;
+      color: hsl(46, 83%, 56%);
     }
   }
   
@@ -141,6 +141,19 @@
       justify-content: space-between;
       gap: var(--spacing-5);
     }
+  }
+  
+  &__empty {
+    width: 100%;
+    text-align: center;
+    color: hsl(36, 45%, 80%);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: var(--spacing-6);
+    background-color: hsla(294, 20%, 25%, 0.5);
+    border-radius: 0.5rem;
+    border: 1px dashed hsla(36, 45%, 80%, 0.3);
   }
   
   &__lists {

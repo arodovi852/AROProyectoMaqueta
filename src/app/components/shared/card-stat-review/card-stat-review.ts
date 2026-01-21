@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { StatBar } from '../stat-bar/stat-bar';
 
 /**
- * Componente Card Stat Review
+ * Card Stat Review Component
  * 
- * Tarjeta que muestra estadísticas promedio de series con barras,
- * permite dar una valoración con estrellas y guardar para ver más tarde.
+ * Card that displays average series statistics with bars,
+ * allows giving a star rating and saving for watch later.
  */
 @Component({
   selector: 'app-card-stat-review',

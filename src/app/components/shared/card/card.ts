@@ -6,10 +6,10 @@ import { WatchLater } from '../watch-later/watch-later';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Card
+ * Card Component
  * 
- * Tarjeta reutilizable para mostrar contenido estructurado.
- * Soporta variantes: --horizontal, --elevated, --bordered, --compact, --interactive, --media, --rating
+ * Reusable card to display structured content.
+ * Supports variants: --horizontal, --elevated, --bordered, --compact, --interactive, --media, --rating
  */
 @Component({
   selector: 'app-card',
@@ -22,13 +22,18 @@ export class Card {
   private router = inject(Router);
 
   /**
+   * ID de la serie para navegación dinámica
+   */
+  @Input() seriesId?: string | number;
+
+  /**
    * URL a la que navegar al hacer click (opcional)
-   * Si no se proporciona, navega a /seriesinfo por defecto
+   * Si no se proporciona, navega a /series/:seriesId o /series/1 por defecto
    */
   @Input() link?: string;
 
   /**
-   * Si la card es clickeable (navega a seriesinfo)
+   * Si la card es clickeable (navega a series info)
    */
   @Input() clickable = true;
 
@@ -157,8 +162,14 @@ export class Card {
    */
   navigateToSeries(): void {
     if (this.clickable && this.variant !== 'rating') {
-      const destination = this.link || '/seriesinfo';
-      this.router.navigate([destination]);
+      if (this.link) {
+        this.router.navigate([this.link]);
+      } else if (this.seriesId) {
+        this.router.navigate(['/series', this.seriesId]);
+      } else {
+        // Por defecto, Twin Peaks (id=1)
+        this.router.navigate(['/series', '1']);
+      }
     }
   }
 }

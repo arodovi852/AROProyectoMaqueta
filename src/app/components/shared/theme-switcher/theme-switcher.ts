@@ -3,8 +3,8 @@ import { DOCUMENT, CommonModule } from '@angular/common';
 import { Button } from '../button/button';
 
 /**
- * Componente de Theme Switcher
- * Permite cambiar entre tema claro y oscuro con persistencia en localStorage
+ * Theme Switcher Component
+ * Allows switching between light and dark theme with localStorage persistence
  */
 @Component({
   selector: 'app-theme-switcher',
@@ -27,33 +27,33 @@ export class ThemeSwitcher implements OnInit {
     this.initializeTheme();
   }
 
-  // Inicializar tema al cargar
+  // Initialize theme on load
   private initializeTheme() {
-    // Detectar preferencia del sistema
+    // Detect system preference
     this.systemPreference = this.detectSystemPreference();
 
-    // Intentar cargar tema guardado en localStorage
+    // Try to load saved theme from localStorage
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const savedAutoMode = localStorage.getItem('autoMode') === 'true';
 
     this.isAutoMode = savedAutoMode;
 
     if (savedTheme) {
-      // Si hay tema guardado, usarlo
+      // If there is a saved theme, use it
       this.currentTheme = savedTheme;
     } else if (this.isAutoMode || !savedTheme) {
-      // Si está en modo auto o no hay tema guardado, usar preferencia del sistema
+      // If in auto mode or no saved theme, use system preference
       this.currentTheme = this.systemPreference;
     }
 
-    // Aplicar el tema
+    // Apply the theme
     this.applyTheme(this.currentTheme);
 
     // Escuchar cambios en la preferencia del sistema
     this.listenToSystemPreference();
   }
 
-  // Detectar preferencia del sistema
+  // Detect system preference
   private detectSystemPreference(): 'light' | 'dark' {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
@@ -61,16 +61,16 @@ export class ThemeSwitcher implements OnInit {
     return 'light';
   }
 
-  // Escuchar cambios en la preferencia del sistema
+  // Listen for system preference changes
   private listenToSystemPreference() {
     if (window.matchMedia) {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       
-      // Listener para cambios
+      // Listener for changes
       mediaQuery.addEventListener('change', (e) => {
         this.systemPreference = e.matches ? 'dark' : 'light';
         
-        // Si está en modo auto, aplicar el nuevo tema
+        // If in auto mode, apply the new theme
         if (this.isAutoMode) {
           this.currentTheme = this.systemPreference;
           this.applyTheme(this.currentTheme);

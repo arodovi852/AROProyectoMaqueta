@@ -1,49 +1,49 @@
 <div class="dom-demo">
   <div class="dom-demo__header">
-    <h3 class="dom-demo__title">Demostración de Manipulación del DOM</h3>
+    <h3 class="dom-demo__title">DOM Manipulation Demonstration</h3>
     <p class="dom-demo__description">
-      ViewChild, ElementRef y Renderer2 en acción
+      ViewChild, ElementRef and Renderer2 in action
     </p>
   </div>
 
   <div class="dom-demo__section">
-    <h4>Modificar Estilos y Propiedades</h4>
+    <h4>Modify Styles and Properties</h4>
     <div #contentDiv class="dom-demo__content">
-      Contenido inicial del DOM
+      Initial DOM content
     </div>
     
     <div class="dom-demo__controls">
       <app-button variant="primary" size="sm" (onClick)="changeStyles()">
-        Cambiar Estilos
+        Change Styles
       </app-button>
       <app-button variant="secondary" size="sm" (onClick)="changeContent()">
-        Cambiar Contenido
+        Change Content
       </app-button>
       <app-button variant="ghost" size="sm" (onClick)="resetElement()">
-        Resetear
+        Reset
       </app-button>
       <app-button variant="primary" size="sm" (onClick)="addCssClass()">
-        Agregar Clase
+        Add Class
       </app-button>
       <app-button variant="secondary" size="sm" (onClick)="removeCssClass()">
-        Remover Clase
+        Remove Class
       </app-button>
     </div>
   </div>
 
   <div class="dom-demo__section">
-    <h4>Crear y Eliminar Elementos</h4>
+    <h4>Create and Remove Elements</h4>
     <div #dynamicContainer class="dom-demo__container"></div>
     
     <div class="dom-demo__controls">
       <app-button variant="primary" size="sm" (onClick)="createElement()">
-        Crear Elemento
+        Create Element
       </app-button>
       <app-button variant="danger" size="sm" (onClick)="removeElement()">
-        Eliminar Último
+        Remove Last
       </app-button>
       <app-button variant="ghost" size="sm" (onClick)="clearAll()">
-        Limpiar Todo
+        Clear All
       </app-button>
     </div>
   </div>

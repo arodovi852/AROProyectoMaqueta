@@ -14,18 +14,18 @@
     background-color: rgba(255, 255, 255, 0.2);
     
     .watch-later__icon {
-      fill: #ffffff;
+      fill: hsl(0, 0%, 100%);
     }
     
     .watch-later__text {
-      color: #ffffff;
+      color: hsl(0, 0%, 100%);
     }
   }
   
   &__icon {
     width: 2.5rem;
     height: 2.5rem;
-    fill: #3d2a45;
+    fill: hsl(286, 26%, 22%);
     @include transition(fill);
   }
   
@@ -33,7 +33,7 @@
     font-family: var(--font-secondary);
     font-size: 1.5rem;
     font-weight: 500;
-    color: #3d2a45;
+    color: hsl(286, 26%, 22%);
     @include transition(color);
   }
 }

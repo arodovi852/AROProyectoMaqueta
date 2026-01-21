@@ -3,11 +3,11 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 /**
- * Guard de autenticación (FASE 4 - Tarea 4)
+ * Authentication Guard (PHASE 4 - Task 4)
  * 
- * Protege rutas que requieren autenticación.
- * Si el usuario no está autenticado, redirige a la página principal
- * con un parámetro de retorno.
+ * Protects routes that require authentication.
+ * If the user is not authenticated, redirects to the main page
+ * with a return parameter.
  */
 export const authGuard: CanActivateFn = (route, state) => {
   const auth = inject(AuthService);
@@ -17,7 +17,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  // Redirige a home con la URL de retorno
+  // Redirect to home with return URL
   return router.createUrlTree(['/'], {
     queryParams: { returnUrl: state.url }
   });

@@ -4,10 +4,10 @@ import { RouterLink } from '@angular/router';
 import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
 
 /**
- * Componente Breadcrumbs (FASE 4 - Tarea 6)
+ * Breadcrumbs Component (PHASE 4 - Task 6)
  * 
- * Muestra la navegación de migas de pan basada en la ruta actual.
- * Se actualiza automáticamente con cada navegación.
+ * Displays breadcrumb navigation based on the current route.
+ * Updates automatically with each navigation.
  */
 @Component({
   selector: 'app-breadcrumbs',

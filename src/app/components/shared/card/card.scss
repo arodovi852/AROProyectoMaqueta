@@ -78,12 +78,12 @@
   font-family: var(--font-primary);
   font-size: 3rem;
   font-weight: 900;
-  color: #4a7c59;
+  color: hsl(141, 26%, 39%);
   text-shadow: 
-    -3px -3px 0 #2d4a36,
-    3px -3px 0 #2d4a36,
-    -3px 3px 0 #2d4a36,
-    3px 3px 0 #2d4a36,
+    -3px -3px 0 hsl(141, 26%, 25%),
+    3px -3px 0 hsl(141, 26%, 25%),
+    -3px 3px 0 hsl(141, 26%, 25%),
+    3px 3px 0 hsl(141, 26%, 25%),
     0 0 10px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.05em;
   text-align: center;
@@ -125,7 +125,7 @@
   font-family: var(--font-secondary);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: hsl(0, 0%, 100%);
   text-align: center;
   opacity: 0;
   @include transition(opacity);
@@ -202,7 +202,7 @@
     width: 100%;
     height: 100%;
     border-radius: 1.5rem;
-    border: 0.4rem solid #3d2a45;
+    border: 0.4rem solid hsl(286, 26%, 22%);
     overflow: hidden;
     @include transition(border-color);
   }
@@ -237,7 +237,7 @@
     font-family: var(--font-primary);
     font-size: clamp(0.875rem, 2.5vw, 1.25rem);
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(0, 0%, 100%);
     text-align: center;
     opacity: 0;
     @include transition(opacity);
@@ -254,7 +254,7 @@
     transform: scale(1.05) rotate(2deg);
     
     .card__image-wrapper {
-      border-color: #ffffff;
+      border-color: hsl(0, 0%, 100%);
     }
     
     .card__image {
@@ -285,8 +285,8 @@
 .card--rating {
   width: 28rem;
   height: auto;
-  background-color: #3d2a45;
-  border: 4px solid #3d2a45;
+  background-color: hsl(286, 26%, 22%);
+  border: 4px solid hsl(286, 26%, 22%);
   border-radius: 1.5rem;
   padding: var(--spacing-5);
   display: flex;
@@ -312,7 +312,7 @@
   }
   
   .card__rating-footer {
-    background-color: #e893cf;
+    background-color: hsl(317, 68%, 72%);
     border-radius: 1rem;
     padding: var(--spacing-4) var(--spacing-6);
     display: flex;
@@ -348,7 +348,7 @@
     svg {
       width: 1.5rem;
       height: 1.5rem;
-      fill: #3d2a45;
+      fill: hsl(286, 26%, 22%);
       @include transition(fill);
     }
     
@@ -356,7 +356,7 @@
       background-color: rgba(255, 255, 255, 0.2);
       
       svg {
-        fill: #ffffff;
+        fill: hsl(0, 0%, 100%);
       }
     }
   }

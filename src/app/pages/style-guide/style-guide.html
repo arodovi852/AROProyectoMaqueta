@@ -1,31 +1,31 @@
-<!-- Botón flotante para volver -->
+<!-- Floating back button -->
 <a routerLink="/" class="style-guide__back-button">
-  ← Volver al inicio
+  ← Back to home
 </a>
 
 <div class="style-guide">
   <!-- Header -->
   <header class="style-guide__header">
-    <h1 class="style-guide__title">Guía de Estilos</h1>
+    <h1 class="style-guide__title">Style Guide</h1>
     <p class="style-guide__description">
-      Catálogo completo de componentes reutilizables del sistema de diseño BROADCAST
+      Complete catalog of reusable components from the BROADCAST design system
     </p>
   </header>
 
-  <!-- Navegación interna -->
+  <!-- Internal navigation -->
   <nav class="style-guide__nav">
-    <a href="#formularios" class="style-guide__nav-link">1. Componentes de Formulario</a>
-    <a href="#botones" class="style-guide__nav-link">2. Botones</a>
-    <a href="#tarjetas" class="style-guide__nav-link">3. Tarjetas y Contenedores</a>
-    <a href="#notificaciones" class="style-guide__nav-link">4. Notificaciones y Alertas</a>
+    <a href="#formularios" class="style-guide__nav-link">1. Form Components</a>
+    <a href="#botones" class="style-guide__nav-link">2. Buttons</a>
+    <a href="#tarjetas" class="style-guide__nav-link">3. Cards and Containers</a>
+    <a href="#notificaciones" class="style-guide__nav-link">4. Notifications and Alerts</a>
     <a href="#cards" class="style-guide__nav-link">5. Cards</a>
   </nav>
 
   <div class="style-guide__content">
     
-    <!-- SECCIÓN 1: COMPONENTES DE FORMULARIO -->
+    <!-- SECTION 1: FORM COMPONENTS -->
     <section id="formularios" class="style-guide__section">
-      <h2 class="style-guide__section-title">1. Componentes de Formulario</h2>
+      <h2 class="style-guide__section-title">1. Form Components</h2>
       
       <!-- Form Input -->
       <div class="style-guide__component">
@@ -71,8 +71,8 @@
         <div class="style-guide__component-demo style-guide__component-demo--form">
           <app-form-textarea
             id="demo-textarea"
-            label="Mensaje"
-            placeholder="Escribe tu mensaje aquí..."
+            label="Message"
+            placeholder="Write your message here..."
             [rows]="4"
             [required]="true"
           />
@@ -85,9 +85,9 @@
         <div class="style-guide__component-demo style-guide__component-demo--form">
           <app-form-select
             id="demo-select"
-            label="País"
+            label="Country"
             [options]="selectOptions"
-            placeholder="Selecciona una opción"
+            placeholder="Select an option"
             [required]="true"
           />
         </div>
@@ -99,18 +99,18 @@
         <div class="style-guide__component-demo style-guide__component-demo--form">
           <app-form-checkbox
             checkboxId="demo-checkbox"
-            label="Acepto los términos y condiciones"
+            label="I accept the terms and conditions"
           />
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: BOTONES -->
+    <!-- SECTION 2: BUTTONS -->
     <section id="botones" class="style-guide__section">
-      <h2 class="style-guide__section-title">2. Botones</h2>
+      <h2 class="style-guide__section-title">2. Buttons</h2>
       
       <div class="style-guide__component">
-        <h3 class="style-guide__component-title">Button - Variantes</h3>
+        <h3 class="style-guide__component-title">Button - Variants</h3>
         <div class="style-guide__component-demo style-guide__component-demo--row">
           <app-button text="Primary" variant="primary" />
           <app-button text="Secondary" variant="secondary" />
@@ -120,7 +120,7 @@
       </div>
 
       <div class="style-guide__component">
-        <h3 class="style-guide__component-title">Button - Tamaños</h3>
+        <h3 class="style-guide__component-title">Button - Sizes</h3>
         <div class="style-guide__component-demo style-guide__component-demo--row">
           <app-button text="Small" size="sm" />
           <app-button text="Medium" size="md" />
@@ -129,11 +129,11 @@
       </div>
 
       <div class="style-guide__component">
-        <h3 class="style-guide__component-title">Button - Estados</h3>
+        <h3 class="style-guide__component-title">Button - States</h3>
         <div class="style-guide__component-demo style-guide__component-demo--row">
           <app-button text="Normal" variant="primary" />
           <div class="style-guide__button-hover">
-            <app-button text="Hover (pasa el mouse)" variant="primary" />
+            <app-button text="Hover (mouse over)" variant="primary" />
           </div>
           <app-button text="Disabled" variant="primary" [disabled]="true" />
         </div>
@@ -148,12 +148,12 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: TARJETAS Y CONTENEDORES -->
+    <!-- SECTION 3: CARDS AND CONTAINERS -->
     <section id="tarjetas" class="style-guide__section">
-      <h2 class="style-guide__section-title">3. Tarjetas y Contenedores</h2>
+      <h2 class="style-guide__section-title">3. Cards and Containers</h2>
       
       <div class="style-guide__component">
-        <h3 class="style-guide__component-title">Card - Media (Series/Películas)</h3>
+        <h3 class="style-guide__component-title">Card - Media (Series/Movies)</h3>
         <div class="style-guide__component-demo">
           <app-card
             title="TWIN PEAKS"
@@ -164,9 +164,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 4: NOTIFICACIONES Y ALERTAS -->
+    <!-- SECTION 4: NOTIFICATIONS AND ALERTS -->
     <section id="notificaciones" class="style-guide__section">
-      <h2 class="style-guide__section-title">4. Notificaciones y Alertas</h2>
+      <h2 class="style-guide__section-title">4. Notifications and Alerts</h2>
       
       <div class="style-guide__component">
         <h3 class="style-guide__component-title">Alert</h3>
@@ -198,7 +198,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 5: CARDS -->
+    <!-- SECTION 5: CARDS -->
     <section id="cards" class="style-guide__section">
       <h2 class="style-guide__section-title">5. Cards</h2>
       
@@ -216,7 +216,7 @@
       <div class="style-guide__component">
         <h3 class="style-guide__component-title">Card - Rating Variant</h3>
         <p class="style-guide__component-note">
-          Card con gráfico de valoraciones, sistema de estrellas y botón de acción
+          Card with rating chart, star system and action button
         </p>
         <div class="style-guide__component-demo">
           <div class="rating-card">

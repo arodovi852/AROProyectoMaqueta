@@ -1,10 +1,10 @@
 <div class="dom-example">
-  <h3 class="dom-example__title">Ejemplos de Manipulación del DOM</h3>
+  <h3 class="dom-example__title">DOM Manipulation Examples</h3>
   
-  <!-- Sección 1: Modificar estilos y propiedades -->
+  <!-- Section 1: Modify styles and properties -->
   <section class="dom-example__section">
-    <h4>1. Modificar Estilos y Propiedades</h4>
-    <div #miDiv class="demo-div">Contenido inicial</div>
+    <h4>1. Modify Styles and Properties</h4>
+    <div #miDiv class="demo-div">Initial content</div>
     
     <div class="dom-example__buttons">
       <button 
@@ -12,37 +12,37 @@
         class="dom-example__btn"
         (click)="cambiarEstilo()"
       >
-        Cambiar Estilo
+        Change Style
       </button>
       <button 
         type="button" 
         class="dom-example__btn"
         (click)="cambiarPropiedad()"
       >
-        Cambiar Texto
+        Change Text
       </button>
       <button 
         type="button" 
         class="dom-example__btn"
         (click)="agregarClase()"
       >
-        Agregar Clase
+        Add Class
       </button>
       <button 
         type="button" 
         class="dom-example__btn"
         (click)="quitarClase()"
       >
-        Quitar Clase
+        Remove Class
       </button>
     </div>
   </section>
 
-  <!-- Sección 2: Crear y eliminar elementos -->
+  <!-- Section 2: Create and remove elements -->
   <section class="dom-example__section">
-    <h4>2. Crear y Eliminar Elementos</h4>
+    <h4>2. Create and Remove Elements</h4>
     <p class="dom-example__description">
-      Elementos creados: <strong>{{ elementCount }}</strong>
+      Elements created: <strong>{{ elementCount }}</strong>
     </p>
     
     <div class="dom-example__buttons">
@@ -51,7 +51,7 @@
         class="dom-example__btn dom-example__btn--primary"
         (click)="crearElemento()"
       >
-        ➕ Crear Elemento
+        ➕ Create Element
       </button>
       <button 
         type="button" 
@@ -59,7 +59,7 @@
         (click)="eliminarPrimerElemento()"
         [disabled]="elementCount === 0"
       >
-        Eliminar Primero
+        Remove First
       </button>
       <button 
         type="button" 
@@ -67,7 +67,7 @@
         (click)="eliminarUltimoElemento()"
         [disabled]="elementCount === 0"
       >
-        Eliminar Último
+        Remove Last
       </button>
       <button 
         type="button" 
@@ -75,18 +75,18 @@
         (click)="eliminarTodos()"
         [disabled]="elementCount === 0"
       >
-        Eliminar Todos
+        Remove All
       </button>
     </div>
 
-    <!-- Contenedor de elementos dinámicos -->
+    <!-- Container for dynamic elements -->
     <div 
       #contenedor 
       class="dom-example__container"
       role="list"
-      aria-label="Lista de elementos creados dinámicamente"
+      aria-label="List of dynamically created elements"
     >
-      <!-- Los elementos se crearán aquí dinámicamente -->
+      <!-- Elements will be created here dynamically -->
     </div>
   </section>
 </div>

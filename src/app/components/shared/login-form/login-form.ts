@@ -4,9 +4,9 @@ import { Button } from '../button/button';
 import { CloseButton } from '../close-button/close-button';
 
 /**
- * Componente Login Form
+ * Login Form Component
  * 
- * Formulario completo de inicio de sesión con estructura semántica
+ * Complete login form with semantic structure
  */
 @Component({
   selector: 'app-login-form',

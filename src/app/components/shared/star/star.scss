@@ -15,25 +15,25 @@
   top: 0;
   left: 0;
   @include transition(fill, opacity);
-  fill: #3d2a45;
+  fill: hsl(286, 26%, 22%);
   opacity: 0.3;
   
   &--empty {
-    fill: #3d2a45;
+    fill: hsl(286, 26%, 22%);
     opacity: 0.3;
   }
   
   &--filled {
-    fill: #3d2a45;
+    fill: hsl(286, 26%, 22%);
     opacity: 0.3;
     
     &.star--clicked {
-      fill: #3d2a45;
+      fill: hsl(286, 26%, 22%);
       opacity: 1;
     }
     
     &.star--hover {
-      fill: #ffffff;
+      fill: hsl(0, 0%, 100%);
       opacity: 1;
     }
   }

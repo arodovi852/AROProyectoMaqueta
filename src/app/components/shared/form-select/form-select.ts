@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Interfaz para las opciones del select
+ * Interface for select options
  */
 export interface SelectOption {
   value: string;
@@ -11,10 +11,10 @@ export interface SelectOption {
 }
 
 /**
- * Componente Form Select
+ * Form Select Component
  * 
- * Select/dropdown reutilizable con validación y accesibilidad.
- * Implementa ControlValueAccessor para integración con Angular Forms.
+ * Reusable select/dropdown with validation and accessibility.
+ * Implements ControlValueAccessor for Angular Forms integration.
  */
 @Component({
   selector: 'app-form-select',
@@ -48,7 +48,7 @@ export class FormSelect implements ControlValueAccessor {
   /**
    * Placeholder del select
    */
-  @Input() placeholder: string = 'Selecciona una opción';
+  @Input() placeholder: string = 'Select an option';
 
   /**
    * Opciones del select

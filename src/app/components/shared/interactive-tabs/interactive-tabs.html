@@ -1,8 +1,8 @@
 <div class="tabs-demo">
   <div class="tabs-demo__header">
-    <h3 class="tabs-demo__title">Tabs Interactivos</h3>
+    <h3 class="tabs-demo__title">Interactive Tabs</h3>
     <p class="tabs-demo__description">
-      Sistema de pestañas con navegación
+      Tab navigation system
     </p>
   </div>
 
@@ -14,141 +14,141 @@
         [class.tabs__button--active]="isActive('detalles')"
         (click)="selectTab('detalles')"
       >
-        Detalles
+        Details
       </button>
       <button 
         class="tabs__button"
         [class.tabs__button--active]="isActive('especificaciones')"
         (click)="selectTab('especificaciones')"
       >
-        Especificaciones
+        Specifications
       </button>
       <button 
         class="tabs__button"
         [class.tabs__button--active]="isActive('comentarios')"
         (click)="selectTab('comentarios')"
       >
-        Comentarios
+        Comments
       </button>
       <button 
         class="tabs__button"
         [class.tabs__button--active]="isActive('historial')"
         (click)="selectTab('historial')"
       >
-        Historial
+        History
       </button>
     </div>
 
     <!-- Tab Content -->
     <div class="tabs__content">
-      <!-- Detalles Tab -->
+      <!-- Details Tab -->
       <div class="tabs__panel" *ngIf="isActive('detalles')">
-        <h4>Detalles del Producto</h4>
+        <h4>Product Details</h4>
         <p>
-          Este panel muestra información detallada sobre el producto seleccionado.
-          Los tabs son componentes interactivos que permiten organizar contenido
-          de manera eficiente.
+          This panel shows detailed information about the selected product.
+          Tabs are interactive components that allow organizing content
+          efficiently.
         </p>
         <ul>
-          <li>Navegación intuitiva</li>
-          <li>Contenido organizado</li>
-          <li>Animaciones suaves</li>
+          <li>Intuitive navigation</li>
+          <li>Organized content</li>
+          <li>Smooth animations</li>
           <li>Responsive design</li>
         </ul>
       </div>
 
-      <!-- Especificaciones Tab -->
+      <!-- Specifications Tab -->
       <div class="tabs__panel" *ngIf="isActive('especificaciones')">
-        <h4>Especificaciones Técnicas</h4>
+        <h4>Technical Specifications</h4>
         <div class="specs-grid">
           <div class="spec-item">
-            <span class="spec-label">Peso:</span>
+            <span class="spec-label">Weight:</span>
             <span class="spec-value">2.5 kg</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Dimensiones:</span>
+            <span class="spec-label">Dimensions:</span>
             <span class="spec-value">30x20x15 cm</span>
           </div>
           <div class="spec-item">
             <span class="spec-label">Material:</span>
-            <span class="spec-value">Aluminio</span>
+            <span class="spec-value">Aluminum</span>
           </div>
           <div class="spec-item">
             <span class="spec-label">Color:</span>
-            <span class="spec-value">Gris espacial</span>
+            <span class="spec-value">Space Gray</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Garantía:</span>
-            <span class="spec-value">2 años</span>
+            <span class="spec-label">Warranty:</span>
+            <span class="spec-value">2 years</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Origen:</span>
-            <span class="spec-value">España</span>
+            <span class="spec-label">Origin:</span>
+            <span class="spec-value">Spain</span>
           </div>
         </div>
       </div>
 
-      <!-- Comentarios Tab -->
+      <!-- Comments Tab -->
       <div class="tabs__panel" *ngIf="isActive('comentarios')">
-        <h4>Comentarios de Usuarios</h4>
+        <h4>User Comments</h4>
         <div class="comment">
           <div class="comment__header">
-            <strong>Juan Pérez</strong>
+            <strong>John Smith</strong>
             <span class="comment__rating">⭐⭐⭐⭐⭐</span>
           </div>
           <p class="comment__text">
-            Excelente producto, superó mis expectativas. La calidad es excepcional.
+            Excellent product, exceeded my expectations. The quality is exceptional.
           </p>
-          <span class="comment__date">Hace 2 días</span>
+          <span class="comment__date">2 days ago</span>
         </div>
         <div class="comment">
           <div class="comment__header">
-            <strong>María García</strong>
+            <strong>Mary Johnson</strong>
             <span class="comment__rating">⭐⭐⭐⭐</span>
           </div>
           <p class="comment__text">
-            Muy bueno, aunque el envío tardó un poco más de lo esperado.
+            Very good, although shipping took a bit longer than expected.
           </p>
-          <span class="comment__date">Hace 1 semana</span>
+          <span class="comment__date">1 week ago</span>
         </div>
         <div class="comment">
           <div class="comment__header">
-            <strong>Carlos López</strong>
+            <strong>Charles Williams</strong>
             <span class="comment__rating">⭐⭐⭐⭐⭐</span>
           </div>
           <p class="comment__text">
-            Totalmente recomendable. Relación calidad-precio inmejorable.
+            Totally recommended. Unbeatable value for money.
           </p>
-          <span class="comment__date">Hace 2 semanas</span>
+          <span class="comment__date">2 weeks ago</span>
         </div>
       </div>
 
-      <!-- Historial Tab -->
+      <!-- History Tab -->
       <div class="tabs__panel" *ngIf="isActive('historial')">
-        <h4>Historial de Cambios</h4>
+        <h4>Change History</h4>
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-              <strong>Actualización de precio</strong>
-              <p>El precio se actualizó de 99€ a 89€</p>
-              <span class="timeline-date">15 Dic 2024</span>
+              <strong>Price Update</strong>
+              <p>Price updated from €99 to €89</p>
+              <span class="timeline-date">Dec 15, 2024</span>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-              <strong>Nueva versión disponible</strong>
-              <p>Se lanzó la versión 2.0 con mejoras</p>
-              <span class="timeline-date">10 Dic 2024</span>
+              <strong>New version available</strong>
+              <p>Version 2.0 released with improvements</p>
+              <span class="timeline-date">Dec 10, 2024</span>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <strong>Restock</strong>
-              <p>Producto de nuevo en stock</p>
-              <span class="timeline-date">1 Dic 2024</span>
+              <p>Product back in stock</p>
+              <span class="timeline-date">Dec 1, 2024</span>
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@
     </div>
 
     <div class="tabs__info">
-      <p>Tab activo: <strong>{{ activeTab }}</strong></p>
+      <p>Active tab: <strong>{{ activeTab }}</strong></p>
     </div>
   </div>
 </div>

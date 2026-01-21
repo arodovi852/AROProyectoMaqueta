@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Componente Form Input
+ * Form Input Component
  * 
- * Input reutilizable con validación, estados de error y accesibilidad.
- * Implementa ControlValueAccessor para integración con Angular Forms.
+ * Reusable input with validation, error states and accessibility.
+ * Implements ControlValueAccessor for Angular Forms integration.
  */
 @Component({
   selector: 'app-form-input',

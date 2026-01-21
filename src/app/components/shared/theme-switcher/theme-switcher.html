@@ -2,56 +2,56 @@
   <div class="theme-switcher-demo__header">
     <h3 class="theme-switcher-demo__title">Theme Switcher</h3>
     <p class="theme-switcher-demo__description">
-      Cambio de tema con detección de prefers-color-scheme y localStorage
+      Theme switching with prefers-color-scheme detection and localStorage
     </p>
   </div>
 
-  <!-- Estado Actual -->
+  <!-- Current State -->
   <div class="theme-info">
     <div class="theme-info__item">
-      <span class="theme-info__label">Tema Actual:</span>
+      <span class="theme-info__label">Current Theme:</span>
       <span class="theme-info__value">
-        {{ currentTheme === 'light' ? 'Claro' : 'Oscuro' }}
+        {{ currentTheme === 'light' ? 'Light' : 'Dark' }}
       </span>
     </div>
     <div class="theme-info__item">
-      <span class="theme-info__label">Preferencia del Sistema:</span>
+      <span class="theme-info__label">System Preference:</span>
       <span class="theme-info__value">
-        {{ systemPreference === 'light' ? 'Claro' : 'Oscuro' }}
+        {{ systemPreference === 'light' ? 'Light' : 'Dark' }}
       </span>
     </div>
     <div class="theme-info__item">
-      <span class="theme-info__label">Modo Automático:</span>
+      <span class="theme-info__label">Auto Mode:</span>
       <span class="theme-info__value">
-        {{ isAutoMode ? 'Activado' : 'Desactivado' }}
+        {{ isAutoMode ? 'Enabled' : 'Disabled' }}
       </span>
     </div>
   </div>
 
-  <!-- Controles -->
+  <!-- Controls -->
   <div class="theme-controls">
-    <h4>Controles de Tema</h4>
+    <h4>Theme Controls</h4>
     
     <div class="theme-controls__buttons">
       <app-button
         [variant]="currentTheme === 'light' && !isAutoMode ? 'primary' : 'ghost'"
         (onClick)="setTheme('light')"
       >
-        Claro
+        Light
       </app-button>
 
       <app-button
         [variant]="currentTheme === 'dark' && !isAutoMode ? 'primary' : 'ghost'"
         (onClick)="setTheme('dark')"
       >
-        Oscuro
+        Dark
       </app-button>
 
       <app-button
         [variant]="isAutoMode ? 'secondary' : 'ghost'"
         (onClick)="setAutoMode()"
       >
-        Automático
+        Auto
       </app-button>
     </div>
 
@@ -60,17 +60,17 @@
       [fullWidth]="true"
       (onClick)="toggleTheme()"
     >
-      Cambiar a {{ currentTheme === 'light' ? 'Oscuro' : 'Claro' }}
+      Switch to {{ currentTheme === 'light' ? 'Dark' : 'Light' }}
     </app-button>
   </div>
 
-  <!-- Vista previa del tema -->
+  <!-- Theme Preview -->
   <div class="theme-preview">
-    <h4>Vista Previa del Tema</h4>
+    <h4>Theme Preview</h4>
     <div class="theme-preview__content">
       <div class="preview-card">
-        <h5>Tarjeta de Ejemplo</h5>
-        <p>Este es un ejemplo de cómo se ve el contenido con el tema actual.</p>
+        <h5>Example Card</h5>
+        <p>This is an example of how content looks with the current theme.</p>
         <div class="preview-colors">
           <app-button variant="primary">Primary</app-button>
           <app-button variant="secondary">Secondary</app-button>
@@ -80,16 +80,16 @@
     </div>
   </div>
 
-  <!-- Información -->
+  <!-- Information -->
   <div class="theme-switcher-demo__info">
-    <h4>Características:</h4>
+    <h4>Features:</h4>
     <ul>
-      <li>Detección de <code>prefers-color-scheme</code></li>
-      <li>Persistencia en <code>localStorage</code></li>
-      <li>Toggle manual entre temas</li>
-      <li>Modo automático según sistema</li>
-      <li>Aplicación al cargar la página</li>
-      <li>Reacción a cambios del sistema en tiempo real</li>
+      <li><code>prefers-color-scheme</code> detection</li>
+      <li>Persistence in <code>localStorage</code></li>
+      <li>Manual toggle between themes</li>
+      <li>Auto mode based on system</li>
+      <li>Applied on page load</li>
+      <li>Real-time reaction to system changes</li>
     </ul>
   </div>
 </div>

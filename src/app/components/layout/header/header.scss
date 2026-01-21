@@ -15,7 +15,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+  background: linear-gradient(135deg, hsl(288, 53%, 14%) 0%, hsl(280, 57%, 9%) 100%);
   box-shadow: var(--shadow-md);
 }
 
@@ -212,22 +212,22 @@
 .header__search-input {
   width: 100%;
   padding: var(--spacing-2) var(--spacing-10) var(--spacing-2) var(--spacing-3);
-  background-color: #e893cf;
-  border: 0.1875rem solid #3d2a45;
+  background-color: hsl(317, 67%, 73%);
+  border: 0.1875rem solid hsl(286, 26%, 22%);
   border-radius: var(--radius-md);
-  color: #3d2a45;
+  color: hsl(286, 26%, 22%);
   font-size: var(--font-size-sm);
   @include transition(background-color, border-color, color);
 
   &::placeholder {
-    color: rgba(61, 42, 69, 0.6);
+    color: hsla(286, 26%, 22%, 0.6);
   }
 
   &:focus {
     outline: none;
-    background-color: #ffffff;
-    color: #3d2a45;
-    border-color: #3d2a45;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(286, 26%, 22%);
+    border-color: hsl(286, 26%, 22%);
   }
 }
 
@@ -238,11 +238,11 @@
   width: 2rem;
   height: 2rem;
   @include flex-center;
-  color: #3d2a45;
+  color: hsl(286, 26%, 22%);
   @include transition(color);
 
   &:hover {
-    color: #1a0b21;
+    color: hsl(280, 57%, 9%);
   }
 
   &:focus-visible {
@@ -341,12 +341,12 @@
 
   // Modificador: botón Log In
   &--login {
-    background-color: #f4d03f;
-    color: #1a0b21;
+    background-color: hsl(50, 88%, 60%);
+    color: hsl(280, 57%, 9%);
 
     &:hover {
-      background-color: #ffffff;
-      color: #1a0b21;
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(280, 57%, 9%);
     }
 
     &:active {
@@ -356,12 +356,12 @@
 
   // Modificador: botón Log Out
   &--logout {
-    background-color: rgba(244, 67, 54, 0.2);
-    color: #ff6b6b;
+    background-color: hsla(4, 90%, 58%, 0.2);
+    color: hsl(0, 100%, 71%);
 
     &:hover {
-      background-color: rgba(244, 67, 54, 0.3);
-      color: #ff5252;
+      background-color: hsla(4, 90%, 58%, 0.3);
+      color: hsl(6, 100%, 66%);
     }
 
     &:active {
@@ -373,12 +373,12 @@
   &--lists {
     background-color: transparent;
     color: var(--color-white);
-    border: 0.125rem solid rgba(255, 255, 255, 0.3);
+    border: 0.125rem solid hsla(0, 0%, 100%, 0.3);
 
     &:hover {
-      background-color: #ffffff;
-      color: #1a0b21;
-      border-color: #ffffff;
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(280, 57%, 9%);
+      border-color: hsl(0, 0%, 100%);
     }
 
     &:active {
@@ -428,7 +428,7 @@
     top: 4.5rem; // Altura del header
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, #2c1338 0%, #1a0b21 100%);
+    background: linear-gradient(135deg, hsl(288, 53%, 14%) 0%, hsl(280, 57%, 9%) 100%);
     max-height: 0;
     overflow: hidden;
     box-shadow: var(--shadow-lg);

@@ -1,8 +1,61 @@
-<!-- Contenido principal - Landing Page -->
+<!-- Main content - Landing Page -->
 <main class="main-page">
-  <!-- Hero Section con imagen responsive -->
-  <section class="hero">
-    <div class="hero__background" role="img" aria-label="Background image from Twin Peaks"></div>
+  <!-- Hero Section with Image Carousel -->
+  <section 
+    class="hero" 
+    (mouseenter)="onCarouselMouseEnter()" 
+    (mouseleave)="onCarouselMouseLeave()"
+  >
+    <!-- Carousel Slides -->
+    <div class="hero__carousel">
+      @for (slide of carouselSlides; track slide.id; let i = $index) {
+        <div 
+          class="hero__slide"
+          [class.hero__slide--active]="i === currentSlide()"
+          [class.hero__slide--prev]="i === (currentSlide() === 0 ? carouselSlides.length - 1 : currentSlide() - 1)"
+          [style.background-image]="'linear-gradient(to bottom, rgba(90, 61, 92, 0.6) 0%, rgba(90, 61, 92, 0.85) 100%), url(' + slide.imageSrc + ')'"
+          role="img"
+          [attr.aria-label]="'Background image: ' + slide.imageAlt"
+          [attr.aria-hidden]="i !== currentSlide()"
+        ></div>
+      }
+    </div>
+
+    <!-- Carousel Navigation Arrows -->
+    <button 
+      class="hero__nav hero__nav--prev" 
+      (click)="previousSlide()"
+      aria-label="Previous slide"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button 
+      class="hero__nav hero__nav--next" 
+      (click)="nextSlide()"
+      aria-label="Next slide"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Carousel Dots -->
+    <div class="hero__dots" role="tablist" aria-label="Carousel navigation">
+      @for (slide of carouselSlides; track slide.id; let i = $index) {
+        <button 
+          class="hero__dot"
+          [class.hero__dot--active]="i === currentSlide()"
+          (click)="goToSlide(i)"
+          role="tab"
+          [attr.aria-selected]="i === currentSlide()"
+          [attr.aria-label]="'Go to slide ' + (i + 1) + ': ' + slide.title"
+        ></button>
+      }
+    </div>
+
+    <!-- Hero Content -->
     <div class="hero__content">
       <h1 class="hero__title">
         <span class="hero__title-line hero__title-line--italic">Track series.</span>
@@ -60,9 +113,9 @@
             [imageSrc]="series.imageSrc"
             [imageAlt]="series.imageAlt"
             [hoverTitle]="series.hoverTitle"
+            [seriesId]="series.id"
             variant="media"
             role="listitem"
-            (click)="navigateToSeries(series.id)"
           ></app-card>
         }
       </div>
@@ -86,9 +139,9 @@
             [imageSrc]="series.imageSrc"
             [imageAlt]="series.imageAlt"
             [hoverTitle]="series.hoverTitle"
+            [seriesId]="series.id"
             variant="media"
             role="listitem"
-            (click)="navigateToSeries(series.id)"
           ></app-card>
         }
       </div>

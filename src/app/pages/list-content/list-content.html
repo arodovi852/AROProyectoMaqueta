@@ -12,9 +12,9 @@
     </div>
   </div>
 
-  <!-- Contenido principal -->
+  <!-- Main content -->
   <div class="list-content-page__content">
-    <!-- Columna izquierda: Series de la lista -->
+    <!-- Left column: Series in the list -->
     <div class="list-content-page__series">
       <div class="list-content-page__series-grid">
         @for (item of series; track item.title) {
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <!-- Columna derecha: CardStatReview -->
+    <!-- Right column: CardStatReview -->
     <div class="list-content-page__sidebar">
       <app-card-stat-review
         [statsBars]="statsBars"

@@ -1,17 +1,17 @@
 <div class="contact-form-reactive">
-  <h3 class="contact-form-reactive__title">Formulario de Contacto</h3>
+  <h3 class="contact-form-reactive__title">Contact Form</h3>
   <p class="contact-form-reactive__description">
-    Validadores personalizados: NIF, teléfono, código postal y cross-field validation
+    Custom validators: NIF, phone, postal code and cross-field validation
   </p>
 
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form-reactive__form">
-    <!-- Nombre -->
+    <!-- Name -->
     <app-form-input
       inputId="name"
       type="text"
       name="name"
-      label="Nombre completo"
-      placeholder="Juan Pérez"
+      label="Full name"
+      placeholder="John Smith"
       [required]="true"
       [showError]="name.invalid && (name.dirty || name.touched)"
       [errorMessage]="getErrorMessage('name')"
@@ -31,14 +31,14 @@
       formControlName="nif">
     </app-form-input>
 
-    <!-- Email y Teléfono (al menos uno requerido) -->
+    <!-- Email and Phone (at least one required) -->
     <div class="form-row">
       <app-form-input
         inputId="email"
         type="email"
         name="email"
         label="Email"
-        placeholder="email@ejemplo.com"
+        placeholder="email@example.com"
         [showError]="email.invalid && (email.dirty || email.touched)"
         [errorMessage]="getErrorMessage('email')"
         formControlName="email">
@@ -48,7 +48,7 @@
         inputId="telefono"
         type="tel"
         name="telefono"
-        label="Teléfono"
+        label="Phone"
         placeholder="612345678"
         [showError]="telefono.invalid && (telefono.dirty || telefono.touched)"
         [errorMessage]="getErrorMessage('telefono')"
@@ -58,53 +58,53 @@
 
     @if (hasContactMethodError()) {
       <div class="form-field__error form-field__error--cross">
-        Debe proporcionar al menos un email o teléfono
+        You must provide at least an email or phone number
       </div>
     }
 
-    <!-- Código Postal -->
+    <!-- Postal Code -->
     <app-form-input
       inputId="codigoPostal"
       type="text"
       name="codigoPostal"
-      label="Código Postal"
+      label="Postal Code"
       placeholder="28001"
       [showError]="codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched)"
       [errorMessage]="getErrorMessage('codigoPostal')"
       formControlName="codigoPostal">
     </app-form-input>
 
-    <!-- Mensaje -->
+    <!-- Message -->
     <div class="form-field">
-      <label for="message" class="form-field__label">Mensaje *</label>
+      <label for="message" class="form-field__label">Message *</label>
       <textarea 
         id="message"
         formControlName="message"
         class="form-field__textarea"
         [class.form-field__textarea--invalid]="message.invalid && (message.dirty || message.touched)"
         [class.form-field__textarea--valid]="message.valid && (message.dirty || message.touched)"
-        placeholder="Escribe tu mensaje aquí..."
+        placeholder="Write your message here..."
         rows="4"></textarea>
       @if (message.invalid && (message.dirty || message.touched)) {
         <span class="form-field__error">{{ getErrorMessage('message') }}</span>
       }
     </div>
 
-    <!-- Botones -->
+    <!-- Buttons -->
     <div class="contact-form-reactive__actions">
       <app-button 
         type="submit"
         variant="primary" 
         size="md"
         [disabled]="contactForm.invalid">
-        Enviar mensaje
+        Send message
       </app-button>
       <app-button 
         type="button"
         variant="ghost" 
         size="md"
         (onClick)="onReset()">
-        Reiniciar
+        Reset
       </app-button>
     </div>
   </form>

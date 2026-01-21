@@ -6,9 +6,9 @@ import { FormCheckbox } from '../../components/shared/form-checkbox/form-checkbo
 import { Button } from '../../components/shared/button/button';
 
 /**
- * Página ListInfo
+ * ListInfo Page
  * 
- * Página para crear/editar una lista de series.
+ * Page to create/edit a series list.
  */
 @Component({
   selector: 'app-list-info',

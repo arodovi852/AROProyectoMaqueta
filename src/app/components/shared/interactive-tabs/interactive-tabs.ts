@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente de Tabs Interactivo
- * Sistema de pestañas con activación por click
+ * Interactive Tabs Component
+ * Tab system with click activation
  */
 @Component({
   selector: 'app-interactive-tabs',
@@ -15,12 +15,12 @@ import { CommonModule } from '@angular/common';
 export class InteractiveTabs {
   activeTab: string = 'detalles';
 
-  // Cambiar tab activo
+  // Change active tab
   selectTab(tabName: string) {
     this.activeTab = tabName;
   }
 
-  // Verificar si un tab está activo
+  // Check if a tab is active
   isActive(tabName: string): boolean {
     return this.activeTab === tabName;
   }

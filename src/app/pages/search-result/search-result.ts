@@ -5,10 +5,10 @@ import { SeriesService, Series } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
 
 /**
- * Página SearchResult (FASE 4 - Tarea 2, FASE 5 - Tarea 4)
+ * SearchResult Page (PHASE 4 - Task 2, PHASE 5 - Task 4)
  * 
- * Muestra los resultados de búsqueda de series.
- * Lee query params para filtrar resultados.
+ * Displays series search results.
+ * Reads query params to filter results.
  */
 @Component({
   selector: 'app-search-result',
@@ -71,7 +71,7 @@ export class SearchResult implements OnInit {
   ];
 
   ngOnInit(): void {
-    // Suscribirse a cambios en query params (FASE 4 - Tarea 2)
+    // Subscribe to query params changes (PHASE 4 - Task 2)
     this.route.queryParams.subscribe(params => {
       const query = params['q'] || '';
       const page = parseInt(params['page'] || '1', 10);
@@ -108,9 +108,9 @@ export class SearchResult implements OnInit {
       },
       error: (err) => {
         this.loading.set(false);
-        this.error.set('Error en la búsqueda');
+        this.error.set('Search error');
         this.searchResults.set(this.defaultResults);
-        this.toast.error('No se pudieron obtener los resultados');
+        this.toast.error('Could not get search results');
       }
     });
   }

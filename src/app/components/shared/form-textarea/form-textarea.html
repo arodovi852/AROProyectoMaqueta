@@ -1,5 +1,5 @@
 <div class="form-textarea" [class.form-textarea--error]="showError" [class.form-textarea--disabled]="disabled">
-  <!-- Label del textarea -->
+  <!-- Textarea label -->
   <div class="form-textarea__label-wrapper">
     <label 
       *ngIf="label" 
@@ -7,10 +7,10 @@
       class="form-textarea__label"
     >
       {{ label }}
-      <span *ngIf="required" class="form-textarea__required" aria-label="campo requerido">*</span>
+      <span *ngIf="required" class="form-textarea__required" aria-label="required field">*</span>
     </label>
 
-    <!-- Contador de caracteres -->
+    <!-- Character counter -->
     <span 
       *ngIf="showCharacterCount" 
       class="form-textarea__counter"
@@ -39,7 +39,7 @@
     class="form-textarea__field"
   ></textarea>
 
-  <!-- Texto de ayuda -->
+  <!-- Help text -->
   <p 
     *ngIf="helpText && !showError" 
     [id]="helpTextId" 
@@ -48,7 +48,7 @@
     {{ helpText }}
   </p>
 
-  <!-- Mensaje de error -->
+  <!-- Error message -->
   <p 
     *ngIf="showError && errorMessage" 
     [id]="errorId" 

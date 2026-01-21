@@ -29,10 +29,10 @@
       [hidden]="!isActive(tab.id)"
       role="tabpanel"
     >
-      <!-- Contenido de texto si se proporciona -->
+      <!-- Text content if provided -->
       <p *ngIf="tab.content">{{ tab.content }}</p>
       
-      <!-- Slot para contenido personalizado -->
+      <!-- Slot for custom content -->
       <ng-content [select]="'[tab-content-' + tab.id + ']'"></ng-content>
     </div>
   </div>

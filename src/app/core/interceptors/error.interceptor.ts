@@ -4,9 +4,9 @@ import { catchError, throwError } from 'rxjs';
 import { ToastService } from '../../services/toast.service';
 
 /**
- * Interceptor de errores HTTP (FASE 5 - Tarea 6)
+ * HTTP Error Interceptor (PHASE 5 - Task 6)
  * 
- * Maneja errores HTTP de forma global y muestra notificaciones.
+ * Handles HTTP errors globally and shows notifications.
  */
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toast = inject(ToastService);
@@ -17,26 +17,26 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
       switch (error.status) {
         case 0:
-          message = 'Error de conexión. Verifica tu conexión a internet.';
+          message = 'Connection error. Please check your internet connection.';
           break;
         case 400:
-          message = 'Solicitud incorrecta. Verifica los datos enviados.';
+          message = 'Bad request. Please check the data sent.';
           break;
         case 401:
-          message = 'No autorizado. Por favor, inicia sesión.';
-          // Aquí podríamos redirigir al login
+          message = 'Unauthorized. Please log in.';
+          // Could redirect to login here
           break;
         case 403:
-          message = 'Acceso denegado. No tienes permisos para esta acción.';
+          message = 'Access denied. You do not have permission for this action.';
           break;
         case 404:
-          message = 'Recurso no encontrado.';
+          message = 'Resource not found.';
           break;
         case 500:
-          message = 'Error del servidor. Intenta más tarde.';
+          message = 'Server error. Please try again later.';
           break;
         default:
-          message = `Error inesperado (${error.status})`;
+          message = `Unexpected error (${error.status})`;
       }
 
       toast.error(message);

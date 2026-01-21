@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /**
- * Página 404 - Not Found
+ * 404 Page - Not Found
  * 
- * Se muestra cuando la ruta solicitada no existe (wildcard **)
+ * Displayed when the requested route does not exist (wildcard **)
  */
 @Component({
   selector: 'app-not-found',

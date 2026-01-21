@@ -1,8 +1,8 @@
-<!-- Página Series Info -->
+<!-- Series Info Page -->
 <div class="series-info">
-  <!-- Primera fila: Card, Descripción, CardStatReview -->
+  <!-- First row: Card, Description, CardStatReview -->
   <section class="series-info__header">
-    <!-- Card de la serie (izquierda) -->
+    <!-- Series card (left) -->
     <div class="series-info__card">
       <app-card 
         [title]="series().title" 
@@ -12,13 +12,13 @@
       />
     </div>
 
-    <!-- Descripción (centro) -->
+    <!-- Description (center) -->
     <div class="series-info__description">
       <h1 class="series-info__title">{{ series().title }}</h1>
       <p class="series-info__text">{{ series().description }}</p>
     </div>
 
-    <!-- CardStatReview (derecha) -->
+    <!-- CardStatReview (right) -->
     <div class="series-info__stat-review">
       <app-card-stat-review 
         [statsBars]="statsBars"
@@ -30,7 +30,7 @@
     </div>
   </section>
 
-  <!-- Sección de Reviews -->
+  <!-- Reviews Section -->
   <section class="series-info__reviews">
     <div class="series-info__reviews-header">
       <h2 class="series-info__reviews-title">Reviews</h2>

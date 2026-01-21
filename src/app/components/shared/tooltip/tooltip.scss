@@ -7,7 +7,7 @@
     cursor: help;
 
     &:focus {
-      outline: 2px solid var(--primary-color, #3b82f6);
+      outline: 2px solid var(--primary-color, hsl(217, 91%, 60%));
       outline-offset: 2px;
       border-radius: 4px;
     }
@@ -17,8 +17,8 @@
     position: absolute;
     z-index: 9999;
     padding: 0.5rem 0.75rem;
-    background-color: var(--tooltip-bg, #1f2937);
-    color: var(--tooltip-text, #fff);
+    background-color: var(--tooltip-bg, hsl(218, 23%, 17%));
+    color: var(--tooltip-text, hsl(0, 0%, 100%));
     font-size: 0.875rem;
     line-height: 1.4;
     border-radius: 6px;
@@ -44,7 +44,7 @@
       bottom: -12px;
       left: 50%;
       transform: translateX(-50%);
-      border-top-color: var(--tooltip-bg, #1f2937);
+      border-top-color: var(--tooltip-bg, hsl(218, 23%, 17%));
     }
 
     // Bottom position arrow
@@ -52,7 +52,7 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      border-bottom-color: var(--tooltip-bg, #1f2937);
+      border-bottom-color: var(--tooltip-bg, hsl(218, 23%, 17%));
     }
 
     // Left position arrow
@@ -60,7 +60,7 @@
       right: -12px;
       top: 50%;
       transform: translateY(-50%);
-      border-left-color: var(--tooltip-bg, #1f2937);
+      border-left-color: var(--tooltip-bg, hsl(218, 23%, 17%));
     }
 
     // Right position arrow
@@ -68,7 +68,7 @@
       left: -12px;
       top: 50%;
       transform: translateY(-50%);
-      border-right-color: var(--tooltip-bg, #1f2937);
+      border-right-color: var(--tooltip-bg, hsl(218, 23%, 17%));
     }
 
     &--visible {
@@ -82,23 +82,23 @@
 :host-context(.dark-mode) {
   .tooltip {
     &__content {
-      background-color: var(--tooltip-bg, #374151);
-      color: var(--tooltip-text, #f9fafb);
+      background-color: var(--tooltip-bg, hsl(218, 17%, 27%));
+      color: var(--tooltip-text, hsl(210, 20%, 98%));
 
       &--top::before {
-        border-top-color: var(--tooltip-bg, #374151);
+        border-top-color: var(--tooltip-bg, hsl(218, 17%, 27%));
       }
 
       &--bottom::before {
-        border-bottom-color: var(--tooltip-bg, #374151);
+        border-bottom-color: var(--tooltip-bg, hsl(218, 17%, 27%));
       }
 
       &--left::before {
-        border-left-color: var(--tooltip-bg, #374151);
+        border-left-color: var(--tooltip-bg, hsl(218, 17%, 27%));
       }
 
       &--right::before {
-        border-right-color: var(--tooltip-bg, #374151);
+        border-right-color: var(--tooltip-bg, hsl(218, 17%, 27%));
       }
     }
   }

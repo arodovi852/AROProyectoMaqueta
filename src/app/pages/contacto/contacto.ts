@@ -4,10 +4,10 @@ import { NombreForm } from '../../components/shared/nombre-form/nombre-form';
 import { FormComponent } from '../../core/guards/pending-changes.guard';
 
 /**
- * Página de Contacto (FASE 4 - Tarea 4)
+ * Contact Page (PHASE 4 - Task 4)
  * 
- * Página que muestra información de contacto y el formulario de contacto completo.
- * Implementa FormComponent para el guard de cambios pendientes.
+ * Page that displays contact information and the complete contact form.
+ * Implements FormComponent for pending changes guard.
  */
 @Component({
   selector: 'app-contacto',
@@ -18,11 +18,11 @@ import { FormComponent } from '../../core/guards/pending-changes.guard';
 export class Contacto implements FormComponent, AfterViewInit {
   @ViewChild(NombreForm) contactFormComponent!: NombreForm;
   
-  // FormGroup requerido por FormComponent para el guard
+  // FormGroup required by FormComponent for the guard
   form!: FormGroup;
 
   ngAfterViewInit() {
-    // Asignar el formulario del componente hijo
+    // Assign the child component's form
     setTimeout(() => {
       if (this.contactFormComponent) {
         this.form = this.contactFormComponent.contactForm;

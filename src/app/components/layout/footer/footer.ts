@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 /**
- * Componente Footer
+ * Footer Component
  * 
- * Footer principal de la aplicación con secciones de información,
- * enlaces, redes sociales y suscripción a newsletter.
+ * Main application footer with information sections,
+ * links, social networks and newsletter subscription.
  */
 @Component({
   selector: 'app-footer',
@@ -14,13 +14,13 @@ import { Component } from '@angular/core';
 })
 export class Footer {
   /**
-   * Año actual para el copyright
+   * Current year for copyright
    */
   currentYear = new Date().getFullYear();
 
   /**
-   * Maneja el envío del formulario de newsletter
-   * Cliente Fase 1: Event handling
+   * Handles newsletter form submission
+   * Client Phase 1: Event handling
    */
   onNewsletterSubmit(event: Event): void {
     event.preventDefault();
@@ -29,13 +29,13 @@ export class Footer {
     const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
     const email = emailInput.value;
 
-    // TODO: Integrar con servicio de newsletter (Cliente Fase 5)
+    // TODO: Integrate with newsletter service (Client Phase 5)
     console.log('Newsletter subscription:', email);
     
-    // Feedback visual temporal
-    alert(`¡Gracias por suscribirte! Te enviaremos las novedades a ${email}`);
+    // Temporary visual feedback
+    alert(`Thanks for subscribing! We'll send you news to ${email}`);
     
-    // Limpiar formulario
+    // Clear form
     form.reset();
   }
 }

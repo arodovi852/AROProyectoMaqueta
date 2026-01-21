@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 /**
- * Componente CTA (Call to Action)
+ * CTA (Call to Action) Component
  * 
- * Sección de llamada a la acción para conversión
+ * Call to action section for conversion
  */
 @Component({
   selector: 'app-cta',

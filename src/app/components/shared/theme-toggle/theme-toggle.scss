@@ -2,7 +2,7 @@
 
 .theme-toggle {
   background: transparent;
-  border: 2px solid #A264BF;
+  border: 2px solid hsl(285, 43%, 57%);
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
@@ -14,16 +14,16 @@
   @include transition(background-color, border-color, transform);
   
   // Dark mode (por defecto) - Botón morado
-  border-color: #A264BF;
+  border-color: hsl(285, 43%, 57%);
   background-color: transparent;
   
   &:hover {
-    background-color: #A264BF;
-    border-color: #A264BF;
+    background-color: hsl(285, 43%, 57%);
+    border-color: hsl(285, 43%, 57%);
     transform: scale(1.1);
     
     .theme-toggle__icon {
-      fill: #3d2a45;
+      fill: hsl(286, 26%, 22%);
     }
   }
   
@@ -34,7 +34,7 @@
   &__icon {
     width: 100%;
     height: 100%;
-    fill: #A264BF;
+    fill: hsl(285, 43%, 57%);
     @include transition(fill);
   }
 }
@@ -42,18 +42,18 @@
 // Light mode - Botón amarillo
 :host-context(.light-mode) .theme-toggle,
 .light-mode .theme-toggle {
-  border-color: #f4d03f;
+  border-color: hsl(48, 89%, 60%);
   
   .theme-toggle__icon {
-    fill: #f4d03f;
+    fill: hsl(48, 89%, 60%);
   }
   
   &:hover {
-    background-color: #f4d03f;
-    border-color: #f4d03f;
+    background-color: hsl(48, 89%, 60%);
+    border-color: hsl(48, 89%, 60%);
     
     .theme-toggle__icon {
-      fill: #3d2a45;
+      fill: hsl(286, 26%, 22%);
     }
   }
 }

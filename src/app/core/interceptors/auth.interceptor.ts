@@ -1,9 +1,9 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 /**
- * Interceptor de autenticación (FASE 5 - Tarea 6)
+ * Authentication Interceptor (PHASE 5 - Task 6)
  * 
- * Añade el token de autenticación y headers comunes a todas las peticiones.
+ * Adds authentication token and common headers to all requests.
  */
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('auth_token');

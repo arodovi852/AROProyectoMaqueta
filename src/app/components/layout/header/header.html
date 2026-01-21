@@ -1,8 +1,8 @@
 <header class="header">
   <div class="header__container">
-    <!-- Logo y Breadcrumbs -->
+    <!-- Logo and Breadcrumbs -->
     <div class="header__brand">
-      <a routerLink="/" class="header__logo" aria-label="Ir a la página principal">
+      <a routerLink="/" class="header__logo" aria-label="Go to home page">
         <svg class="header__home-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
         </svg>
@@ -25,7 +25,7 @@
       }
     </div>
 
-    <!-- Botón hamburguesa (solo mobile) -->
+    <!-- Hamburger button (mobile only) -->
     <button
       #toggleBtn
       type="button"
@@ -33,16 +33,16 @@
       [class.header__toggle--active]="isMenuOpen"
       (click)="toggleMenu()"
       [attr.aria-expanded]="isMenuOpen"
-      aria-label="Menú"
+      aria-label="Menu"
     >
       <span class="header__toggle-bar"></span>
       <span class="header__toggle-bar"></span>
       <span class="header__toggle-bar"></span>
     </button>
 
-    <!-- Botones y búsqueda -->
+    <!-- Buttons and search -->
     <div class="header__actions">
-      <!-- Botón Theme Toggle -->
+      <!-- Theme Toggle Button -->
       <app-theme-toggle class="header__theme-toggle" />
       
       <!-- Card Profile o Log In -->
@@ -70,7 +70,7 @@
         />
       }
 
-      <!-- Botón Lists -->
+      <!-- Lists Button -->
       <a routerLink="/lists" class="header__btn-link">
         <app-button 
           text="Lists"
@@ -80,20 +80,20 @@
         />
       </a>
 
-      <!-- Campo de búsqueda con debounce -->
+      <!-- Search field with debounce -->
       <form class="header__search" (submit)="onSearch($event)">
         <input 
           type="search" 
           class="header__search-input" 
           placeholder="Search" 
-          aria-label="Buscar"
+          aria-label="Search"
           [formControl]="searchControl"
           (keydown.enter)="onSearch($event)"
         />
         <button 
           type="submit" 
           class="header__search-btn" 
-          aria-label="Buscar"
+          aria-label="Search"
         >
           <svg class="header__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
             <circle cx="8" cy="8" r="6" stroke-width="2"/>
@@ -103,7 +103,7 @@
       </form>
     </div>
 
-    <!-- Menú móvil desplegable -->
+    <!-- Mobile dropdown menu -->
     <div 
       class="header__mobile-menu"
       [class.header__mobile-menu--open]="isMenuOpen"
@@ -140,7 +140,7 @@
     </div>
   </div>
 
-  <!-- Modal de autenticación -->
+  <!-- Authentication modal -->
   @if (showAuthModal()) {
     <app-auth-modal (close)="closeAuthModal()"></app-auth-modal>
   }

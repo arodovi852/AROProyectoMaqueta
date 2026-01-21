@@ -49,10 +49,10 @@ export class LoadingDemo implements OnInit, OnDestroy {
       .subscribe({
         next: (users) => {
           this.users.set(users);
-          this.toastService.success(`${users.length} usuarios cargados correctamente`);
+          this.toastService.success(`${users.length} users loaded successfully`);
         },
         error: (error) => {
-          this.toastService.error('Error al cargar usuarios');
+          this.toastService.error('Error loading users');
           console.error(error);
         }
       });
@@ -60,13 +60,13 @@ export class LoadingDemo implements OnInit, OnDestroy {
 
   selectUser(user: User): void {
     this.selectedUser.set(user);
-    this.toastService.info(`Usuario seleccionado: ${user.name}`);
+    this.toastService.info(`User selected: ${user.name}`);
   }
 
   saveUser(): void {
     const user = this.selectedUser();
     if (!user) {
-      this.toastService.warning('Selecciona un usuario primero');
+      this.toastService.warning('Select a user first');
       return;
     }
 
@@ -80,10 +80,10 @@ export class LoadingDemo implements OnInit, OnDestroy {
       }))
       .subscribe({
         next: (savedUser) => {
-          this.toastService.success(`Usuario ${savedUser.name} guardado correctamente`, 3000);
+          this.toastService.success(`User ${savedUser.name} saved successfully`, 3000);
         },
         error: (error) => {
-          this.toastService.error('Error al guardar usuario');
+          this.toastService.error('Error saving user');
           console.error(error);
         }
       });
@@ -94,6 +94,6 @@ export class LoadingDemo implements OnInit, OnDestroy {
   }
 
   triggerWarning(): void {
-    this.toastService.warning('Advertencia: Esta acción no se puede deshacer', 5000);
+    this.toastService.warning('Warning: This action cannot be undone', 5000);
   }
 }

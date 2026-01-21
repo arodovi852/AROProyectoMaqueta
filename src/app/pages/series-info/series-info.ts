@@ -6,20 +6,23 @@ import { CardStatReview } from '../../components/shared/card-stat-review/card-st
 import { CardReview } from '../../components/shared/card-review/card-review';
 import { Series, SeriesService } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
+import { UserService, TrackedSeries } from '../../services/user.service';
 
 /**
- * Página Series Info (FASE 4 - Tareas 2, 5)
+ * Series Info Page (PHASE 4 - Tasks 2, 5)
  * 
- * Página de información detallada de una serie con:
- * - Card de la serie
- * - Descripción
- * - CardStatReview para valorar
- * - Reviews de usuarios
+ * Detailed series information page with:
+ * - Series card
+ * - Description
+ * - CardStatReview for rating
+ * - User reviews
  * 
- * Implementa:
- * - Lectura de parámetros de ruta (:id)
- * - Uso de resolver para precarga de datos
- * - Estados de carga y error
+ * Implements:
+ * - Reading route parameters (:id)
+ * - Using resolver for data preloading
+ * - Loading and error states
+ * - Watch Later persistence to Logged Series
+ * - Star rating persistence to Recently Watched
  */
 @Component({
   selector: 'app-series-info',
@@ -32,15 +35,16 @@ export class SeriesInfo implements OnInit {
   private router = inject(Router);
   private seriesService = inject(SeriesService);
   private toast = inject(ToastService);
+  private userService = inject(UserService);
 
-  // Input desde el resolver o parámetro de ruta (FASE 4 - Tarea 2)
+  // Input from resolver or route parameter (PHASE 4 - Task 2)
   @Input() id?: string;
 
-  // Estados
+  // States
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
   
-  // Información de la serie
+  // Series information
   series = signal<{
     title: string;
     imageSrc: string;
@@ -55,7 +59,7 @@ export class SeriesInfo implements OnInit {
     description: 'In 1989, a local logger discovers a naked corpse wrapped in plastic on the bank of a river outside the town of Twin Peaks. When police arrive, the body is identified as high school senior and homecoming queen Laura Palmer.'
   });
 
-  // Estadísticas para CardStatReview
+  // Statistics for CardStatReview
   statsBars = [25, 35, 50, 65, 80, 95, 90, 75, 55, 40];
   seriesRating = 0;
   isWatchLater = false;
@@ -70,33 +74,36 @@ export class SeriesInfo implements OnInit {
     {
       username: 'User2',
       rating: 4,
-      reviewText: 'Excelente serie, muy recomendada. La trama te atrapa desde el primer episodio.'
+      reviewText: 'Excellent series, highly recommended. The plot hooks you from the first episode.'
     },
     {
       username: 'User3',
       rating: 5,
-      reviewText: 'Una obra maestra del cine televisivo. David Lynch en su máxima expresión.'
+      reviewText: 'A masterpiece of television cinema. David Lynch at his best.'
     }
   ];
 
   ngOnInit(): void {
-    // Intentar obtener datos del resolver primero
+    // Try to get data from resolver first
     this.route.data.subscribe(({ series }) => {
       if (series) {
         this.updateSeriesData(series);
+        this.initializeUserState(series.id?.toString() || this.id);
       } else if (this.id) {
-        // Si no hay resolver, cargar por ID
+        // If no resolver, load by ID
         this.loadSeries(this.id);
+        this.initializeUserState(this.id);
       } else {
-        // Obtener ID de los parámetros de ruta
+        // Get ID from route parameters
         const id = this.route.snapshot.paramMap.get('id');
         if (id) {
           this.loadSeries(id);
+          this.initializeUserState(id);
         }
       }
     });
 
-    // Verificar si hay error en el estado de navegación
+    // Check for error in navigation state
     const navigation = this.router.getCurrentNavigation();
     const errorMessage = navigation?.extras.state?.['error'];
     if (errorMessage) {
@@ -106,7 +113,25 @@ export class SeriesInfo implements OnInit {
   }
 
   /**
-   * Carga la serie por ID (FASE 5 - Tarea 5)
+   * Initialize user state (Watch Later, Rating) from UserService
+   */
+  private initializeUserState(seriesId?: string): void {
+    if (!seriesId) return;
+    
+    const id = parseInt(seriesId, 10);
+    
+    // Check if series is in Logged Series
+    this.isWatchLater = this.userService.isInLoggedSeries(id);
+    
+    // Check if series has been rated
+    const existingRating = this.userService.getSeriesRating(id);
+    if (existingRating) {
+      this.seriesRating = existingRating;
+    }
+  }
+
+  /**
+   * Load series by ID (PHASE 5 - Task 5)
    */
   private loadSeries(id: string): void {
     this.loading.set(true);
@@ -119,14 +144,14 @@ export class SeriesInfo implements OnInit {
       },
       error: (err) => {
         this.loading.set(false);
-        this.error.set('No se pudo cargar la serie');
-        this.toast.error('Error al cargar la información de la serie');
+        this.error.set('Could not load series');
+        this.toast.error('Error loading series information');
       }
     });
   }
 
   /**
-   * Actualiza los datos de la serie
+   * Update series data
    */
   private updateSeriesData(data: Series): void {
     this.series.set({
@@ -141,23 +166,70 @@ export class SeriesInfo implements OnInit {
   }
 
   /**
-   * Navegación programática - volver a la lista (FASE 4 - Tarea 2)
+   * Programmatic navigation - go back to list (PHASE 4 - Task 2)
    */
   goBack(): void {
     this.router.navigate(['/main']);
   }
 
+  /**
+   * Handle rating change - saves to Recently Watched
+   */
   onRatingChange(rating: number): void {
     this.seriesRating = rating;
-    this.toast.success(`Has valorado con ${rating} estrellas`);
+    
+    // Get current series data
+    const currentSeries = this.series();
+    const seriesId = this.id ? parseInt(this.id, 10) : 1;
+    
+    // Create tracked series object
+    const trackedSeries: TrackedSeries = {
+      id: seriesId,
+      title: currentSeries.title,
+      imageSrc: currentSeries.imageSrc,
+      hoverTitle: currentSeries.title,
+      rating: rating,
+      addedAt: new Date()
+    };
+    
+    // Add to recently watched (persists to localStorage)
+    this.userService.addToRecentlyWatched(trackedSeries);
+    
+    this.toast.success(`You rated "${currentSeries.title}" with ${rating} stars`);
   }
 
+  /**
+   * Handle Watch Later toggle - saves to Logged Series
+   */
   onWatchLaterToggle(isWatchLater: boolean): void {
     this.isWatchLater = isWatchLater;
+    
+    // Get current series data
+    const currentSeries = this.series();
+    const seriesId = this.id ? parseInt(this.id, 10) : 1;
+    
     if (isWatchLater) {
-      this.toast.info('Serie añadida a "Ver más tarde"');
+      // Create tracked series object
+      const trackedSeries: TrackedSeries = {
+        id: seriesId,
+        title: currentSeries.title,
+        imageSrc: currentSeries.imageSrc,
+        hoverTitle: currentSeries.title,
+        addedAt: new Date()
+      };
+      
+      // Add to logged series (persists to localStorage)
+      const added = this.userService.addToLoggedSeries(trackedSeries);
+      
+      if (added) {
+        this.toast.success(`"${currentSeries.title}" added to Logged Series`);
+      } else {
+        this.toast.info(`"${currentSeries.title}" is already in Logged Series`);
+      }
     } else {
-      this.toast.info('Serie eliminada de "Ver más tarde"');
+      // Remove from logged series
+      this.userService.removeFromLoggedSeries(seriesId);
+      this.toast.info(`"${currentSeries.title}" removed from Logged Series`);
     }
   }
 }

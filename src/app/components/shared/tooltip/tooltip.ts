@@ -2,19 +2,19 @@ import { Component, Input, HostListener, ElementRef, Renderer2, ViewChild, After
 import { CommonModule } from '@angular/common';
 
 /**
- * Posición del tooltip
+ * Tooltip position
  */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
 /**
- * Componente Tooltip
+ * Tooltip Component
  * 
- * Tooltip que se muestra al hacer hover o focus.
- * Implementa requisitos de Cliente Fase 1:
- * - Eventos de mouse (mouseenter, mouseleave)
- * - Eventos de focus y blur
- * - Manipulación DOM con Renderer2
- * - Posicionamiento dinámico
+ * Tooltip that displays on hover or focus.
+ * Implements Client Phase 1 requirements:
+ * - Mouse events (mouseenter, mouseleave)
+ * - Focus and blur events
+ * - DOM manipulation with Renderer2
+ * - Dynamic positioning
  */
 @Component({
   selector: 'app-tooltip',

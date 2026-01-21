@@ -7,8 +7,8 @@ import { Button } from '../../components/shared/button/button';
 import { DomExample } from '../../components/shared/dom-example/dom-example';
 
 /**
- * Página de demostración de componentes interactivos
- * Cliente Fase 1 - Tarea 3: Componentes interactivos funcionales
+ * Interactive components demo page
+ * Client Phase 1 - Task 3: Functional interactive components
  */
 @Component({
   selector: 'app-demo-components',
@@ -25,124 +25,124 @@ import { DomExample } from '../../components/shared/dom-example/dom-example';
   styleUrl: './demo-components.scss',
 })
 export class DemoComponents {
-  // Estados de modales
+  // Modal states
   isModalOpen = false;
   isSecondModalOpen = false;
   isConfirmModalOpen = false;
 
-  // Pestañas de ejemplo - Producto
+  // Example tabs - Product
   productTabs: Tab[] = [
     {
       id: 'detalles',
-      label: 'Detalles',
-      content: 'Este es el contenido de la pestaña de detalles. Aquí puedes agregar información detallada sobre el producto o servicio. Las pestañas permiten organizar contenido de forma clara y accesible.'
+      label: 'Details',
+      content: 'This is the content of the details tab. Here you can add detailed information about the product or service. Tabs allow organizing content clearly and accessibly.'
     },
     {
       id: 'especificaciones',
-      label: 'Especificaciones',
-      content: 'Especificaciones técnicas: Altura: 10cm, Ancho: 20cm, Peso: 500g, Material: Plástico ABS. Compatible con estándares internacionales.'
+      label: 'Specifications',
+      content: 'Technical specifications: Height: 10cm, Width: 20cm, Weight: 500g, Material: ABS Plastic. Compatible with international standards.'
     },
     {
       id: 'reviews',
       label: 'Reviews',
-      content: 'Calificación promedio: 4.5/5 estrellas. Los usuarios destacan la calidad y durabilidad del producto. "Excelente compra" - Usuario verificado.'
+      content: 'Average rating: 4.5/5 stars. Users highlight the quality and durability of the product. "Excellent purchase" - Verified User.'
     },
     {
       id: 'envio',
-      label: 'Envío',
-      content: 'Envío gratuito en pedidos superiores a 50€. Entrega en 24-48h. Posibilidad de recogida en tienda.'
+      label: 'Shipping',
+      content: 'Free shipping on orders over €50. Delivery in 24-48h. Store pickup available.'
     }
   ];
 
-  // Pestañas de ejemplo - Documentación
+  // Example tabs - Documentation
   docTabs: Tab[] = [
     {
       id: 'viewchild',
       label: 'ViewChild',
-      content: '@ViewChild permite acceder a elementos del DOM desde el componente. Se utiliza con ElementRef para obtener referencias directas.'
+      content: '@ViewChild allows accessing DOM elements from the component. It is used with ElementRef to get direct references.'
     },
     {
       id: 'renderer2',
       label: 'Renderer2',
-      content: 'Renderer2 es la forma segura de manipular el DOM en Angular. Compatible con SSR y previene vulnerabilidades XSS.'
+      content: 'Renderer2 is the safe way to manipulate the DOM in Angular. Compatible with SSR and prevents XSS vulnerabilities.'
     },
     {
       id: 'eventos',
-      label: 'Eventos',
-      content: 'Angular soporta todos los eventos nativos del DOM: click, keydown, mouseenter, focus, blur, etc. Con sintaxis (eventName)="handler($event)".'
+      label: 'Events',
+      content: 'Angular supports all native DOM events: click, keydown, mouseenter, focus, blur, etc. With syntax (eventName)="handler($event)".'
     }
   ];
 
-  // Contador para demostración
+  // Counter for demonstration
   clickCount = 0;
-  lastEventType = 'ninguno';
+  lastEventType = 'none';
 
-  // Maneja el cambio de pestaña
+  // Handles tab change
   onTabChange(tabId: string): void {
-    console.log('Pestaña seleccionada:', tabId);
-    this.lastEventType = `Tab cambiado a: ${tabId}`;
+    console.log('Selected tab:', tabId);
+    this.lastEventType = `Tab changed to: ${tabId}`;
   }
 
-  // Abre el modal principal
+  // Opens the main modal
   openModal(): void {
     this.isModalOpen = true;
-    this.lastEventType = 'Modal abierto';
+    this.lastEventType = 'Modal opened';
   }
 
-  // Cierra el modal principal
+  // Closes the main modal
   closeModal(): void {
     this.isModalOpen = false;
-    this.lastEventType = 'Modal cerrado';
+    this.lastEventType = 'Modal closed';
   }
 
-  // Confirma acción del modal principal
+  // Confirms action in main modal
   confirmModal(): void {
-    console.log('Modal confirmado');
-    this.lastEventType = 'Modal confirmado';
+    console.log('Modal confirmed');
+    this.lastEventType = 'Modal confirmed';
     this.closeModal();
   }
 
-  // Abre el segundo modal
+  // Opens the second modal
   openSecondModal(): void {
     this.isSecondModalOpen = true;
-    this.lastEventType = 'Segundo modal abierto';
+    this.lastEventType = 'Second modal opened';
   }
 
-  // Cierra el segundo modal
+  // Closes the second modal
   closeSecondModal(): void {
     this.isSecondModalOpen = false;
-    this.lastEventType = 'Segundo modal cerrado';
+    this.lastEventType = 'Second modal closed';
   }
 
-  // Abre modal de confirmación
+  // Opens confirmation modal
   openConfirmModal(): void {
     this.isConfirmModalOpen = true;
-    this.lastEventType = 'Modal de confirmación abierto';
+    this.lastEventType = 'Confirmation modal opened';
   }
 
-  // Cierra modal de confirmación
+  // Closes confirmation modal
   closeConfirmModal(): void {
     this.isConfirmModalOpen = false;
-    this.lastEventType = 'Modal de confirmación cerrado';
+    this.lastEventType = 'Confirmation modal closed';
   }
 
-  // Confirma la acción peligrosa
+  // Confirms the dangerous action
   confirmDangerousAction(): void {
-    console.log('Acción peligrosa confirmada');
-    this.lastEventType = 'Acción peligrosa confirmada';
+    console.log('Dangerous action confirmed');
+    this.lastEventType = 'Dangerous action confirmed';
     this.closeConfirmModal();
   }
 
-  // Incrementa contador
+  // Increments counter
   incrementCounter(): void {
     this.clickCount++;
     this.lastEventType = `Click #${this.clickCount}`;
   }
 
-  // Maneja eventos de teclado
+  // Handles keyboard events
   onKeyEvent(event: KeyboardEvent, type: string): void {
     this.lastEventType = `${type}: ${event.key}`;
-    console.log(`Evento de teclado: ${event.key}`);
+    console.log(`Keyboard event: ${event.key}`);
   }
 
   // Maneja eventos de mouse

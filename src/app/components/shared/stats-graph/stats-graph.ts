@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Stats Graph
+ * Stats Graph Component
  * 
- * Gráfico de barras verticales mostrando estadísticas
+ * Vertical bar chart showing statistics
  */
 @Component({
   selector: 'app-stats-graph',

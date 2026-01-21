@@ -2,22 +2,22 @@ import { CanDeactivateFn } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 
 /**
- * Interface para componentes con formularios (FASE 4 - Tarea 4)
+ * Interface for components with forms (PHASE 4 - Task 4)
  */
 export interface FormComponent {
   form: FormGroup;
 }
 
 /**
- * Guard para cambios pendientes (FASE 4 - Tarea 4)
+ * Guard for pending changes (PHASE 4 - Task 4)
  * 
- * Previene la navegación si hay cambios sin guardar en un formulario.
- * Muestra un diálogo de confirmación al usuario.
+ * Prevents navigation if there are unsaved changes in a form.
+ * Shows a confirmation dialog to the user.
  */
 export const pendingChangesGuard: CanDeactivateFn<FormComponent> =
   (component, currentRoute, currentState, nextState) => {
     if (component.form?.dirty) {
-      return confirm('Hay cambios sin guardar. ¿Desea salir igualmente?');
+      return confirm('There are unsaved changes. Do you want to leave anyway?');
     }
     return true;
   };

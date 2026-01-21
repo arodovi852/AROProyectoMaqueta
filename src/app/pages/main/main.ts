@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Card } from '../../components/shared/card/card';
@@ -7,7 +7,7 @@ import { SeriesService, Series } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
 
 /**
- * Interface para los datos de las tarjetas de series
+ * Interface for series card data
  */
 interface SeriesCard {
   id: number;
@@ -17,15 +17,26 @@ interface SeriesCard {
 }
 
 /**
- * Página Main (FASE 4 - Tarea 2, FASE 5 - Tarea 5)
+ * Interface for carousel slide
+ */
+interface CarouselSlide {
+  id: number;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+}
+
+/**
+ * Main Page (PHASE 4 - Task 2, PHASE 5 - Task 5)
  * 
- * Página principal de la aplicación con hero section y grid de series.
- * Similar a plataformas de seguimiento de series como Trakt o Letterboxd.
+ * Main application page with hero carousel and series grid.
+ * Similar to series tracking platforms like Trakt or Letterboxd.
  * 
- * Implementa:
- * - Navegación programática con Router
- * - Estados de carga y error
- * - Integración con SeriesService
+ * Implements:
+ * - Rotating image carousel in hero section
+ * - Programmatic navigation with Router
+ * - Loading and error states
+ * - Integration with SeriesService
  */
 @Component({
   selector: 'app-main',
@@ -34,17 +45,64 @@ interface SeriesCard {
   styleUrl: './main.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Main implements OnInit {
+export class Main implements OnInit, OnDestroy {
   private router = inject(Router);
   private seriesService = inject(SeriesService);
   private toast = inject(ToastService);
+  
+  // Carousel state
+  private carouselInterval: ReturnType<typeof setInterval> | null = null;
+  currentSlide = signal<number>(0);
+  isCarouselPaused = signal<boolean>(false);
 
-  // Estados
+  /**
+   * Carousel slides - rotating series images
+   */
+  carouselSlides: CarouselSlide[] = [
+    {
+      id: 1,
+      imageSrc: '/assets/Images_For_Card_1.jpg',
+      imageAlt: 'Twin Peaks',
+      title: 'Twin Peaks'
+    },
+    {
+      id: 2,
+      imageSrc: '/assets/Images_For_Card_2.jpg',
+      imageAlt: 'Stranger Things',
+      title: 'Stranger Things'
+    },
+    {
+      id: 3,
+      imageSrc: '/assets/Image_For_Card_3.jpg',
+      imageAlt: 'Alien: Earth',
+      title: 'Alien: Earth'
+    },
+    {
+      id: 7,
+      imageSrc: '/assets/Images_For_Card_7.png',
+      imageAlt: 'It: Welcome to Derry',
+      title: 'It: Welcome to Derry'
+    },
+    {
+      id: 9,
+      imageSrc: '/assets/Images_For_Card_9.jpg',
+      imageAlt: 'Black Mirror',
+      title: 'Black Mirror'
+    },
+    {
+      id: 10,
+      imageSrc: '/assets/Images_For_Card_10.jpg',
+      imageAlt: 'The Creep Tapes',
+      title: 'The Creep Tapes'
+    }
+  ];
+
+  // States
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
   seriesFromApi = signal<Series[]>([]);
   /**
-   * Series populares de la semana
+   * Popular series of the week
    */
   popularSeries: SeriesCard[] = [
     {
@@ -86,7 +144,7 @@ export class Main implements OnInit {
   ];
 
   /**
-   * Próximos estrenos
+   * Upcoming releases
    */
   futureReleases: SeriesCard[] = [
     {
@@ -129,10 +187,75 @@ export class Main implements OnInit {
 
   ngOnInit(): void {
     this.loadSeriesFromApi();
+    this.startCarousel();
+  }
+
+  ngOnDestroy(): void {
+    this.stopCarousel();
   }
 
   /**
-   * Carga series desde el servicio (FASE 5 - Tarea 5)
+   * Start the carousel auto-rotation
+   */
+  startCarousel(): void {
+    this.carouselInterval = setInterval(() => {
+      if (!this.isCarouselPaused()) {
+        this.nextSlide();
+      }
+    }, 5000); // Rotate every 5 seconds
+  }
+
+  /**
+   * Stop the carousel auto-rotation
+   */
+  stopCarousel(): void {
+    if (this.carouselInterval) {
+      clearInterval(this.carouselInterval);
+      this.carouselInterval = null;
+    }
+  }
+
+  /**
+   * Go to next slide
+   */
+  nextSlide(): void {
+    const current = this.currentSlide();
+    const next = (current + 1) % this.carouselSlides.length;
+    this.currentSlide.set(next);
+  }
+
+  /**
+   * Go to previous slide
+   */
+  previousSlide(): void {
+    const current = this.currentSlide();
+    const prev = current === 0 ? this.carouselSlides.length - 1 : current - 1;
+    this.currentSlide.set(prev);
+  }
+
+  /**
+   * Go to specific slide
+   */
+  goToSlide(index: number): void {
+    this.currentSlide.set(index);
+  }
+
+  /**
+   * Pause carousel on hover
+   */
+  onCarouselMouseEnter(): void {
+    this.isCarouselPaused.set(true);
+  }
+
+  /**
+   * Resume carousel on mouse leave
+   */
+  onCarouselMouseLeave(): void {
+    this.isCarouselPaused.set(false);
+  }
+
+  /**
+   * Load series from service (PHASE 5 - Task 5)
    */
   loadSeriesFromApi(): void {
     this.loading.set(true);
@@ -152,14 +275,14 @@ export class Main implements OnInit {
   }
 
   /**
-   * Navegación programática a detalle de serie (FASE 4 - Tarea 2)
+   * Programmatic navigation to series detail (PHASE 4 - Task 2)
    */
   navigateToSeries(id: number): void {
     this.router.navigate(['/series', id]);
   }
 
   /**
-   * Navegación programática con query params (FASE 4 - Tarea 2)
+   * Programmatic navigation with query params (PHASE 4 - Task 2)
    */
   searchSeries(query: string): void {
     this.router.navigate(['/searchresult'], {
@@ -168,15 +291,15 @@ export class Main implements OnInit {
   }
 
   /**
-   * Manejador del click en "Get started" (FASE 4 - Tarea 2)
+   * Get started click handler (PHASE 4 - Task 2)
    */
   onGetStarted(): void {
-    // Navegación programática al perfil/registro
+    // Programmatic navigation to profile/registration
     this.router.navigate(['/profile']);
   }
 
   /**
-   * Manejador del click en "See more" (FASE 4 - Tarea 2)
+   * See more click handler (PHASE 4 - Task 2)
    */
   onSeeMore(section: string): void {
     this.router.navigate(['/lists'], {

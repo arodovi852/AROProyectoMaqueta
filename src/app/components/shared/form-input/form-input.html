@@ -1,12 +1,12 @@
 <div class="form-input" [class.form-input--error]="showError" [class.form-input--disabled]="disabled">
-  <!-- Label del input -->
+  <!-- Input label -->
   <label 
     *ngIf="label" 
     [for]="inputId" 
     class="form-input__label"
   >
     {{ label }}
-    <span *ngIf="required" class="form-input__required" aria-label="campo requerido">*</span>
+    <span *ngIf="required" class="form-input__required" aria-label="required field">*</span>
   </label>
 
   <!-- Input field -->
@@ -26,7 +26,7 @@
     class="form-input__field"
   />
 
-  <!-- Texto de ayuda -->
+  <!-- Help text -->
   <p 
     *ngIf="helpText && !showError" 
     [id]="helpTextId" 
@@ -35,7 +35,7 @@
     {{ helpText }}
   </p>
 
-  <!-- Mensaje de error -->
+  <!-- Error message -->
   <p 
     *ngIf="showError && errorMessage" 
     [id]="errorId" 

@@ -1,17 +1,17 @@
 <div class="profile-form-container">
-  <h2>Formulario de Perfil con Validación Asíncrona</h2>
-  <p class="description">Este formulario demuestra validadores asíncronos que comprueban la disponibilidad en tiempo real.</p>
+  <h2>Profile Form with Async Validation</h2>
+  <p class="description">This form demonstrates async validators that check availability in real time.</p>
   
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <!-- Username con validación asíncrona -->
+    <!-- Username with async validation -->
     <div class="form-group">
-      <label for="username">Nombre de Usuario *</label>
+      <label for="username">Username *</label>
       <div class="input-with-status">
         <input 
           id="username"
           type="text" 
           formControlName="username"
-          placeholder="usuario123"
+          placeholder="user123"
           [class.error]="profileForm.get('username')?.invalid && profileForm.get('username')?.touched"
           [class.success]="isFieldAsyncValid('username')">
         
@@ -26,34 +26,34 @@
       @if (profileForm.get('username')?.invalid && profileForm.get('username')?.touched) {
         <div class="error-message">
           @if (profileForm.get('username')?.errors?.['required']) {
-            <span>El nombre de usuario es obligatorio</span>
+            <span>Username is required</span>
           }
           @if (profileForm.get('username')?.errors?.['minlength']) {
-            <span>Mínimo 3 caracteres</span>
+            <span>Minimum 3 characters</span>
           }
           @if (profileForm.get('username')?.errors?.['maxlength']) {
-            <span>Máximo 20 caracteres</span>
+            <span>Maximum 20 characters</span>
           }
           @if (profileForm.get('username')?.errors?.['unavailable']) {
-            <span>Este nombre de usuario ya está en uso</span>
+            <span>This username is already taken</span>
           }
         </div>
       }
       
       @if (isFieldAsyncValid('username')) {
-        <div class="success-message">Nombre de usuario disponible</div>
+        <div class="success-message">Username available</div>
       }
     </div>
 
-    <!-- Email con validación asíncrona -->
+    <!-- Email with async validation -->
     <div class="form-group">
-      <label for="email">Correo Electrónico *</label>
+      <label for="email">Email *</label>
       <div class="input-with-status">
         <input 
           id="email"
           type="email" 
           formControlName="email"
-          placeholder="usuario@ejemplo.com"
+          placeholder="user@example.com"
           [class.error]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"
           [class.success]="isFieldAsyncValid('email')">
         
@@ -68,25 +68,25 @@
       @if (profileForm.get('email')?.invalid && profileForm.get('email')?.touched) {
         <div class="error-message">
           @if (profileForm.get('email')?.errors?.['required']) {
-            <span>El correo electrónico es obligatorio</span>
+            <span>Email is required</span>
           }
           @if (profileForm.get('email')?.errors?.['email']) {
-            <span>Formato de correo inválido</span>
+            <span>Invalid email format</span>
           }
           @if (profileForm.get('email')?.errors?.['taken']) {
-            <span>Este correo electrónico ya está registrado</span>
+            <span>This email is already registered</span>
           }
         </div>
       }
       
       @if (isFieldAsyncValid('email')) {
-        <div class="success-message">Correo electrónico disponible</div>
+        <div class="success-message">Email available</div>
       }
     </div>
 
-    <!-- Fecha de Nacimiento -->
+    <!-- Birth Date -->
     <div class="form-group">
-      <label for="birthDate">Fecha de Nacimiento *</label>
+      <label for="birthDate">Birth Date *</label>
       <input 
         id="birthDate"
         type="date" 
@@ -96,7 +96,7 @@
       @if (profileForm.get('birthDate')?.invalid && profileForm.get('birthDate')?.touched) {
         <div class="error-message">
           @if (profileForm.get('birthDate')?.errors?.['required']) {
-            <span>La fecha de nacimiento es obligatoria</span>
+            <span>Birth date is required</span>
           }
           @if (profileForm.get('birthDate')?.errors?.['minAge']) {
             <span>{{ profileForm.get('birthDate')?.errors?.['minAge'] }}</span>
@@ -105,37 +105,37 @@
       }
     </div>
 
-    <!-- Contraseña con validación de fortaleza -->
+    <!-- Password with strength validation -->
     <div class="form-group">
-      <label for="password">Contraseña *</label>
+      <label for="password">Password *</label>
       <div class="password-input">
         <input 
           id="password"
           [type]="showPassword ? 'text' : 'password'" 
           formControlName="password"
-          placeholder="Mínimo 8 caracteres"
+          placeholder="Minimum 8 characters"
           [class.error]="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">
         
         <button 
           type="button"
           class="toggle-password"
           (click)="togglePasswordVisibility()"
-          [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
-          {{ showPassword ? 'Ocultar' : 'Mostrar' }}
+          [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+          {{ showPassword ? 'Hide' : 'Show' }}
         </button>
       </div>
       
       @if (profileForm.get('password')?.invalid && profileForm.get('password')?.touched) {
         <div class="error-message">
           @if (profileForm.get('password')?.errors?.['required']) {
-            <span>La contraseña es obligatoria</span>
+            <span>Password is required</span>
           }
           @if (profileForm.get('password')?.errors?.['minlength']) {
-            <span>Mínimo 8 caracteres</span>
+            <span>Minimum 8 characters</span>
           }
           @if (profileForm.get('password')?.errors?.['passwordStrength']) {
             <div class="password-requirements">
-              <p>La contraseña debe incluir:</p>
+              <p>Password must include:</p>
               <ul>
                 @for (missing of getPasswordStrengthErrors(); track missing) {
                   <li>{{ missing }}</li>
@@ -147,48 +147,48 @@
       }
     </div>
 
-    <!-- Confirmar Contraseña -->
+    <!-- Confirm Password -->
     <div class="form-group">
-      <label for="confirmPassword">Confirmar Contraseña *</label>
+      <label for="confirmPassword">Confirm Password *</label>
       <div class="password-input">
         <input 
           id="confirmPassword"
           [type]="showConfirmPassword ? 'text' : 'password'" 
           formControlName="confirmPassword"
-          placeholder="Repite la contraseña"
+          placeholder="Repeat password"
           [class.error]="(profileForm.get('confirmPassword')?.invalid || profileForm.errors?.['passwordMismatch']) && profileForm.get('confirmPassword')?.touched">
         
         <button 
           type="button"
           class="toggle-password"
           (click)="toggleConfirmPasswordVisibility()"
-          [attr.aria-label]="showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
-          {{ showConfirmPassword ? 'Ocultar' : 'Mostrar' }}
+          [attr.aria-label]="showConfirmPassword ? 'Hide password' : 'Show password'">
+          {{ showConfirmPassword ? 'Hide' : 'Show' }}
         </button>
       </div>
       
       @if (profileForm.get('confirmPassword')?.invalid && profileForm.get('confirmPassword')?.touched) {
         <div class="error-message">
           @if (profileForm.get('confirmPassword')?.errors?.['required']) {
-            <span>Debes confirmar la contraseña</span>
+            <span>You must confirm the password</span>
           }
         </div>
       }
       
       @if (profileForm.errors?.['passwordMismatch'] && profileForm.get('confirmPassword')?.touched) {
         <div class="error-message">
-          <span>Las contraseñas no coinciden</span>
+          <span>Passwords do not match</span>
         </div>
       }
     </div>
 
-    <!-- Biografía -->
+    <!-- Biography -->
     <div class="form-group">
-      <label for="bio">Biografía</label>
+      <label for="bio">Biography</label>
       <textarea 
         id="bio"
         formControlName="bio"
-        placeholder="Cuéntanos sobre ti (máximo 500 caracteres)"
+        placeholder="Tell us about yourself (maximum 500 characters)"
         rows="4"
         [class.error]="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched"></textarea>
       
@@ -199,7 +199,7 @@
       @if (profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched) {
         <div class="error-message">
           @if (profileForm.get('bio')?.errors?.['maxlength']) {
-            <span>Máximo 500 caracteres</span>
+            <span>Maximum 500 characters</span>
           }
         </div>
       }
@@ -208,41 +208,41 @@
     <!-- Checkboxes -->
     <app-form-checkbox
       checkboxId="newsletter"
-      label="Quiero recibir el boletín de noticias"
+      label="I want to receive the newsletter"
       formControlName="newsletter">
     </app-form-checkbox>
 
     <app-form-checkbox
       checkboxId="terms"
-      label="Acepto los términos y condiciones"
+      label="I accept the terms and conditions"
       [required]="true"
       [showError]="!!(profileForm.get('terms')?.invalid && profileForm.get('terms')?.touched)"
-      errorMessage="Debes aceptar los términos y condiciones"
+      errorMessage="You must accept the terms and conditions"
       formControlName="terms">
     </app-form-checkbox>
 
-    <!-- Estado de Validación -->
+    <!-- Validation Status -->
     @if (profileForm.pending) {
       <div class="validation-status pending">
         <span class="spinner"></span>
-        Validando información...
+        Validating information...
       </div>
     }
 
-    <!-- Botones de Acción -->
+    <!-- Action Buttons -->
     <div class="form-actions">
       <app-button 
         type="submit"
         variant="primary"
         [disabled]="profileForm.invalid || profileForm.pending">
-        Crear Perfil
+        Create Profile
       </app-button>
       
       <app-button 
         type="button"
         variant="secondary"
         (click)="onReset()">
-        Reiniciar
+        Reset
       </app-button>
     </div>
   </form>

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Button } from '../button/button';
 
 /**
- * Componente de Tooltip Interactivo
- * Tooltips que se muestran con mouseenter/mouseleave
+ * Interactive Tooltip Component
+ * Tooltips that display on mouseenter/mouseleave
  */
 @Component({
   selector: 'app-interactive-tooltip',
@@ -14,7 +14,7 @@ import { Button } from '../button/button';
   imports: [CommonModule, Button]
 })
 export class InteractiveTooltip {
-  // Estado de tooltips individuales
+  // Individual tooltips state
   tooltips: { [key: string]: boolean } = {
     top: false,
     right: false,
@@ -26,12 +26,12 @@ export class InteractiveTooltip {
     success: false
   };
 
-  // Mostrar tooltip
+  // Show tooltip
   showTooltip(key: string) {
     this.tooltips[key] = true;
   }
 
-  // Ocultar tooltip
+  // Hide tooltip
   hideTooltip(key: string) {
     this.tooltips[key] = false;
   }

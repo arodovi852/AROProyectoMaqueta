@@ -2,14 +2,14 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 /**
- * Componente Theme Toggle
+ * Theme Toggle Component
  * 
- * Toggle para cambiar entre tema claro y oscuro.
- * Implementa requisitos de Cliente Fase 1 - Tarea 4:
- * - Detecta prefers-color-scheme del sistema
- * - Toggle entre tema claro/oscuro
- * - Persistencia en localStorage
- * - Aplica tema al cargar la aplicación
+ * Toggle to switch between light and dark theme.
+ * Implements Client Phase 1 - Task 4 requirements:
+ * - Detects system prefers-color-scheme
+ * - Toggle between light/dark theme
+ * - Persistence in localStorage
+ * - Applies theme on application load
  */
 @Component({
   selector: 'app-theme-toggle',

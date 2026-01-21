@@ -5,7 +5,7 @@ import { Button } from '../../components/shared/button/button';
 import { CardList } from '../../components/shared/card-list/card-list';
 
 /**
- * Interface para los datos de las listas
+ * Interface for list data
  */
 interface ListData {
   title: string;
@@ -13,9 +13,9 @@ interface ListData {
 }
 
 /**
- * Página Lists
+ * Lists Page
  * 
- * Página que muestra las listas oficiales y populares de series.
+ * Page that displays official and popular series lists.
  */
 @Component({
   selector: 'app-lists',
@@ -26,7 +26,7 @@ interface ListData {
 })
 export class Lists {
   /**
-   * Listas oficiales (tamaño grande)
+   * Official lists (large size)
    */
   officialLists: ListData[] = [
     {

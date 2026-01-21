@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 /**
- * Componente Hero
+ * Hero Component
  * 
- * Sección principal de la página con título, descripción, CTAs y estadísticas
+ * Main page section with title, description, CTAs and statistics
  */
 @Component({
   selector: 'app-hero',

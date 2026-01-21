@@ -4,7 +4,7 @@ import { SeriesService, Series } from '../../services/series.service';
 import { catchError, of } from 'rxjs';
 
 /**
- * Interface para el estado del resolver (FASE 4 - Tarea 5)
+ * Interface for resolver state (PHASE 4 - Task 5)
  */
 export interface SeriesResolved {
   loading: boolean;
@@ -13,10 +13,10 @@ export interface SeriesResolved {
 }
 
 /**
- * Resolver para precargar datos de serie (FASE 4 - Tarea 5)
+ * Resolver to preload series data (PHASE 4 - Task 5)
  * 
- * Carga los datos de una serie antes de activar la ruta.
- * Maneja errores y redirecciones.
+ * Loads series data before activating the route.
+ * Handles errors and redirections.
  */
 export const seriesResolver: ResolveFn<Series | null> = (route, state) => {
   const service = inject(SeriesService);
@@ -27,7 +27,7 @@ export const seriesResolver: ResolveFn<Series | null> = (route, state) => {
     catchError(error => {
       console.error('Error loading series:', error);
       router.navigate(['/main'], {
-        state: { error: 'No se pudo cargar la serie' }
+        state: { error: 'Could not load series' }
       });
       return of(null);
     })
@@ -35,7 +35,7 @@ export const seriesResolver: ResolveFn<Series | null> = (route, state) => {
 };
 
 /**
- * Resolver para listado de series (FASE 4 - Tarea 5)
+ * Resolver for series list (PHASE 4 - Task 5)
  */
 export const seriesListResolver: ResolveFn<Series[]> = (route, state) => {
   const service = inject(SeriesService);

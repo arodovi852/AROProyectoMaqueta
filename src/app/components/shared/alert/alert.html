@@ -1,5 +1,5 @@
 <div [class]="alertClasses" role="alert">
-  <!-- Icono -->
+  <!-- Icon -->
   <div class="alert__icon">
     @switch (type) {
       @case ('success') {
@@ -25,7 +25,7 @@
     }
   </div>
 
-  <!-- Contenido -->
+  <!-- Content -->
   <div class="alert__content">
     @if (title) {
       <h4 class="alert__title">{{ title }}</h4>
@@ -35,12 +35,12 @@
     </div>
   </div>
 
-  <!-- Botón de cierre -->
+  <!-- Close button -->
   @if (dismissible) {
     <button 
       type="button" 
       class="alert__close"
-      aria-label="Cerrar alerta"
+      aria-label="Close alert"
       (click)="onClose()"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">

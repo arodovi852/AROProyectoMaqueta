@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Componente Form Checkbox
+ * Form Checkbox Component
  * 
- * Checkbox reutilizable con estilos personalizados y accesibilidad.
- * Implementa ControlValueAccessor para integración con Angular Forms.
+ * Reusable checkbox with custom styles and accessibility.
+ * Implements ControlValueAccessor for Angular Forms integration.
  */
 @Component({
   selector: 'app-form-checkbox',

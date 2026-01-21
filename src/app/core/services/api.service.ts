@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
 /**
- * Respuesta paginada genérica (FASE 5 - Tarea 2)
+ * Generic paginated response (PHASE 5 - Task 2)
  */
 export interface PaginatedResponse<T> {
   items: T[];
@@ -13,16 +13,16 @@ export interface PaginatedResponse<T> {
 }
 
 /**
- * Servicio API base (FASE 5 - Tarea 1)
+ * Base API Service (PHASE 5 - Task 1)
  * 
- * Centraliza las operaciones HTTP comunes y la URL base.
- * Todos los servicios de dominio delegan en este servicio.
+ * Centralizes common HTTP operations and base URL.
+ * All domain services delegate to this service.
  */
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private http = inject(HttpClient);
   
-  // URL base de la API (simulada con JSONPlaceholder o API local)
+  // Base API URL (simulated with JSONPlaceholder or local API)
   private readonly baseUrl = 'https://jsonplaceholder.typicode.com';
 
   /**
@@ -71,7 +71,7 @@ export class ApiService {
   }
 
   /**
-   * Manejo de errores centralizado
+   * Centralized error handling
    */
   private handleError(error: any) {
     console.error('API Error:', error);

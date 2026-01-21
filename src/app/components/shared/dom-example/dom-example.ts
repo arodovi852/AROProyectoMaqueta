@@ -2,13 +2,13 @@ import { Component, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@ang
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente de ejemplo para demostración de manipulación del DOM
- * Cliente Fase 1 - Tarea 1: Crear y eliminar elementos del DOM programáticamente
+ * DOM manipulation example component
+ * Client Phase 1 - Task 1: Create and remove DOM elements programmatically
  * 
- * Este componente demuestra:
- * - Creación dinámica de elementos con Renderer2
- * - Modificación de estilos y propiedades
- * - Eliminación de elementos
+ * This component demonstrates:
+ * - Dynamic element creation with Renderer2
+ * - Modifying styles and properties
+ * - Removing elements
  */
 @Component({
   selector: 'app-dom-example',
@@ -19,45 +19,45 @@ import { CommonModule } from '@angular/common';
 })
 export class DomExample implements AfterViewInit {
   /**
-   * Referencia al contenedor donde se crearán elementos
-   * Cliente Fase 1: Uso de @ViewChild con ElementRef
+   * Reference to container where elements will be created
+   * Client Phase 1: Using @ViewChild with ElementRef
    */
   @ViewChild('contenedor', { static: false }) contenedor!: ElementRef;
 
   /**
-   * Referencia a un elemento para modificar
+   * Reference to an element to modify
    */
   @ViewChild('miDiv', { static: false }) miDiv?: ElementRef;
 
   /**
-   * Contador de elementos creados
+   * Created elements counter
    */
   elementCount = 0;
 
   constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
-    console.log('Contenedor accesible:', this.contenedor.nativeElement);
+    console.log('Container accessible:', this.contenedor.nativeElement);
   }
 
   /**
-   * Crea un nuevo elemento dinámicamente
-   * Cliente Fase 1: Crear elementos del DOM programáticamente
+   * Creates a new element dynamically
+   * Client Phase 1: Create DOM elements programmatically
    */
   crearElemento(): void {
     this.elementCount++;
 
-    // Crear nuevo div
+    // Create new div
     const nuevoDiv = this.renderer.createElement('div');
     
-    // Establecer contenido de texto
-    const texto = this.renderer.createText(`Elemento #${this.elementCount} creado dinámicamente`);
+    // Set text content
+    const texto = this.renderer.createText(`Element #${this.elementCount} created dynamically`);
     this.renderer.appendChild(nuevoDiv, texto);
     
-    // Agregar clases CSS
+    // Add CSS classes
     this.renderer.addClass(nuevoDiv, 'elemento-dinamico');
     
-    // Establecer estilos inline
+    // Set inline styles
     this.renderer.setStyle(nuevoDiv, 'backgroundColor', this.getRandomColor());
     this.renderer.setStyle(nuevoDiv, 'padding', '1rem');
     this.renderer.setStyle(nuevoDiv, 'marginBottom', '0.5rem');
@@ -66,17 +66,17 @@ export class DomExample implements AfterViewInit {
     this.renderer.setStyle(nuevoDiv, 'fontWeight', '500');
     this.renderer.setStyle(nuevoDiv, 'animation', 'slideIn 0.3s ease');
     
-    // Agregar atributos
+    // Add attributes
     this.renderer.setAttribute(nuevoDiv, 'data-element-id', this.elementCount.toString());
     this.renderer.setAttribute(nuevoDiv, 'role', 'listitem');
     
-    // Insertar en el contenedor
+    // Insert into container
     this.renderer.appendChild(this.contenedor.nativeElement, nuevoDiv);
   }
 
   /**
-   * Elimina el primer elemento hijo
-   * Cliente Fase 1: Eliminar elementos del DOM programáticamente
+   * Removes the first child element
+   * Client Phase 1: Remove DOM elements programmatically
    */
   eliminarPrimerElemento(): void {
     const primerHijo = this.contenedor.nativeElement.firstChild;
@@ -86,7 +86,7 @@ export class DomExample implements AfterViewInit {
   }
 
   /**
-   * Elimina el último elemento hijo
+   * Removes the last child element
    */
   eliminarUltimoElemento(): void {
     const ultimoHijo = this.contenedor.nativeElement.lastChild;
@@ -96,7 +96,7 @@ export class DomExample implements AfterViewInit {
   }
 
   /**
-   * Elimina todos los elementos
+   * Removes all elements
    */
   eliminarTodos(): void {
     while (this.contenedor.nativeElement.firstChild) {
@@ -109,8 +109,8 @@ export class DomExample implements AfterViewInit {
   }
 
   /**
-   * Cambia estilos del div de ejemplo
-   * Cliente Fase 1: Modificar estilos dinámicamente con Renderer2
+   * Changes styles of the example div
+   * Client Phase 1: Modify styles dynamically with Renderer2
    */
   cambiarEstilo(): void {
     if (this.miDiv) {
@@ -121,16 +121,16 @@ export class DomExample implements AfterViewInit {
   }
 
   /**
-   * Cambia propiedades del div de ejemplo
-   * Cliente Fase 1: Modificar propiedades con Renderer2
+   * Changes properties of the example div
+   * Client Phase 1: Modify properties with Renderer2
    */
   cambiarPropiedad(): void {
     if (this.miDiv) {
       const mensajes = [
-        'Texto modificado dinámicamente',
-        '¡Hola desde Renderer2!',
-        'Manipulación del DOM en Angular',
-        'Cliente Fase 1 - Tarea 1'
+        'Dynamically modified text',
+        'Hello from Renderer2!',
+        'DOM manipulation in Angular',
+        'Client Phase 1 - Task 1'
       ];
       const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
       this.renderer.setProperty(this.miDiv.nativeElement, 'innerText', mensaje);

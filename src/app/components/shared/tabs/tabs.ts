@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Interfaz para definir una pestaña
+ * Interface to define a tab
  */
 export interface Tab {
   id: string;
@@ -11,13 +11,13 @@ export interface Tab {
 }
 
 /**
- * Componente Tabs
+ * Tabs Component
  * 
- * Sistema de pestañas con cambio de contenido.
- * Implementa requisitos de Cliente Fase 1:
- * - Event binding con (click)
- * - Clases condicionales con [class]
- * - Sistema de estado activeTab
+ * Tab system with content switching.
+ * Implements Client Phase 1 requirements:
+ * - Event binding with (click)
+ * - Conditional classes with [class]
+ * - activeTab state system
  */
 @Component({
   selector: 'app-tabs',

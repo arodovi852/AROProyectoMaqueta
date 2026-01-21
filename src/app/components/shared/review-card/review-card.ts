@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Review Card
+ * Review Card Component
  * 
- * Muestra una reseña de usuario con avatar, nombre, rating y texto
+ * Displays a user review with avatar, name, rating and text
  */
 @Component({
   selector: 'app-review-card',

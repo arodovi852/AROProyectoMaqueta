@@ -1,17 +1,17 @@
 <div class="sibling-receiver">
-  <h3 class="sibling-receiver__title">Componente Receptor</h3>
+  <h3 class="sibling-receiver__title">Receiver Component</h3>
   <p class="sibling-receiver__description">
-    Recibe mensajes del componente emisor en tiempo real
+    Receives messages from the sender component in real time
   </p>
   
   @if (receivedMessages.length === 0) {
     <p class="sibling-receiver__empty">
-      Esperando mensajes...
+      Waiting for messages...
     </p>
   } @else {
     <div class="sibling-receiver__messages">
       <h4 class="sibling-receiver__messages-title">
-        Últimos mensajes recibidos:
+        Latest messages received:
       </h4>
       <ul class="sibling-receiver__list">
         @for (message of receivedMessages; track $index) {

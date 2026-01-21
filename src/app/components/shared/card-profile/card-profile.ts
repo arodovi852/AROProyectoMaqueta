@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Card Profile
+ * Card Profile Component
  * 
- * Tarjeta de perfil de usuario sin editar.
- * Incluye un avatar estilizado con efecto hover de rotación y escala.
+ * Non-editable user profile card.
+ * Includes a stylized avatar with rotation and scale hover effect.
  */
 @Component({
   selector: 'app-card-profile',

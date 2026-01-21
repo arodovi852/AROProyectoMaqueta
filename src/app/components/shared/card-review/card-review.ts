@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { CardProfile } from '../card-profile/card-profile';
 
 /**
- * Componente Card Review
+ * Card Review Component
  * 
- * Tarjeta de reseña de usuario con CardProfile integrado,
- * estrellas de calificación y texto de reseña.
- * Incluye efecto hover que aclara los colores.
+ * User review card with integrated CardProfile,
+ * rating stars and review text.
+ * Includes hover effect that lightens the colors.
  */
 @Component({
   selector: 'app-card-review',

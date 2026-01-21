@@ -4,9 +4,9 @@ import { Button } from '../button/button';
 import { CloseButton } from '../close-button/close-button';
 
 /**
- * Componente Register Form
+ * Register Form Component
  * 
- * Formulario completo de registro con estructura semántica
+ * Complete registration form with semantic structure
  */
 @Component({
   selector: 'app-register-form',

@@ -2,8 +2,8 @@ import { Component, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@ang
 import { Button } from '../button/button';
 
 /**
- * Componente de demostración de manipulación del DOM
- * Muestra el uso de ViewChild, ElementRef y Renderer2
+ * DOM manipulation demonstration Component
+ * Shows the use of ViewChild, ElementRef and Renderer2
  */
 @Component({
   selector: 'app-dom-manipulation',
@@ -22,7 +22,7 @@ export class DomManipulation implements AfterViewInit {
     console.log('DOM Element:', this.contentDiv.nativeElement);
   }
 
-  // Cambiar estilos dinámicamente
+  // Change styles dynamically
   changeStyles() {
     this.renderer.setStyle(this.contentDiv.nativeElement, 'color', '#e53e3e');
     this.renderer.setStyle(this.contentDiv.nativeElement, 'fontSize', '24px');
@@ -30,12 +30,12 @@ export class DomManipulation implements AfterViewInit {
     this.renderer.setStyle(this.contentDiv.nativeElement, 'transition', 'all 0.3s ease');
   }
 
-  // Cambiar contenido
+  // Change content
   changeContent() {
     this.renderer.setProperty(this.contentDiv.nativeElement, 'innerText', '¡Texto modificado dinámicamente!');
   }
 
-  // Resetear estilos y contenido
+  // Reset styles and content
   resetElement() {
     this.renderer.removeStyle(this.contentDiv.nativeElement, 'color');
     this.renderer.removeStyle(this.contentDiv.nativeElement, 'fontSize');
@@ -43,7 +43,7 @@ export class DomManipulation implements AfterViewInit {
     this.renderer.setProperty(this.contentDiv.nativeElement, 'innerText', 'Contenido inicial del DOM');
   }
 
-  // Crear nuevo elemento
+  // Create new element
   createElement() {
     const newDiv = this.renderer.createElement('div');
     const text = this.renderer.createText(`Elemento creado a las ${new Date().toLocaleTimeString()}`);
@@ -61,7 +61,7 @@ export class DomManipulation implements AfterViewInit {
     this.renderer.appendChild(this.dynamicContainer.nativeElement, newDiv);
   }
 
-  // Eliminar último elemento
+  // Remove last element
   removeElement() {
     const lastChild = this.dynamicContainer.nativeElement.lastChild;
     if (lastChild) {
@@ -69,7 +69,7 @@ export class DomManipulation implements AfterViewInit {
     }
   }
 
-  // Limpiar todos los elementos
+  // Clear all elements
   clearAll() {
     while (this.dynamicContainer.nativeElement.firstChild) {
       this.renderer.removeChild(

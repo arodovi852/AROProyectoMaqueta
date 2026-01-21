@@ -3,7 +3,7 @@
 
   &__list {
     display: flex;
-    border-bottom: 2px solid var(--border-color, #e5e7eb);
+    border-bottom: 2px solid var(--border-color, hsl(220, 13%, 91%));
     gap: 0.5rem;
     overflow-x: auto;
     scrollbar-width: thin;
@@ -17,7 +17,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var(--border-color, #e5e7eb);
+      background: var(--border-color, hsl(220, 13%, 91%));
       border-radius: 2px;
     }
   }
@@ -28,7 +28,7 @@
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--text-secondary, #6b7280);
+    color: var(--text-secondary, hsl(220, 9%, 46%));
     cursor: pointer;
     position: relative;
     transition: color 0.2s ease;
@@ -37,18 +37,18 @@
     margin-bottom: -2px;
 
     &:hover {
-      color: var(--text-primary, #111827);
+      color: var(--text-primary, hsl(220, 43%, 11%));
     }
 
     &:focus {
-      outline: 2px solid var(--primary-color, #3b82f6);
+      outline: 2px solid var(--primary-color, hsl(217, 91%, 60%));
       outline-offset: -2px;
       z-index: 1;
     }
 
     &--active {
-      color: var(--primary-color, #3b82f6);
-      border-bottom-color: var(--primary-color, #3b82f6);
+      color: var(--primary-color, hsl(217, 91%, 60%));
+      border-bottom-color: var(--primary-color, hsl(217, 91%, 60%));
     }
   }
 
@@ -66,7 +66,7 @@
 
     p {
       margin: 0 0 1rem 0;
-      color: var(--text-primary, #111827);
+      color: var(--text-primary, hsl(220, 43%, 11%));
       line-height: 1.6;
 
       &:last-child {
@@ -91,21 +91,21 @@
 :host-context(.dark-mode) {
   .tabs {
     &__button {
-      color: var(--text-secondary, #9ca3af);
+      color: var(--text-secondary, hsl(218, 11%, 65%));
 
       &:hover {
-        color: var(--text-primary, #f9fafb);
+        color: var(--text-primary, hsl(210, 20%, 98%));
       }
 
       &--active {
-        color: var(--primary-color, #60a5fa);
-        border-bottom-color: var(--primary-color, #60a5fa);
+        color: var(--primary-color, hsl(213, 94%, 68%));
+        border-bottom-color: var(--primary-color, hsl(213, 94%, 68%));
       }
     }
 
     &__panel {
       p {
-        color: var(--text-primary, #f9fafb);
+        color: var(--text-primary, hsl(210, 20%, 98%));
       }
     }
   }

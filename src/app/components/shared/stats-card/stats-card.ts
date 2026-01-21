@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente Stats Card
+ * Stats Card Component
  * 
- * Muestra estadísticas de visualización del usuario (Watched, Saved, Average)
+ * Displays user viewing statistics (Watched, Saved, Average)
  */
 @Component({
   selector: 'app-stats-card',

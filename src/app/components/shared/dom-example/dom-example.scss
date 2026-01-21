@@ -2,31 +2,31 @@
   &__title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-primary, #111827);
+    color: var(--text-primary, hsl(218, 81%, 8%));
     margin: 0 0 1.5rem 0;
   }
 
   &__section {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background-color: var(--bg-secondary, #f9fafb);
+    background-color: var(--bg-secondary, hsl(210, 20%, 98%));
     border-radius: 8px;
-    border: 1px solid var(--border-color, #e5e7eb);
+    border: 1px solid var(--border-color, hsl(216, 12%, 90%));
 
     h4 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: var(--text-primary, #111827);
+      color: var(--text-primary, hsl(218, 81%, 8%));
       margin: 0 0 1rem 0;
     }
   }
 
   &__description {
-    color: var(--text-secondary, #6b7280);
+    color: var(--text-secondary, hsl(215, 14%, 46%));
     margin: 0 0 1rem 0;
     
     strong {
-      color: var(--primary-color, #3b82f6);
+      color: var(--primary-color, hsl(217, 91%, 60%));
       font-weight: 600;
     }
   }
@@ -40,17 +40,17 @@
 
   &__btn {
     padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color, #e5e7eb);
+    border: 1px solid var(--border-color, hsl(216, 12%, 90%));
     border-radius: 6px;
-    background-color: var(--bg-primary, #fff);
-    color: var(--text-primary, #111827);
+    background-color: var(--bg-primary, hsl(0, 0%, 100%));
+    color: var(--text-primary, hsl(218, 81%, 8%));
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover:not(:disabled) {
-      background-color: var(--bg-hover, #f3f4f6);
+      background-color: var(--bg-hover, hsl(220, 14%, 96%));
       transform: translateY(-1px);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -65,22 +65,22 @@
     }
 
     &--primary {
-      background-color: var(--primary-color, #3b82f6);
+      background-color: var(--primary-color, hsl(217, 91%, 60%));
       color: white;
-      border-color: var(--primary-color, #3b82f6);
+      border-color: var(--primary-color, hsl(217, 91%, 60%));
 
       &:hover:not(:disabled) {
-        background-color: var(--primary-color-hover, #2563eb);
+        background-color: var(--primary-color-hover, hsl(217, 91%, 53%));
       }
     }
 
     &--danger {
-      background-color: #ef4444;
+      background-color: hsl(0, 84%, 60%);
       color: white;
-      border-color: #ef4444;
+      border-color: hsl(0, 84%, 60%);
 
       &:hover:not(:disabled) {
-        background-color: #dc2626;
+        background-color: hsl(0, 72%, 51%);
       }
     }
   }
@@ -88,14 +88,14 @@
   &__container {
     min-height: 100px;
     padding: 1rem;
-    background-color: var(--bg-primary, #fff);
-    border: 2px dashed var(--border-color, #e5e7eb);
+    background-color: var(--bg-primary, hsl(0, 0%, 100%));
+    border: 2px dashed var(--border-color, hsl(216, 12%, 90%));
     border-radius: 8px;
     margin-top: 1rem;
 
     &:empty::before {
       content: 'No hay elementos. Haz click en "Crear Elemento" para agregar.';
-      color: var(--text-secondary, #6b7280);
+      color: var(--text-secondary, hsl(215, 14%, 46%));
       font-style: italic;
       display: block;
       text-align: center;
@@ -107,18 +107,18 @@
 // Elemento de demostración
 .demo-div {
   padding: 1rem;
-  background-color: var(--bg-primary, #fff);
-  border: 2px solid var(--border-color, #e5e7eb);
+  background-color: var(--bg-primary, hsl(0, 0%, 100%));
+  border: 2px solid var(--border-color, hsl(216, 12%, 90%));
   border-radius: 8px;
   margin-bottom: 1rem;
   text-align: center;
   font-size: 1rem;
-  color: var(--text-primary, #111827);
+  color: var(--text-primary, hsl(218, 81%, 8%));
   transition: all 0.3s ease;
 
   &.highlight {
-    background-color: #fef3c7;
-    border-color: #f59e0b;
+    background-color: hsl(48, 96%, 89%);
+    border-color: hsl(38, 92%, 50%);
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
   }
 }
@@ -149,50 +149,50 @@
 :host-context(.dark-mode) {
   .dom-example {
     &__title {
-      color: var(--text-primary, #f9fafb);
+      color: var(--text-primary, hsl(210, 20%, 98%));
     }
 
     &__section {
-      background-color: var(--bg-secondary, #1f2937);
-      border-color: var(--border-color, #374151);
+      background-color: var(--bg-secondary, hsl(218, 23%, 17%));
+      border-color: var(--border-color, hsl(218, 17%, 27%));
 
       h4 {
-        color: var(--text-primary, #f9fafb);
+        color: var(--text-primary, hsl(210, 20%, 98%));
       }
     }
 
     &__description {
-      color: var(--text-secondary, #9ca3af);
+      color: var(--text-secondary, hsl(218, 11%, 65%));
     }
 
     &__btn {
-      background-color: var(--bg-primary, #374151);
-      color: var(--text-primary, #f9fafb);
-      border-color: var(--border-color, #4b5563);
+      background-color: var(--bg-primary, hsl(218, 17%, 27%));
+      color: var(--text-primary, hsl(210, 20%, 98%));
+      border-color: var(--border-color, hsl(217, 11%, 35%));
 
       &:hover:not(:disabled) {
-        background-color: var(--bg-hover, #4b5563);
+        background-color: var(--bg-hover, hsl(217, 11%, 35%));
       }
     }
 
     &__container {
-      background-color: var(--bg-primary, #1f2937);
-      border-color: var(--border-color, #374151);
+      background-color: var(--bg-primary, hsl(218, 23%, 17%));
+      border-color: var(--border-color, hsl(218, 17%, 27%));
 
       &:empty::before {
-        color: var(--text-secondary, #9ca3af);
+        color: var(--text-secondary, hsl(218, 11%, 65%));
       }
     }
   }
 
   .demo-div {
-    background-color: var(--bg-primary, #1f2937);
-    color: var(--text-primary, #f9fafb);
-    border-color: var(--border-color, #374151);
+    background-color: var(--bg-primary, hsl(218, 23%, 17%));
+    color: var(--text-primary, hsl(210, 20%, 98%));
+    border-color: var(--border-color, hsl(218, 17%, 27%));
 
     &.highlight {
-      background-color: #7c2d12;
-      border-color: #f59e0b;
+      background-color: hsl(17, 63%, 28%);
+      border-color: hsl(38, 92%, 50%);
     }
   }
 }

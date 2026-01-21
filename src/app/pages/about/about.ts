@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /**
- * Página About
+ * About Page
  * 
- * Información sobre la empresa/aplicación
+ * Information about the company/application
  */
 @Component({
   selector: 'app-about',
@@ -17,25 +17,25 @@ export class About {
   teamMembers = [
     {
       name: 'Ana García',
-      role: 'CEO & Fundadora',
-      description: 'Líder visionaria con más de 15 años de experiencia en tecnología.'
+      role: 'CEO & Founder',
+      description: 'Visionary leader with over 15 years of experience in technology.'
     },
     {
       name: 'Carlos López',
       role: 'CTO',
-      description: 'Experto en arquitectura de software y soluciones cloud.'
+      description: 'Expert in software architecture and cloud solutions.'
     },
     {
       name: 'María Rodríguez',
       role: 'Lead Developer',
-      description: 'Especialista en Angular y desarrollo frontend moderno.'
+      description: 'Specialist in Angular and modern frontend development.'
     }
   ];
 
   companyStats = [
-    { value: '500+', label: 'Clientes satisfechos' },
-    { value: '10+', label: 'Años de experiencia' },
-    { value: '99.9%', label: 'Uptime garantizado' },
-    { value: '24/7', label: 'Soporte técnico' }
+    { value: '500+', label: 'Satisfied clients' },
+    { value: '10+', label: 'Years of experience' },
+    { value: '99.9%', label: 'Guaranteed uptime' },
+    { value: '24/7', label: 'Technical support' }
   ];
 }

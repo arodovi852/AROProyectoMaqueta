@@ -17,7 +17,7 @@ export class SiblingSender {
 
   sendMessage(): void {
     this.messageCount++;
-    const message = `Mensaje ${this.messageCount} desde Componente Emisor`;
+    const message = `Message ${this.messageCount} from Sender Component`;
     this.communicationService.sendNotification(message);
   }
 }

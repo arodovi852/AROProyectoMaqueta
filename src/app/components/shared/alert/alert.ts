@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
- * Componente Alert
+ * Alert Component
  * 
- * Alerta reutilizable para mostrar mensajes al usuario.
- * Tipos: info, success, warning, error
+ * Reusable alert to display messages to the user.
+ * Types: info, success, warning, error
  */
 @Component({
   selector: 'app-alert',

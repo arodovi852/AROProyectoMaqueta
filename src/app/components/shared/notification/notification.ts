@@ -3,10 +3,10 @@ import { Button } from '../button/button';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 /**
- * Componente Notification
+ * Notification Component
  * 
- * Modal de notificación centrado con mensaje y botón de confirmación.
- * Se usa para mostrar mensajes de éxito o información que requieren confirmación.
+ * Centered notification modal with message and confirmation button.
+ * Used to display success or info messages that require confirmation.
  */
 @Component({
   selector: 'app-notification',
