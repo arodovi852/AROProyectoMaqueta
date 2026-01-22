@@ -8,9 +8,9 @@
   display: flex;
   gap: var(--spacing-4);
   padding: var(--spacing-4);
-  background-color: hsla(276, 16%, 42%, 0.5);
+  background-color: var(--color-review-bg);
   border-radius: 0.75rem;
-  border: 2px solid hsl(270, 13%, 54%);
+  border: 2px solid var(--color-review-border);
   
   &__avatar {
     flex-shrink: 0;
@@ -26,6 +26,7 @@
   &__avatar-icon {
     width: 32px;
     height: 32px;
+    fill: var(--color-icon-secondary);
   }
   
   &__content {
@@ -44,7 +45,7 @@
     font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 600;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-review-text);
   }
   
   &__stars {
@@ -53,10 +54,10 @@
   }
   
   &__star {
-    color: hsl(276, 14%, 42%);
+    color: var(--color-neutral-400);
     
     &--filled {
-      color: hsl(46, 83%, 56%);
+      color: var(--color-accent-primary);
     }
   }
   
@@ -64,7 +65,7 @@
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-style: italic;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-review-text);
     line-height: 1.5;
     margin: 0;
     opacity: 0.9;

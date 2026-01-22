@@ -121,7 +121,7 @@
   font-family: var(--font-primary);
   font-size: 1.125rem;
   font-weight: 600;
-  color: hsl(36, 45%, 93%);
+  color: var(--color-text-primary);
   margin: 0;
   
   @media (min-width: 768px) {

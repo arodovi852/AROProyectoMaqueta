@@ -12,7 +12,7 @@
 
 .search-result-page {
   min-height: 100vh;
-  background-color: hsl(294, 22%, 21%);
+  background-color: var(--color-bg-main);
   padding: var(--spacing-8) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -28,7 +28,7 @@
     font-family: var(--font-primary);
     font-size: clamp(1.25rem, 4vw, 1.75rem);
     font-weight: 700;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0 0 var(--spacing-8) 0;
     text-align: center;
   }
@@ -46,7 +46,7 @@
     p {
       font-family: var(--font-primary);
       font-size: 1.1rem;
-      color: hsl(36, 45%, 93%);
+      color: var(--color-text-primary);
       opacity: 0.8;
     }
   }
@@ -98,7 +98,7 @@
     
     &:hover {
       .search-result-card__title {
-        color: hsl(47, 85%, 60%);
+        opacity: 0.8;
       }
     }
   }
@@ -107,9 +107,9 @@
     font-family: var(--font-primary);
     font-size: clamp(1.1rem, 3vw, 1.4rem);
     font-weight: 700;
-    color: hsl(47, 85%, 55%);
+    color: var(--color-text-title);
     margin: 0 0 var(--spacing-3) 0;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, opacity 0.2s ease;
   }
   
   &__description {
@@ -117,7 +117,7 @@
     font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 400;
     font-style: italic;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-body);
     line-height: 1.6;
     margin: 0;
     opacity: 0.95;

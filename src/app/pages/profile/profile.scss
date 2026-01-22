@@ -12,7 +12,7 @@
 
 .profile-page {
   min-height: 100vh;
-  background-color: hsl(294, 20%, 30%);
+  background-color: var(--color-bg-main);
   padding: var(--spacing-6) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -54,9 +54,9 @@
   align-items: center;
   gap: var(--spacing-3);
   padding: var(--spacing-6) var(--spacing-8);
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-card-bg);
   border-radius: 1rem;
-  border: 5px solid var(--color-primary-light);
+  border: 5px solid var(--color-accent-primary);
   min-width: 320px;
   
   @media (min-width: 768px) {
@@ -82,7 +82,7 @@
   font-family: var(--font-primary);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-neutral-100);
+  color: var(--color-text-primary);
   text-align: center;
   
   @media (min-width: 768px) {
@@ -112,14 +112,14 @@
     font-family: var(--font-primary);
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 700;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0;
   }
   
   &__see-more {
     background: transparent;
     border: none;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     font-family: var(--font-primary);
     font-size: 0.85rem;
     cursor: pointer;
@@ -128,7 +128,7 @@
     
     &:hover {
       opacity: 1;
-      color: hsl(46, 83%, 56%);
+      color: var(--color-accent-primary);
     }
   }
   
@@ -147,14 +147,14 @@
   &__empty {
     width: 100%;
     text-align: center;
-    color: hsl(36, 45%, 80%);
+    color: var(--color-text-body);
     font-family: var(--font-primary);
     font-size: 0.9rem;
     font-style: italic;
     padding: var(--spacing-6);
-    background-color: hsla(294, 20%, 25%, 0.5);
+    background-color: var(--color-box-level-3);
     border-radius: 0.5rem;
-    border: 1px dashed hsla(36, 45%, 80%, 0.3);
+    border: 1px dashed var(--color-neutral-400);
   }
   
   &__lists {

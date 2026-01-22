@@ -12,7 +12,7 @@
 
 .other-profile-page {
   min-height: 100vh;
-  background-color: hsl(294, 20%, 30%);
+  background-color: var(--color-bg-main);
   padding: var(--spacing-6) var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -34,7 +34,7 @@
   gap: var(--spacing-2);
   background: transparent;
   border: none;
-  color: hsl(36, 45%, 93%);
+  color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-size: 0.9rem;
   cursor: pointer;
@@ -44,8 +44,8 @@
   @include transition(background-color, color);
   
   &:hover {
-    background-color: hsla(36, 45%, 93%, 0.1);
-    color: hsl(46, 83%, 56%);
+    background-color: var(--color-bg-hover);
+    color: var(--color-accent-primary);
   }
   
   svg {
@@ -77,22 +77,22 @@
   font-family: var(--font-primary);
   font-size: 2rem;
   font-weight: 700;
-  color: hsl(36, 45%, 93%);
+  color: var(--color-text-primary);
   margin: 0 0 var(--spacing-3);
 }
 
 .other-profile-page__not-found-text {
   font-family: var(--font-primary);
   font-size: 1rem;
-  color: hsl(36, 45%, 80%);
+  color: var(--color-text-secondary);
   margin: 0 0 var(--spacing-6);
   max-width: 400px;
 }
 
 .other-profile-page__back-btn {
   padding: var(--spacing-3) var(--spacing-6);
-  background-color: hsl(46, 83%, 56%);
-  color: hsl(294, 20%, 20%);
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
   border: none;
   border-radius: 0.5rem;
   font-family: var(--font-primary);
@@ -102,7 +102,7 @@
   @include transition(background-color, transform);
   
   &:hover {
-    background-color: hsl(46, 83%, 65%);
+    background-color: var(--color-btn-secondary-hover);
     transform: translateY(-2px);
   }
 }
@@ -137,9 +137,9 @@
   align-items: center;
   gap: var(--spacing-3);
   padding: var(--spacing-6) var(--spacing-8);
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-stats-bg);
   border-radius: 1rem;
-  border: 5px solid var(--color-primary-light);
+  border: 5px solid var(--color-stats-border);
   min-width: 320px;
   
   @media (min-width: 768px) {
@@ -165,7 +165,7 @@
   font-family: var(--font-primary);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-neutral-100);
+  color: var(--color-stats-text);
   text-align: center;
   
   @media (min-width: 768px) {
@@ -195,7 +195,7 @@
     font-family: var(--font-primary);
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 700;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0;
   }
   
@@ -214,14 +214,14 @@
   &__empty {
     width: 100%;
     text-align: center;
-    color: hsl(36, 45%, 80%);
+    color: var(--color-text-secondary);
     font-family: var(--font-primary);
     font-size: 0.9rem;
     font-style: italic;
     padding: var(--spacing-6);
-    background-color: hsla(294, 20%, 25%, 0.5);
+    background-color: var(--color-bg-card);
     border-radius: 0.5rem;
-    border: 1px dashed hsla(36, 45%, 80%, 0.3);
+    border: 1px dashed var(--color-border-light);
   }
   
   &__lists {

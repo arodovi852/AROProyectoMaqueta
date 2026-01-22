@@ -9,14 +9,14 @@
   flex-direction: column;
   border-radius: 1rem;
   overflow: hidden;
-  border: 3px solid var(--color-primary-dark);
+  border: 3px solid var(--color-stats-border);
   max-width: 280px;
   
   // ==========================================================================
   // SECCIÓN SUPERIOR: ESTADÍSTICAS
   // ==========================================================================
   &__stats {
-    background-color: var(--color-primary-dark);
+    background-color: var(--color-stats-bg);
     padding: var(--spacing-4) var(--spacing-3);
     display: flex;
     justify-content: center;

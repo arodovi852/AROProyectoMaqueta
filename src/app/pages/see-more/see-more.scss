@@ -12,7 +12,7 @@
 
 .see-more-page {
   min-height: 100vh;
-  background-color: var(--color-bg-main, hsl(294, 20%, 30%));
+  background-color: var(--color-bg-main);
   padding: var(--spacing-4);
   
   @media (min-width: 768px) {
@@ -34,7 +34,7 @@
   gap: var(--spacing-4);
   margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-4);
-  border-bottom: 1px solid hsla(36, 45%, 80%, 0.2);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .see-more-page__back {
@@ -43,7 +43,7 @@
   gap: var(--spacing-2);
   background: transparent;
   border: none;
-  color: hsl(36, 45%, 93%);
+  color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-size: 0.9rem;
   cursor: pointer;
@@ -52,8 +52,8 @@
   transition: background-color 0.2s ease, color 0.2s ease;
   
   &:hover {
-    background-color: hsla(36, 45%, 93%, 0.1);
-    color: hsl(46, 83%, 56%);
+    background-color: var(--color-bg-hover);
+    color: var(--color-accent-primary);
   }
   
   svg {
@@ -65,7 +65,7 @@
   font-family: var(--font-primary);
   font-size: clamp(1.25rem, 3vw, 2rem);
   font-weight: 700;
-  color: hsl(46, 83%, 56%);
+  color: var(--color-accent-primary);
   margin: 0;
 }
 
@@ -136,7 +136,7 @@
   font-family: var(--font-secondary, var(--font-primary));
   font-size: 0.85rem;
   font-weight: 500;
-  color: hsl(36, 45%, 93%);
+  color: var(--color-text-primary);
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -152,10 +152,10 @@
   font-family: var(--font-secondary, var(--font-primary));
   font-size: 0.8rem;
   font-weight: 600;
-  color: hsl(46, 83%, 56%);
+  color: var(--color-accent-primary);
   
   svg {
-    color: hsl(46, 83%, 56%);
+    color: var(--color-accent-primary);
   }
 }
 
@@ -172,7 +172,7 @@
   p {
     font-family: var(--font-primary);
     font-size: 1rem;
-    color: hsl(36, 45%, 80%);
+    color: var(--color-text-secondary);
     font-style: italic;
   }
 }

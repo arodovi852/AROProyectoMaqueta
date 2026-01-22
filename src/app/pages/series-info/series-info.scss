@@ -6,7 +6,7 @@
 
 .series-info {
   min-height: 100vh;
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-bg-main);
   padding: var(--spacing-6);
   
   @media (min-width: 768px) {
@@ -98,7 +98,7 @@
   font-family: var(--font-primary);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-neutral-100);
+  color: var(--color-text-primary);
   margin: 0 0 var(--spacing-4) 0;
   
   @media (min-width: 768px) {
@@ -114,7 +114,7 @@
   font-family: var(--font-primary);
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--color-neutral-200);
+  color: var(--color-text-body);
   line-height: 1.6;
   margin: 0;
   
@@ -154,7 +154,7 @@
   font-family: var(--font-primary);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-neutral-100);
+  color: var(--color-text-primary);
   margin: 0;
   
   @media (min-width: 768px) {
@@ -165,7 +165,7 @@
 .series-info__see-more {
   background: transparent;
   border: none;
-  color: var(--color-neutral-100);
+  color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-size: 0.85rem;
   cursor: pointer;
@@ -174,7 +174,7 @@
   
   &:hover {
     opacity: 1;
-    color: var(--color-secondary);
+    color: var(--color-accent-primary);
   }
 }
 

@@ -12,7 +12,7 @@
 
 .lists-page {
   min-height: 100vh;
-  background-color: hsl(294, 20%, 30%);
+  background-color: var(--color-bg-main);
   padding: var(--spacing-6) var(--spacing-16);
   
   @media (max-width: 1200px) {
@@ -56,7 +56,7 @@
     font-family: var(--font-primary);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: 700;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0;
     font-style: italic;
   }
@@ -64,7 +64,7 @@
   &__see-more {
     background: transparent;
     border: none;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     font-family: var(--font-primary);
     font-size: 0.9rem;
     cursor: pointer;
@@ -73,7 +73,7 @@
     
     &:hover {
       opacity: 1;
-      color: hsl(46, 83%, 56%);
+      color: var(--color-accent-primary);
     }
   }
   

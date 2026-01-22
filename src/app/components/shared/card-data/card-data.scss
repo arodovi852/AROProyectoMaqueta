@@ -22,16 +22,16 @@
     padding: var(--spacing-3) var(--spacing-4);
     
     &--watched {
-      background-color: var(--color-primary-dark);
+      background-color: var(--color-stats-bg);
       border-radius: 1rem 1rem 0 0;
     }
     
     &--saved {
-      background-color: var(--color-primary);
+      background-color: var(--color-accent-primary);
     }
     
     &--average {
-      background-color: var(--color-primary-light);
+      background-color: var(--color-stats-highlight-bg);
       border-radius: 0 0 1rem 1rem;
     }
   }
@@ -43,7 +43,7 @@
     font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-neutral-100);
+    color: var(--color-stats-text);
     
     @media (min-width: 768px) {
       font-size: 1.125rem;
@@ -57,7 +57,7 @@
     font-family: var(--font-primary);
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--color-neutral-100);
+    color: var(--color-stats-text);
     
     @media (min-width: 768px) {
       font-size: 1.25rem;

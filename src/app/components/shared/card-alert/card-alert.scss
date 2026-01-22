@@ -70,13 +70,13 @@
     right: 0.75rem;
     background: transparent;
     border: none;
-    color: hsl(36, 45%, 80%);
+    color: var(--color-text-secondary);
     cursor: pointer;
     padding: 0.25rem;
     transition: color 0.2s ease;
     
     &:hover {
-      color: hsl(36, 45%, 100%);
+      color: var(--color-text-primary);
     }
   }
 
@@ -99,7 +99,7 @@
     font-family: var(--font-primary);
     font-size: 1.5rem;
     font-weight: 700;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0 0 0.5rem 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -109,7 +109,7 @@
     font-family: var(--font-primary);
     font-size: 1.25rem;
     font-weight: 400;
-    color: hsl(36, 45%, 93%);
+    color: var(--color-text-primary);
     margin: 0;
     line-height: 1.4;
   }
@@ -149,12 +149,12 @@
 
     &--cancel {
       background-color: transparent;
-      color: hsl(36, 45%, 80%);
-      border: 2px solid hsl(36, 45%, 50%);
+      color: var(--color-text-secondary);
+      border: 2px solid var(--color-border-light);
       
       &:hover {
-        background-color: hsl(36, 45%, 20%);
-        border-color: hsl(36, 45%, 70%);
+        background-color: var(--color-bg-hover);
+        border-color: var(--color-text-secondary);
       }
     }
   }

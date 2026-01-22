@@ -12,8 +12,8 @@
 // ==========================================================================
 
 .footer {
-  background: linear-gradient(135deg, hsl(288, 53%, 14%) 0%, hsl(280, 57%, 9%) 100%);
-  color: var(--color-gray-300);
+  background: linear-gradient(135deg, var(--color-footer-bg-start) 0%, var(--color-footer-bg-end) 100%);
+  color: var(--color-footer-text);
   padding: var(--spacing-6) 0;
   margin-top: auto;
 }
@@ -62,14 +62,15 @@
 }
 
 .footer__nav-link {
-  color: var(--color-gray-300);
+  color: var(--color-footer-text);
   text-decoration: none;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   @include transition(color);
+  opacity: 0.8;
 
   &:hover {
-    color: var(--color-white);
+    opacity: 1;
   }
 
   &:focus-visible {
@@ -93,10 +94,11 @@
 // ==========================================================================
 
 .footer__description {
-  color: var(--color-gray-400);
+  color: var(--color-footer-text);
   font-size: var(--font-size-sm);
   line-height: 1.6;
   margin: 0;
+  opacity: 0.7;
 }
 
 // ==========================================================================
@@ -118,8 +120,9 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-sm);
-  color: rgba(255, 255, 255, 0.5);
-  @include transition(color, transform);
+  color: var(--color-footer-text);
+  opacity: 0.5;
+  @include transition(color, transform, opacity);
 
   svg {
     width: 1.5rem;
@@ -127,7 +130,7 @@
   }
 
   &:hover {
-    color: var(--color-white);
+    opacity: 1;
     transform: translateY(-2px);
   }
 

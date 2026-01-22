@@ -13,11 +13,13 @@
           class="hero__slide"
           [class.hero__slide--active]="i === currentSlide()"
           [class.hero__slide--prev]="i === (currentSlide() === 0 ? carouselSlides.length - 1 : currentSlide() - 1)"
-          [style.background-image]="'linear-gradient(to bottom, rgba(90, 61, 92, 0.6) 0%, rgba(90, 61, 92, 0.85) 100%), url(' + slide.imageSrc + ')'"
+          [style.background-image]="'url(' + slide.imageSrc + ')'"
           role="img"
           [attr.aria-label]="'Background image: ' + slide.imageAlt"
           [attr.aria-hidden]="i !== currentSlide()"
-        ></div>
+        >
+          <div class="hero__slide-overlay"></div>
+        </div>
       }
     </div>
 

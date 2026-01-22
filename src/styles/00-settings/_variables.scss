@@ -3,17 +3,32 @@
 //Colores 
 
 
-//Colores primarios
+//Colores primarios (morados - usados como acento en modo claro, base en modo oscuro)
 --color-primary: hsl(285, 43%, 57%);
 --color-primary-dark: hsl(290, 21%, 19%);
 --color-primary-light: hsl(281, 99%, 76%);
 --color-primary-lightest: hsl(276, 100%, 92%);
 
-//Colores secundarios
+//Colores secundarios (amarillos - usados como base en modo claro, acento en modo oscuro)
 --color-secondary: hsl(46, 83%, 56%);
 --color-secondary-dark: hsl(60, 31%, 27%);
 --color-secondary-light: hsl(60, 99%, 76%);
 --color-secondary-lightest: hsl(60, 100%, 90%);
+
+//Colores adicionales para el sistema de temas
+--color-yellow-bg-main: hsl(47, 85%, 85%);
+--color-yellow-box-level-1: hsl(47, 100%, 95%);
+--color-yellow-box-level-2: hsl(47, 100%, 90%);
+--color-yellow-box-level-3: hsl(47, 100%, 85%);
+--color-yellow-box-level-4: hsl(47, 100%, 80%);
+--color-yellow-box-level-5: hsl(47, 100%, 75%);
+
+--color-purple-bg-main: hsl(286, 33%, 15%);
+--color-purple-box-level-1: hsl(286, 33%, 15%);
+--color-purple-box-level-2: hsl(285, 33%, 12%);
+--color-purple-box-level-3: hsl(285, 29%, 9%);
+--color-purple-box-level-4: hsl(285, 29%, 8%);
+--color-purple-box-level-5: hsl(284, 29%, 5%);
 
 //Escala de grises
 --color-neutral-50: hsl(55, 100%, 96%);
@@ -44,23 +59,100 @@
 --color-info-light: hsl(207, 89%, 68%);
 --color-info-dark: hsl(210, 79%, 46%);
 
-//Colores de texto principal (Light mode - por defecto)
+// ============================================================================
+// MODO CLARO (por defecto) - Fondos amarillos, acentos morados
+// ============================================================================
+
+//Colores de texto principal (Light mode - textos oscuros sobre fondos amarillos)
 --color-text-primary: var(--color-primary-dark);
 --color-text-secondary: var(--color-primary);
 --color-text-disabled: var(--color-neutral-500);
+--color-text-light: var(--color-neutral-700);
+--color-text-on-dark: hsl(0, 0%, 0%);
+--color-text-inverted: hsl(0, 0%, 100%);
+--color-text-title: var(--color-primary);
+--color-text-body: var(--color-neutral-800);
 
-//Colores de fondo (Light mode - por defecto)
+//Colores de fondo (Light mode - amarillos)
 --color-bg-primary: var(--color-secondary-lightest);
 --color-bg-secondary: var(--color-secondary-light);
 --color-bg-tertiary: var(--color-neutral-50);
+--color-bg-main: var(--color-yellow-bg-main);
 
-//Cajas de contenido - niveles de anidación (Light mode)
---color-box-level-1: hsl(47, 100%, 95%);  // Más claro - caja externa
---color-box-level-2: hsl(47, 100%, 90%);  // Medio claro
---color-box-level-3: hsl(47, 100%, 85%);  // Medio
---color-box-level-4: hsl(47, 100%, 80%);  // Medio oscuro
---color-box-level-5: hsl(47, 100%, 75%);  // Más oscuro - caja más interna
+//Cajas de contenido - niveles de anidación (Light mode - amarillos)
+--color-box-level-1: var(--color-yellow-box-level-1);
+--color-box-level-2: var(--color-yellow-box-level-2);
+--color-box-level-3: var(--color-yellow-box-level-3);
+--color-box-level-4: var(--color-yellow-box-level-4);
+--color-box-level-5: var(--color-yellow-box-level-5);
 
+//Colores de acento (Light mode - morados como acento)
+--color-accent-primary: var(--color-primary);
+--color-accent-secondary: var(--color-primary-light);
+--color-accent-highlight: var(--color-secondary);
+
+//Colores de tarjetas y componentes (Light mode - amarillos)
+--color-card-bg: hsl(47, 100%, 90%);
+--color-card-border: hsl(47, 80%, 70%);
+--color-card-text: var(--color-primary-dark);
+--color-card-hover-border: hsl(0, 0%, 0%);
+--color-card-hover-text: hsl(0, 0%, 0%);
+--color-bg-card: hsl(47, 90%, 88%);
+--color-bg-hover: hsla(47, 70%, 70%, 0.3);
+--color-border-light: hsla(47, 80%, 50%, 0.3);
+
+//Colores de formularios (Light mode - tonos amarillos)
+--color-form-bg: hsl(47, 80%, 85%);
+--color-form-border: hsl(47, 60%, 60%);
+--color-form-text: var(--color-primary-dark);
+
+//Colores de botón primario (Light mode - amarillo)
+--color-btn-primary-bg: var(--color-secondary);
+--color-btn-primary-text: var(--color-primary-dark);
+--color-btn-primary-hover: hsl(46, 83%, 65%);
+
+//Colores de botón secundario (Light mode - morado)
+--color-btn-secondary-bg: var(--color-primary);
+--color-btn-secondary-text: hsl(0, 0%, 100%);
+--color-btn-secondary-hover: var(--color-primary-light);
+
+//Colores de estadísticas (Light mode - amarillos)
+--color-stats-bg: hsl(47, 85%, 80%);
+--color-stats-border: hsl(47, 70%, 65%);
+--color-stats-text: var(--color-primary-dark);
+--color-stats-highlight-bg: var(--color-primary-light);
+--color-stats-highlight-text: var(--color-primary-dark);
+
+//Colores de reviews (Light mode - amarillos)
+--color-review-bg: hsl(47, 90%, 92%);
+--color-review-border: hsl(47, 70%, 70%);
+--color-review-text: var(--color-primary-dark);
+
+//Colores de componente genérico (Light mode - amarillos claros)
+--color-component-bg: hsl(47, 85%, 88%);
+--color-component-border: hsl(47, 70%, 65%);
+
+//Colores de header/footer (Light mode - amarillos)
+--color-header-bg-start: hsl(47, 80%, 70%);
+--color-header-bg-end: hsl(46, 75%, 60%);
+--color-header-text: var(--color-primary-dark);
+--color-footer-bg-start: hsl(47, 80%, 70%);
+--color-footer-bg-end: hsl(46, 75%, 60%);
+--color-footer-text: var(--color-primary-dark);
+
+//Colores del hero/carrusel (Light mode - tonos amarillos)
+--color-hero-overlay-start: hsla(47, 70%, 70%, 0.6);
+--color-hero-overlay-end: hsla(47, 70%, 60%, 0.85);
+--color-hero-text: var(--color-primary-dark);
+--color-hero-title: var(--color-primary);
+
+//Color de iconos
+--color-icon-primary: var(--color-primary-dark);
+--color-icon-secondary: var(--color-primary);
+
+//Colores de enlaces
+--color-link: var(--color-primary);
+--color-link-hover: var(--color-primary-dark);
 
 
 //Tipografías
@@ -249,27 +341,101 @@
 }
 
 
-// Dark Mode
+// ============================================================================
+// MODO OSCURO - Fondos morados, acentos amarillos
+// ============================================================================
 
 .dark-mode {
-  //Colores de texto para dark mode
+  //Colores de texto para dark mode (textos claros sobre fondos oscuros)
   --color-text-primary: hsl(0, 0%, 100%);
   --color-text-secondary: hsl(51, 24%, 88%);
   --color-text-disabled: var(--color-neutral-500);
   --color-text-light: hsl(36, 45%, 93%);
+  --color-text-on-dark: hsl(0, 0%, 100%);
+  --color-text-inverted: hsl(0, 0%, 0%);
+  --color-text-title: var(--color-secondary);
+  --color-text-body: hsl(51, 24%, 88%);
 
-  //Colores de fondo para dark mode
+  //Colores de fondo para dark mode (morados)
   --color-bg-primary: var(--color-primary-dark);
   --color-bg-secondary: var(--color-neutral-900);
   --color-bg-tertiary: var(--color-neutral-800);
-  --color-bg-main: hsl(286, 33%, 15%);
+  --color-bg-main: var(--color-purple-bg-main);
 
-  //Cajas de contenido - niveles de anidación (Dark mode)
-  --color-box-level-1: hsl(286, 33%, 15%);  // Más claro - caja externa
-  --color-box-level-2: hsl(285, 33%, 12%);  // Medio claro
-  --color-box-level-3: hsl(285, 29%, 9%);   // Medio
-  --color-box-level-4: hsl(285, 29%, 8%);   // Medio oscuro
-  --color-box-level-5: hsl(284, 29%, 5%);   // Más oscuro - caja más interna
+  //Cajas de contenido - niveles de anidación (Dark mode - morados)
+  --color-box-level-1: var(--color-purple-box-level-1);
+  --color-box-level-2: var(--color-purple-box-level-2);
+  --color-box-level-3: var(--color-purple-box-level-3);
+  --color-box-level-4: var(--color-purple-box-level-4);
+  --color-box-level-5: var(--color-purple-box-level-5);
+
+  //Colores de acento (Dark mode - amarillos como acento)
+  --color-accent-primary: var(--color-secondary);
+  --color-accent-secondary: var(--color-secondary-light);
+  --color-accent-highlight: var(--color-primary-light);
+
+  //Colores de tarjetas y componentes (Dark mode - morados)
+  --color-card-bg: hsl(286, 26%, 22%);
+  --color-card-border: hsl(286, 26%, 30%);
+  --color-card-text: hsl(0, 0%, 100%);
+  --color-card-hover-border: hsl(0, 0%, 100%);
+  --color-card-hover-text: hsl(0, 0%, 100%);
+  --color-bg-card: hsl(286, 26%, 22%);
+  --color-bg-hover: hsla(286, 30%, 40%, 0.3);
+  --color-border-light: hsla(286, 30%, 50%, 0.3);
+
+  //Colores de formularios (Dark mode - tonos rosados)
+  --color-form-bg: hsl(317, 67%, 73%);
+  --color-form-border: hsl(317, 44%, 56%);
+  --color-form-text: hsl(294, 22%, 21%);
+
+  //Colores de botón primario (Dark mode - morado)
+  --color-btn-primary-bg: var(--color-primary);
+  --color-btn-primary-text: hsl(0, 0%, 100%);
+  --color-btn-primary-hover: var(--color-primary-light);
+
+  //Colores de botón secundario (Dark mode - amarillo)
+  --color-btn-secondary-bg: var(--color-secondary);
+  --color-btn-secondary-text: hsl(294, 20%, 20%);
+  --color-btn-secondary-hover: hsl(46, 83%, 65%);
+
+  //Colores de estadísticas (Dark mode - morados/rosados)
+  --color-stats-bg: hsl(317, 67%, 73%);
+  --color-stats-border: hsl(317, 44%, 56%);
+  --color-stats-text: hsl(294, 22%, 21%);
+  --color-stats-highlight-bg: var(--color-secondary);
+  --color-stats-highlight-text: hsl(294, 22%, 21%);
+
+  //Colores de reviews (Dark mode - morados)
+  --color-review-bg: hsl(286, 33%, 18%);
+  --color-review-border: var(--color-primary-light);
+  --color-review-text: hsl(0, 0%, 100%);
+
+  //Colores de componente genérico (Dark mode - morados)
+  --color-component-bg: var(--color-primary-dark);
+  --color-component-border: var(--color-primary-light);
+
+  //Colores de header/footer (Dark mode - morados)
+  --color-header-bg-start: hsl(288, 53%, 14%);
+  --color-header-bg-end: hsl(280, 57%, 9%);
+  --color-header-text: hsl(0, 0%, 100%);
+  --color-footer-bg-start: hsl(288, 53%, 14%);
+  --color-footer-bg-end: hsl(280, 57%, 9%);
+  --color-footer-text: hsl(0, 0%, 100%);
+
+  //Colores del hero/carrusel (Dark mode - tonos morados)
+  --color-hero-overlay-start: hsla(285, 40%, 30%, 0.6);
+  --color-hero-overlay-end: hsla(285, 40%, 25%, 0.85);
+  --color-hero-text: hsl(0, 0%, 100%);
+  --color-hero-title: var(--color-secondary);
+
+  //Color de iconos
+  --color-icon-primary: hsl(0, 0%, 100%);
+  --color-icon-secondary: var(--color-secondary);
+
+  //Colores de enlaces
+  --color-link: var(--color-secondary);
+  --color-link-hover: var(--color-secondary-light);
 
   // Colores de sombra para dark mode
   --shadow-primary: 0 10px 15px -3px hsla(285, 43%, 57%, 0.5), 0 4px 6px -2px hsla(285, 43%, 57%, 0.3);
