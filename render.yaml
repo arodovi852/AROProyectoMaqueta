@@ -2,17 +2,17 @@
 # https://render.com
 
 services:
-  # Servicio Web (Static Site)
+  # Servicio Web (Static Site) - Más rápido para Angular SPA
   - type: web
     name: aroproyecto-maqueta
-    env: static
-    buildCommand: npm install --legacy-peer-deps && npm run build:prod
-    staticPublishPath: dist/AROProyectoMaqueta/browser/browser
-    pullRequestPreviewsEnabled: true
+    runtime: static
+    buildCommand: npm ci && npm run build:prod
+    staticPublishPath: ./dist/AROProyectoMaqueta/browser/browser
+    pullRequestPreviewsEnabled: false
     headers:
       - path: /*
         name: X-Frame-Options
-        value: DENY
+        value: SAMEORIGIN
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
