@@ -1991,26 +1991,9 @@ Las capturas de pantalla se encuentran en la carpeta `/docs/design/screenshots/f
 #### Listas a 1280px (Desktop)
 ![Modo Responsive Listas 1280](screenshots/fasefinal/Modo%20Responsive%20Listas%201280.png)
 
-#### Listas a 768px (Tablet)
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Responsive Listas 768.png`
-
-#### Listas a 376px (Mobile)
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Responsive Listas 376.png`
-
-### Capturas Responsive - Contenido de Lista
-
-#### Lista Contenido a 1280px (Desktop)
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Responsive Lista Contenido 1280.png`
-
-#### Lista Contenido a 768px (Tablet)
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Responsive Lista Contenido 768.png`
-
-#### Lista Contenido a 376px (Mobile)
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Responsive Lista Contenido 376.png`
-
 ### Capturas del Modo Claro
 
-> **[PLACEHOLDER]** - Captura pendiente: `Modo Claro.png`
+![Modo claro](<screenshots/fasefinal/Modo claro.png>)
 
 ### Instrucciones para realizar las capturas pendientes
 
