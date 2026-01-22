@@ -8,11 +8,11 @@
     
     <div class="profile-page__stats-graph">
       <div class="profile-page__stats-bars">
-        @for (bar of statsBars; track $index) {
+        @for (bar of statsBars(); track $index) {
           <app-stat-bar [value]="bar" />
         }
       </div>
-      <span class="profile-page__stats-label">Stats</span>
+      <span class="profile-page__stats-label">Rating Distribution</span>
     </div>
     
     <div class="profile-page__stats-card">
@@ -57,7 +57,7 @@
           <app-card 
             [title]="series.title" 
             [imageSrc]="series.imageSrc"
-            [hoverTitle]="series.hoverTitle + (series.rating ? ' - ★' + series.rating : '')"
+            [hoverTitle]="series.hoverTitle + (series.rating ? ' - ★' + (series.rating % 1 === 0 ? series.rating : series.rating.toFixed(1)) : '')"
             variant="media"
             size="sm"
           />

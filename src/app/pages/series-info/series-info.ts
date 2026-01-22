@@ -173,7 +173,7 @@ export class SeriesInfo implements OnInit {
   }
 
   /**
-   * Handle rating change - saves to Recently Watched
+   * Handle rating change - saves to Recently Watched (supports half-star ratings)
    */
   onRatingChange(rating: number): void {
     this.seriesRating = rating;
@@ -195,7 +195,9 @@ export class SeriesInfo implements OnInit {
     // Add to recently watched (persists to localStorage)
     this.userService.addToRecentlyWatched(trackedSeries);
     
-    this.toast.success(`You rated "${currentSeries.title}" with ${rating} stars`);
+    // Format rating display (show half stars properly)
+    const ratingDisplay = rating % 1 === 0 ? rating.toString() : rating.toFixed(1);
+    this.toast.success(`You rated "${currentSeries.title}" with ${ratingDisplay} stars`);
   }
 
   /**

@@ -23,6 +23,7 @@ export interface SavedList {
   title: string;
   bannerImage: string;
   seriesCount: number;
+  images: { src: string; alt: string }[];
   addedAt: Date;
 }
 
@@ -154,6 +155,36 @@ export class UserService {
   getSeriesRating(seriesId: number): number | undefined {
     const series = this.loadRecentlyWatched().find(s => s.id === seriesId);
     return series?.rating;
+  }
+
+  /**
+   * Get rating distribution for stats display
+   * Returns an array of 10 percentages for ratings: 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5
+   * Each value is the percentage (0-100) based on count relative to max count
+   * When no ratings exist, returns placeholder values for visual consistency
+   */
+  getRatingDistribution(): number[] {
+    const ratings = this.loadRecentlyWatched()
+      .filter(s => s.rating !== undefined && s.rating > 0)
+      .map(s => s.rating!);
+    
+    // If no ratings yet, return placeholder values (like a sample distribution)
+    if (ratings.length === 0) {
+      return [15, 25, 35, 50, 65, 80, 90, 75, 55, 40];
+    }
+    
+    // Count ratings at each half-star level
+    const distribution: number[] = [];
+    const ratingLevels = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+    
+    for (const level of ratingLevels) {
+      const count = ratings.filter(r => r === level).length;
+      distribution.push(count);
+    }
+    
+    // Convert counts to percentages (relative to max count)
+    const maxCount = Math.max(...distribution, 1); // Avoid division by zero
+    return distribution.map(count => Math.round((count / maxCount) * 100));
   }
 
   // ============================================

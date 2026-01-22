@@ -49,7 +49,7 @@
   }
   
   // ==========================================================================
-  // RATING (ESTRELLAS)
+  // RATING (ESTRELLAS) - Con soporte para media estrella
   // ==========================================================================
   &__rating {
     display: flex;
@@ -61,17 +61,37 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    color: var(--color-primary-dark);
-    opacity: 0.6;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
     
     &:hover {
-      opacity: 1;
       transform: scale(1.1);
     }
     
-    &--filled {
+    // Background star (empty)
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: var(--color-primary-dark);
+      opacity: 0.3;
+    }
+    
+    // Foreground star (filled)
+    &-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: var(--color-primary-dark);
       opacity: 1;
+      transition: clip-path 0.1s ease;
+    }
+    
+    // Hovered state - white fill
+    &--hovered &-fill {
+      color: hsl(0, 0%, 100%);
     }
   }
   

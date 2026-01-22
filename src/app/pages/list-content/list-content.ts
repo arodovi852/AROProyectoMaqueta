@@ -191,12 +191,19 @@ export class ListContent implements OnInit {
     this.isSaved.set(isSaved);
     
     if (isSaved) {
-      // Save list to profile
+      // Get first 4 series images for the CardList display
+      const seriesImages = this.series().slice(0, 4).map(s => ({
+        src: s.imageSrc,
+        alt: s.title
+      }));
+      
+      // Save list to profile with series images
       this.userService.saveList({
         id: this.listId(),
         title: this.listName(),
         bannerImage: this.bannerImage(),
         seriesCount: this.series().length,
+        images: seriesImages,
         addedAt: new Date()
       });
       this.toast.success(`"${this.listName()}" added to your saved lists`);

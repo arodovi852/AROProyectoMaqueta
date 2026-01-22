@@ -11,16 +11,31 @@
 
   <!-- Sección inferior: Rating y Watch Later -->
   <div class="card-stat-review__actions">
-    <!-- Estrellas de valoración -->
-    <div class="card-stat-review__rating">
+    <!-- Estrellas de valoración con soporte para media estrella -->
+    <div class="card-stat-review__rating" (mouseleave)="onStarMouseLeave()">
       @for (star of stars; track star) {
         <button 
           class="card-stat-review__star"
-          [class.card-stat-review__star--filled]="star <= rating"
-          (click)="onStarClick(star)"
-          [attr.aria-label]="'Dar ' + star + ' estrellas'"
+          [class.card-stat-review__star--filled]="getStarFill(star) > 0"
+          [class.card-stat-review__star--half]="getStarFill(star) === 50"
+          [class.card-stat-review__star--hovered]="isStarHovered(star)"
+          (click)="onStarClick($event, star)"
+          (mousemove)="onStarMouseMove($event, star)"
+          [attr.aria-label]="'Rate ' + star + ' stars'"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <!-- Background star (empty) -->
+          <svg class="card-stat-review__star-bg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <!-- Foreground star (filled with clip-path for half) -->
+          <svg 
+            class="card-stat-review__star-fill" 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="currentColor"
+            [style.clip-path]="'inset(0 ' + (100 - getStarFill(star)) + '% 0 0)'"
+          >
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
         </button>

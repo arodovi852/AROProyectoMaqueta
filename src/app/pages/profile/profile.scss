@@ -56,24 +56,25 @@
   padding: var(--spacing-6) var(--spacing-8);
   background-color: var(--color-primary-dark);
   border-radius: 1rem;
-  border: 3px solid var(--color-primary-light);
-  min-width: 280px;
+  border: 5px solid var(--color-primary-light);
+  min-width: 320px;
   
   @media (min-width: 768px) {
-    min-width: 320px;
+    min-width: 400px;
     padding: var(--spacing-8) var(--spacing-10);
+    border-width: 6px;
   }
 }
 
 .profile-page__stats-bars {
   display: flex;
   align-items: flex-end;
-  gap: 12px;
+  gap: 8px;
   height: 120px;
   
   @media (min-width: 768px) {
     height: 140px;
-    gap: 16px;
+    gap: 10px;
   }
 }
 

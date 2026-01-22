@@ -43,7 +43,9 @@ export class Profile implements OnInit {
   watched = signal<number>(0);
   saved = signal<number>(0);
   average = signal<number>(0);
-  statsBars = [50, 75, 40, 85, 60, 45, 90, 70];
+  
+  // Rating distribution bars (10 bars for 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 stars)
+  statsBars = signal<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   // Logged series (from UserService - Watch Later)
   loggedSeries = signal<{ title: string; imageSrc: string; hoverTitle: string }[]>([]);
@@ -83,6 +85,7 @@ export class Profile implements OnInit {
       this.updateRecentlyWatched();
       this.updateSavedLists();
       this.updateStatistics();
+      this.updateRatingDistribution();
     });
   }
 
@@ -100,6 +103,7 @@ export class Profile implements OnInit {
     this.updateRecentlyWatched();
     this.updateSavedLists();
     this.updateStatistics();
+    this.updateRatingDistribution();
   }
 
   /**
@@ -149,6 +153,15 @@ export class Profile implements OnInit {
   }
 
   /**
+   * Update rating distribution from UserService (10 bars for half-star increments)
+   * Bars represent: 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 stars
+   */
+  private updateRatingDistribution(): void {
+    const distribution = this.userService.getRatingDistribution();
+    this.statsBars.set(distribution);
+  }
+
+  /**
    * Update saved lists from UserService
    */
   private updateSavedLists(): void {
@@ -157,12 +170,9 @@ export class Profile implements OnInit {
     this.savedLists.set(lists.map(l => ({
       id: l.id,
       title: l.title,
-      images: [
-        { src: l.bannerImage, alt: l.title },
-        { src: l.bannerImage, alt: l.title },
-        { src: l.bannerImage, alt: l.title },
-        { src: l.bannerImage, alt: l.title }
-      ]
+      images: l.images && l.images.length > 0 
+        ? l.images 
+        : [{ src: l.bannerImage, alt: l.title }]
     })));
   }
 
