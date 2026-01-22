@@ -6,6 +6,7 @@ import { CardStatReview } from '../../components/shared/card-stat-review/card-st
 import { ResponsiveBanner } from '../../components/shared/responsive-banner/responsive-banner';
 import { UserService } from '../../services/user.service';
 import { ToastService } from '../../services/toast.service';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * Interface for series in a list
@@ -45,6 +46,7 @@ export class ListContent implements OnInit {
   private route = inject(ActivatedRoute);
   private userService = inject(UserService);
   private toast = inject(ToastService);
+  private authService = inject(AuthService);
 
   // Current list data
   listId = signal<string>('');
@@ -188,7 +190,17 @@ export class ListContent implements OnInit {
     this.listRating.set(rating);
   }
 
+  /**
+   * Handle save list toggle
+   * Requires authentication - shows login modal if not authenticated
+   */
   onSaveListToggle(isSaved: boolean): void {
+    // Check if user is authenticated
+    if (!this.authService.isAuthenticated()) {
+      this.authService.showLoginModal.set(true);
+      return;
+    }
+    
     this.isSaved.set(isSaved);
     
     if (isSaved) {

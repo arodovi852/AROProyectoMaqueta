@@ -32,6 +32,14 @@
   @media (min-width: 1024px) {
     height: 320px;
   }
+  
+  // Blur effect on the banner image to hide low quality
+  app-responsive-banner,
+  picture,
+  img {
+    filter: blur(10px);
+    transform: scale(1.05); // Compensate for blur edges
+  }
 }
 
 .list-content-page__banner-image {

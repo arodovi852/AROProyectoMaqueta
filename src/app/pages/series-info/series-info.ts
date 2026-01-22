@@ -7,6 +7,7 @@ import { CardReview } from '../../components/shared/card-review/card-review';
 import { Series, SeriesService } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
 import { UserService, TrackedSeries } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * Series Info Page (PHASE 4 - Tasks 2, 5)
@@ -36,6 +37,7 @@ export class SeriesInfo implements OnInit {
   private seriesService = inject(SeriesService);
   private toast = inject(ToastService);
   private userService = inject(UserService);
+  private authService = inject(AuthService);
 
   // Input from resolver or route parameter (PHASE 4 - Task 2)
   @Input() id?: string;
@@ -174,8 +176,15 @@ export class SeriesInfo implements OnInit {
 
   /**
    * Handle rating change - saves to Recently Watched (supports half-star ratings)
+   * Requires authentication - shows login modal if not authenticated
    */
   onRatingChange(rating: number): void {
+    // Check if user is authenticated
+    if (!this.authService.isAuthenticated()) {
+      this.authService.showLoginModal.set(true);
+      return;
+    }
+    
     this.seriesRating = rating;
     
     // Get current series data
@@ -202,8 +211,15 @@ export class SeriesInfo implements OnInit {
 
   /**
    * Handle Watch Later toggle - saves to Logged Series
+   * Requires authentication - shows login modal if not authenticated
    */
   onWatchLaterToggle(isWatchLater: boolean): void {
+    // Check if user is authenticated
+    if (!this.authService.isAuthenticated()) {
+      this.authService.showLoginModal.set(true);
+      return;
+    }
+    
     this.isWatchLater = isWatchLater;
     
     // Get current series data

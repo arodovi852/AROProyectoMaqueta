@@ -42,9 +42,11 @@ export class Header implements OnInit, OnDestroy {
   isMenuOpen = false;
 
   /**
-   * Authentication modal state
+   * Authentication modal state - using global signal from AuthService
    */
-  showAuthModal = signal(false);
+  get showAuthModal() {
+    return this.authService.showLoginModal;
+  }
 
   /**
    * Current authenticated user
@@ -180,7 +182,7 @@ export class Header implements OnInit, OnDestroy {
    * Open authentication modal
    */
   openAuthModal(): void {
-    this.showAuthModal.set(true);
+    this.authService.showLoginModal.set(true);
     this.closeMenu();
   }
 
@@ -188,7 +190,7 @@ export class Header implements OnInit, OnDestroy {
    * Close authentication modal
    */
   closeAuthModal(): void {
-    this.showAuthModal.set(false);
+    this.authService.showLoginModal.set(false);
   }
 
   /**

@@ -22,6 +22,10 @@ export class AuthService {
   public currentUser$: Observable<AuthUser | null> = this.currentUserSubject.asObservable();
   
   public isAuthenticated = signal<boolean>(false);
+  
+  /** Global signal to show/hide login modal from anywhere in the app */
+  public showLoginModal = signal<boolean>(false);
+  
   private readonly USERS_KEY = 'app_users';
   private readonly CURRENT_USER_KEY = 'current_user';
 
