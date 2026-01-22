@@ -13,7 +13,19 @@
 
   <!-- Main content -->
   <div class="list-content-page__content">
-    <!-- Left column: Series in the list -->
+    <!-- Sidebar: CardStatReview (appears first on mobile) -->
+    <div class="list-content-page__sidebar">
+      <app-card-stat-review
+        [statsBars]="statsBars"
+        [rating]="listRating()"
+        [isWatchLater]="isSaved()"
+        buttonText="Save list"
+        (ratingChange)="onRatingChange($event)"
+        (watchLaterToggle)="onSaveListToggle($event)"
+      />
+    </div>
+
+    <!-- Series grid -->
     <div class="list-content-page__series">
       <div class="list-content-page__series-grid">
         @for (item of series(); track item.id) {
@@ -27,18 +39,6 @@
           />
         }
       </div>
-    </div>
-
-    <!-- Right column: CardStatReview -->
-    <div class="list-content-page__sidebar">
-      <app-card-stat-review
-        [statsBars]="statsBars"
-        [rating]="listRating()"
-        [isWatchLater]="isSaved()"
-        buttonText="Save list"
-        (ratingChange)="onRatingChange($event)"
-        (watchLaterToggle)="onSaveListToggle($event)"
-      />
     </div>
   </div>
 </div>

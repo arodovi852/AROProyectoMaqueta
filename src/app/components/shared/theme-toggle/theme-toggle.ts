@@ -40,9 +40,9 @@ export class ThemeToggle implements OnInit {
       // Si hay preferencia guardada, usarla
       this.isDarkMode = savedTheme === 'dark';
     } else {
-      // 2. Si no hay preferencia guardada, detectar prefers-color-scheme
-      // Cliente Fase 1 - Tarea 4: Detectar prefers-color-scheme
-      this.isDarkMode = this.getSystemThemePreference();
+      // 2. Si no hay preferencia guardada, usar modo oscuro por defecto
+      // (ignoramos prefers-color-scheme para que siempre empiece en dark)
+      this.isDarkMode = true;
     }
     
     this.applyTheme();

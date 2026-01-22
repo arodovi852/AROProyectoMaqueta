@@ -58,6 +58,11 @@
   letter-spacing: 0.02em;
   font-family: var(--font-primary);
   @include transition(opacity);
+  
+  @media (max-width: 400px) {
+    font-size: 1.1rem;
+    gap: var(--spacing-1);
+  }
 
   &:hover {
     opacity: 0.9;
@@ -72,6 +77,11 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--color-header-text);
+  
+  @media (max-width: 400px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 }
 
 .header__logo-separator {
@@ -94,6 +104,10 @@
   gap: var(--spacing-1);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  
+  @media (max-width: 400px) {
+    display: none;
+  }
 }
 
 .header__breadcrumb-separator {
@@ -326,6 +340,7 @@
 
 .header__mobile-btn {
   @include button-reset;
+  display: block;
   width: 100%;
   padding: var(--spacing-4);
   font-size: var(--font-size-lg);
@@ -334,6 +349,8 @@
   @include transition(background-color, transform);
   cursor: pointer;
   margin-bottom: var(--spacing-3);
+  text-align: center;
+  text-decoration: none;
 
   &:last-child {
     margin-bottom: 0;
@@ -410,6 +427,59 @@
 }
 
 // ==========================================================================
+// ELEMENTO: .header__mobile-search (Búsqueda en menú móvil)
+// ==========================================================================
+
+.header__mobile-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--spacing-3);
+}
+
+.header__mobile-search-input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-10) var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-search-bg);
+  border: 0.125rem solid var(--color-search-border);
+  border-radius: var(--radius-md);
+  color: var(--color-search-text);
+  font-size: var(--font-size-base);
+  @include transition(background-color, border-color, color);
+
+  &::placeholder {
+    color: var(--color-search-placeholder);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: hsl(0, 0%, 100%);
+    color: var(--color-search-text);
+    border-color: var(--color-search-border);
+  }
+}
+
+.header__mobile-search-btn {
+  @include button-reset;
+  position: absolute;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  @include flex-center;
+  color: var(--color-search-text);
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
+
+// ==========================================================================
 // RESPONSIVE: MOBILE
 // ==========================================================================
 
@@ -437,7 +507,7 @@
   }
 
   .header__mobile-menu--open {
-    max-height: 15rem; // Suficiente para los 2 botones
+    max-height: 20rem; // Aumentado para incluir el buscador
     padding: var(--spacing-4);
   }
 

@@ -78,6 +78,10 @@
     padding: 0;
   }
   
+  @media (max-width: 400px) {
+    gap: var(--spacing-6);
+  }
+  
   &__image-wrapper {
     flex-shrink: 0;
     width: 100%;

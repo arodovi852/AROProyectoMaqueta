@@ -65,12 +65,12 @@
 
 //Colores de texto principal (Light mode - textos oscuros sobre fondos amarillos)
 --color-text-primary: var(--color-primary-dark);
---color-text-secondary: var(--color-primary);
+--color-text-secondary: hsl(285, 43%, 40%);
 --color-text-disabled: var(--color-neutral-500);
 --color-text-light: var(--color-neutral-700);
 --color-text-on-dark: hsl(0, 0%, 0%);
 --color-text-inverted: hsl(0, 0%, 100%);
---color-text-title: var(--color-primary);
+--color-text-title: hsl(285, 43%, 35%);
 --color-text-body: var(--color-neutral-800);
 
 //Colores de fondo (Light mode - amarillos)
@@ -129,12 +129,13 @@
 --color-btn-secondary-hover: var(--color-primary-light);
 
 //Colores de estadísticas (Light mode - amarillos)
---color-stats-bg: hsl(47, 70%, 65%);
+--color-stats-bg: var(--color-bg-main);
 --color-stats-border: hsl(47, 80%, 55%);
 --color-stats-text: var(--color-primary-dark);
 --color-stats-highlight-bg: hsl(47, 85%, 75%);
 --color-stats-highlight-text: var(--color-primary-dark);
 --color-stats-bar: hsl(47, 90%, 50%);
+--color-stats-actions-bg: hsl(47, 85%, 75%);
 
 //Colores de reviews (Light mode - amarillos)
 --color-review-bg: hsl(47, 90%, 92%);
@@ -430,12 +431,13 @@
   --color-btn-secondary-hover: hsl(46, 83%, 65%);
 
   //Colores de estadísticas (Dark mode - morados/rosados)
-  --color-stats-bg: hsl(286, 33%, 20%);
+  --color-stats-bg: var(--color-bg-main);
   --color-stats-border: var(--color-primary-light);
   --color-stats-text: hsl(0, 0%, 100%);
   --color-stats-highlight-bg: hsl(317, 67%, 73%);
   --color-stats-highlight-text: hsl(294, 22%, 21%);
   --color-stats-bar: var(--color-primary-light);
+  --color-stats-actions-bg: var(--color-primary-light);
 
   //Colores de reviews (Dark mode - morados)
   --color-review-bg: hsl(286, 33%, 18%);

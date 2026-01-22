@@ -22,8 +22,12 @@
 .list-content-page__banner {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 160px;
   overflow: hidden;
+  
+  @media (min-width: 480px) {
+    height: 200px;
+  }
   
   @media (min-width: 768px) {
     height: 280px;
@@ -84,7 +88,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
-  padding: var(--spacing-8) var(--spacing-6);
+  padding: var(--spacing-8) var(--spacing-4);
+  
+  @media (max-width: 400px) {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
   
   @media (min-width: 768px) {
     padding: var(--spacing-10);
@@ -98,18 +106,59 @@
   }
 }
 
+// En móvil, sidebar aparece primero (ya está primero en el HTML)
+// En desktop, reordenamos con order
+.list-content-page__sidebar {
+  order: 0; // Aparece primero en móvil
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: 400px) {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 1024px) {
+    order: 1; // Aparece segundo (derecha) en desktop
+    width: 320px;
+    position: sticky;
+    top: var(--spacing-6);
+    align-self: flex-start;
+    justify-content: flex-end;
+  }
+}
+
+.list-content-page__series {
+  order: 1; // Aparece segundo en móvil
+  flex: 1;
+  
+  @media (min-width: 1024px) {
+    order: 0; // Aparece primero (izquierda) en desktop
+  }
+}
+
 // ==========================================================================
 // SECCIÓN DE SERIES
 // ==========================================================================
-
-.list-content-page__series {
-  flex: 1;
-}
 
 .list-content-page__series-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-4);
+  
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    max-width: 200px;
+    margin: 0 auto;
+  }
   
   @media (min-width: 576px) {
     grid-template-columns: repeat(3, 1fr);
@@ -117,8 +166,17 @@
   }
   
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--spacing-5);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--spacing-6);
+  }
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -126,17 +184,3 @@
   width: 100%;
 }
 
-// ==========================================================================
-// SIDEBAR
-// ==========================================================================
-
-.list-content-page__sidebar {
-  flex-shrink: 0;
-  
-  @media (min-width: 1024px) {
-    width: 320px;
-    position: sticky;
-    top: var(--spacing-6);
-    align-self: flex-start;
-  }
-}
