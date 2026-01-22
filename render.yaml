@@ -7,7 +7,7 @@ services:
     name: aroproyecto-maqueta
     runtime: static
     buildCommand: npm ci && npm run build:prod
-    staticPublishPath: ./dist/AROProyectoMaqueta/browser/browser
+    staticPublishPath: ./dist/AROProyectoMaqueta/browser
     pullRequestPreviewsEnabled: false
     headers:
       - path: /*

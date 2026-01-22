@@ -17,19 +17,33 @@ COPY . .
 # Build the application for production
 RUN npm run build
 
+# Debug: Show build output structure
+RUN echo "=== Build output structure ===" && \
+    find /app/dist -type f -name "*.html" && \
+    ls -la /app/dist/AROProyectoMaqueta/browser/ || true
+
 # ==============================================================================
 # STAGE 2: Serve with nginx
 # ==============================================================================
 FROM nginx:alpine
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy nginx configuration template
+COPY nginx.conf /etc/nginx/nginx.conf.template
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist/AROProyectoMaqueta/browser/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/AROProyectoMaqueta/browser /usr/share/nginx/html
 
-# Expose port 80
+# Verify files were copied correctly
+RUN echo "=== Nginx html content ===" && \
+    ls -la /usr/share/nginx/html/ && \
+    test -f /usr/share/nginx/html/index.html && echo "✓ index.html found" || echo "✗ index.html NOT found"
+
+# Expose port (Render uses PORT env variable)
 EXPOSE 80
+EXPOSE 10000
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Default PORT if not set
+ENV PORT=10000
+
+# Start nginx with envsubst to replace PORT variable
+CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
