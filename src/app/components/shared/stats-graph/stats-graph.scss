@@ -10,7 +10,7 @@
   align-items: center;
   gap: var(--spacing-2);
   padding: var(--spacing-4);
-  background-color: rgba(107, 91, 122, 0.3);
+  background-color: transparent;
   border-radius: 0.75rem;
   
   &__bars {
@@ -30,7 +30,7 @@
   
   &__bar {
     width: 100%;
-    background-color: hsl(317, 67%, 73%);
+    background-color: var(--color-stats-bar);
     border-radius: 2px 2px 0 0;
     min-height: 8px;
     transition: height 0.3s ease;

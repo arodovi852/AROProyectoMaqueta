@@ -27,11 +27,11 @@
     }
     
     &--saved {
-      background-color: var(--color-accent-primary);
+      background-color: var(--color-stats-highlight-bg);
     }
     
     &--average {
-      background-color: var(--color-stats-highlight-bg);
+      background-color: var(--color-stats-bar);
       border-radius: 0 0 1rem 1rem;
     }
   }

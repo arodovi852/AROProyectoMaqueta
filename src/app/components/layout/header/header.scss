@@ -212,22 +212,22 @@
 .header__search-input {
   width: 100%;
   padding: var(--spacing-2) var(--spacing-10) var(--spacing-2) var(--spacing-3);
-  background-color: hsl(317, 67%, 73%);
-  border: 0.1875rem solid hsl(286, 26%, 22%);
+  background-color: var(--color-search-bg);
+  border: 0.1875rem solid var(--color-search-border);
   border-radius: var(--radius-md);
-  color: hsl(286, 26%, 22%);
+  color: var(--color-search-text);
   font-size: var(--font-size-sm);
   @include transition(background-color, border-color, color);
 
   &::placeholder {
-    color: hsla(286, 26%, 22%, 0.6);
+    color: var(--color-search-placeholder);
   }
 
   &:focus {
     outline: none;
     background-color: hsl(0, 0%, 100%);
-    color: hsl(286, 26%, 22%);
-    border-color: hsl(286, 26%, 22%);
+    color: var(--color-search-text);
+    border-color: var(--color-search-border);
   }
 }
 
@@ -238,11 +238,11 @@
   width: 2rem;
   height: 2rem;
   @include flex-center;
-  color: hsl(286, 26%, 22%);
+  color: var(--color-search-text);
   @include transition(color);
 
   &:hover {
-    color: hsl(280, 57%, 9%);
+    color: var(--color-primary-dark);
   }
 
   &:focus-visible {

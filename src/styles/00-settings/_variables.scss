@@ -97,6 +97,7 @@
 --color-card-text: var(--color-primary-dark);
 --color-card-hover-border: hsl(0, 0%, 0%);
 --color-card-hover-text: hsl(0, 0%, 0%);
+--color-card-hover-bg: hsl(47, 90%, 85%);
 --color-bg-card: hsl(47, 90%, 88%);
 --color-bg-hover: hsla(47, 70%, 70%, 0.3);
 --color-border-light: hsla(47, 80%, 50%, 0.3);
@@ -105,6 +106,17 @@
 --color-form-bg: hsl(47, 80%, 85%);
 --color-form-border: hsl(47, 60%, 60%);
 --color-form-text: var(--color-primary-dark);
+
+//Colores de buscador (Light mode - amarillos)
+--color-search-bg: hsl(47, 80%, 80%);
+--color-search-border: hsl(47, 70%, 55%);
+--color-search-text: var(--color-primary-dark);
+--color-search-placeholder: hsla(290, 21%, 30%, 0.6);
+
+//Colores de theme toggle (Light mode - amarillo oscuro visible)
+--color-theme-toggle-bg: hsl(47, 80%, 55%);
+--color-theme-toggle-border: hsl(47, 70%, 40%);
+--color-theme-toggle-text: var(--color-primary-dark);
 
 //Colores de botón primario (Light mode - amarillo)
 --color-btn-primary-bg: var(--color-secondary);
@@ -117,11 +129,12 @@
 --color-btn-secondary-hover: var(--color-primary-light);
 
 //Colores de estadísticas (Light mode - amarillos)
---color-stats-bg: hsl(47, 85%, 80%);
---color-stats-border: hsl(47, 70%, 65%);
+--color-stats-bg: hsl(47, 70%, 65%);
+--color-stats-border: hsl(47, 80%, 55%);
 --color-stats-text: var(--color-primary-dark);
---color-stats-highlight-bg: var(--color-primary-light);
+--color-stats-highlight-bg: hsl(47, 85%, 75%);
 --color-stats-highlight-text: var(--color-primary-dark);
+--color-stats-bar: hsl(47, 90%, 50%);
 
 //Colores de reviews (Light mode - amarillos)
 --color-review-bg: hsl(47, 90%, 92%);
@@ -380,6 +393,7 @@
   --color-card-text: hsl(0, 0%, 100%);
   --color-card-hover-border: hsl(0, 0%, 100%);
   --color-card-hover-text: hsl(0, 0%, 100%);
+  --color-card-hover-bg: hsl(286, 30%, 35%);
   --color-bg-card: hsl(286, 26%, 22%);
   --color-bg-hover: hsla(286, 30%, 40%, 0.3);
   --color-border-light: hsla(286, 30%, 50%, 0.3);
@@ -388,6 +402,17 @@
   --color-form-bg: hsl(317, 67%, 73%);
   --color-form-border: hsl(317, 44%, 56%);
   --color-form-text: hsl(294, 22%, 21%);
+
+  //Colores de buscador (Dark mode - rosados)
+  --color-search-bg: hsl(317, 67%, 73%);
+  --color-search-border: hsl(286, 26%, 22%);
+  --color-search-text: hsl(286, 26%, 22%);
+  --color-search-placeholder: hsla(286, 26%, 22%, 0.6);
+
+  //Colores de theme toggle (Dark mode)
+  --color-theme-toggle-bg: hsl(317, 67%, 73%);
+  --color-theme-toggle-border: hsl(286, 26%, 22%);
+  --color-theme-toggle-text: hsl(286, 26%, 22%);
 
   //Colores de botón primario (Dark mode - morado)
   --color-btn-primary-bg: var(--color-primary);
@@ -400,11 +425,12 @@
   --color-btn-secondary-hover: hsl(46, 83%, 65%);
 
   //Colores de estadísticas (Dark mode - morados/rosados)
-  --color-stats-bg: hsl(317, 67%, 73%);
-  --color-stats-border: hsl(317, 44%, 56%);
-  --color-stats-text: hsl(294, 22%, 21%);
-  --color-stats-highlight-bg: var(--color-secondary);
+  --color-stats-bg: hsl(286, 33%, 20%);
+  --color-stats-border: var(--color-primary-light);
+  --color-stats-text: hsl(0, 0%, 100%);
+  --color-stats-highlight-bg: hsl(317, 67%, 73%);
   --color-stats-highlight-text: hsl(294, 22%, 21%);
+  --color-stats-bar: var(--color-primary-light);
 
   //Colores de reviews (Dark mode - morados)
   --color-review-bg: hsl(286, 33%, 18%);
