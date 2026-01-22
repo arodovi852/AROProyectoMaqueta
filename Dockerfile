@@ -17,15 +17,13 @@ COPY . .
 # Build the application for production
 RUN npm run build
 
-# Debug: Show build output structure
-RUN echo "=== Build output structure ===" && \
-    find /app/dist -type f -name "*.html" && \
-    ls -la /app/dist/AROProyectoMaqueta/browser/ || true
-
 # ==============================================================================
 # STAGE 2: Serve with nginx
 # ==============================================================================
 FROM nginx:alpine
+
+# Remove default nginx content
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copy nginx configuration template
 COPY nginx.conf /etc/nginx/nginx.conf.template
@@ -33,17 +31,17 @@ COPY nginx.conf /etc/nginx/nginx.conf.template
 # Copy built application from builder stage
 COPY --from=builder /app/dist/AROProyectoMaqueta/browser /usr/share/nginx/html
 
-# Verify files were copied correctly
-RUN echo "=== Nginx html content ===" && \
+# Verify files and show content
+RUN echo "=== Contents of /usr/share/nginx/html ===" && \
     ls -la /usr/share/nginx/html/ && \
-    test -f /usr/share/nginx/html/index.html && echo "✓ index.html found" || echo "✗ index.html NOT found"
+    echo "=== Checking index.html ===" && \
+    head -5 /usr/share/nginx/html/index.html
 
 # Expose port (Render uses PORT env variable)
-EXPOSE 80
 EXPOSE 10000
 
-# Default PORT if not set
+# Default PORT if not set by Render
 ENV PORT=10000
 
-# Start nginx with envsubst to replace PORT variable
-CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+# Use sed to replace NGINX_PORT with actual PORT value, then start nginx
+CMD ["/bin/sh", "-c", "sed -i \"s/NGINX_PORT/$PORT/g\" /etc/nginx/nginx.conf.template && cp /etc/nginx/nginx.conf.template /etc/nginx/nginx.conf && echo '=== Final nginx.conf ===' && cat /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
