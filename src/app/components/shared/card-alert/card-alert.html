@@ -1,0 +1,83 @@
+<!-- CardAlert Modal Overlay -->
+<div class="card-alert-overlay" (click)="onOverlayClick($event)">
+  <div [class]="cardClasses" role="alertdialog" aria-modal="true">
+    <!-- Close button (optional) -->
+    @if (showCloseButton) {
+      <button 
+        type="button" 
+        class="card-alert__close"
+        aria-label="Close alert"
+        (click)="onClose()"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+          <path d="M15 5L5 15M5 5l10 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    }
+
+    <!-- Icon based on variant -->
+    <div class="card-alert__icon">
+      @switch (variant) {
+        @case ('success') {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+            <circle cx="24" cy="24" r="20" stroke-width="3"/>
+            <path d="M16 24l6 6 12-12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+        @case ('error') {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+            <circle cx="24" cy="24" r="20" stroke-width="3"/>
+            <path d="M16 16l16 16M32 16l-16 16" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+        @case ('warning') {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+            <path d="M24 8l18 32H6L24 8z" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20v8M24 34h.01" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        }
+        @case ('info') {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+            <circle cx="24" cy="24" r="20" stroke-width="3"/>
+            <path d="M24 16v.01M24 22v12" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        }
+        @default {
+          <!-- Default: checkmark -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+            <circle cx="24" cy="24" r="20" stroke-width="3"/>
+            <path d="M16 24l6 6 12-12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+      }
+    </div>
+
+    <!-- Content -->
+    <div class="card-alert__content">
+      @if (title) {
+        <h2 class="card-alert__title">{{ title }}</h2>
+      }
+      <p class="card-alert__message">{{ message }}</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="card-alert__actions">
+      @if (cancelText) {
+        <button 
+          type="button" 
+          class="card-alert__btn card-alert__btn--cancel"
+          (click)="onCancel()"
+        >
+          {{ cancelText }}
+        </button>
+      }
+      <button 
+        type="button" 
+        class="card-alert__btn card-alert__btn--confirm"
+        (click)="onConfirm()"
+      >
+        {{ confirmText }}
+      </button>
+    </div>
+  </div>
+</div>

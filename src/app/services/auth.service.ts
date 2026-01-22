@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject, Injector } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface User {
@@ -17,12 +17,25 @@ export interface AuthUser {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private injector = inject(Injector);
   private currentUserSubject = new BehaviorSubject<AuthUser | null>(null);
   public currentUser$: Observable<AuthUser | null> = this.currentUserSubject.asObservable();
   
   public isAuthenticated = signal<boolean>(false);
   private readonly USERS_KEY = 'app_users';
   private readonly CURRENT_USER_KEY = 'current_user';
+
+  // Callback to refresh user data after login/logout
+  // This avoids circular dependency with UserService
+  private onAuthChange: (() => void) | null = null;
+
+  /**
+   * Register a callback to be called when auth state changes
+   * Used by UserService to refresh its data
+   */
+  registerAuthChangeCallback(callback: () => void): void {
+    this.onAuthChange = callback;
+  }
 
   constructor() {
     this.loadCurrentUser();
@@ -96,6 +109,11 @@ export class AuthService {
     this.currentUserSubject.next(authUser);
     this.isAuthenticated.set(true);
 
+    // Notify UserService to refresh data for this user
+    if (this.onAuthChange) {
+      this.onAuthChange();
+    }
+
     return { success: true, message: `Welcome ${user.username}!` };
   }
 
@@ -103,6 +121,11 @@ export class AuthService {
     localStorage.removeItem(this.CURRENT_USER_KEY);
     this.currentUserSubject.next(null);
     this.isAuthenticated.set(false);
+
+    // Notify UserService to clear data
+    if (this.onAuthChange) {
+      this.onAuthChange();
+    }
   }
 
   getCurrentUser(): AuthUser | null {

@@ -38,18 +38,25 @@ export class RegisterForm {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     
+    const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     const confirmPassword = formData.get('confirmPassword') as string;
 
+    // Validación de email - debe contener @
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address (must contain @)');
+      return;
+    }
+
     // Validación básica de contraseñas
     if (password !== confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      alert('Passwords do not match');
       return;
     }
     
     this.submitForm.emit({
       username: formData.get('username') as string,
-      email: formData.get('email') as string,
+      email: email,
       password: password,
       confirmPassword: confirmPassword
     });

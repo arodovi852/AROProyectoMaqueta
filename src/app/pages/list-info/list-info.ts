@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormInput } from '../../components/shared/form-input/form-input';
 import { FormTextarea } from '../../components/shared/form-textarea/form-textarea';
 import { FormCheckbox } from '../../components/shared/form-checkbox/form-checkbox';
 import { Button } from '../../components/shared/button/button';
+import { AlertService } from '../../services/alert.service';
 
 /**
  * ListInfo Page
@@ -17,6 +18,8 @@ import { Button } from '../../components/shared/button/button';
   styleUrl: './list-info.scss',
 })
 export class ListInfo {
+  private alertService = inject(AlertService);
+  
   title = '';
   description = '';
   addGame = '';
@@ -38,12 +41,15 @@ export class ListInfo {
     this.isPublic = value;
   }
 
-  onCreateList() {
+  async onCreateList() {
     console.log('Creating list:', {
       title: this.title,
       description: this.description,
       addGame: this.addGame,
       isPublic: this.isPublic
     });
+    
+    // Show success alert popup
+    await this.alertService.success('List successfully created!');
   }
 }

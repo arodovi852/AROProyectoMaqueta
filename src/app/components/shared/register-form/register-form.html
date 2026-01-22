@@ -33,7 +33,8 @@
           label=""
           placeholder="Email"
           [required]="true"
-          helpText="Enter your email address"
+          pattern=".+@.+"
+          helpText="Enter your email address (must contain @)"
         />
       </div>
     </fieldset>

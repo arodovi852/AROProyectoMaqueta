@@ -7,7 +7,7 @@ import { ThemeToggle } from '../../../components/shared/theme-toggle/theme-toggl
 import { AuthModal } from '../../shared/auth-modal/auth-modal';
 import { CardProfile } from '../../shared/card-profile/card-profile';
 import { AuthService, AuthUser } from '../../../services/auth.service';
-import { ToastService } from '../../../services/toast.service';
+import { AlertService } from '../../../services/alert.service';
 import { BreadcrumbService, Breadcrumb } from '../../../services/breadcrumb.service';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 
@@ -65,7 +65,7 @@ export class Header implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private authService: AuthService,
-    private toastService: ToastService,
+    private alertService: AlertService,
     private router: Router,
     private breadcrumbService: BreadcrumbService
   ) {}
@@ -194,10 +194,11 @@ export class Header implements OnInit, OnDestroy {
   /**
    * Logout
    */
-  logout(): void {
+  async logout(): Promise<void> {
     this.authService.logout();
-    this.toastService.info('Session closed');
     this.closeMenu();
+    this.router.navigate(['/']);
+    await this.alertService.info('Session closed');
   }
 
   /**

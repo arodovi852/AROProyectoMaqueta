@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Observable, of, delay, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 export interface User {
   id: number;
@@ -27,12 +28,17 @@ export interface SavedList {
   addedAt: Date;
 }
 
-const LOGGED_SERIES_KEY = 'broadcasttd_logged_series';
-const RECENTLY_WATCHED_KEY = 'broadcasttd_recently_watched';
-const SAVED_LISTS_KEY = 'broadcasttd_saved_lists';
-
+/**
+ * UserService - Manages user-specific data
+ * 
+ * All data (logged series, recently watched, saved lists) is stored
+ * per-user using the username as a key prefix in localStorage.
+ * This ensures each user has their own isolated data.
+ */
 @Injectable({ providedIn: 'root' })
 export class UserService {
+  private authService = inject(AuthService);
+  
   private users: User[] = [
     { id: 1, name: 'John Perez', email: 'john@example.com', active: true },
     { id: 2, name: 'Mary Garcia', email: 'mary@example.com', active: true },
@@ -41,15 +47,65 @@ export class UserService {
   ];
 
   // Signals for reactive updates
-  loggedSeries = signal<TrackedSeries[]>(this.loadLoggedSeries());
-  recentlyWatched = signal<TrackedSeries[]>(this.loadRecentlyWatched());
-  savedLists = signal<SavedList[]>(this.loadSavedLists());
+  loggedSeries = signal<TrackedSeries[]>([]);
+  recentlyWatched = signal<TrackedSeries[]>([]);
+  savedLists = signal<SavedList[]>([]);
 
   constructor() {
-    // Initialize from localStorage
+    // Register callback with AuthService
+    this.authService.registerAuthChangeCallback(() => this.refreshUserData());
+    
+    // Initialize from localStorage for current user
+    this.refreshUserData();
+  }
+
+  /**
+   * Get the current username from localStorage
+   * Returns null if no user is logged in
+   */
+  private getCurrentUsername(): string | null {
+    try {
+      const currentUser = localStorage.getItem('current_user');
+      if (currentUser) {
+        const user = JSON.parse(currentUser);
+        return user.username || null;
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Generate storage key with user prefix
+   */
+  private getUserKey(baseKey: string): string {
+    const username = this.getCurrentUsername();
+    if (!username) {
+      // Return a temporary key that won't persist data properly
+      // This shouldn't happen as routes are protected
+      return `guest_${baseKey}`;
+    }
+    return `broadcasttd_${username}_${baseKey}`;
+  }
+
+  /**
+   * Refresh all user data from localStorage
+   * Call this when user logs in or out
+   */
+  refreshUserData(): void {
     this.loggedSeries.set(this.loadLoggedSeries());
     this.recentlyWatched.set(this.loadRecentlyWatched());
     this.savedLists.set(this.loadSavedLists());
+  }
+
+  /**
+   * Clear all signals when user logs out
+   */
+  clearUserData(): void {
+    this.loggedSeries.set([]);
+    this.recentlyWatched.set([]);
+    this.savedLists.set([]);
   }
 
   // ============================================
@@ -58,7 +114,8 @@ export class UserService {
 
   private loadLoggedSeries(): TrackedSeries[] {
     try {
-      const data = localStorage.getItem(LOGGED_SERIES_KEY);
+      const key = this.getUserKey('logged_series');
+      const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : [];
     } catch {
       return [];
@@ -66,7 +123,8 @@ export class UserService {
   }
 
   private saveLoggedSeries(series: TrackedSeries[]): void {
-    localStorage.setItem(LOGGED_SERIES_KEY, JSON.stringify(series));
+    const key = this.getUserKey('logged_series');
+    localStorage.setItem(key, JSON.stringify(series));
     this.loggedSeries.set(series);
   }
 
@@ -108,7 +166,8 @@ export class UserService {
 
   private loadRecentlyWatched(): TrackedSeries[] {
     try {
-      const data = localStorage.getItem(RECENTLY_WATCHED_KEY);
+      const key = this.getUserKey('recently_watched');
+      const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : [];
     } catch {
       return [];
@@ -116,7 +175,8 @@ export class UserService {
   }
 
   private saveRecentlyWatched(series: TrackedSeries[]): void {
-    localStorage.setItem(RECENTLY_WATCHED_KEY, JSON.stringify(series));
+    const key = this.getUserKey('recently_watched');
+    localStorage.setItem(key, JSON.stringify(series));
     this.recentlyWatched.set(series);
   }
 
@@ -157,16 +217,16 @@ export class UserService {
    * Get rating distribution for stats display
    * Returns an array of 10 percentages for ratings: 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5
    * Each value is the percentage (0-100) based on count relative to max count
-   * When no ratings exist, returns placeholder values for visual consistency
+   * When no ratings exist, returns array of zeros (no bars shown)
    */
   getRatingDistribution(): number[] {
     const ratings = this.loadRecentlyWatched()
       .filter(s => s.rating !== undefined && s.rating > 0)
       .map(s => s.rating!);
     
-    // If no ratings yet, return placeholder values (like a sample distribution)
+    // If no ratings yet, return zeros (no bars will be shown)
     if (ratings.length === 0) {
-      return [15, 25, 35, 50, 65, 80, 90, 75, 55, 40];
+      return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
     
     // Count ratings at each half-star level
@@ -189,7 +249,8 @@ export class UserService {
 
   private loadSavedLists(): SavedList[] {
     try {
-      const data = localStorage.getItem(SAVED_LISTS_KEY);
+      const key = this.getUserKey('saved_lists');
+      const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : [];
     } catch {
       return [];
@@ -197,7 +258,8 @@ export class UserService {
   }
 
   private saveSavedLists(lists: SavedList[]): void {
-    localStorage.setItem(SAVED_LISTS_KEY, JSON.stringify(lists));
+    const key = this.getUserKey('saved_lists');
+    localStorage.setItem(key, JSON.stringify(lists));
     this.savedLists.set(lists);
   }
 

@@ -116,6 +116,50 @@
 }
 
 // ==========================================================================
+// ITEM WRAPPER (with info for recently-watched)
+// ==========================================================================
+
+.see-more-page__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.see-more-page__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: 0 var(--spacing-1);
+}
+
+.see-more-page__series-title {
+  font-family: var(--font-secondary, var(--font-primary));
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: hsl(36, 45%, 93%);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.see-more-page__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-family: var(--font-secondary, var(--font-primary));
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: hsl(46, 83%, 56%);
+  
+  svg {
+    color: hsl(46, 83%, 56%);
+  }
+}
+
+// ==========================================================================
 // EMPTY STATE
 // ==========================================================================
 

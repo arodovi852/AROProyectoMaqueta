@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginForm } from '../login-form/login-form';
 import { RegisterForm } from '../register-form/register-form';
 import { AuthService } from '../../../services/auth.service';
-import { ToastService } from '../../../services/toast.service';
+import { AlertService } from '../../../services/alert.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class AuthModal implements OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private toastService: ToastService
+    private alertService: AlertService
   ) {}
 
   ngOnDestroy(): void {
@@ -48,26 +48,26 @@ export class AuthModal implements OnDestroy {
     this.showLogin.set(true);
   }
 
-  onLoginSubmit(data: { username: string; password: string }): void {
+  async onLoginSubmit(data: { username: string; password: string }): Promise<void> {
     const result = this.authService.login(data.username, data.password);
     
     if (result.success) {
-      this.toastService.success(result.message);
       this.onClose();
+      await this.alertService.success(result.message);
     } else {
-      this.toastService.error(result.message);
+      await this.alertService.error(result.message);
     }
   }
 
-  onRegisterSubmit(data: { username: string; email: string; password: string; confirmPassword: string }): void {
+  async onRegisterSubmit(data: { username: string; email: string; password: string; confirmPassword: string }): Promise<void> {
     const result = this.authService.register(data.username, data.email, data.password);
     
     if (result.success) {
-      this.toastService.success(result.message);
+      await this.alertService.success(result.message);
       // Cambiar a login después de registro exitoso
       this.showLogin.set(true);
     } else {
-      this.toastService.error(result.message);
+      await this.alertService.error(result.message);
     }
   }
 

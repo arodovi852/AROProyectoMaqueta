@@ -8,7 +8,7 @@ import { Card } from '../../components/shared/card/card';
 import { CardList } from '../../components/shared/card-list/card-list';
 import { CardReview } from '../../components/shared/card-review/card-review';
 import { AuthService, AuthUser } from '../../services/auth.service';
-import { ToastService } from '../../services/toast.service';
+import { AlertService } from '../../services/alert.service';
 import { UserService, TrackedSeries, SavedList } from '../../services/user.service';
 
 /**
@@ -32,7 +32,7 @@ import { UserService, TrackedSeries, SavedList } from '../../services/user.servi
 export class Profile implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
-  private toast = inject(ToastService);
+  private alertService = inject(AlertService);
   private userService = inject(UserService);
 
   // Current user
@@ -181,10 +181,10 @@ export class Profile implements OnInit {
   /**
    * Logout (PHASE 4 - Task 4)
    */
-  logout(): void {
+  async logout(): Promise<void> {
     this.authService.logout();
-    this.toast.info('Session closed successfully');
     this.router.navigate(['/']);
+    await this.alertService.info('Session closed successfully');
   }
 
   /**
