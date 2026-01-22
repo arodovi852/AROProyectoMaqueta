@@ -95,9 +95,9 @@
 --color-card-bg: hsl(47, 100%, 90%);
 --color-card-border: hsl(47, 80%, 70%);
 --color-card-text: var(--color-primary-dark);
---color-card-hover-border: hsl(0, 0%, 0%);
---color-card-hover-text: hsl(0, 0%, 0%);
---color-card-hover-bg: hsl(47, 90%, 85%);
+--color-card-hover-border: hsl(47, 70%, 35%);
+--color-card-hover-text: hsl(47, 70%, 35%);
+--color-card-hover-bg: hsla(47, 90%, 75%, 0.5);
 --color-bg-card: hsl(47, 90%, 88%);
 --color-bg-hover: hsla(47, 70%, 70%, 0.3);
 --color-border-light: hsla(47, 80%, 50%, 0.3);
@@ -140,10 +140,15 @@
 --color-review-bg: hsl(47, 90%, 92%);
 --color-review-border: hsl(47, 70%, 70%);
 --color-review-text: var(--color-primary-dark);
+--color-review-hover-bg: hsl(47, 80%, 70%);
+--color-review-hover-border: hsl(47, 85%, 80%);
+--color-review-hover-text: hsl(47, 70%, 25%);
 
 //Colores de componente genérico (Light mode - amarillos claros)
---color-component-bg: hsl(47, 85%, 88%);
+--color-component-bg: hsl(47, 85%, 80%);
 --color-component-border: hsl(47, 70%, 65%);
+--color-component-accent: hsl(47, 80%, 60%);
+--color-component-accent-light: hsl(47, 85%, 75%);
 
 //Colores de header/footer (Light mode - amarillos)
 --color-header-bg-start: hsl(47, 80%, 70%);
@@ -393,7 +398,7 @@
   --color-card-text: hsl(0, 0%, 100%);
   --color-card-hover-border: hsl(0, 0%, 100%);
   --color-card-hover-text: hsl(0, 0%, 100%);
-  --color-card-hover-bg: hsl(286, 30%, 35%);
+  --color-card-hover-bg: hsla(286, 30%, 35%, 0.5);
   --color-bg-card: hsl(286, 26%, 22%);
   --color-bg-hover: hsla(286, 30%, 40%, 0.3);
   --color-border-light: hsla(286, 30%, 50%, 0.3);
@@ -436,10 +441,15 @@
   --color-review-bg: hsl(286, 33%, 18%);
   --color-review-border: var(--color-primary-light);
   --color-review-text: hsl(0, 0%, 100%);
+  --color-review-hover-bg: var(--color-primary-light);
+  --color-review-hover-border: var(--color-primary-lightest);
+  --color-review-hover-text: var(--color-primary-dark);
 
   //Colores de componente genérico (Dark mode - morados)
   --color-component-bg: var(--color-primary-dark);
   --color-component-border: var(--color-primary-light);
+  --color-component-accent: var(--color-primary-light);
+  --color-component-accent-light: var(--color-primary-lightest);
 
   //Colores de header/footer (Dark mode - morados)
   --color-header-bg-start: hsl(288, 53%, 14%);

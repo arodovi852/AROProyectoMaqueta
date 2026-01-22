@@ -28,20 +28,20 @@
   }
   
   &__head {
-    background-color: var(--color-primary-light);
+    background-color: var(--color-component-accent);
     border-radius: 50%;
     transition: background-color 0.3s ease;
   }
   
   &__body {
-    background-color: var(--color-primary-light);
+    background-color: var(--color-component-accent);
     border-radius: 50% 50% 0 0;
     transition: background-color 0.3s ease;
   }
   
   // Hover effect
   &__card:hover {
-    background-color: var(--color-primary-light);
+    background-color: var(--color-component-accent);
     
     .card-profile__avatar {
       transform: scale(1.1) rotate(5deg);
@@ -49,7 +49,7 @@
     
     .card-profile__head,
     .card-profile__body {
-      background-color: var(--color-primary-lightest);
+      background-color: var(--color-component-accent-light);
     }
   }
   
