@@ -130,11 +130,7 @@ export class UserService {
     const newSeries = { ...series, addedAt: new Date() };
     current = [newSeries, ...current];
     
-    // Keep only the last 6
-    if (current.length > 6) {
-      current = current.slice(0, 6);
-    }
-    
+    // No limit - store all watched series
     this.saveRecentlyWatched(current);
   }
 

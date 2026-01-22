@@ -19,7 +19,7 @@ import { UserService, TrackedSeries, SavedList } from '../../services/user.servi
  * 
  * Features:
  * - Logged Series: Shows series added via "Watch Later"
- * - Recently Watched: Shows last 6 rated series (most recent first)
+ * - Recently Watched: Shows all rated series (most recent first, displays first 6 on profile)
  * - Saved Lists: Shows lists saved from /listcontent
  */
 @Component({
@@ -48,11 +48,10 @@ export class Profile implements OnInit {
   statsBars = signal<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   // Logged series (from UserService - Watch Later)
-  loggedSeries = signal<{ title: string; imageSrc: string; hoverTitle: string }[]>([]);
+  loggedSeries = signal<{ id: number; title: string; imageSrc: string; hoverTitle: string }[]>([]);
 
   // Recently watched series (from UserService - Rated series)
-  recentlyWatched = signal<{ title: string; imageSrc: string; hoverTitle: string; rating?: number }[]>([]);
-
+  recentlyWatched = signal<{ id: number; title: string; imageSrc: string; hoverTitle: string; rating?: number }[]>([]);
   // Saved lists (from UserService)
   savedLists = signal<{ id: string; title: string; images: { src: string; alt: string }[] }[]>([]);
 
@@ -112,6 +111,7 @@ export class Profile implements OnInit {
   private updateLoggedSeries(): void {
     const series = this.userService.getLoggedSeries();
     this.loggedSeries.set(series.map(s => ({
+      id: s.id,
       title: s.title,
       imageSrc: s.imageSrc,
       hoverTitle: s.hoverTitle
@@ -119,11 +119,13 @@ export class Profile implements OnInit {
   }
 
   /**
-   * Update recently watched from UserService (last 6, most recent first)
+   * Update recently watched from UserService (all rated series, most recent first)
+   * Profile displays first 6, full list available via See More
    */
   private updateRecentlyWatched(): void {
     const series = this.userService.getRecentlyWatched();
     this.recentlyWatched.set(series.map(s => ({
+      id: s.id,
       title: s.title,
       imageSrc: s.imageSrc,
       hoverTitle: s.hoverTitle,
@@ -190,5 +192,26 @@ export class Profile implements OnInit {
    */
   editProfile(): void {
     this.router.navigate(['/profile/edit']);
+  }
+
+  /**
+   * Navigate to see more recently watched
+   */
+  seeMoreRecentlyWatched(): void {
+    this.router.navigate(['/seemore'], { queryParams: { section: 'recently-watched' } });
+  }
+
+  /**
+   * Navigate to see more logged series
+   */
+  seeMoreLoggedSeries(): void {
+    this.router.navigate(['/seemore'], { queryParams: { section: 'logged-series' } });
+  }
+
+  /**
+   * Navigate to see more saved lists
+   */
+  seeMoreSavedLists(): void {
+    this.router.navigate(['/seemore'], { queryParams: { section: 'saved-lists' } });
   }
 }

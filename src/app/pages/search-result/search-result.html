@@ -8,22 +8,31 @@
     <div class="search-result-page__list">
       @for (result of searchResults(); track result.id) {
         <article class="search-result-card">
-          <!-- Series image -->
+          <!-- Series image using Card component with hover -->
           <div class="search-result-card__image-wrapper">
-            <img 
-              [src]="result.image" 
-              [alt]="result.title"
-              class="search-result-card__image"
+            <app-card
+              [imageSrc]="result.image"
+              [imageAlt]="result.title"
+              [hoverTitle]="result.title"
+              [seriesId]="result.id"
+              variant="media"
+              size="sm"
             />
           </div>
 
           <!-- Content: Title and description -->
-          <div class="search-result-card__content">
+          <div class="search-result-card__content" (click)="viewSeries(result.id)">
             <h2 class="search-result-card__title">{{ result.title }}</h2>
             <p class="search-result-card__description">{{ result.description }}</p>
           </div>
         </article>
       }
     </div>
+
+    @if (searchResults().length === 0) {
+      <div class="search-result-page__empty">
+        <p>No results found for your search.</p>
+      </div>
+    }
   </div>
 </div>

@@ -1,18 +1,20 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SeriesService, Series } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
+import { Card } from '../../components/shared/card/card';
 
 /**
  * SearchResult Page (PHASE 4 - Task 2, PHASE 5 - Task 4)
  * 
- * Displays series search results.
- * Reads query params to filter results.
+ * Displays series search results in horizontal card layout.
+ * Uses Card component for image with hover effect.
+ * Clicking navigates to /series/:id.
  */
 @Component({
   selector: 'app-search-result',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, Card],
   templateUrl: './search-result.html',
   styleUrl: './search-result.scss',
 })
@@ -42,30 +44,30 @@ export class SearchResult implements OnInit {
     image: string;
   }[]>([]);
 
-  // Resultados de ejemplo (fallback)
+  // Resultados de ejemplo (fallback) - Matching series.service.ts data
   defaultResults = [
     {
-      id: '1',
-      title: 'The haunting of Hill House',
-      description: "In the summer of '92, a family of seven move into Hill House to renovate the mansion in order to sell it and build their own house. However, they begin to experience increasing paranormal phenomena.",
-      image: '/assets/Image_For_Card_3.jpg'
+      id: '4',
+      title: 'The Haunting of Hill House',
+      description: 'A family confronted with traumatic memories of a haunted house.',
+      image: '/assets/Image_For_Card_4.jpg'
     },
     {
-      id: '2',
+      id: '1',
       title: 'Twin Peaks',
-      description: 'In 1989, a local logger discovers a naked corpse wrapped in plastic on the bank of a river outside the town of Twin Peaks.',
+      description: 'An FBI agent investigates the mysterious death of a homecoming queen in a small town.',
       image: '/assets/Images_For_Card_1.jpg'
     },
     {
-      id: '3',
+      id: '6',
       title: 'Breaking Bad',
-      description: 'Walter White is a struggling high school chemistry teacher who becomes a crime lord in the local methamphetamine drug trade.',
-      image: '/assets/Image_For_Card_5.jpg'
+      description: 'A chemistry teacher becomes a methamphetamine manufacturer.',
+      image: '/assets/Image_For_Card_6.jpg'
     },
     {
-      id: '4',
+      id: '2',
       title: 'Stranger Things',
-      description: 'In 1983, a kid named Will gets mysteriously abducted and his loved ones begin an extensive search to find him.',
+      description: 'A group of friends discover supernatural phenomena in their small town.',
       image: '/assets/Images_For_Card_2.jpg'
     }
   ];

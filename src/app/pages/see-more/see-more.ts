@@ -2,6 +2,7 @@ import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@ang
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from '../../components/shared/card/card';
+import { UserService, TrackedSeries } from '../../services/user.service';
 
 /**
  * Interface for series card data
@@ -10,6 +11,7 @@ interface SeriesCard {
   id: number;
   title: string;
   imageSrc: string;
+  rating?: number;
 }
 
 /**
@@ -17,6 +19,7 @@ interface SeriesCard {
  * 
  * Displays a large grid of series cards.
  * Accessed when clicking "See more" from any section.
+ * Supports dynamic content from UserService for profile sections.
  */
 @Component({
   selector: 'app-see-more',
@@ -28,6 +31,7 @@ interface SeriesCard {
 export class SeeMore implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private userService = inject(UserService);
 
   // Page state
   pageTitle = signal<string>('All Series');
@@ -99,6 +103,31 @@ export class SeeMore implements OnInit {
    * Load series based on section
    */
   private loadSeriesForSection(section: string): void {
+    // Handle dynamic user content sections
+    if (section === 'recently-watched') {
+      this.pageTitle.set('Recently Watched');
+      const userSeries = this.userService.getRecentlyWatched();
+      this.series.set(userSeries.map(s => ({
+        id: s.id,
+        title: s.title,
+        imageSrc: s.imageSrc,
+        rating: s.rating
+      })));
+      return;
+    }
+    
+    if (section === 'logged-series') {
+      this.pageTitle.set('Logged Series (Watch Later)');
+      const userSeries = this.userService.getLoggedSeries();
+      this.series.set(userSeries.map(s => ({
+        id: s.id,
+        title: s.title,
+        imageSrc: s.imageSrc
+      })));
+      return;
+    }
+    
+    // Handle static section configurations
     const sectionConfig = this.sectionSeries[section];
     
     if (sectionConfig) {

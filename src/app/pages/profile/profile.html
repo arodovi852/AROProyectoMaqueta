@@ -24,17 +24,18 @@
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Logged series</h2>
-      <button class="profile-section__see-more">See more</button>
+      <button class="profile-section__see-more" (click)="seeMoreLoggedSeries()">See more</button>
     </div>
     <div class="profile-section__cards">
       @if (loggedSeries().length === 0) {
         <p class="profile-section__empty">No series added to Watch Later yet. Add series from the series detail page!</p>
       } @else {
-        @for (series of loggedSeries(); track series.title) {
+        @for (series of loggedSeries().slice(0, 6); track series.id) {
           <app-card 
             [title]="series.title" 
             [imageSrc]="series.imageSrc"
             [hoverTitle]="series.hoverTitle"
+            [seriesId]="series.id"
             variant="media"
             size="sm"
           />
@@ -47,17 +48,18 @@
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Recently watched</h2>
-      <button class="profile-section__see-more">See more</button>
+      <button class="profile-section__see-more" (click)="seeMoreRecentlyWatched()">See more</button>
     </div>
     <div class="profile-section__cards">
       @if (recentlyWatched().length === 0) {
         <p class="profile-section__empty">No series rated yet. Rate series from the series detail page!</p>
       } @else {
-        @for (series of recentlyWatched(); track series.title) {
+        @for (series of recentlyWatched().slice(0, 6); track series.id) {
           <app-card 
             [title]="series.title" 
             [imageSrc]="series.imageSrc"
             [hoverTitle]="series.hoverTitle + (series.rating ? ' - ★' + (series.rating % 1 === 0 ? series.rating : series.rating.toFixed(1)) : '')"
+            [seriesId]="series.id"
             variant="media"
             size="sm"
           />
@@ -70,7 +72,7 @@
   <section class="profile-section">
     <div class="profile-section__header">
       <h2 class="profile-section__title">Saved lists</h2>
-      <button class="profile-section__see-more">See more</button>
+      <button class="profile-section__see-more" (click)="seeMoreSavedLists()">See more</button>
     </div>
     <div class="profile-section__lists">
       @if (savedLists().length === 0) {
