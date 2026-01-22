@@ -1,12 +1,11 @@
 <!-- List Content Page -->
 <div class="list-content-page">
-  <!-- Banner -->
+  <!-- Banner with responsive images -->
   <div class="list-content-page__banner">
-    <img 
-      [src]="bannerImage()" 
+    <app-responsive-banner
+      [imageSrc]="bannerImage()"
       [alt]="listName()"
-      class="list-content-page__banner-image"
-    >
+    />
     <div class="list-content-page__banner-overlay">
       <h1 class="list-content-page__banner-title">{{ listName() }}</h1>
     </div>

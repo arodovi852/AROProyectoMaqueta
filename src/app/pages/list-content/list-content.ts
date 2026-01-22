@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Card } from '../../components/shared/card/card';
 import { CardStatReview } from '../../components/shared/card-stat-review/card-stat-review';
+import { ResponsiveBanner } from '../../components/shared/responsive-banner/responsive-banner';
 import { UserService } from '../../services/user.service';
 import { ToastService } from '../../services/toast.service';
 
@@ -36,7 +37,7 @@ interface ListInfo {
  */
 @Component({
   selector: 'app-list-content',
-  imports: [CommonModule, Card, CardStatReview],
+  imports: [CommonModule, Card, CardStatReview, ResponsiveBanner],
   templateUrl: './list-content.html',
   styleUrl: './list-content.scss',
 })
