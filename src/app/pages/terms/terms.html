@@ -1,0 +1,66 @@
+<section class="terms-page">
+  <div class="terms-page__container">
+    <!-- Header -->
+    <header class="terms-header">
+      <div class="terms-header__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <h1 class="terms-header__title">Terms of Service</h1>
+      <div class="terms-header__meta">
+        <p><strong>Last Updated:</strong> {{ lastUpdated }}</p>
+        <p><strong>Effective Date:</strong> {{ effectiveDate }}</p>
+      </div>
+    </header>
+
+    <!-- Introduction -->
+    <div class="terms-intro">
+      <p>
+        Welcome to BROADCASTTD. These Terms of Service ("Terms") govern your access to and use of 
+        our website, applications, and services (collectively, the "Service"). Please read these 
+        Terms carefully before using our Service.
+      </p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="terms-toc">
+      <h2 class="terms-toc__title">Table of Contents</h2>
+      <ol class="terms-toc__list">
+        @for (section of sections; track section.id) {
+          <li>
+            <a [href]="'#' + section.id" class="terms-toc__link">
+              {{ section.title.replace(/^\d+\.\s/, '') }}
+            </a>
+          </li>
+        }
+      </ol>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="terms-content">
+      @for (section of sections; track section.id) {
+        <article [id]="section.id" class="terms-section">
+          <h2 class="terms-section__title">{{ section.title }}</h2>
+          <p class="terms-section__content">{{ section.content }}</p>
+        </article>
+      }
+    </div>
+
+    <!-- Footer Note -->
+    <div class="terms-footer">
+      <p>
+        By using BROADCASTTD, you acknowledge that you have read, understood, and agree to be 
+        bound by these Terms of Service.
+      </p>
+      <div class="terms-footer__links">
+        <a routerLink="/privacy" class="terms-footer__link">Privacy Policy</a>
+        <a routerLink="/contact" class="terms-footer__link">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>

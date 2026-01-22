@@ -107,6 +107,12 @@ export const routes: Routes = [
     data: { breadcrumb: 'Profile' },
     canActivate: [authGuard]
   },
+  {
+    path: 'profile/:userId',
+    loadComponent: () => import('./pages/other-profile/other-profile').then(m => m.OtherProfile),
+    title: 'User Profile - BROADCASTTD',
+    data: { breadcrumb: 'User Profile' }
+  },
 
   // ========== ADDITIONAL ROUTES ==========
   
@@ -122,6 +128,42 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/about/about').then(m => m.About),
     title: 'About Us - BROADCAST',
     data: { breadcrumb: 'About Us' }
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./pages/contact/contact').then(m => m.Contact),
+    title: 'Contact - BROADCASTTD',
+    data: { breadcrumb: 'Contact' }
+  },
+  {
+    path: 'news',
+    loadComponent: () => import('./pages/news/news').then(m => m.News),
+    title: 'News - BROADCASTTD',
+    data: { breadcrumb: 'News' }
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./pages/terms/terms').then(m => m.Terms),
+    title: 'Terms of Service - BROADCASTTD',
+    data: { breadcrumb: 'Terms' }
+  },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./pages/privacy/privacy').then(m => m.Privacy),
+    title: 'Privacy Policy - BROADCASTTD',
+    data: { breadcrumb: 'Privacy' }
+  },
+  {
+    path: 'api',
+    loadComponent: () => import('./pages/api/api').then(m => m.Api),
+    title: 'API Documentation - BROADCASTTD',
+    data: { breadcrumb: 'API' }
+  },
+  {
+    path: 'roadmap',
+    loadComponent: () => import('./pages/roadmap/roadmap').then(m => m.Roadmap),
+    title: 'Product Roadmap - BROADCASTTD',
+    data: { breadcrumb: 'Roadmap' }
   },
   {
     path: 'searchresult',

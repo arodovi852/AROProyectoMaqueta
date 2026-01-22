@@ -66,12 +66,12 @@ export class SeriesInfo implements OnInit {
   seriesRating = 0;
   isWatchLater = false;
 
-  // Reviews
+  // Reviews - These match the user profiles for consistency
   reviews = [
     {
       username: 'User1',
       rating: 3,
-      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu, aliquet sit amet ipsum.'
+      reviewText: 'Twin Peaks starts strong but the middle drags a bit. The finale is worth it though.'
     },
     {
       username: 'User2',
@@ -81,7 +81,7 @@ export class SeriesInfo implements OnInit {
     {
       username: 'User3',
       rating: 5,
-      reviewText: 'A masterpiece of television cinema. David Lynch at his best.'
+      reviewText: 'A masterpiece of television cinema. David Lynch at his best. The atmosphere is unmatched.'
     }
   ];
 

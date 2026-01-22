@@ -55,25 +55,25 @@ export class Profile implements OnInit {
   // Saved lists (from UserService)
   savedLists = signal<{ id: string; title: string; images: { src: string; alt: string }[] }[]>([]);
 
-  // Reviews
+  // Reviews - Example reviews shown on profile (from other users about series the current user might like)
   reviews = [
     {
       username: 'User1',
       rating: 3,
-      reviewText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit massa, dignissim quis accumsan eu.',
+      reviewText: 'Twin Peaks starts strong but the middle drags a bit. The finale is worth it though.',
       avatarColor: '#6b5b7a'
     },
     {
       username: 'User2',
       rating: 4,
-      reviewText: 'Excellent series, highly recommended for genre lovers.',
+      reviewText: 'Excellent series, highly recommended. The plot hooks you from the first episode.',
       avatarColor: '#ecc332'
     },
     {
       username: 'User3',
       rating: 5,
-      reviewText: 'A masterpiece. The best series I\'ve seen in years.',
-      avatarColor: '#6b5b7a'
+      reviewText: 'A masterpiece of television cinema. David Lynch at his best. The atmosphere is unmatched.',
+      avatarColor: '#5b8a72'
     }
   ];
 

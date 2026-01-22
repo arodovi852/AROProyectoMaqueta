@@ -1,0 +1,153 @@
+<section class="roadmap-page">
+  <div class="roadmap-page__container">
+    <!-- Hero Section -->
+    <header class="roadmap-hero">
+      <div class="roadmap-hero__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+        </svg>
+      </div>
+      <h1 class="roadmap-hero__title">Product Roadmap</h1>
+      <p class="roadmap-hero__subtitle">
+        See what we're building and what's coming next. Your feedback shapes our priorities.
+      </p>
+    </header>
+
+    <!-- Status Legend -->
+    <div class="roadmap-legend">
+      <div class="legend-item legend-item--completed">
+        <span class="legend-item__dot"></span>
+        <span>Completed</span>
+      </div>
+      <div class="legend-item legend-item--in-progress">
+        <span class="legend-item__dot"></span>
+        <span>In Progress</span>
+      </div>
+      <div class="legend-item legend-item--planned">
+        <span class="legend-item__dot"></span>
+        <span>Planned</span>
+      </div>
+      <div class="legend-item legend-item--exploring">
+        <span class="legend-item__dot"></span>
+        <span>Exploring</span>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <nav class="roadmap-filters">
+      @for (filter of filters; track filter) {
+        <button 
+          class="roadmap-filters__btn"
+          [class.roadmap-filters__btn--active]="selectedFilter() === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter === 'all' ? 'All Features' : getStatusLabel(filter) }}
+        </button>
+      }
+    </nav>
+
+    <!-- Roadmap Items -->
+    <div class="roadmap-content">
+      @for (item of filteredItems; track item.id) {
+        <article class="roadmap-card" [attr.data-status]="item.status">
+          <div class="roadmap-card__header">
+            <span class="roadmap-card__status" [attr.data-status]="item.status">
+              {{ getStatusIcon(item.status) }} {{ getStatusLabel(item.status) }}
+            </span>
+            <span class="roadmap-card__quarter">{{ item.quarter }}</span>
+          </div>
+          
+          <h3 class="roadmap-card__title">{{ item.title }}</h3>
+          <p class="roadmap-card__description">{{ item.description }}</p>
+          
+          <div class="roadmap-card__footer">
+            <span class="roadmap-card__category">{{ item.category }}</span>
+            @if (item.votes) {
+              <span class="roadmap-card__votes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                </svg>
+                {{ item.votes | number }}
+              </span>
+            }
+          </div>
+        </article>
+      }
+
+      @if (filteredItems.length === 0) {
+        <div class="roadmap-empty">
+          <p>No features found with this status.</p>
+          <button class="btn btn--secondary" (click)="setFilter('all')">View All Features</button>
+        </div>
+      }
+    </div>
+
+    <!-- Timeline View -->
+    <section class="roadmap-timeline">
+      <h2 class="roadmap-timeline__title">Timeline Overview</h2>
+      <div class="timeline">
+        <div class="timeline__quarter">
+          <div class="timeline__header">
+            <span class="timeline__period">Q4 2025</span>
+            <span class="timeline__status timeline__status--done">Completed</span>
+          </div>
+          <ul class="timeline__items">
+            <li>User Profiles & Authentication</li>
+            <li>Series Rating System</li>
+            <li>Custom Lists</li>
+          </ul>
+        </div>
+        
+        <div class="timeline__quarter timeline__quarter--active">
+          <div class="timeline__header">
+            <span class="timeline__period">Q1 2026</span>
+            <span class="timeline__status timeline__status--current">Current</span>
+          </div>
+          <ul class="timeline__items">
+            <li>Social Features</li>
+            <li>Mobile Applications</li>
+            <li>Advanced Search & Filters</li>
+          </ul>
+        </div>
+        
+        <div class="timeline__quarter">
+          <div class="timeline__header">
+            <span class="timeline__period">Q2 2026</span>
+            <span class="timeline__status">Upcoming</span>
+          </div>
+          <ul class="timeline__items">
+            <li>AI-Powered Recommendations</li>
+            <li>Streaming Service Integration</li>
+            <li>Watch Party Feature</li>
+          </ul>
+        </div>
+        
+        <div class="timeline__quarter">
+          <div class="timeline__header">
+            <span class="timeline__period">Q3 2026</span>
+            <span class="timeline__status">Upcoming</span>
+          </div>
+          <ul class="timeline__items">
+            <li>Episode Calendar</li>
+            <li>Achievement System</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback CTA -->
+    <section class="roadmap-feedback">
+      <h2 class="roadmap-feedback__title">Have a Feature Request?</h2>
+      <p class="roadmap-feedback__text">
+        We love hearing from our community! Share your ideas and help us build the best series tracking platform.
+      </p>
+      <div class="roadmap-feedback__actions">
+        <a routerLink="/contact" class="btn btn--primary">Submit Feedback</a>
+        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn--secondary">
+          Vote on GitHub
+        </a>
+      </div>
+    </section>
+  </div>
+</section>

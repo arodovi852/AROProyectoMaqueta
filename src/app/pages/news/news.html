@@ -1,0 +1,97 @@
+<section class="news-page">
+  <div class="news-page__container">
+    <!-- Hero Section -->
+    <header class="news-hero">
+      <h1 class="news-hero__title">News & Updates</h1>
+      <p class="news-hero__subtitle">
+        Stay up to date with the latest series releases, platform updates, and industry news
+      </p>
+    </header>
+
+    <!-- Featured Article -->
+    <article class="news-featured">
+      <div class="news-featured__image">
+        <img [src]="featuredNews.imageSrc" [alt]="featuredNews.title" />
+        <span class="news-featured__badge">Featured</span>
+      </div>
+      <div class="news-featured__content">
+        <span class="news-featured__category">{{ featuredNews.category }}</span>
+        <h2 class="news-featured__title">{{ featuredNews.title }}</h2>
+        <p class="news-featured__excerpt">{{ featuredNews.excerpt }}</p>
+        <div class="news-featured__meta">
+          <span class="news-featured__date">{{ featuredNews.date }}</span>
+          <span class="news-featured__read-time">{{ featuredNews.readTime }}</span>
+        </div>
+        <button class="btn btn--primary">Read Full Article</button>
+      </div>
+    </article>
+
+    <!-- Category Filter -->
+    <nav class="news-filter">
+      @for (category of categories; track category) {
+        <button 
+          class="news-filter__btn"
+          [class.news-filter__btn--active]="selectedCategory() === category"
+          (click)="selectCategory(category)"
+        >
+          {{ category | titlecase }}
+        </button>
+      }
+    </nav>
+
+    <!-- News Grid -->
+    <section class="news-grid">
+      @for (article of filteredNews; track article.id) {
+        <article class="news-card">
+          <div class="news-card__image">
+            <app-card
+              [imageSrc]="article.imageSrc"
+              [title]="article.title"
+              [hoverTitle]="article.title"
+              variant="default"
+              size="medium"
+            />
+          </div>
+          <div class="news-card__content">
+            <span class="news-card__category">{{ article.category }}</span>
+            <h3 class="news-card__title">{{ article.title }}</h3>
+            <p class="news-card__excerpt">{{ article.excerpt }}</p>
+            <div class="news-card__meta">
+              <span class="news-card__date">{{ article.date }}</span>
+              <span class="news-card__divider">•</span>
+              <span class="news-card__read-time">{{ article.readTime }}</span>
+            </div>
+          </div>
+        </article>
+      }
+
+      @if (filteredNews.length === 0) {
+        <div class="news-empty">
+          <p>No articles found in this category.</p>
+          <button class="btn btn--secondary" (click)="selectCategory('all')">View All News</button>
+        </div>
+      }
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="news-newsletter">
+      <div class="news-newsletter__content">
+        <h2 class="news-newsletter__title">Never Miss an Update</h2>
+        <p class="news-newsletter__description">
+          Subscribe to our newsletter and get the latest news delivered directly to your inbox.
+        </p>
+        <div class="news-newsletter__form">
+          <input 
+            type="email" 
+            placeholder="Enter your email address" 
+            class="news-newsletter__input"
+          />
+          <button class="btn btn--primary">Subscribe</button>
+        </div>
+        <p class="news-newsletter__disclaimer">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
+    </section>
+  </div>
+</section>

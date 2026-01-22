@@ -1,0 +1,128 @@
+<!-- Other Profile Page (Read-only) -->
+<div class="other-profile-page">
+  @if (notFound()) {
+    <!-- Not Found State -->
+    <div class="other-profile-page__not-found">
+      <div class="other-profile-page__not-found-icon">👤</div>
+      <h1 class="other-profile-page__not-found-title">User Not Found</h1>
+      <p class="other-profile-page__not-found-text">The profile you're looking for doesn't exist or has been removed.</p>
+      <button class="other-profile-page__back-btn" (click)="goBack()">Go Back</button>
+    </div>
+  } @else {
+    <!-- Back Button -->
+    <button class="other-profile-page__back" (click)="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back
+    </button>
+
+    <!-- First row: Avatar, Stats Graph, Stats Card -->
+    <section class="other-profile-page__header-row">
+      <div class="other-profile-page__avatar">
+        <app-card-profile [username]="username()" size="lg" />
+      </div>
+      
+      <div class="other-profile-page__stats-graph">
+        <div class="other-profile-page__stats-bars">
+          @for (bar of statsBars(); track $index) {
+            <app-stat-bar [value]="bar" />
+          }
+        </div>
+        <span class="other-profile-page__stats-label">Rating Distribution</span>
+      </div>
+      
+      <div class="other-profile-page__stats-card">
+        <app-card-data [watched]="watched()" [saved]="saved()" [average]="average()" />
+      </div>
+    </section>
+
+    <!-- Second row: Logged series -->
+    <section class="other-profile-section">
+      <div class="other-profile-section__header">
+        <h2 class="other-profile-section__title">Logged series</h2>
+      </div>
+      <div class="other-profile-section__cards">
+        @if (loggedSeries().length === 0) {
+          <p class="other-profile-section__empty">No series in Watch Later list.</p>
+        } @else {
+          @for (series of loggedSeries().slice(0, 6); track series.id) {
+            <app-card 
+              [title]="series.title" 
+              [imageSrc]="series.imageSrc"
+              [hoverTitle]="series.hoverTitle"
+              [seriesId]="series.id"
+              variant="media"
+              size="sm"
+            />
+          }
+        }
+      </div>
+    </section>
+
+    <!-- Third row: Recently watched -->
+    <section class="other-profile-section">
+      <div class="other-profile-section__header">
+        <h2 class="other-profile-section__title">Recently watched</h2>
+      </div>
+      <div class="other-profile-section__cards">
+        @if (recentlyWatched().length === 0) {
+          <p class="other-profile-section__empty">No series rated yet.</p>
+        } @else {
+          @for (series of recentlyWatched().slice(0, 6); track series.id) {
+            <app-card 
+              [title]="series.title" 
+              [imageSrc]="series.imageSrc"
+              [hoverTitle]="series.hoverTitle + (series.rating ? ' - ★' + (series.rating % 1 === 0 ? series.rating : series.rating.toFixed(1)) : '')"
+              [seriesId]="series.id"
+              variant="media"
+              size="sm"
+            />
+          }
+        }
+      </div>
+    </section>
+
+    <!-- Fourth row: Saved lists -->
+    <section class="other-profile-section">
+      <div class="other-profile-section__header">
+        <h2 class="other-profile-section__title">Saved lists</h2>
+      </div>
+      <div class="other-profile-section__lists">
+        @if (savedLists().length === 0) {
+          <p class="other-profile-section__empty">No lists saved yet.</p>
+        } @else {
+          @for (list of savedLists(); track list.id) {
+            <app-card-list 
+              [listId]="list.id"
+              [title]="list.title" 
+              [images]="list.images"
+              size="small"
+            />
+          }
+        }
+      </div>
+    </section>
+
+    <!-- Fifth row: Reviews -->
+    <section class="other-profile-section">
+      <div class="other-profile-section__header">
+        <h2 class="other-profile-section__title">Reviews by {{ username() }}</h2>
+      </div>
+      <div class="other-profile-section__reviews">
+        @if (reviews().length === 0) {
+          <p class="other-profile-section__empty">No reviews yet.</p>
+        } @else {
+          @for (review of reviews(); track $index) {
+            <app-card-review 
+              [username]="review.username"
+              [rating]="review.rating"
+              [reviewText]="review.reviewText"
+              [clickable]="false"
+            />
+          }
+        }
+      </div>
+    </section>
+  }
+</div>

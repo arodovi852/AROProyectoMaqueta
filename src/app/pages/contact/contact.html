@@ -1,0 +1,104 @@
+<section class="contact-page">
+  <div class="contact-page__container">
+    <!-- Hero Section -->
+    <header class="contact-hero">
+      <div class="contact-hero__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <h1 class="contact-hero__title">Get in Touch</h1>
+      <p class="contact-hero__subtitle">
+        Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      </p>
+    </header>
+
+    <!-- Contact Methods Grid -->
+    <section class="contact-methods">
+      <h2 class="section-title">How to Reach Us</h2>
+      <div class="contact-methods__grid">
+        @for (method of contactMethods; track method.title) {
+          <article class="contact-card">
+            <div class="contact-card__icon" [attr.data-icon]="method.icon">
+              @switch (method.icon) {
+                @case ('email') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                }
+                @case ('business') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    <rect x="2" y="10" width="20" height="10" rx="2"/>
+                  </svg>
+                }
+                @case ('press') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                  </svg>
+                }
+                @case ('api') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                }
+              }
+            </div>
+            <h3 class="contact-card__title">{{ method.title }}</h3>
+            <p class="contact-card__description">{{ method.description }}</p>
+            <a [href]="'mailto:' + method.contact" class="contact-card__email">
+              {{ method.contact }}
+            </a>
+            <span class="contact-card__response">{{ method.responseTime }}</span>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- Social & Community -->
+    <section class="contact-social">
+      <h2 class="section-title">Join Our Community</h2>
+      <p class="section-description">Connect with other series enthusiasts and stay updated on the latest news</p>
+      <div class="contact-social__grid">
+        @for (social of socialLinks; track social.name) {
+          <a [href]="social.url" target="_blank" rel="noopener" class="social-card">
+            <span class="social-card__name">{{ social.name }}</span>
+            <span class="social-card__handle">{{ social.handle }}</span>
+          </a>
+        }
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="contact-faq__list">
+        @for (faq of faqs; track faq.question) {
+          <details class="faq-item">
+            <summary class="faq-item__question">{{ faq.question }}</summary>
+            <p class="faq-item__answer">{{ faq.answer }}</p>
+          </details>
+        }
+      </div>
+    </section>
+
+    <!-- Office Info -->
+    <section class="contact-office">
+      <div class="contact-office__content">
+        <h2 class="contact-office__title">Our Office</h2>
+        <address class="contact-office__address">
+          <p>BROADCASTTD Headquarters</p>
+          <p>123 Series Street, Suite 456</p>
+          <p>San Francisco, CA 94102</p>
+          <p>United States</p>
+        </address>
+        <p class="contact-office__hours">
+          <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM PST
+        </p>
+      </div>
+    </section>
+  </div>
+</section>

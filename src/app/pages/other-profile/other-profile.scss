@@ -1,0 +1,307 @@
+// ==========================================================================
+// PÁGINA: OTHER PROFILE (Read-only)
+// ==========================================================================
+// Página de perfil de otros usuarios
+// ==========================================================================
+
+@import '../../../styles/01-tools/mixins';
+
+// ==========================================================================
+// CONTENEDOR PRINCIPAL
+// ==========================================================================
+
+.other-profile-page {
+  min-height: 100vh;
+  background-color: hsl(294, 20%, 30%);
+  padding: var(--spacing-6) var(--spacing-6);
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-8) var(--spacing-10);
+  }
+  
+  @media (min-width: 1024px) {
+    padding: var(--spacing-8) var(--spacing-16);
+  }
+}
+
+// ==========================================================================
+// BACK BUTTON
+// ==========================================================================
+
+.other-profile-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: transparent;
+  border: none;
+  color: hsl(36, 45%, 93%);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: var(--spacing-2) var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  border-radius: 0.5rem;
+  @include transition(background-color, color);
+  
+  &:hover {
+    background-color: hsla(36, 45%, 93%, 0.1);
+    color: hsl(46, 83%, 56%);
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// ==========================================================================
+// NOT FOUND STATE
+// ==========================================================================
+
+.other-profile-page__not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: var(--spacing-8);
+}
+
+.other-profile-page__not-found-icon {
+  font-size: 5rem;
+  margin-bottom: var(--spacing-4);
+  opacity: 0.5;
+}
+
+.other-profile-page__not-found-title {
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  color: hsl(36, 45%, 93%);
+  margin: 0 0 var(--spacing-3);
+}
+
+.other-profile-page__not-found-text {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: hsl(36, 45%, 80%);
+  margin: 0 0 var(--spacing-6);
+  max-width: 400px;
+}
+
+.other-profile-page__back-btn {
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: hsl(46, 83%, 56%);
+  color: hsl(294, 20%, 20%);
+  border: none;
+  border-radius: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  @include transition(background-color, transform);
+  
+  &:hover {
+    background-color: hsl(46, 83%, 65%);
+    transform: translateY(-2px);
+  }
+}
+
+// ==========================================================================
+// PRIMERA FILA: HEADER
+// ==========================================================================
+
+.other-profile-page__header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-4);
+  
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--spacing-8);
+  }
+}
+
+.other-profile-page__avatar {
+  flex-shrink: 0;
+}
+
+.other-profile-page__stats-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-8);
+  background-color: var(--color-primary-dark);
+  border-radius: 1rem;
+  border: 5px solid var(--color-primary-light);
+  min-width: 320px;
+  
+  @media (min-width: 768px) {
+    min-width: 400px;
+    padding: var(--spacing-8) var(--spacing-10);
+    border-width: 6px;
+  }
+}
+
+.other-profile-page__stats-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  
+  @media (min-width: 768px) {
+    height: 140px;
+    gap: 10px;
+  }
+}
+
+.other-profile-page__stats-label {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-100);
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.other-profile-page__stats-card {
+  flex-shrink: 0;
+}
+
+// ==========================================================================
+// SECCIONES
+// ==========================================================================
+
+.other-profile-section {
+  margin-bottom: var(--spacing-6);
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: hsl(36, 45%, 93%);
+    margin: 0;
+  }
+  
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--spacing-4);
+    
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      gap: var(--spacing-5);
+    }
+  }
+  
+  &__empty {
+    width: 100%;
+    text-align: center;
+    color: hsl(36, 45%, 80%);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: var(--spacing-6);
+    background-color: hsla(294, 20%, 25%, 0.5);
+    border-radius: 0.5rem;
+    border: 1px dashed hsla(36, 45%, 80%, 0.3);
+  }
+  
+  &__lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--spacing-8) var(--spacing-6);
+    padding: 0 var(--spacing-4);
+    
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      gap: var(--spacing-10) var(--spacing-8);
+      padding: 0 var(--spacing-6);
+    }
+  }
+  
+  &__reviews {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+}
+
+// ==========================================================================
+// AJUSTES DE CARDS
+// ==========================================================================
+
+.other-profile-section__cards {
+  app-card {
+    flex: 0 0 auto;
+    
+    ::ng-deep .card {
+      width: 100px;
+      border-radius: 0.5rem;
+      
+      @media (min-width: 576px) {
+        width: 120px;
+      }
+      
+      @media (min-width: 768px) {
+        width: 140px;
+      }
+      
+      @media (min-width: 1200px) {
+        width: 160px;
+      }
+    }
+    
+    ::ng-deep .card__image-wrapper {
+      height: 150px;
+      
+      @media (min-width: 576px) {
+        height: 180px;
+      }
+      
+      @media (min-width: 768px) {
+        height: 210px;
+      }
+      
+      @media (min-width: 1200px) {
+        height: 240px;
+      }
+    }
+    
+    ::ng-deep .card__image {
+      border-radius: 0.5rem;
+    }
+    
+    ::ng-deep .card__body {
+      padding: var(--spacing-1);
+    }
+    
+    ::ng-deep .card__title {
+      font-size: 0.7rem;
+      line-height: 1.2;
+      text-align: center;
+      
+      @media (min-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

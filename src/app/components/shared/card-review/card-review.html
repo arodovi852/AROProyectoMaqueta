@@ -1,5 +1,13 @@
 <!-- Card Review Component -->
-<div class="card-review">
+<div 
+  class="card-review" 
+  [class.card-review--clickable]="clickable"
+  [attr.role]="clickable ? 'button' : null"
+  [attr.tabindex]="clickable ? 0 : null"
+  [attr.aria-label]="clickable ? 'View ' + username + '\'s profile' : null"
+  (click)="onCardClick()"
+  (keydown)="onKeydown($event)"
+>
   <!-- Avatar usando CardProfile -->
   <div class="card-review__avatar">
     <app-card-profile size="sm" />
