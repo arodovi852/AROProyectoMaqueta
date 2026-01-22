@@ -1,24 +1,25 @@
-
-@import '../00-settings/variables';
+@use 'sass:map';
+@use 'sass:list';
+@use '../00-settings/variables' as vars;
 
 // Resposnive
 // Facilita la escritura de media queries para diferentes breakpoints
 
 @mixin responsive($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(vars.$breakpoints, $breakpoint)) {
       @content;
     }
   } @else {
     @warn "No existe el breakpoint `#{$breakpoint}` en el mapa $breakpoints. "
-        + "Los breakpoints disponibles son: #{map-keys($breakpoints)}";
+        + "Los breakpoints disponibles son: #{map.keys(vars.$breakpoints)}";
   }
 }
 
 // Variante para max-width (mobile-first inverso)
 @mixin responsive-max($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: calc(#{map-get($breakpoints, $breakpoint)} - 1px)) {
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    @media (max-width: calc(#{map.get(vars.$breakpoints, $breakpoint)} - 1px)) {
       @content;
     }
   } @else {
@@ -82,7 +83,7 @@
   $timing: var(--ease-in-out);
   
   @each $property in $properties {
-    $transitions: append($transitions, $property $duration $timing, comma);
+    $transitions: list.append($transitions, $property $duration $timing, comma);
   }
   
   transition: $transitions;
@@ -95,7 +96,7 @@
   $timing: var(--ease-in-out);
   
   @each $property in $properties {
-    $transitions: append($transitions, $property $duration $timing, comma);
+    $transitions: list.append($transitions, $property $duration $timing, comma);
   }
   
   transition: $transitions;
@@ -108,7 +109,7 @@
   $timing: var(--ease-in-out);
   
   @each $property in $properties {
-    $transitions: append($transitions, $property $duration $timing, comma);
+    $transitions: list.append($transitions, $property $duration $timing, comma);
   }
   
   transition: $transitions;
