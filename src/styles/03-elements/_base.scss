@@ -390,7 +390,8 @@ select {
   }
   
   &::placeholder {
-    color: var(--color-text-disabled);
+    color: var(--color-neutral-600);
+    opacity: 1;
   }
   
   &:disabled {

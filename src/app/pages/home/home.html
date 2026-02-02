@@ -2,17 +2,17 @@
 <div class="component-showcase">
   <!-- Back to main page button -->
   <div class="home-main-access">
-    <a routerLink="/" class="home-main-access__link">
+    <a routerLink="/" class="home-main-access__link" aria-label="Back to BROADCASTTD main page">
       <app-button text="← Back to BROADCASTTD" variant="primary" size="lg" [fullWidth]="true" />
     </a>
   </div>
 
   <!-- Navigation buttons -->
-  <nav class="home-nav">
-    <a href="#fases">
+  <nav class="home-nav" aria-label="Page sections navigation">
+    <a href="#fases" aria-label="Go to Client Phases section">
       <app-button text="Client Phases" variant="primary" size="lg" />
     </a>
-    <a href="#guia-estilos">
+    <a href="#guia-estilos" aria-label="Go to Style Guide section">
       <app-button text="Style Guide" variant="secondary" size="lg" />
     </a>
   </nav>

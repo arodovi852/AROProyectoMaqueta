@@ -4,6 +4,7 @@
   (click)="navigateToSeries()"
   [attr.role]="clickable && variant !== 'rating' ? 'button' : null"
   [attr.tabindex]="clickable && variant !== 'rating' ? 0 : null"
+  [attr.aria-label]="clickable && variant !== 'rating' && hoverTitle ? 'View details for ' + hoverTitle : null"
   (keydown.enter)="navigateToSeries()"
 >
   @if (variant === 'rating') {

@@ -1,11 +1,14 @@
 <!-- Aplicaci\u00f3n principal BROADCAST -->
+<!-- Skip link para accesibilidad (WCAG 2.4.1) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <app-header></app-header>
 
-<main class="main-content">
+<main id="main-content" class="main-content" role="main" tabindex="-1">
 
   <router-outlet></router-outlet>
 </main>
 
 <app-footer></app-footer>
 <!-- Global components -->
-<app-toast></app-toast><app-alert-container></app-alert-container>
+<app-toast aria-live="polite"></app-toast><app-alert-container aria-live="assertive"></app-alert-container>

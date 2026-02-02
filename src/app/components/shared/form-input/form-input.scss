@@ -80,7 +80,7 @@
   border: 0.1875rem solid hsl(286, 26%, 22%);
   border-radius: 1.25rem;
   background-color: hsl(317, 67%, 73%);
-  color: hsl(286, 26%, 22%);
+  color: hsl(286, 26%, 15%);
   font-size: 1.125rem;
   font-weight: var(--font-weight-semibold);
   font-family: var(--font-secondary);
@@ -88,8 +88,9 @@
   @include transition(border-color, background-color, box-shadow, color);
 
   &::placeholder {
-    color: hsl(289, 20%, 31%);
+    color: hsl(289, 25%, 22%);
     font-weight: var(--font-weight-medium);
+    opacity: 1;
   }
 
   &:hover:not(:disabled) {
