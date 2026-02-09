@@ -81,19 +81,21 @@
       </a>
 
       <!-- Search field with debounce -->
-      <form class="header__search" (submit)="onSearch($event)">
+      <form class="header__search" (submit)="onSearch($event)" role="search">
+        <label for="header-search" class="visually-hidden">Search series</label>
         <input 
+          id="header-search"
           type="search" 
           class="header__search-input" 
           placeholder="Search" 
-          aria-label="Search"
+          aria-label="Search series"
           [formControl]="searchControl"
           (keydown.enter)="onSearch($event)"
         />
         <button 
           type="submit" 
           class="header__search-btn" 
-          aria-label="Search"
+          aria-label="Submit search"
         >
           <svg class="header__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
             <circle cx="8" cy="8" r="6" stroke-width="2"/>
@@ -109,19 +111,21 @@
       [class.header__mobile-menu--open]="isMenuOpen"
     >
       <!-- Mobile search -->
-      <form class="header__mobile-search" (submit)="onSearch($event)">
+      <form class="header__mobile-search" (submit)="onSearch($event)" role="search">
+        <label for="header-mobile-search" class="visually-hidden">Search series</label>
         <input 
+          id="header-mobile-search"
           type="search" 
           class="header__mobile-search-input" 
           placeholder="Search" 
-          aria-label="Search"
+          aria-label="Search series"
           [formControl]="searchControl"
           (keydown.enter)="onSearch($event)"
         />
         <button 
           type="submit" 
           class="header__mobile-search-btn" 
-          aria-label="Search"
+          aria-label="Submit search"
         >
           <svg class="header__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
             <circle cx="8" cy="8" r="6" stroke-width="2"/>
