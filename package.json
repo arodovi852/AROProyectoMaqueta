@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:backend": "cd backend && mvnw.cmd spring-boot:run",
     "build": "npm run build:prod",
     "build:prod": "ng build --configuration production",
     "build:vercel": "npm install --legacy-peer-deps && npm run build:prod",

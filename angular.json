@@ -48,7 +48,13 @@
                   "maximumError": "75kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,
@@ -65,7 +71,8 @@
               "buildTarget": "AROProyectoMaqueta:build:production"
             },
             "development": {
-              "buildTarget": "AROProyectoMaqueta:build:development"
+              "buildTarget": "AROProyectoMaqueta:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
