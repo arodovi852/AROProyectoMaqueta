@@ -22,7 +22,7 @@ BEM de por sí ya provee utilidad para la organización de los proyectos y el ti
 La página de favoritos contiene lo siguiente:
 - 
 - Botón para "Ver contenido" (Series "favoritas", valores hardcodeados)
-- El nuevo componente creado, que representan los nombres de las series
+- El nuevo componente creado, que representa el texto adicional por debajo de la serie (nombre y descripción respectivamente)
 
 Se han escogido tanto los componentes Cards ya existentes (más recurrente) como el nuevo componente creado para esta prueba en particular,
 

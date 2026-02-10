@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
 export class ComponenteHijo {
 
   private router = inject(Router);
+  @Input() texto: String = '';
 
-  @Input() filledStars = 0;
-    
 }
