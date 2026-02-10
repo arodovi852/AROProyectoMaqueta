@@ -19,5 +19,14 @@ BEM de por sí ya provee utilidad para la organización de los proyectos y el ti
 
 ## Decisiones durante el proyecto:
 
-Componente de 3 elementos
-Dentro deben de tener 2 cosas
+La página de favoritos contiene lo siguiente:
+- 
+- Botón para "Ver contenido" (Series "favoritas", valores hardcodeados)
+- El nuevo componente creado, que representan los nombres de las series
+
+Se han escogido tanto los componentes Cards ya existentes (más recurrente) como el nuevo componente creado para esta prueba en particular,
+
+La estructura sigue las especificaciones determinadas o en otras palabras:
+
+- Componente de 3 elementos
+- Dentro deben de tener 2 cosas mínimo

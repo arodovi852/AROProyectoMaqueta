@@ -13,6 +13,7 @@ import { UserService, TrackedSeries, SavedList } from '../../services/user.servi
 import { Button } from '../../components/shared/button/button';
 import { SeriesService, Series } from '../../services/series.service';
 import { ToastService } from '../../services/toast.service';
+import { ComponenteHijo } from '../../components/shared/componente-hijo/componente-hijo';
 
 
 interface SeriesCard {
@@ -25,7 +26,7 @@ interface SeriesCard {
 
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, CardProfile, StatBar, CardData, Card, CardList, CardReview],
+  imports: [CommonModule, CardProfile, StatBar, CardData, Card, CardList, CardReview, ComponenteHijo],
   templateUrl: './nuevapagina.html',
   styleUrl: './nuevapagina.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

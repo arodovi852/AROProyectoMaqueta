@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-card',
+  selector: 'componente-hijo',
   imports: [Star, StatBar, WatchLater, CommonModule],
   templateUrl: './componente-hijo.html',
   styleUrl: './componente-hijo.scss',
