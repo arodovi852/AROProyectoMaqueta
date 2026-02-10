@@ -98,6 +98,14 @@ export const routes: Routes = [
     data: { breadcrumb: 'See More' }
   },
 
+  {
+    path: 'nuevapagina',
+    loadComponent: () => import('./pages/nuevapagina/nuevapagina').then(m => m.NuevaPagina),
+    title: 'Nueva Página - BROADCASTTD',
+    data: { breadcrumb: 'Nueva Página' }
+
+  },
+
   // ========== USER ROUTES (Protected with authGuard) ==========
   
   {

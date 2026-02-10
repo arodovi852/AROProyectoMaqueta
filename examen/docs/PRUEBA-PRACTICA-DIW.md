@@ -19,22 +19,5 @@ BEM de por sí ya provee utilidad para la organización de los proyectos y el ti
 
 ## Decisiones durante el proyecto:
 
-- Se reutilizó el código que generaba los componentes card para simplificar la maquetación:
-
-```
-@for (series of futureReleases; track series.id) {
-          <app-card
-            [imageSrc]="series.imageSrc"
-            [imageAlt]="series.imageAlt"
-            [hoverTitle]="series.hoverTitle"
-            [seriesId]="series.id"
-            variant="media"
-            role="listitem"
-          ></app-card>
-
-```
-
-Esto esencialmente permite introducir el componente card sin tener que definirlo constantemente para cada instancia.
-
 Componente de 3 elementos
 Dentro deben de tener 2 cosas
