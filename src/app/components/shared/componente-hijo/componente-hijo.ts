@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'componente-hijo',
+  standalone: true,
   imports: [Star, StatBar, WatchLater, CommonModule],
   templateUrl: './componente-hijo.html',
   styleUrl: './componente-hijo.scss',
