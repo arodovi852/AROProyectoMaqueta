@@ -35,3 +35,18 @@ La estructura sigue las especificaciones determinadas o en otras palabras:
 ## Dónde encontrarlo:
 
 [Nuevas variables (añadidas línea 19, comentario)](../../src/styles/00-settings/_variables.scss)
+
+[Nueva página (HTML)](../../src/app/pages/nuevapagina/nuevapagina.html)
+
+[Nueva página (CSS)](../../src/app/pages/nuevapagina/nuevapagina.scss)
+
+[Componente (HTML)](../../src/app/components/shared/componente-hijo/componente-hijo.html)
+
+[Componente (CSS)](../../src/app/components/shared/componente-hijo/componente-hijo.scss)
+
+
+## Otras anotaciones
+
+Sé que el grid se puede hacer de forma que si estableces el min-width a distintas distancias puedes conseguir que el grid se divida en distintas columnas, el problema es que no he llegado a dar con la tecla de cómo hacerlo funcionar exactamente después de muchos intentos a lo largo del examen. Sin embargo, al menos utilicé el nuevo componente creado.
+
+Además, no me ha llegado a dar tiempo a cambiar los estilos. Dejo registro de ello también por problemas de espacio y el vídeo (lo cual seguramente ya sepas a través de mi palabra o un correo)
