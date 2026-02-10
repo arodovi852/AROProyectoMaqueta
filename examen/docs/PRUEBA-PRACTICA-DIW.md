@@ -15,3 +15,23 @@ En el caso de importar los Componentes antes que las Settings en el proyecto, lo
 ## Explica una ventaja real que te haya aportado usar BEM en este examen frente a usar selectores de etiqueta anidados (ej: div > button).
 
 BEM de por sí ya provee utilidad para la organización de los proyectos y el tiempo de cargo, pero en este caso lo más importante para este proyecto es su legibilidad: A la hora de tanto escribir como volver a leer el código de nuevo, es mucho más intuitivo escribirlo de esta forma que con selectores de etiquetas anidados, además de que los selectores de etiquetas anidados eventualmente se vuelven demasiado engorroson por su propia cuenta.
+
+
+## Decisiones durante el proyecto:
+
+- Se reutilizó el código que generaba los componentes card para simplificar la maquetación:
+
+```
+@for (series of futureReleases; track series.id) {
+          <app-card
+            [imageSrc]="series.imageSrc"
+            [imageAlt]="series.imageAlt"
+            [hoverTitle]="series.hoverTitle"
+            [seriesId]="series.id"
+            variant="media"
+            role="listitem"
+          ></app-card>
+
+```
+
+Esto esencialmente permite introducir el componente card sin tener que definirlo constantemente para cada instancia.
