@@ -30,3 +30,8 @@ La estructura sigue las especificaciones determinadas o en otras palabras:
 
 - Componente de 3 elementos
 - Dentro deben de tener 2 cosas mínimo
+
+
+## Dónde encontrarlo:
+
+[Nuevas variables (añadidas línea 19, comentario)](../../src/styles/00-settings/_variables.scss)
