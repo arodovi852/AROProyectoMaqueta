@@ -3,7 +3,7 @@
 
 .nueva-pagina {
     min-height: 100vh;
-    background-color: var(--color-bg-main);
+    background-color: var(--color-test-bg);
     padding: var(--spacing-8) var(--spacing-6);
     
     display: flex;
@@ -40,7 +40,7 @@
     }
 
     &__title{
-        color: var(--color-primary-darkest);
+        color: var(--color-test-cyan);
         font-family: var(--font-primary);
         font-size: clamp(1.5rem, 4vw, 2rem);
         font-weight: 700;
@@ -48,10 +48,16 @@
     }
 
     &__grid {
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    gap: var(--spacing-6);
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        gap: var(--spacing-6);
+    }
+
+    &__columna{
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-6);
     }
 
     &__grid--section{
