@@ -1,0 +1,55 @@
+<div class="nueva-pagina">
+    <section class="nueva-pagina__section">
+        <div class="nueva-pagina__header">
+            <h2 class="nueva-pagina__title"> List of Favorites</h2>
+            <button class="nueva-pagina__see-more"> See more</button>
+        </div>
+        <div class="nueva-pagina__grid">
+            <section class="nueva-pagina__grid--section">
+                <app-card
+                    [imageSrc]="'/assets/Images_For_Card_1.jpg'"
+                    [imageAlt]="'Twin Peaks'"
+                    [hoverTitle]="'Twin Peaks'"
+                    [seriesId]="1"
+                    variant="media"
+                    role="listitem"></app-card>
+            </section>
+            
+            <section class="nueva-pagina__grid--section">
+                <app-card
+                    [imageSrc]="'/assets/Images_For_Card_1.jpg'"
+                    [imageAlt]="'Twin Peaks'"
+                    [hoverTitle]="'Twin Peaks'"
+                    [seriesId]="1"
+                    variant="media"
+                    role="listitem"></app-card>
+            </section>
+            
+            <section class="nueva-pagina__grid--section">
+                <app-card
+                    [imageSrc]="'/assets/Images_For_Card_1.jpg'"
+                    [imageAlt]="'Twin Peaks'"
+                    [hoverTitle]="'Twin Peaks'"
+                    [seriesId]="1"
+                    variant="media"
+                    role="listitem"></app-card>
+            </section>
+
+        </div>
+    </section>
+</div>
+
+
+
+        <div class="nueva-pagina__grid">
+            @for (series of favorites; track series.id) {
+          <app-card
+            [imageSrc]="'/assets/Images_For_Card_1.jpg'"
+            [imageAlt]="'Twin Peaks'"
+            [hoverTitle]="'Twin Peaks'"
+            [seriesId]="1"
+            variant="media"
+            role="listitem"
+          ></app-card>
+        }
+        </div>

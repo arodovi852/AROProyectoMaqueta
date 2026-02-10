@@ -35,3 +35,6 @@ BEM de por sí ya provee utilidad para la organización de los proyectos y el ti
 ```
 
 Esto esencialmente permite introducir el componente card sin tener que definirlo constantemente para cada instancia.
+
+Componente de 3 elementos
+Dentro deben de tener 2 cosas
