@@ -71,14 +71,13 @@
       }
 
       <!-- Lists Button -->
-      <a routerLink="/lists" class="header__btn-link">
-        <app-button 
-          text="Lists"
-          variant="ghost"
-          size="md"
-          class="header__btn header__btn--lists"
-        />
-      </a>
+      <app-button 
+        text="Lists"
+        variant="ghost"
+        size="md"
+        class="header__btn header__btn--lists"
+        (onClick)="navigateToLists()"
+      />
 
       <!-- Search field with debounce -->
       <form class="header__search" (submit)="onSearch($event)" role="search">

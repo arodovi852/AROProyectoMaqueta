@@ -8,6 +8,9 @@
   "projects": {
     "AROProyectoMaqueta": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en"
+      },
       "schematics": {},
       "root": "",
       "sourceRoot": "src",

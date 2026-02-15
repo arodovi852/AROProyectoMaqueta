@@ -26,6 +26,7 @@
       type="text" 
       class="event-demo__input"
       placeholder="Type something..."
+      aria-label="Type something to test keyboard events"
       (keydown)="onKeyDown($event)"
       (keyup)="onKeyUp($event)"
       [(ngModel)]="inputValue"
@@ -38,6 +39,7 @@
       type="text" 
       class="event-demo__input"
       placeholder="Press Enter here..."
+      aria-label="Press Enter to test enter key event"
       (keyup.enter)="onEnterPressed()"
     />
   </div>
@@ -67,6 +69,7 @@
       class="event-demo__input"
       [class.focused]="isFocused"
       placeholder="Click here for focus..."
+      aria-label="Click here to test focus and blur events"
       (focus)="onFocus($event)"
       (blur)="onBlur($event)"
     />
@@ -83,6 +86,7 @@
         type="text" 
         class="event-demo__input"
         placeholder="Name..."
+        aria-label="Name for form submit test"
         required
       />
       <app-button type="submit" variant="primary">

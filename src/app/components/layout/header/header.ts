@@ -224,6 +224,13 @@ export class Header implements OnInit, OnDestroy {
   }
 
   /**
+   * Navigate to Lists page
+   */
+  navigateToLists(): void {
+    this.router.navigate(['/lists']);
+  }
+
+  /**
    * Execute search and navigate to results (manual submit)
    */
   onSearch(event?: Event): void {

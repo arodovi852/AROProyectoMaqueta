@@ -111,6 +111,13 @@ export class Lists {
   ];
 
   /**
+   * Navigate to create list page
+   */
+  navigateToCreateList(): void {
+    this.router.navigate(['/listinfo']);
+  }
+
+  /**
    * Handle "See more" click - navigate to see more page
    */
   onSeeMore(section: string): void {

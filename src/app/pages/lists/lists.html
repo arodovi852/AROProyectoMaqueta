@@ -2,13 +2,12 @@
 <div class="lists-page">
   <!-- Create List Button -->
   <div class="lists-page__create-section">
-    <a routerLink="/listinfo">
-      <app-button
-        text="Create List +"
-        variant="secondary"
-        size="lg"
-      ></app-button>
-    </a>
+    <app-button
+      text="Create List +"
+      variant="secondary"
+      size="lg"
+      (onClick)="navigateToCreateList()"
+    ></app-button>
   </div>
 
   <!-- Official Lists Section -->
