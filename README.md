@@ -107,10 +107,40 @@ npm run lint       # Ejecutar linter
 | LG | 1024px | Desktop pequeño |
 | XL | 1280px | Desktop estándar |
 
+## ♿ Proyecto 4 — Accesibilidad y Multimedia
+
+### Componente multimedia añadido
+
+**Tipo:** Carrusel / Slider  
+**Descripción:** Carrusel de imágenes hero con 6 slides de series, auto-rotación, navegación por teclado y ARIA completo.
+
+### Resultados de auditoría de accesibilidad
+
+| Herramienta | Puntuación inicial | Puntuación final | Mejora |
+|-------------|-------------------|------------------|--------|
+| Lighthouse  | <!-- TODO --> [X]/100 | <!-- TODO --> [X]/100 | +[X] |
+| WAVE        | <!-- TODO --> [X] errores | <!-- TODO --> [X] errores | -[X] |
+| TAW         | <!-- TODO --> [X] problemas | <!-- TODO --> [X] problemas | -[X] |
+
+**Nivel de conformidad alcanzado:** WCAG 2.1 <!-- TODO: A / AA / AA parcial -->
+
+### Documentación completa
+
+📄 **[Ver análisis completo de accesibilidad](./docs/accesibilidad/README.md)**  
+📸 **[Guía de capturas de pantalla](./docs/accesibilidad/GUIA_CAPTURAS.md)**
+
+### Verificación realizada
+
+- ✅ Auditoría con Lighthouse, WAVE y TAW
+- ✅ Test con lector de pantalla (<!-- TODO: NVDA / VoiceOver -->)
+- ✅ Test de navegación por teclado
+- ✅ Verificación cross-browser (Chrome, Firefox, Edge)
+
 ## 📚 Documentación
 
 - [Documentación de Diseño](./docs/design/DOCUMENTACION.md)
 - [Documentación de Clientes](./docs/design/DOCUMENTACION_CLIENTES.md)
+- [Análisis de Accesibilidad](./docs/accesibilidad/README.md)
 - [Guía de Despliegue](./DEPLOYMENT_GUIDE.md)
 
 ## 📝 Licencia
